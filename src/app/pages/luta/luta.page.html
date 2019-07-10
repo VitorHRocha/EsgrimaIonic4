@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round"  (click)="voltar()">
+      <ion-icon slot="icon-only" name="arrow-dropleft-circle"></ion-icon>
+    </ion-button>
+    
+    <ion-button shape="round"  (click)="Concluir()">
+      Concluir
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="body" padding>
+  <div id="lutadores">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div id="lutador1">
+            <ion-row>
+              <ion-button class="cabeca" id="area1" (click)="Area(1)"></ion-button>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button class="braco esquerdo" id="area2" (click)="Area(2)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="tronco" id="area3" (click)="Area(3)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="braco direito" id="area4" (click)="Area(4)"></ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button class="perna esquerda" id="area5" (click)="Area(5)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="perna direita" id="area6" (click)="Area(6)"></ion-button>
+              </ion-col>
+            </ion-row>
+            
+          </div>
+        </ion-col>
+        <ion-col>
+          <div id="lutador2">
+            
+            <ion-row>
+              <ion-button class="cabeca" id="area7" (click)="Area(7)"></ion-button>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button class="braco esquerdo" id="area8" (click)="Area(8)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="tronco" id="area9" (click)="Area(9)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="braco direito" id="area10" (click)="Area(10)"></ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button class="perna esquerda" id="area11" (click)="Area(11)"></ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button class="perna direita" id="area12" (click)="Area(12)"></ion-button>
+              </ion-col>
+            </ion-row>
+            
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="Ataques">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="ataque1" (click)="Ataque(1)">Ataque</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button class="movimento" id="ataque2" (click)="Ataque(2)">Resposta</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button class="movimento" id="ataque3" (click)="Ataque(3)">Contra <br>Resposta</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button class="movimento" id="ataque4" (click)="Ataque(4)">Contra<br> Ataque</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="toqueduplo">
+          <ion-button>Toque Duplo</ion-button>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="Efetividade">
+    <ion-row>
+      <ion-col>
+        <ion-button   id="ef1" (click)="Efetividade(true)"> Ponto</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button id="ef0" (click)="Efetividade(false)">Falha</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="arena">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1" > 
+          <ion-button class="alerta"  id="zona1" (click)="Arena(1)"></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button class="normal" id="zona2" (click)="Arena(2)"></ion-button>
+        </ion-col>
+        <ion-col size="2" >
+          <ion-button class="uniao" id="zona3" (click)="Arena(3)"></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button class="normal" id="zona4" (click)="Arena(4)"></ion-button>
+        </ion-col>
+        <ion-col  size="1">
+          <ion-button class="alerta" id="zona5" (click)="Arena(5)"></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="proximo()"><ion-icon name="arrow-round-forward"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

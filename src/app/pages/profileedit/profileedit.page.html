@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-button shape="round" (click)="voltar()">
+        <ion-icon name="arrow-dropleft-circle"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content  padding>
+    <div class="camera">
+      <img *ngIf="imageURL" src="http://ucarecdn.com/{{ imageURL }}/" >
+    </div>
+
+    <input type="file" (change)="fileChanged($event)">
+<div *ngIf="imageURL">
+<ion-button expand="block" (click)="alteraFoto()">Alterar Foto</ion-button>
+</div>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round" (click)="voltar()">
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p>{{ userOp }}</p>
+  <div class="foto" > 
+ <ion-menu-button id="fotoButton"></ion-menu-button>
+  </div>
+  <ion-button expand="block"  id="lut" (click)="novaLuta()">
+    <img src="https://img.icons8.com/metro/26/000000/royal-marines.png">
+    Novo Combate
+  </ion-button>
+  <ion-button expand="block" (click)="historico()"  >
+    <img src="https://img.icons8.com/metro/26/000000/rules.png">
+    Minhas Lutas
+  </ion-button> 
+  <ion-button expand="block" (click)="relatorio()"  >
+      <img src="https://img.icons8.com/metro/26/000000/rules.png">
+      Relatorios
+    </ion-button> 
+  
+  <p>{{userProfile?.nome}}</p>
+  
+</ion-content>
+

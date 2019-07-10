@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round" (click)="voltar()">
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </ion-button> 
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding>
+  <form [formGroup]="registroForm"> 
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input
+        formControlName="nome"
+        type="text"
+        [class.invalid]="registroForm.controls['nome'].valid &&
+        registroForm.controls['nome'].touched"
+        >
+      </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        formControlName="email"
+        type="email"
+        [class.invalid]="registroForm.controls['email'].valid &&
+        registroForm.controls['email'].touched"
+        >
+      </ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input
+        formControlName="senha"
+        type="password"
+        [class.invalid]="!registroForm.controls['senha'].valid &&
+        registroForm.controls['senha'].touched">
+      </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-input
+        formControlName="confSenha"
+        type="password"
+        [class.invalid]="!registroForm.controls['senha'].valid &&
+        registroForm.controls['senha'].touched">
+      </ion-input>
+    </ion-item>
+
+
+    <ion-button
+    expand="block"
+    (click)="registrarUser(registroForm)"
+    [disabled]="!registroForm.valid"
+    >
+    Criar conta
+  </ion-button>
+</form>
+
+</ion-content>
+
+
