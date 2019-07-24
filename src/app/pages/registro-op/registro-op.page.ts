@@ -16,10 +16,10 @@ export class RegistroOpPage implements OnInit {
   public current; 
   public userProfile: any;
 
-  nome: string ="";
-  clube: string ="";
+ 
   altura: string ="";
-  punho: string="";
+  punho1: string="";
+  punho2: string="";
 
   
   constructor(
@@ -27,19 +27,16 @@ export class RegistroOpPage implements OnInit {
     private formBuilder: FormBuilder,
     private profileService:ProfileService) {
       this.regiOpform = this.formBuilder.group({
-        nome: [
-          '',
-          Validators.compose([Validators.required]),
-        ],
-        clube: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
+        
         altura: [
           '',
           Validators.compose([ Validators.required]),
         ],
-        punho: [
+        punho1: [
+          '',
+          Validators.compose([ Validators.required]),
+        ],
+        punho2: [
           '',
           Validators.compose([ Validators.required]),
         ],
@@ -50,26 +47,22 @@ export class RegistroOpPage implements OnInit {
     
   }
   voltar(){
-    this.router.navigate(['/user'])
+    this.router.navigate(['/luta'])
   }
-
-
+ 
+ 
   async cadastro(regiOpform: FormGroup): Promise<void> {
 
-     const punho= this.regiOpform.value.punho;  
-     const altura= this.regiOpform.value.altura;
-     const nome= this.regiOpform.value.nome;
-     const clube= this.regiOpform.value.clube;
+     const punho1= this.regiOpform.value.punho1;
+     const punho2= this.regiOpform.value.punho1;  
+     const altura_relativa= this.regiOpform.value.altura;
    
       try{
-        this.profileService.updateOponente(
-            nome,
-            clube,
-            altura,
-            punho)
-          
-
-             
+        this.profileService.updateLutadoresCompara(
+            altura_relativa,
+            punho1,
+            punho2)
+            
           this.router.navigate(['/user'])
         
       }catch(error){

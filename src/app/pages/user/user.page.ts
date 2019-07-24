@@ -22,7 +22,7 @@ export class UserPage implements OnInit {
     this.router.navigate(['/login'])
   }
   novaLuta(){
-    this.router.navigate(['/luta'])
+    this.router.navigate(['/registra-lutadores'])
   }
   historico(){
     this.router.navigate(['/minhas-lutas'])
@@ -53,7 +53,6 @@ export class UserPage implements OnInit {
    }
 
    teste(){
-    console.log(this.userOp.length); 
    }
 
 }

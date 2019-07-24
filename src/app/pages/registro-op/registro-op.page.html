@@ -5,95 +5,96 @@
       </ion-button>
     </ion-toolbar>
   </ion-header> 
-
-<ion-content padding>
-  <form [formGroup]="regiOpform">
-    <ion-item>
-      <ion-label position="floating" >Nome</ion-label>
-      <ion-input
-      formControlName="nome"
-      type="text"
-      [class.invalid]="regiOpform.controls['nome'].valid &&
-      regiOpform.controls['nome'].touched">
-    </ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Clube</ion-label>
-      <ion-input
-      formControlName="clube"
-      type="text"
-      [class.invalid]="regiOpform.controls['clube'].valid &&
-      regiOpform.controls['clube'].touched"
-      >
-    </ion-input>
-  </ion-item>
-
   
-  <ion-list > 
-   
-        <ion-list-header>
-          <ion-label>Altura Relativa</ion-label>
-        </ion-list-header>
-
-        <ion-item>
-            <ion-label> Maior</ion-label>
-            <input type="radio"
-             value="maior"
-              name="altura"
-             formControlName="altura">
-        
-        </ion-item>
+  <ion-content padding>
     
-        <ion-item>
-            <ion-label> Menor</ion-label>
-            <input type="radio"
-             value="menor"
-              name="altura"
-             formControlName="altura">
+      <form [formGroup]="regiOpform">
+      <ion-list > 
+        <ion-list-header>
+        <ion-label>Altura Relativa do Lutador 1 em relação ao Lutador 2</ion-label>
+        </ion-list-header>
+      
+      <ion-item>
+        <ion-label> Maior</ion-label>
+        <input type="radio"
+        value="maior"
+        name="altura"
+        formControlName="altura">
         
-        </ion-item>
-        <ion-item>
-            <ion-label> Parecida</ion-label>
-            <input type="radio"
-             value="parecida"
-              name="altura"
-             formControlName="altura">
+      </ion-item>
+      
+      <ion-item>
+        <ion-label> Menor</ion-label>
+        <input type="radio"
+        value="menor"
+        name="altura"
+        formControlName="altura">
         
-        </ion-item>
-
+      </ion-item>
+      <ion-item>
+        <ion-label> Parecida</ion-label>
+        <input type="radio"
+        value="parecida"
+        name="altura"
+        formControlName="altura">
+         
+      </ion-item>
+  
       </ion-list> 
       <ion-list> 
         <ion-list-header>
-          <ion-label>Punho</ion-label>
+          <ion-label>Punho do Lutador 1</ion-label>
         </ion-list-header>
-    
-        <ion-item>
-            <ion-label> Destro</ion-label>
-            <input type="radio"
-             value="destro"
-              name="punho"
-             formControlName="punho">
         
+        <ion-item>
+          <ion-label> Destro</ion-label>
+          <input type="radio"
+          value="destro"
+          name="punho"
+          formControlName="punho1">
+          
         </ion-item>
-    
-        <ion-item>
-            <ion-label> Canhoto </ion-label>
-            <input type="radio"
-             value="canhoto"
-              name="punho"
-             formControlName="punho">
         
+        <ion-item>
+          <ion-label> Canhoto </ion-label>
+          <input type="radio"
+          value="canhoto"
+          name="punho"
+          formControlName="punho1">
+          
         </ion-item>
       </ion-list>
-  </form>
+      <ion-list> 
+          <ion-list-header>
+            <ion-label>Punho do Lutador 2</ion-label>
+          </ion-list-header>
+          
+          <ion-item>
+            <ion-label> Destro</ion-label>
+            <input type="radio"
+            value="destro"
+            name="punho"
+            formControlName="punho2">
+            
+          </ion-item>
+          
+          <ion-item>
+            <ion-label> Canhoto </ion-label>
+            <input type="radio"
+            value="canhoto"
+            name="punho"
+            formControlName="punho2">
+            
+          </ion-item>
+        </ion-list>
+</form>
 
-    <ion-button (click)="cadastro()" expand="block"
-    [disabled]="!regiOpform.valid"> Confirma
-  </ion-button>
- 
+<ion-button (click)="cadastro()" expand="block"
+[disabled]="!regiOpform.valid"> Confirma
+</ion-button>
 
-    
-  
-  
-  </ion-content>
+
+
+
+
+</ion-content>

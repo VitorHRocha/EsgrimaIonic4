@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { ProfileService } from '../../services/user/profile.service';
-import { NavController, NavParams } from '@ionic/angular';
+import { LutaService } from 'src/app/services/user/luta.service';
 
 
 @Component({ 
@@ -16,9 +16,9 @@ export class MinhasLutasPage implements OnInit {
   constructor(
     private profileService: ProfileService,
    public router: Router,
-    public navCtrl: NavController
+    public lutaService:LutaService
    ) { 
-  } 
+  }  
 
   voltar(){
     this.router.navigate(['/user'])
@@ -31,7 +31,12 @@ export class MinhasLutasPage implements OnInit {
       this.userProfile = userProfileSnapshot.data();
     });
  }
-s
+ selecionaLuta(pag){
+
+   this.lutaService.setLutaAtual(pag);
+   this.router.navigate(['/relatorio'])
+
+ }
 
  }
 

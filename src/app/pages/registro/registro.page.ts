@@ -40,7 +40,7 @@ export class RegistroPage implements OnInit {
         ],
       });
     }
-    
+     
   voltar(){
     this.router.navigate(['/login'])
   }

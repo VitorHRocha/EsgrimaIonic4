@@ -26,16 +26,23 @@ export class ProfileService {
   updateNumeroLutas(numeroLutas: number): Promise<any> {
     return this.userProfile.update({ numeroLutas });
   }
-  updateOponente(nome: string,
-    clube: string,
-    altura: string,
-    punho: string): Promise<any> {
+  updateLutadores(
+    nome1: string,
+    clube1: string,
+    nome2: string,
+    clube2: string,
+    altura_relativa: string,
+    punho1: string,
+    punho2: string): Promise<any> {
       return this.userProfile.update({
-        oponente: firebase.firestore.FieldValue.arrayUnion({
-          nome,
-          clube,
-          altura,
-          punho
+        lutadores: firebase.firestore.FieldValue.arrayUnion({
+            nome1,
+            clube1,
+            nome2,
+            clube2,
+            altura_relativa,
+            punho1,
+            punho2
         })
       });
   }

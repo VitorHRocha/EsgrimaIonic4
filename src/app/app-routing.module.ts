@@ -11,6 +11,7 @@ const routes: Routes =[
   { path: 'profileedit', loadChildren: './pages/profileedit/profileedit.module#ProfileeditPageModule' },
   { path: 'luta', loadChildren: './pages/luta/luta.module#LutaPageModule' },
   { path: 'relatorio', loadChildren: './pages/relatorio/relatorio.module#RelatorioPageModule' },
+  { path: 'registra-lutadores', loadChildren: './pages/registra-lutadores/registra-lutadores.module#RegistraLutadoresPageModule' },
 ];
 
 @NgModule({

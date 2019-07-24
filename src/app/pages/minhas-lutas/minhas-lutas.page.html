@@ -9,23 +9,21 @@
 <ion-content padding> 
   <div id="lutas">   
     
-    <div class="luta" *ngFor="let op of userProfile?.oponente">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>{{op.clube}}</ion-card-subtitle>
-          <ion-card-title>{{op.nome}}</ion-card-title>
+    <div class="luta" *ngFor="let op of userProfile?.oponente; let i = index">
+      
+      <ion-card (click)="selecionaLuta(i)">
+        <ion-card-header  >
+          <ion-card-subtitle>{{op.clube1}}  X  {{op.clube2}}</ion-card-subtitle>
+          <ion-card-title>{{op.nome1}} X {{op.nome2}}</ion-card-title>
         </ion-card-header>
           <ion-list>
             <ion-item>
-              <ion-label>Punho:{{op.punho}}</ion-label>
+              <ion-label>Punhos:{{op.punho1}}  X  {{op.punho2}}</ion-label>
             </ion-item>
             <ion-item>
               <ion-label>Altura:{{op.altura}}</ion-label>
             </ion-item>
           </ion-list>
-        <ion-card-content>
-          
-        </ion-card-content>
       </ion-card>
     
       

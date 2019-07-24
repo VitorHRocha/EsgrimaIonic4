@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/user/profile.service';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { LutaService } from 'src/app/services/user/luta.service';
 
 @Component({
   selector: 'app-relatorio',
@@ -11,9 +12,13 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 export class RelatorioPage implements OnInit {
 
   public userProfile: any;
-  lutas: any;
-  luta:any;
-  movimentos:any=["ataques" ,"local","arena","ef"];
+  public lutaAtual;
+  public lutas: any; 
+  public luta:any;
+  public movimentos:any=["ataques" ,"local","arena","ef"];
+  public lutaDetalhes: any;
+  public lutastatistic: any;
+  public lutaTab: any;
   
   
   
@@ -22,6 +27,7 @@ export class RelatorioPage implements OnInit {
   }
   constructor(
     private profileService: ProfileService,
+    private lutaService: LutaService,
    public router: Router) { }
 
   ngOnInit() {
@@ -38,32 +44,25 @@ export class RelatorioPage implements OnInit {
     });
   }
   public escolheLuta(){
-    console.log("ola");
-   this.luta=this.lutas[0];
+  this.lutaAtual=this.lutaService.getLutaAtual();
+   this.luta=this.lutas[this.lutaAtual];
    var Ataques= this.luta.Ataques;
    var LocalCorpo= this.luta.LocalCorpo;
    var Arena= this.luta.Area;
    var Efetividade= this.luta.Efetividade;
    var i;
-   var ataques=1;
-  var  local=1;
-  var arena=1;
-  var ef=1;
+  this.lutaDetalhes=this.lutaService.formaLuta(
+    Ataques,LocalCorpo,Arena,Efetividade)
 
-   console.log(Ataques[0]);
-   console.log(LocalCorpo[0]);
-   console.log(Arena[0]);
-   console.log(Efetividade[0]);
-   for(i=0;i<Ataques.length;i++){
-    this.movimentos[i]={ataques: Ataques[i] ,local:LocalCorpo[i],arena:Arena[i],ef:Efetividade[i]};
-   }
-   
+  
+    this.lutaTab=this.lutaService.formaLutaEstatistic(
+      Ataques,LocalCorpo,Arena,Efetividade);
+      console.log('AQ');
 
+  for(i=0;i<6;i++){
+
+    console.log(this.lutaTab.quantidadeAcertos[i]);
+ 
   }
-
-
-
-
-
-
+}
 }
