@@ -12,20 +12,19 @@ export class LutaService {
   public eventListRef:firebase.firestore.DocumentReference;
   public userProfile: any;
   public currentUser: firebase.User;
-  public refLuta: firebase.firestore.DocumentReference;
   public lutaAtual;
 
   private nome1: string;
-  private  clube1: string;
-  private  nome2: string;
-  private  clube2: string;
+    private clube1: string;
+  private nome2: string;
+  private clube2: string;
+
+
 
   constructor() {
     
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        
-        
         this.eventListRef = firebase
         .firestore()
         .doc(`/userProfile/${user.uid}/`);
@@ -120,6 +119,7 @@ export class LutaService {
       }  
       
       formaLutaEstatistic(
+        LutadoresNomes: Array<string>,
         Ataques: Array<number>,
         LocalCorpo: Array<number>,
         Arena: Array<number>,
@@ -132,15 +132,19 @@ export class LutaService {
           var ataque3=0;
           var ataque4=0;
           var tipoAtaques: any= [];
-          var pontos;
-          for(i=0;i<6;i++){
+          var pontos:any= [2];
+          for(i=0;i<12;i++){
             tipoAtaques [i] =[ataque1,ataque2,ataque3,ataque4];
-          } 
+          }
+          pontos={localCorpo,quantidadeAcertos };
           for(i=0;i<Ataques.length;i++){
           
             if(Efetividade[i]==true){
-              console.log(Ataques[i]);
-              quantidadeAcertos[LocalCorpo[i]]++;
+              if(LocalCorpo[i]>6){
+                pontos[0].quantidadeAcertos[LocalCorpo[i]-6]++;
+              }else{
+                pontos[1].quantidadeAcertos[LocalCorpo[i]]++;
+              }
               if(Ataques[i]==1){
                 
                 tipoAtaques [LocalCorpo[i]].ataque1++;
@@ -157,17 +161,21 @@ export class LutaService {
               
             }
           }
-          pontos={localCorpo,quantidadeAcertos }
+          
           
           return pontos;
           
           
-        }
+      }
       guardaLutadores(
           nome1: string,
           clube1: string,
           nome2: string,
           clube2: string){
+            this.nome1=nome1;
+            this.nome2=nome2;
+            this.clube1=clube1;
+            this.clube2=clube2;
 
 
       }
@@ -177,6 +185,19 @@ export class LutaService {
       getLutaAtual(){
         return this.lutaAtual;
       }
+      public getclube2(): string {
+        return this.clube2;
+      }
+      public getnome1(): string {
+        return this.nome1;
+      }
+      public getclube1(): string {
+        return this.clube1;
+      }
+      public getnome2(): string {
+        return this.nome2;
+      }
+      
         
         
         

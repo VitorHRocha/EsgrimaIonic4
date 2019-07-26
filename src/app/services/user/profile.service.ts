@@ -23,9 +23,6 @@ export class ProfileService {
   updateName(nome: string): Promise<any> {
     return this.userProfile.update({ nome });
   }
-  updateNumeroLutas(numeroLutas: number): Promise<any> {
-    return this.userProfile.update({ numeroLutas });
-  }
   updateLutadores(
     nome1: string,
     clube1: string,

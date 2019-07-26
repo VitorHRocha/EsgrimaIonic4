@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from 'src/app/services/user/profile.service';
+import { LutaService } from 'src/app/services/user/luta.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class RegistroOpPage implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private profileService:ProfileService) {
+    private profileService:ProfileService,
+    private lutaService:LutaService) {
       this.regiOpform = this.formBuilder.group({
         
         altura: [
@@ -58,7 +60,11 @@ export class RegistroOpPage implements OnInit {
      const altura_relativa= this.regiOpform.value.altura;
    
       try{
-        this.profileService.updateLutadoresCompara(
+        this.profileService.updateLutadores(
+            this.lutaService.getnome1(),
+            this.lutaService.getclube1(),
+            this.lutaService.getnome2(),
+            this.lutaService.getclube2(),
             altura_relativa,
             punho1,
             punho2)

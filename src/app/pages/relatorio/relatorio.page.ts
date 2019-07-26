@@ -18,7 +18,9 @@ export class RelatorioPage implements OnInit {
   public movimentos:any=["ataques" ,"local","arena","ef"];
   public lutaDetalhes: any;
   public lutastatistic: any;
-  public lutaTab: any;
+  public lutaEstatistica: any;
+  public lutadores:any;
+  public lutadoresAtuais:any;
   
   
   
@@ -38,31 +40,32 @@ export class RelatorioPage implements OnInit {
     .then( userProfileSnapshot => {
       if(userProfileSnapshot.data().lutas){
       this.lutas = userProfileSnapshot.data().lutas;
+      this.lutadores = userProfileSnapshot.data().lutadores;
       this.escolheLuta();
 
     }
     });
   }
   public escolheLuta(){
-  this.lutaAtual=this.lutaService.getLutaAtual();
-   this.luta=this.lutas[this.lutaAtual];
-   var Ataques= this.luta.Ataques;
-   var LocalCorpo= this.luta.LocalCorpo;
-   var Arena= this.luta.Area;
-   var Efetividade= this.luta.Efetividade;
-   var i;
-  this.lutaDetalhes=this.lutaService.formaLuta(
-    Ataques,LocalCorpo,Arena,Efetividade)
+      this.lutadoresAtuais=this.lutadores[this.lutaService.getLutaAtual()];
+      this.luta=this.lutas[this.lutaService.getLutaAtual()];
+      var lutadoresNomes = [this.lutadoresAtuais.nome1, this.lutadoresAtuais.nome2];
+      var Ataques= this.luta.Ataques;
+      var LocalCorpo= this.luta.LocalCorpo;
+      var Arena= this.luta.Area;
+      var Efetividade= this.luta.Efetividade;
+      var i;
+      this.lutaDetalhes=this.lutaService.formaLuta(
+        Ataques,LocalCorpo,Arena,Efetividade)
 
-  
-    this.lutaTab=this.lutaService.formaLutaEstatistic(
-      Ataques,LocalCorpo,Arena,Efetividade);
-      console.log('AQ');
+      
+        this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
+          lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
+      
+      for(i=0;i<6;i++){
 
-  for(i=0;i<6;i++){
-
-    console.log(this.lutaTab.quantidadeAcertos[i]);
- 
-  }
-}
+        console.log(this.lutaEstatistica.quantidadeAcertos[i]);
+    
+      }
+    }
 }
