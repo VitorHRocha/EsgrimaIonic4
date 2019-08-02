@@ -53,10 +53,10 @@ export class RegistraLutadoresPage implements OnInit {
   }
   async cadastro(regiOpform: FormGroup): Promise<void> {
 
-    const nome1= this.regiOpform.value.nome;
-    const clube1= this.regiOpform.value.clube;
-    const nome2= this.regiOpform.value.nome;
-    const clube2= this.regiOpform.value.clube;
+    const nome1= this.regiOpform.value.nome1;
+    const clube1= this.regiOpform.value.clube1;
+    const nome2= this.regiOpform.value.nome2;
+    const clube2= this.regiOpform.value.clube2;
   
      try{
        this.lutaService.guardaLutadores(

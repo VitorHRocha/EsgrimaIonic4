@@ -185,9 +185,6 @@ export class LutaService {
       getLutaAtual(){
         return this.lutaAtual;
       }
-      public getclube2(): string {
-        return this.clube2;
-      }
       public getnome1(): string {
         return this.nome1;
       }
@@ -197,7 +194,10 @@ export class LutaService {
       public getnome2(): string {
         return this.nome2;
       }
-      
+      public getclube2(): string {
+        return this.clube2;
+      }
+     
         
         
         

@@ -31,6 +31,16 @@ export class ProfileService {
     altura_relativa: string,
     punho1: string,
     punho2: string): Promise<any> {
+
+      console.log(nome1);
+      console.log(nome2);
+      console.log(clube1);
+      console.log(clube2);
+      console.log(altura_relativa);
+      console.log(punho1);
+      console.log(punho2);
+
+
       return this.userProfile.update({
         lutadores: firebase.firestore.FieldValue.arrayUnion({
             nome1,

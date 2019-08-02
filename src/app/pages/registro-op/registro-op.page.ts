@@ -56,7 +56,7 @@ export class RegistroOpPage implements OnInit {
   async cadastro(regiOpform: FormGroup): Promise<void> {
 
      const punho1= this.regiOpform.value.punho1;
-     const punho2= this.regiOpform.value.punho1;  
+     const punho2= this.regiOpform.value.punho2;  
      const altura_relativa= this.regiOpform.value.altura;
    
       try{
