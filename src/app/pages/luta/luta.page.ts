@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LutaService } from 'src/app/services/user/luta.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -11,29 +12,34 @@ import { Router } from '@angular/router';
 export class LutaPage implements OnInit {
   movimento: number=0;
   h:number;
+  faltaCompletar: string = '';
   efetividadeAtual:boolean;
-  areaAtual: number;
-  arenaAtual:number;
+  localCorpoAtual: number;
+  pistaAtual:number;
   ataqueAtual:number;
 
   efetividade: Array<boolean>= [];
-  area:Array<number>= [];
-  arena: Array<number>= [];
+  localCorpo:Array<number>= [];
+  pista: Array<number>= [];
   ataque: Array<number>= [];
   
   
   constructor( public lutaService : LutaService,
-    public router:Router) {
+    public router:Router,
+    public alertCtrl:AlertController) {
     this.movimento=0;
   }
   
   ngOnInit() {
+
+    this.zeraCores();
+
   }
   
-  Area(local){
-    this.areaAtual=local;
+  marcalocalCorpo(local){
+    this.localCorpoAtual=local;
     var i;
-    var k="area";
+    var k="localCorpo";
     for(i=1;i<=12;i++){
       
       if(i==local){
@@ -43,12 +49,12 @@ export class LutaPage implements OnInit {
           document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
         }
       }else{
-        document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
+        document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.8)');
       }
     }
     
   }
-  Ataque(ataqueAtual){
+  marcaAtaque(ataqueAtual){
     this.ataqueAtual=ataqueAtual;
     var i;
     var k="ataque";
@@ -60,34 +66,33 @@ export class LutaPage implements OnInit {
           document.getElementById(k.concat(i)).style.setProperty('--background', 'red'); 
         }
       }else{
-        document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
+        document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
       }
     }
     
   }
-  Efetividade(efetividadeAtual){
+  marcaEfetividade(efetividadeAtual){
     this.efetividadeAtual=efetividadeAtual;
-     var k="ef";
-        if(efetividadeAtual==true){
-          document.getElementById("ef1").style.setProperty('--background', 'blue');
-        }else{
-          document.getElementById("ef0").style.setProperty('--background', 'blue');
+    var k="ef";
+      if(efetividadeAtual==true){
+        document.getElementById("ef1").style.setProperty('--background', 'blue');
+        document.getElementById("ef0").style.setProperty('--background', 'rgb(84, 155, 227)');
+        
+      }else{
+        document.getElementById("ef0").style.setProperty('--background', 'blue');
+        document.getElementById("ef1").style.setProperty('--background', 'rgb(84, 155, 227)');
         }
-      
-    }
+ }
   
-  Arena(arenaAtual){
-    this.arenaAtual=arenaAtual;
+  marcaPista(pistaAtual){
+    this.pistaAtual=pistaAtual;
     var i;
-    var k="zona";
+    var k="pista";
     for(i=1;i<=5;i++){
-      
-      
-        if(this.arenaAtual==i){
-          
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
+        if(this.pistaAtual==i){
+        document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
         }else{
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'blue');
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
         }
       
     }
@@ -101,39 +106,91 @@ export class LutaPage implements OnInit {
   
   
   
-  proximo(){
-    if(this.areaAtual == 0 || this.arenaAtual == 0 || this.ataqueAtual == 0 || this.efetividadeAtual == null ){
+  async proximo(){
 
+    if(this.localCorpoAtual == null || this.pistaAtual == null || this.ataqueAtual == null || this.efetividadeAtual == null ){
+     // se um dos campos não tiveren sido completados,
+     // monta a string com os itens que faltam
+     // e mostra na tela em um alert
+     
+      this.faltaCompletar = 'Falta completar os campos:<br>'; 
+      if(this.localCorpoAtual == null){
+        this.faltaCompletar += 'Local do corpo alvejado;<br>'
+      }if(this.pistaAtual == null){
+        this.faltaCompletar += 'Local na pista onde foi o ponto;<br>'
+      }if(this.ataqueAtual == null){
+        this.faltaCompletar += 'Qual tipo de ataque;<br>'
+      }if(this.efetividadeAtual == null){
+        this.faltaCompletar += 'Se foi ponto ou não;<br>'
+      }
+      
+      const alert = await this.alertCtrl.create({
+        message: this.faltaCompletar,
+        buttons: [{ text: 'Ok'}],
+      });
+      await alert.present();
+    
+
+     
     }
     else{
-    
-      
-    this.arena[this.movimento]=this.arenaAtual;
-    this.area[this.movimento]=this.areaAtual;
+      this.faltaCompletar = '';
+    // Preenche os campos e adiciona um movimento ao contador    
+    this.pista[this.movimento]=this.pistaAtual;
+    this.localCorpo[this.movimento]=this.localCorpoAtual;
     this.ataque[this.movimento]=this.ataqueAtual;
     this.efetividade[this.movimento]=this.efetividadeAtual;
+    this.movimento++;
     
-    for(this.h=0;this.h<this.movimento;this.h++){
-    console.log(this.area[this.h]);
-    console.log(this.arena[this.h]);
-   
-    console.log(this.ataque[this.h]);
-    console.log(this.efetividade[this.h]); 
+    //zera os pontos para começar novamente
     
-    }  this.movimento++;
-    
-    
+    this.pistaAtual = null;
+    this.localCorpoAtual = null;
+    this.ataqueAtual = null;
+    this.efetividadeAtual = null;
+    this.zeraCores();
+    }
   }
-}
+  
   Concluir(){ 
-    this.lutaService.updateLutas(this.ataque, this.area, this.arena,this.efetividade)
+    this.lutaService.updateLutas(this.ataque, this.localCorpo, this.pista,this.efetividade)
     this.router.navigate(['/registro-op']);
   }
+
   voltar(){
     this.router.navigate(['/user']);
   }
+
+  zeraCores(){
+    //Volta a cor dos botões do corpo
+    var i;
+    var k="localCorpo";
+    for(i=1;i<=12;i++){ 
+      
+      document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.8)');
+      
+    }
+    
+    //Volta a cor dos botões de ataque
+    k="ataque";
+    for(i=1;i<=4;i++){
+        document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+    }
+   
+    //Volta a cor dos botões da efetividade
+      document.getElementById("ef1").style.setProperty('--background', 'rgb(84, 155, 227)');
+      document.getElementById("ef0").style.setProperty('--background', 'rgb(84, 155, 227)');
+
+    //Volta a cor dos botões da pista
+    k="pista";
+    for(i=1;i<=5;i++){
+    
+      document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+    
+    }
   
-  
+  }
+
   
   
 }
