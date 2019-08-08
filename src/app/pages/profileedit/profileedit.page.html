@@ -8,12 +8,11 @@
 
 <ion-content  padding>
     <div class="camera">
-      <img *ngIf="imageURL" src="http://ucarecdn.com/{{ imageURL }}/" >
+      <img *ngIf="fotoPerfilURL" src="http://ucarecdn.com/{{ fotoPerfilURL }}/" >
     </div>
-
-    <input type="file" (change)="fileChanged($event)">
-<div *ngIf="imageURL">
-<ion-button expand="block" (click)="alteraFoto()">Alterar Foto</ion-button>
-</div>
+  <input type="file" (change)="fileChanged($event)">
+  <div *ngIf="fotoPerfilURL">
+    <ion-button expand="block" (click)="alteraFoto()">Alterar Foto</ion-button>
+  </div>
 
 </ion-content>

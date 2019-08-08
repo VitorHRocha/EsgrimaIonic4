@@ -9,6 +9,7 @@ import { ProfileService } from 'src/app/services/user/profile.service';
 export class UserPage implements OnInit {
 
   userOp: any;
+  fotoPerfilURL: string;
   userProfile: any;
   
  constructor(public router: Router,
@@ -26,33 +27,28 @@ export class UserPage implements OnInit {
   }
   historico(){
     this.router.navigate(['/minhas-lutas'])
-  }
-  relatorio(){
-    this.router.navigate(['/relatorio'])
-  }
+  } 
  
   ngOnInit() {
+
+
+    // recupera a foto do perfil do usuario
     this.profileService
     .getUserProfile()
     .get()
     .then( userProfileSnapshot => {
-      this.userProfile = userProfileSnapshot.data();
-   
+      this.fotoPerfilURL = userProfileSnapshot.data().fotoPerfilURL;  
+      this.setFoto();
     });
-    this.profileService
-    .getUserProfile()
-    .get()
-    .then( userProfileSnapshot => {
-      this.userOp= userProfileSnapshot.data().nome; 
-      this.teste(); 
-    });
-  
     
-   // document.getElementById("fotoButton").style.backgroundImage="url('http://ucarecdn.com/{{ ((userOp | async)?.imageURL)}}/-/preview/200x200/')";
-  
    }
 
-   teste(){
+   setFoto(){
+     if(this.fotoPerfilURL){
+      document.getElementById("fotoButton").style.backgroundImage
+    =`url('http://ucarecdn.com/${ this.fotoPerfilURL}/')`;
+     }
+    
    }
 
 }

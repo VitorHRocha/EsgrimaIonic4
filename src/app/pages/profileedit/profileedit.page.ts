@@ -15,7 +15,8 @@ export class ProfileeditPage implements OnInit {
   userProfile: firestore.DocumentData;
 
 
-  constructor(public http: Http,
+  constructor(
+    public http: Http,
     public router: Router,
     private profileService: ProfileService,
  
@@ -27,8 +28,10 @@ export class ProfileeditPage implements OnInit {
     .get()
     .then( userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.data();
+      this.fotoPerfilURL = userProfileSnapshot.data().fotoPerfilURL;
     });
   }
+
   fileChanged(event){
     const files =event.target.files
     console.log(files)
@@ -36,19 +39,21 @@ export class ProfileeditPage implements OnInit {
     data.append('file', files[0])
     data.append('UPLOADCARE_STORE', '1')
     data.append('UPLOADCARE_PUB_KEY', '50c75bfc3e3660b6d671')
-    this.http.post('http://upload.uploadcare.com/base/', data).subscribe(event =>{
+    this.http.post('http://upload.uploadcare.com/base/', data)
+    .subscribe(event =>{
       console.log(event)
       this.fotoPerfilURL = event.json().file
     })
-
-    
   }
+  
   voltar(){
     this.router.navigate(['/user'])
   }
+  
   async alteraFoto(){
     try{
-      this.profileService.updateFoto(this.fotoPerfilURL)
+      this.profileService.updateFoto(this.fotoPerfilURL);
+      this.router.navigate(['/user']);
           
     }catch(error){
       console.dir(error)

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase/app';
 
 import { firebaseConfig } from './credencial';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -14,12 +15,10 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router
   ) {
     this.initializeApp();
-    
-    
-  
   }
 
   initializeApp() {
@@ -29,4 +28,10 @@ export class AppComponent {
       firebase.initializeApp(firebaseConfig);
     });
   }
+  editaPerfil(){
+    this.router.navigate(['/profileedit'])
+
+  }
+
+
 }

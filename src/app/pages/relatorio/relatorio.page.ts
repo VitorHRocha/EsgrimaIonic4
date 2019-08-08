@@ -23,7 +23,6 @@ export class RelatorioPage implements OnInit {
   public lutadoresAtuais:any;
   
   
-  
   voltar(){
     this.router.navigate(['/user'])
   }
@@ -54,18 +53,11 @@ export class RelatorioPage implements OnInit {
       var LocalCorpo= this.luta.LocalCorpo;
       var Arena= this.luta.Area;
       var Efetividade= this.luta.Efetividade;
-      var i;
       this.lutaDetalhes=this.lutaService.formaLuta(
-        Ataques,LocalCorpo,Arena,Efetividade)
-
-      
-        this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
+        lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade)
+      this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
           lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
+     
       
-      for(i=0;i<6;i++){
-
-        console.log(this.lutaEstatistica.quantidadeAcertos[i]);
-    
-      }
     }
 }

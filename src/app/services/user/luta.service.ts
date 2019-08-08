@@ -15,11 +15,12 @@ export class LutaService {
   public lutaAtual;
 
   private nome1: string;
-    private clube1: string;
+  private clube1: string;
   private nome2: string;
   private clube2: string;
 
-
+  private pontosLutador1: Array<number>;
+  private pontosLutador2: Array<number>;
 
   constructor() {
     
@@ -57,6 +58,7 @@ export class LutaService {
     }
     
     formaLuta(
+      Lutadores: Array<string>,
       Ataques: Array<number>,
       LocalCorpo: Array<number>,
       Arena: Array<number>,
@@ -64,15 +66,19 @@ export class LutaService {
         var i=0;
         var lutaDetalhada: string="";
         for(i=0;i<Ataques.length;i++){
-        
+          if(LocalCorpo[i]>6){
+            lutaDetalhada+=Lutadores[1];
+          }else{
+            lutaDetalhada+=Lutadores[0];
+          }        
           if(Ataques[i]==1){
-            lutaDetalhada+="com um ataque";
+            lutaDetalhada+=" com um ataque";
           }else if(Ataques[i]==2){
-            lutaDetalhada+="com uma resposta";
+            lutaDetalhada+=" com uma resposta";
           }else if(Ataques[i]==3){
-            lutaDetalhada+="com um contra resposta";           
+            lutaDetalhada+=" com um contra resposta";           
           }else if(Ataques[i]==4){
-            lutaDetalhada+="com um contra ataque";
+            lutaDetalhada+=" com um contra ataque";
           }
           
           if(LocalCorpo[i]==1 || LocalCorpo[i]==7){
@@ -104,9 +110,9 @@ export class LutaService {
           
           
           if(Efetividade[i]==true){
-            lutaDetalhada+=" gerando ponto. \n";
+            lutaDetalhada+=" gerando ponto. \n ";
           }else if(Efetividade[i]==false){
-            lutaDetalhada+=" não gernado ponto. \n";
+            lutaDetalhada+=" não gernado ponto. \n ";
           }
           
           
@@ -125,48 +131,86 @@ export class LutaService {
         Arena: Array<number>,
         Efetividade: Array<boolean>): any{
           var i=0;
-          var localCorpo=[1,2,3,4,5,6];
-          var quantidadeAcertos=[0,0,0,0,0,0];
+          var localCorpo = 0;
+          var quantidadeAcertos=0;
           var ataque1=0;
           var ataque2=0;
           var ataque3=0;
           var ataque4=0;
           var tipoAtaques: any= [];
-          var pontos:any= [2];
+          var pontos: any= [];
+          
           for(i=0;i<12;i++){
-            tipoAtaques [i] =[ataque1,ataque2,ataque3,ataque4];
-          }
-          pontos={localCorpo,quantidadeAcertos };
+            pontos[i]={localCorpo, quantidadeAcertos,tipoAtaques};
+            pontos[i].localCorpo=i+1;
+            pontos[i].quantidadeAcertos=0;
+            pontos[i].tipoAtaques =[ ataque1,ataque2,ataque3,ataque4];
+            pontos[i].tipoAtaques.ataque1=0;
+            pontos[i].tipoAtaques.ataque2=0;
+            pontos[i].tipoAtaques.ataque3=0;
+            pontos[i].tipoAtaques.ataque4=0;
+            
+
+            }
+          
           for(i=0;i<Ataques.length;i++){
           
             if(Efetividade[i]==true){
-              if(LocalCorpo[i]>6){
-                pontos[0].quantidadeAcertos[LocalCorpo[i]-6]++;
-              }else{
-                pontos[1].quantidadeAcertos[LocalCorpo[i]]++;
+                
+                pontos[LocalCorpo[i]-1].quantidadeAcertos++;
               }
+
+
               if(Ataques[i]==1){
                 
-                tipoAtaques [LocalCorpo[i]].ataque1++;
+                pontos[LocalCorpo[i]].tipoAtaques.ataque1++;
               }else if(Ataques[i]==2){
                 
-                tipoAtaques [LocalCorpo[i]].ataque2++;
+                pontos[LocalCorpo[i]].tipoAtaques.ataque2++;
               }else if(Ataques[i]==3){
                 
-                tipoAtaques [LocalCorpo[i]].ataque3++;
+                pontos[LocalCorpo[i]].tipoAtaques.ataque3++;
               }else if(Ataques[i]==4){
                 
-                tipoAtaques [LocalCorpo[i]].ataque4++;
+                pontos[LocalCorpo[i]].tipoAtaques.ataque4++;
               }
               
             }
-          }
           
           
-          return pontos;
+        for(i=0 ; i<12;i++){
+            console.log(pontos[i].tipoAtaques.ataque1);
+            
+        } for(i=0 ; i<12;i++){
+          console.log(pontos[i].tipoAtaques.ataque2);
           
+        } for(i=0 ; i<12;i++){
+          console.log(pontos[i].tipoAtaques.ataque3);
           
+        } for(i=0 ; i<12;i++){
+          console.log(pontos[i].tipoAtaques.ataque4);
+          
+        }
+         //sepera os pontos em dois vetores
+         for(i=0 ; i<12;i++){
+           if(i<6){
+             this.pontosLutador1=pontos;
+           }
+          
+        }
+
+
+
+
+
+
       }
+      
+
+
+
+
+
       guardaLutadores(
           nome1: string,
           clube1: string,
@@ -179,6 +223,8 @@ export class LutaService {
 
 
       }
+
+     
       setLutaAtual(lutaAtual){
         this.lutaAtual=lutaAtual;
       }

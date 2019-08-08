@@ -53,8 +53,8 @@ export class ProfileService {
         })
       });
   }
-  updateFoto(foto: string): Promise<any> {
-    return this.userProfile.update({ foto });
+  updateFoto(fotoPerfilURL: string): Promise<any> {
+    return this.userProfile.update({ fotoPerfilURL });
   }
   getNumeroLutas():number{
     return this.numeroLutas
