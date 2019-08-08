@@ -7,6 +7,9 @@ import * as firebase from 'firebase/app';
 
 import { firebaseConfig } from './credencial';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -16,6 +19,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private menu: MenuController,
     private router: Router
   ) {
     this.initializeApp();
@@ -32,6 +36,12 @@ export class AppComponent {
     this.router.navigate(['/profileedit'])
 
   }
+ openMenu(){
+   this.menu.open('menu');
+ }
+
+
+
 
 
 }

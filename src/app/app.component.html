@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu>
+    <ion-menu menuId='menu'>
       <ion-header>
         <ion-toolbar>
           <ion-title>Perfil</ion-title>
@@ -8,14 +8,12 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" >
             <ion-item (click)="editaPerfil()">
               <ion-label>
                 Editar Perfil
               </ion-label>
             </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+          </ion-list>
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

@@ -194,8 +194,20 @@ export class LutaService {
          //sepera os pontos em dois vetores
          for(i=0 ; i<12;i++){
            if(i<6){
-             this.pontosLutador1=pontos;
+             this.pontosLutador1[i]=pontos[i];
+
+           }else{
+             
+            this.pontosLutador2[i-6]=pontos[i];
            }
+           
+           this.pontosLutador1.sort(function(a, b){
+              return a.quantidadeAcertos - b.quantidadeAcertos;
+           });
+
+          
+
+
           
         }
 

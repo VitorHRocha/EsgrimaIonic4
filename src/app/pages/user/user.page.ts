@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { ProfileService } from 'src/app/services/user/profile.service';
+import { MenuController } from '@ionic/angular'
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -13,7 +14,8 @@ export class UserPage implements OnInit {
   userProfile: any;
   
  constructor(public router: Router,
-            public profileService:ProfileService) { 
+            public profileService:ProfileService,
+            private menu: MenuController) { 
                
     
   } 
@@ -45,10 +47,13 @@ export class UserPage implements OnInit {
 
    setFoto(){
      if(this.fotoPerfilURL){
-      document.getElementById("fotoButton").style.backgroundImage
-    =`url('http://ucarecdn.com/${ this.fotoPerfilURL}/')`;
+      document.getElementById("fotoButton").setAttribute("src",`http://ucarecdn.com/${ this.fotoPerfilURL}/`);
      }
     
+   }
+
+   openMenu(){
+     this.menu.open('menu');
    }
 
 }

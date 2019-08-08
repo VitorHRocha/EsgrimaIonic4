@@ -8,9 +8,10 @@
 
 <ion-content padding>
   <div class="foto" > 
-      <ion-menu-button id="fotoButton">
-         
-      </ion-menu-button>
+      <ion-avatar (click)="openMenu()">
+        <img id="fotoButton" src="" alt="">
+        <!-- 'http://ucarecdn.com/' + fotoPerfilURL + '/ -->
+      </ion-avatar>
   </div>
   
   <ion-button expand="block"  id="lut" (click)="novaLuta()">
