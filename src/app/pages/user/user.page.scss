@@ -1,10 +1,4 @@
-.foto>ion-menu-button{
-    width: 200%;
-    margin: 0;
-    height: 100%; 
-    border-radius: 80%;
-    background-size: contain;
-}
+
 .foto{
     display: flex;
     height: 40%; 
@@ -14,4 +8,16 @@
  border: 20px;
  border-color: blueviolet;
   
+}
+
+ion-avatar{
+width:   100% !important;  
+height : 100% !important;  
+max-width: 200px !important;  //any size
+max-height: 200px !important; //any size 
+margin-left: 40%;
+}
+
+.foto{
+    margin-bottom: 30%;  
 }

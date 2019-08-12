@@ -201,9 +201,9 @@ export class LutaService {
             this.pontosLutador2[i-6]=pontos[i];
            }
            
-           this.pontosLutador1.sort(function(a, b){
-              return a.quantidadeAcertos - b.quantidadeAcertos;
-           });
+          //  this.pontosLutador1.sort(function(a, b){
+          //     return a.quantidadeAcertos - b.quantidadeAcertos;
+          //  });
 
           
 

@@ -18,7 +18,14 @@ export class ProfileService {
     });
   }
   getUserProfile(): firebase.firestore.DocumentReference {
-    return this.userProfile;
+    if(this.userProfile){
+      return this.userProfile ;
+    }else{
+      this.userProfile = firebase.firestore().doc(`/userProfile/If49ic1BNFM8zcRrTQEXSZ56umB3`);
+      return this.userProfile  ;
+    }
+
+  
   }
   updateName(nome: string): Promise<any> {
     return this.userProfile.update({ nome });
