@@ -17,7 +17,7 @@ export class MinhasLutasPage implements OnInit {
     private profileService: ProfileService,
    public router: Router,
     public lutaService:LutaService
-   ) { 
+   ) {  
   }  
 
   voltar(){

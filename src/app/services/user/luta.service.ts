@@ -7,7 +7,11 @@ import { ProfileService } from './profile.service';
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class LutaService {
+  
 
   public eventListRef:firebase.firestore.DocumentReference;
   public userProfile: any;
@@ -19,8 +23,8 @@ export class LutaService {
   private nome2: string;
   private clube2: string;
 
-  private pontosLutador1: Array<number>;
-  private pontosLutador2: Array<number>;
+  private pontosLutador1: any=[];
+  private pontosLutador2: any=[];
 
   constructor() {
     
@@ -131,27 +135,14 @@ export class LutaService {
         Arena: Array<number>,
         Efetividade: Array<boolean>): any{
           var i=0;
-          var localCorpo = 0;
-          var quantidadeAcertos=0;
-          var ataque1=0;
-          var ataque2=0;
-          var ataque3=0;
-          var ataque4=0;
-          var tipoAtaques: any= [];
-          var pontos: any= [];
+          var pontos: any=[];
           
           for(i=0;i<12;i++){
-            pontos[i]={localCorpo, quantidadeAcertos,tipoAtaques};
-            pontos[i].localCorpo=i+1;
-            pontos[i].quantidadeAcertos=0;
-            pontos[i].tipoAtaques =[ ataque1,ataque2,ataque3,ataque4];
-            pontos[i].tipoAtaques.ataque1=0;
-            pontos[i].tipoAtaques.ataque2=0;
-            pontos[i].tipoAtaques.ataque3=0;
-            pontos[i].tipoAtaques.ataque4=0;
+            var p = new Pontos() ;
+            p.localCorpo= i+1;
+            pontos[i]= p;
             
-
-            }
+          }
           
           for(i=0;i<Ataques.length;i++){
           
@@ -176,42 +167,57 @@ export class LutaService {
               }
               
             }
+
+            
           
-          
-        for(i=0 ; i<12;i++){
+          for(i=0 ; i<12;i++){
             console.log(pontos[i].tipoAtaques.ataque1);
             
-        } for(i=0 ; i<12;i++){
+          } for(i=0 ; i<12;i++){
           console.log(pontos[i].tipoAtaques.ataque2);
           
-        } for(i=0 ; i<12;i++){
+          } for(i=0 ; i<12;i++){
           console.log(pontos[i].tipoAtaques.ataque3);
           
-        } for(i=0 ; i<12;i++){
+          } for(i=0 ; i<12;i++){
           console.log(pontos[i].tipoAtaques.ataque4);
           
-        }
+         }
+          
+          
+        
          //sepera os pontos em dois vetores
          for(i=0 ; i<12;i++){
            if(i<6){
+
              this.pontosLutador1[i]=pontos[i];
 
            }else{
              
             this.pontosLutador2[i-6]=pontos[i];
            }
-           
-          //  this.pontosLutador1.sort(function(a, b){
-          //     return a.quantidadeAcertos - b.quantidadeAcertos;
-          //  });
+          }
 
-          
-
-
-          
-        }
+           for(i=0 ; i<6;i++){
+              console.log(this.pontosLutador1[i].localCorpo,this.pontosLutador1[i].quantidadeAcertos);
+            }
+            for(i=0 ; i<6;i++){
+              console.log(this.pontosLutador2[i].localCorpo,this.pontosLutador2[i].quantidadeAcertos);
+            }
 
 
+           this.pontosLutador1.sort(function(a, b){
+              return b.quantidadeAcertos - a.quantidadeAcertos ;
+           });
+
+           for(i=0 ; i<6;i++){
+            
+            console.log(this.pontosLutador1[i].localCorpo,this.pontosLutador1[i].quantidadeAcertos,);
+
+          }
+          for(i=0 ; i<6;i++){
+            console.log(this.pontosLutador2[i].localCorpo,this.pontosLutador2[i].quantidadeAcertos);
+          }
 
 
 
@@ -258,7 +264,28 @@ export class LutaService {
      
         
         
-        
-        
-      }
+}
+class Pontos {
+  public localCorpo;
+  public quantidadeAcertos;
+  public tipoAtaques;
+  
+  constructor() {
+    console.log("AQ");
+    var ataque1=0;
+    var ataque2=0;
+    var ataque3=0;
+    var ataque4=0;
+
+    this.localCorpo = 0;
+    this.quantidadeAcertos = 0;
+    this.tipoAtaques = [ ataque1,ataque2,ataque3,ataque4];
+    this.tipoAtaques.ataque1=0;
+    this.tipoAtaques.ataque2=0;
+    this.tipoAtaques.ataque3=0;
+    this.tipoAtaques.ataque4=0;
+  
+  }
+}
+
 
