@@ -21,6 +21,9 @@ export class RelatorioPage implements OnInit {
   public lutaEstatistica: any;
   public lutadores:any;
   public lutadoresAtuais:any;
+
+  public pontosLutador1;
+  public pontosLutador2;
   
   
   voltar(){
@@ -32,7 +35,8 @@ export class RelatorioPage implements OnInit {
    public router: Router) { }
 
   ngOnInit() {
-    
+    document.getElementById("descricao").style.display = "none";
+    document.getElementById("tabela").style.display = "inline";
     this.profileService
     .getUserProfile()
     .get()
@@ -57,7 +61,21 @@ export class RelatorioPage implements OnInit {
         lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade)
       this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
           lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
+      
+      this.pontosLutador1 = this.lutaService.getPontosLutador1();
+      this.pontosLutador2 = this.lutaService.getPontosLutador2();
      
       
-    }
+  }
+
+  lutaDetalhada(){
+    document.getElementById("tabela").style.display = "none";
+    document.getElementById("descricao").style.display = "inline";
+  }
+  lutaTabela(){
+    document.getElementById("descricao").style.display = "none";
+    document.getElementById("tabela").style.display = "inline";
+  }
+
+
 }

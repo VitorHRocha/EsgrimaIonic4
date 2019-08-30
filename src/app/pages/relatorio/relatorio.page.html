@@ -1,15 +1,36 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-button shape="round" (click)="voltar()">
-        <ion-icon name="arrow-dropleft-circle"></ion-icon>
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-button shape="round" (click)="voltar()">
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content>
-  <div class="luta" >
-  <p>{{lutaDetalhes}} </p>
-  </div>    
-   
-</ion-content>
+<ion-content> 
   
+  <ion-segment>
+    <ion-segment-button (click)="lutaTabela()" checked >
+      <ion-label>Tabela</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (click)="lutaDetalhada()">
+      <ion-label>Detalhada</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div id="descricao" >
+    <p>{{lutaDetalhes}} </p>
+  </div>
+  
+  <div id="tabela">
+    <ion-list>
+      <ion-list-header>
+        Pontos Feitos
+      </ion-list-header>
+      <ion-item *ngFor="let pontos of pontosLutador1">
+        <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+        <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+  
+</ion-content>
