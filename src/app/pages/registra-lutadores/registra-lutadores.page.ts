@@ -4,6 +4,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from 'src/app/services/user/profile.service';
 import { LutaService } from 'src/app/services/user/luta.service';
 
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../../modal/modal.page';
+
 
 @Component({
   selector: 'app-registra-lutadores',
@@ -17,6 +20,7 @@ export class RegistraLutadoresPage implements OnInit {
   public currentUser: firebase.User;
   public current; 
   public userProfile: any;
+  public teste;
 
   nome1: string ="";
   clube1: string ="";
@@ -27,52 +31,62 @@ export class RegistraLutadoresPage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
-    private lutaService: LutaService) {
-      this.regiOpform = this.formBuilder.group({
-        nome1: [
-          '',
-          Validators.compose([Validators.required]),
-        ],
-        clube1: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
-        nome2: [
-          '',
-          Validators.compose([Validators.required]),
-        ],
-        clube2: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
-      });
-  }
+    private lutaService: LutaService,
+    public modalCtrl1: ModalController) {
+   }
   
   voltar(){
     this.router.navigate(['/user'])
   }
-  async cadastro(regiOpform: FormGroup): Promise<void> {
-
-    const nome1= this.regiOpform.value.nome1;
-    const clube1= this.regiOpform.value.clube1;
-    const nome2= this.regiOpform.value.nome2;
-    const clube2= this.regiOpform.value.clube2;
+  
+  async cadastro(): Promise<void> {
   
      try{
        this.lutaService.guardaLutadores(
-           nome1,
-           clube1,
-           nome2,
-           clube2)
+           this.nome1,
+           this.clube1,
+           this.nome2,
+           this.clube2)
            
          this.router.navigate(['/luta'])
        
      }catch(error){
        console.dir(error)
      }
-  
+   
  }
- 
+
+ async presentModal1() {
+  const modal = await this.modalCtrl1.create({
+    component: ModalPage
+  });
+
+  await modal.present();
+  
+  const { data } = await modal.onWillDismiss();
+  
+  this.nome1 = data.atleta.nome ;
+  this.clube1 = data.atleta.clube;
+  
+}
+
+async presentModal2() {
+  const modal = await this.modalCtrl1.create({
+    component: ModalPage
+  });
+
+  await modal.present();
+  
+  const { data } = await modal.onWillDismiss();
+  console.log(data);
+
+  this.nome2 = data.atleta.nome ;
+  this.clube2 = data.atleta.clube;
+  
+
+  
+}
+  
   ngOnInit() {
   }
 

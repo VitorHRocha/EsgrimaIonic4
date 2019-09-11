@@ -1,63 +1,46 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-button shape="round" (click)="voltar()">
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </ion-button>
-  </ion-toolbar>
+  </ion-toolbar> 
 </ion-header>
  
 <ion-content>
-    <form [formGroup]="regiOpform">
-        <ion-list>
+        <ion-list (click)="presentModal1()">
           <ion-list-header> Lutador 1</ion-list-header>
           <ion-item>
-            <ion-label position="floating" >Nome</ion-label>
-            <ion-input
-            formControlName="nome1"
-            type="text"
-            [class.invalid]="regiOpform.controls['nome1'].valid &&
-            regiOpform.controls['nome1'].touched">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Clube</ion-label>
-            <ion-input
-            formControlName="clube1"
-            type="text"
-            [class.invalid]="regiOpform.controls['clube1'].valid &&
-            regiOpform.controls['clube1'].touched"
-            >
-            </ion-input>
+              <ion-avatar slot="start">
+                <img src="./avatar.svg">
+              </ion-avatar>
+              <ion-label>
+                  <ion-label >Nome: {{nome1}}</ion-label>
+                  <ion-label >Clube: {{clube1}}</ion-label>
+                 
+              </ion-label>
+
+           
           </ion-item>
         </ion-list>
-        <ion-list>
+        
+        
+        <ion-list (click)="presentModal2()">
           <ion-list-header> Lutador 2</ion-list-header>
           <ion-item>
-            <ion-label position="floating" >Nome</ion-label>
-            <ion-input
-            formControlName="nome2"
-            type="text"
-            [class.invalid]="regiOpform.controls['nome2'].valid &&
-            regiOpform.controls['nome2'].touched">
-            </ion-input>
-          </ion-item>
-    
-          <ion-item>
-            <ion-label position="floating">Clube</ion-label>
-            <ion-input
-            formControlName="clube2"
-            type="text"
-            [class.invalid]="regiOpform.controls['clube2'].valid &&
-            regiOpform.controls['clube2'].touched"
-            >
-            </ion-input>
-          </ion-item>
-        </ion-list>
-      </form>
+              <ion-avatar slot="start">
+                <img src="./avatar.svg">
+              </ion-avatar>
+              <ion-label>
+                  <ion-label >Nome: {{nome2}}</ion-label>
+                  <ion-label >Clube: {{clube2}}</ion-label>
+              </ion-label>
+            </ion-item>
 
-      <ion-button (click)="cadastro()" expand="block"
-      [disabled]="!regiOpform.valid"> Confirma
+        </ion-list>
+    
+
+      <ion-button (click)="cadastro()" expand="block">
+         Confirma
       </ion-button>
   
 

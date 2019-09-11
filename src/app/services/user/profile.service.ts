@@ -10,7 +10,7 @@ export class ProfileService {
   public currentUser: firebase.User;
   numeroLutas:number=0;
   constructor() {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => { 
       if (user) {
         this.currentUser = user;
         this.userProfile = firebase.firestore().doc(`/userProfile/${user.uid}`);

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round"  (click)="dismiss()">
+      <ion-icon slot="icon-only" name="arrow-dropleft-circle"></ion-icon>
+    </ion-button>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="listAtleta">
+    <ion-list *ngFor="let atleta of listaAtletas.atleta"  >
+      <ion-item (click)='selecionaAtleta(atleta)'>
+        <ion-label>{{atleta.nome}}</ion-label>
+        <ion-note slot="end">{{atleta.clube}}</ion-note>
+      </ion-item>
+    </ion-list>
+    
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNovoAtleta()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button> 
+    </ion-fab>
+  </div>
+  
+  <div id="registraAtleta">
+    <form [formGroup]="regiOpform">
+      <ion-list>
+        <ion-item> 
+          <ion-label position="floating" >Nome</ion-label>
+          <ion-input
+          formControlName="nome"
+          type="text"
+          [class.invalid]="regiOpform.controls['nome'].valid &&
+          regiOpform.controls['nome'].touched">
+          </ion-input>
+          
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Clube</ion-label>
+          <ion-input
+          formControlName="clube"
+          type="text"
+          [class.invalid]="regiOpform.controls['clube'].valid &&
+          regiOpform.controls['clube'].touched"
+          >
+          </ion-input>
+        </ion-item>
+      </ion-list>
+  
+    </form>
+<ion-button
+expand="block"
+(click)="cadastroAtletaas(regiOpform)"
+>
+Confirmar
+</ion-button>
+
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button (click)="escolheAtleta()">
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</div>
+
+</ion-content>

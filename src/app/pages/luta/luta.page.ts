@@ -38,6 +38,7 @@ export class LutaPage implements OnInit {
       
       this.zeraCores();
       
+      
     }
     
     marcalocalCorpo(local){

@@ -6,8 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RegistraLutadoresPage } from './registra-lutadores.page';
+import { ModalPage } from '../../modal/modal.page';
 
-const routes: Routes = [
+const routes: Routes = [ 
   {
     path: '',
     component: RegistraLutadoresPage
@@ -19,9 +20,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule, 
+    IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RegistraLutadoresPage]
+  declarations: [RegistraLutadoresPage,ModalPage],
+  entryComponents: [ModalPage],
 })
 export class RegistraLutadoresPageModule {}
