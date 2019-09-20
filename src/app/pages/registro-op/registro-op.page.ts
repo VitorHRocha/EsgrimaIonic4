@@ -16,12 +16,13 @@ export class RegistroOpPage implements OnInit {
   public currentUser: firebase.User;
   public current; 
   public userProfile: any;
-
- 
+  
+  
   altura: string ="";
   punho1: string="";
   punho2: string="";
-
+  lutadores: any;
+  
   
   constructor(
     private router: Router,
@@ -43,38 +44,44 @@ export class RegistroOpPage implements OnInit {
           Validators.compose([ Validators.required]),
         ],
       });
-     }
-  
-  ngOnInit() {
+      
+    }
     
-  }
-  voltar(){
-    this.router.navigate(['/luta'])
-  }
- 
- 
-  async cadastro(regiOpform: FormGroup): Promise<void> {
-
-     const punho1= this.regiOpform.value.punho1;
-     const punho2= this.regiOpform.value.punho2;  
-     const altura_relativa= this.regiOpform.value.altura;
-   
+    ngOnInit() {
+      
+    }
+    voltar(){
+      this.router.navigate(['/luta'])
+    }
+    
+    
+    async cadastro(regiOpform: FormGroup): Promise<void> {
+      
+      const punho1= this.regiOpform.value.punho1;
+      const punho2= this.regiOpform.value.punho2;  
+      const altura_relativa= this.regiOpform.value.altura;
+      console.log( this.lutaService.getnome1());
+      console.log( this.lutaService.getclube1());
+      console.log( this.lutaService.getnome2());
+      console.log( this.lutaService.getclube2());
+      
+      
       try{
         this.profileService.updateLutadores(
-            this.lutaService.getnome1(),
-            this.lutaService.getclube1(),
-            this.lutaService.getnome2(),
-            this.lutaService.getclube2(),
-            altura_relativa,
-            punho1,
-            punho2)
-            
+          this.lutaService.getnome1(),
+          this.lutaService.getclube1(),
+          this.lutaService.getnome2(),
+          this.lutaService.getclube2(),
+          altura_relativa,
+          punho1,
+          punho2)
+          
           this.router.navigate(['/user'])
+          
+        }catch(error){
+          console.dir(error)
+        }
         
-      }catch(error){
-        console.dir(error)
       }
-   
-  }
-
-}
+      
+    }

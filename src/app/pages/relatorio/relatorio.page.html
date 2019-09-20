@@ -3,6 +3,7 @@
     <ion-button shape="round" (click)="voltar()">
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </ion-button>
+    {{lutadoresNomes.nome1}}  {{lutadoresNomes.nome2}}
   </ion-toolbar>
 </ion-header>
 
@@ -17,16 +18,40 @@
     </ion-segment-button>
   </ion-segment>
   
-  <div id="descricao" >
+  <div id="descricao" > 
     <p>{{lutaDetalhes}} </p>
+  </div>
+  <div>
+    <ion-button (click)="trocaLutador()">  <ion-icon name="arrow-dropleft-circle"></ion-icon> </ion-button>
+    <ion-label>{{nomeLutador}}</ion-label>
+    <ion-button (click)="trocaLutador()"> <ion-icon name="arrow-dropright-circle"></ion-icon> </ion-button>
   </div>
   
   <div id="tabela">
     <ion-list>
       <ion-list-header>
-        Pontos Feitos
+        <ion-segment>
+          <ion-segment-button (click)="PontosFeitos()" checked >
+            <ion-label>Pontos Feitos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (click)="PontosSofridos()">
+            <ion-label>Pontos Sofridos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-list-header>
-      <ion-item *ngFor="let pontos of pontosLutador1">
+      <ion-item *ngFor="let pontos of pontosLutador1" id="Lut1Pt1">
+        <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+        <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+      </ion-item>
+      <ion-item *ngFor="let pontos of pontosLutador1" id="Lut1Pt2">
+        <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+        <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+      </ion-item>
+      <ion-item *ngFor="let pontos of pontosLutador1" id="Lut2Pt1">
+        <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+        <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+      </ion-item>
+      <ion-item *ngFor="let pontos of pontosLutador1" id="Lut2Pt2">
         <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
         <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
       </ion-item>

@@ -49,7 +49,6 @@ export class UserPage implements OnInit {
      if(this.fotoPerfilURL){
       document.getElementById("fotoButton").setAttribute("src",`http://ucarecdn.com/${ this.fotoPerfilURL}/`);
      }
-    
    }
 
    openMenu(){
