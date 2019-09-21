@@ -48,6 +48,10 @@ export class UserPage implements OnInit {
    setFoto(){
      if(this.fotoPerfilURL){
       document.getElementById("fotoButton").setAttribute("src",`http://ucarecdn.com/${ this.fotoPerfilURL}/`);
+      document.getElementById("fotoButton").style.border = "thick solid black";
+     }else{
+      document.getElementById("fotoButton").setAttribute("src",`./assets/img/esgr_mask.jpg`);
+      document.getElementById("fotoButton").style.border = "thick solid black";
      }
    }
 

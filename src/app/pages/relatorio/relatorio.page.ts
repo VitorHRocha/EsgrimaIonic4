@@ -63,6 +63,7 @@ export class RelatorioPage implements OnInit {
       this.luta=this.lutas[this.lutaService.getLutaAtual()];
       var lutadoresNomes = [this.lutadoresAtuais.nome1, this.lutadoresAtuais.nome2];
       this.nomeLutador = this.lutadoresAtuais.nome1;
+      console.log(this.nomeLutador);
       var Ataques= this.luta.Ataques;
       var LocalCorpo= this.luta.LocalCorpo;
       var Arena= this.luta.Area;
@@ -85,16 +86,16 @@ export class RelatorioPage implements OnInit {
           console.log(this.pontosLutador2.length );
         }
         
-        lutaDetalhada(){
+        public lutaDetalhada(){
           document.getElementById("tabela").style.display = "none";
           document.getElementById("descricao").style.display = "inline";
         }
-        lutaTabela(){
+        public  lutaTabela(){
           document.getElementById("descricao").style.display = "none";
           document.getElementById("tabela").style.display = "inline";
         }
         
-        trocaLutador(){
+        public  trocaLutador(){
           if(this.nomeLutador == this.lutadoresAtuais.nome1){
             this.nomeLutador = this.lutadoresAtuais.nome2
             this.trocaVisaoPonto()
@@ -104,16 +105,16 @@ export class RelatorioPage implements OnInit {
             this.trocaVisaoPonto()
           }
         }
-        PontosFeitos(){
+        public PontosFeitos(){
           this.visaoPonto=1
           this.trocaVisaoPonto()
         }
-        PontosSofridos(){
+        public PontosSofridos(){
           this.visaoPonto=2
           this.trocaVisaoPonto()
         }
         
-        trocaVisaoPonto(){
+        public trocaVisaoPonto(){
           if(this.visaoPonto == 1){
             if(this.nomeLutador == this.lutadoresAtuais.nome1){
               

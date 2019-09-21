@@ -35,10 +35,11 @@ export class LutaPage implements OnInit {
     }
     
     ngOnInit() {
-      document.getElementById("lutadores").setAttribute("src",`./img/concatesgrim.png`);
+      
+      // document.getElementById("lutadores").setAttribute("src",`./assets/img/concatesgrim.png`);
       
       this.zeraCores();
-      this.toqueduplo=0
+      this.toqueduplo=0;
       
     }
     
@@ -204,15 +205,9 @@ export class LutaPage implements OnInit {
             buttons: [{ text: 'Ok'}],
           });
           await alert.present();
-          
-          
-          
-          
-          
-          
+    
         }
-        
-        
+           
       }
       else{
         if(this.toqueduplo==0){

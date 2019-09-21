@@ -1,6 +1,35 @@
-#lutadores{
+.imgLuta{
     height: 290px;
-    // --background: url(..\assets\img\concatesgrim.png) ;
+    display:inline-block;
+    --background: url(../../../assets/img/concatesgrim.png) 0 0/100% 100% no-repeat;
+    
+    background-size: cover;
+    
+}
+#lutadores{
+    height: 100%;
+}
+// #lutador1.cabeca{
+//     margin-left: 80%;
+// }
+#localCorpo1{
+    margin-left: 15%;
+    margin-top: -5%;
+
+}
+.cabeca{
+    margin-top: -5%;
+    --border-radius: 20px;
+    width: 30%;
+    height: 100%;
+
+}
+.cabecarow{
+    height:70px;
+}
+
+#lutadores>ion-row{
+    height: 100%;
 }
 .Ataques>ion-grid>ion-row>ion-col{
  width: 25%;
