@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LutaService } from 'src/app/services/user/luta.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { and } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -51,7 +52,7 @@ export class LutaPage implements OnInit {
         for(i=1;i<=12;i++){
           
           if(i==local){
-            if(local<6){
+            if(local<=6){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'blue');
             }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
@@ -61,7 +62,7 @@ export class LutaPage implements OnInit {
           }
         }
       }else{
-        if(local<6){
+        if(local<=6){
           for(i=1;i<=6;i++){
             if(i==local){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'blue');
@@ -148,8 +149,12 @@ export class LutaPage implements OnInit {
       for(i=1;i<=5;i++){
         if(this.pistaAtual==i){
           document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
+          
         }else{
           document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+          if(i == 1 || i == 5){
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
+          }
         }
         
       }
@@ -281,6 +286,9 @@ export class LutaPage implements OnInit {
       for(i=1;i<=5;i++){
         
         document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+        if(i == 1 || i == 5){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
+        }
         
       }
       

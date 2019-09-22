@@ -9,24 +9,116 @@
 #lutadores{
     height: 100%;
 }
-// #lutador1.cabeca{
-//     margin-left: 80%;
-// }
+.concluir{
+    position: absolute;
+    right: 0%;
+}
+
 #localCorpo1{
-    margin-left: 15%;
-    margin-top: -5%;
+    position: absolute;
+    top: -2%;
+    left: 10%;    
+
+}
+#localCorpo2{
+    position: absolute;
+    top: 9%;
+    left: -1%; 
+    
+}
+#localCorpo3{
+    position: absolute;
+    top: 30%;
+    left: 10%; 
+
+}
+#localCorpo4{
+    position: absolute;
+    top: 30%;
+    left: 23%; 
+
+}
+#localCorpo5{
+    position: absolute;
+    top: 53%;
+    left: 6%; 
+
+}
+#localCorpo6{
+    position: absolute;
+    top: 53%;
+    left: 20%; 
+
+}
+#localCorpo7{
+    position: absolute;
+    top: -2%;
+    right: 10%; 
+
+}
+#localCorpo8{
+    position: absolute;
+    top: 9%;
+    right: -1%; 
+}
+#localCorpo9{
+    position: absolute;
+    top: 30%;
+    right: 10%; 
+}
+#localCorpo10{
+    position: absolute;
+    top: 30%;
+    right: 23%; 
+}
+#localCorpo11{
+    position: absolute;
+    top: 53%;
+    right: 10%; 
+
+}
+#localCorpo12{
+    position: absolute;
+    top: 53%;
+    right: 27%; 
 
 }
 .cabeca{
-    margin-top: -5%;
+  
     --border-radius: 20px;
-    width: 30%;
-    height: 100%;
+    width: 15%;
+    height: 30%;
 
 }
-.cabecarow{
-    height:70px;
+.braco_esquerdo{
+    --border-radius: 20px;
+    width: 0,25%;
+    height: 30%;
+
 }
+.tronco{
+    --border-radius: 20px;
+    width: 12%;
+    height: 22%;
+    
+}
+.braco_direito{
+    --border-radius: 20px;
+    width: 15%;
+    height: 15%;
+}
+.perna_esquerda{
+    --border-radius: 30px;
+    width: 5%;
+    height: 30%;
+
+}
+.perna_direita{
+    --border-radius: 20px;
+    width: 1%;
+    height: 30%;
+}
+
 
 #lutadores>ion-row{
     height: 100%;
@@ -58,6 +150,9 @@
 }
 .coluniao{
     
+}
+#ef1{
+    margin-left: 40% ;
 }
 
 

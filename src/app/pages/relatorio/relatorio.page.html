@@ -3,13 +3,13 @@
     <ion-button shape="round" (click)="voltar()">
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </ion-button>
-    <ion-label>{{lutadoresAtuais.nome1}} {{totalPontos1}} X {{totalPontos2}} {{lutadoresAtuais.nome2}}</ion-label>
     
   </ion-toolbar>
 </ion-header>
 
 <ion-content> 
-  
+  <ion-label>{{lutadoresAtuais.nome1}} {{totalPontos1}} X {{totalPontos2}} {{lutadoresAtuais.nome2}}</ion-label>
+    
   <ion-segment>
     <ion-segment-button (click)="lutaTabela()" checked >
       <ion-label>Tabela</ion-label>
