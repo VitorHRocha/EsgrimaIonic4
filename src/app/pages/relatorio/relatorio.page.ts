@@ -3,6 +3,7 @@ import { ProfileService } from 'src/app/services/user/profile.service';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { LutaService } from 'src/app/services/user/luta.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-relatorio',
@@ -30,13 +31,17 @@ export class RelatorioPage implements OnInit {
   public nomeLutador;
   public visaoPonto=1;
   
+  public pontoDetalhado: any;
+
+
   voltar(){
     this.router.navigate(['/user'])
   }
   constructor(
     private profileService: ProfileService,
     private lutaService: LutaService,
-    public router: Router) { }
+    public router: Router,
+    public alertController: AlertController) { }
     
     ngOnInit() {
       document.getElementById("descricao").style.display = "none";
@@ -68,21 +73,30 @@ export class RelatorioPage implements OnInit {
       var LocalCorpo= this.luta.LocalCorpo;
       var Arena= this.luta.Area;
       var Efetividade= this.luta.Efetividade;
+      var i;
+      console.log(Ataques);
+      console.log(this.luta);
+
       this.lutaDetalhes=this.lutaService.formaLuta(
-        lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade)
-        this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
+        lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
+      this.lutaEstatistica=this.lutaService.formaLutaEstatistic(
           lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
           
           this.pontosLutador1 = this.lutaService.getPontosLutador1();
-          var i;
-          for (i=0;i<this.pontosLutador1.lenght ;i++ ){
-            this.totalPontos1 += this.pontosLutador1[i].quantidadeAcertos;
-          }
           this.pontosLutador2 = this.lutaService.getPontosLutador2();
+
+          for (i=0;i<this.pontosLutador1.length ;i++ ){
+            this.totalPontos2 += this.pontosLutador1[i].quantidadeAcertos;
+            console.log(this.pontosLutador1[i])
+            console.log(this.totalPontos1);
+          }
+
           for (i=0;i<this.pontosLutador2.length ;i++ ){
-            this.totalPontos2 += this.pontosLutador2[i].quantidadeAcertos;
+            this.totalPontos1 += this.pontosLutador2[i].quantidadeAcertos;
+            console.log(this.totalPontos2);
           }
           console.log(this.totalPontos1);
+          console.log(this.totalPontos2);
           console.log(this.pontosLutador2.length );
         }
         
@@ -150,8 +164,26 @@ export class RelatorioPage implements OnInit {
           }
           
         }
+        detalhaPontos(pontosDetalhado){
+          this.pontoDetalhado = pontosDetalhado
+          this.presentAlert();;
+        }
         
-        
+        async presentAlert() {
+          const alert = await this.alertController.create({
+            header: this.pontoDetalhado.nomeLocalCorpo,
+            subHeader: 'Acertos por tipo de ataque',
+            message:
+                 'Ataque:'+this.pontoDetalhado.tipoAtaques.ataque1+
+                '<br> Resposta:'+this.pontoDetalhado.tipoAtaques.ataque2+
+                '<br> Contra-Resposta:'+this.pontoDetalhado.tipoAtaques.ataque3+
+                '<br> Contra-Ataque:'+this.pontoDetalhado.tipoAtaques.ataque4+
+                '<br> Toque duplo:'+this.pontoDetalhado.tipoAtaques.ataque5,
+            buttons: ['OK']
+          });
+      
+          await alert.present();
+        }
         
         
         

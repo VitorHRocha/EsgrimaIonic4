@@ -11,6 +11,14 @@
 </ion-header>
 
 <ion-content class="body" padding>
+  <div class="labels">
+    <ion-label>
+      {{lutador1}}  X  {{lutador2}}<br>
+    </ion-label>
+    <ion-label>
+      {{pontoLutador1}}  X  {{pontoLutador2}}
+    </ion-label>
+  </div>
   <ion-content class="imgLuta">
     
     <ion-button class="cabeca" id="localCorpo1" (click)="marcalocalCorpo(1)"></ion-button>
@@ -26,66 +34,53 @@
     <ion-button class="braco_direito" id="localCorpo10" (click)="marcalocalCorpo(10)"></ion-button>
     <ion-button class="perna_esquerda" id="localCorpo11" (click)="marcalocalCorpo(11)"></ion-button>
     <ion-button class="perna_direita" id="localCorpo12" (click)="marcalocalCorpo(12)"></ion-button>
-    </ion-content>
-    <div class="Ataques">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-button class="movimento" id="ataque1" (click)="marcaAtaque(1)">Ataque</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="movimento" id="ataque2" (click)="marcaAtaque(2)">Resposta</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="movimento" id="ataque3" (click)="marcaAtaque(3)">Contra <br>Resposta</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="movimento" id="ataque4" (click)="marcaAtaque(4)">Contra<br> Ataque</ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row class="toqueduplo">
-          <ion-button id="ataque5" (click)="marcaAtaque(5)">Toque Duplo</ion-button>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="Efetividade">
+  </ion-content>
+  <div class="Ataques">
+    <ion-grid>
       <ion-row>
-        <ion-col >
-          <ion-button   id="ef1" (click)="marcaEfetividade(true)"> Ponto</ion-button>
+        <ion-col>
+          <ion-button class="movimento" id="ataque1" (click)="marcaAtaque(1)">Ataque</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button id="ef0" (click)="marcaEfetividade(false)">Falha</ion-button>
+          <ion-button class="movimento" id="ataque2" (click)="marcaAtaque(2)">Resposta</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="ataque3" (click)="marcaAtaque(3)">Contra <br>Resposta</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="ataque4" (click)="marcaAtaque(4)">Contra<br> Ataque</ion-button>
         </ion-col>
       </ion-row>
-    </div>
-    <div class="arena">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="1" > 
-            <ion-button class="alerta"  id="pista1" (click)="marcaPista(1)"></ion-button>
-          </ion-col>
-          <ion-col size="4" >
-            <ion-button class="normal" id="pista2" (click)="marcaPista(2)"></ion-button>
-          </ion-col>
-          <ion-col size="2" >
-            <ion-button class="uniao" id="pista3" (click)="marcaPista(3)"></ion-button>
-          </ion-col>
-          <ion-col size="4" >
-            <ion-button class="normal" id="pista4" (click)="marcaPista(4)"></ion-button>
-          </ion-col>
-          <ion-col  size="1">
-            <ion-button class="alerta" id="pista5" (click)="marcaPista(5)"></ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      
-    </div>
+      <ion-row class="toqueduplo">
+        <ion-button id="ataque5" (click)="marcaAtaque(5)">Toque Duplo</ion-button>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  <div class="arena">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1" > 
+          <ion-button class="alerta"  id="pista1" (click)="marcaPista(1)"></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button class="normal" id="pista2" (click)="marcaPista(2)"></ion-button>
+        </ion-col>
+        <ion-col size="2" >
+          <ion-button class="uniao" id="pista3" (click)="marcaPista(3)"></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button class="normal" id="pista4" (click)="marcaPista(4)"></ion-button>
+        </ion-col>
+        <ion-col  size="1">
+          <ion-button class="alerta" id="pista5" (click)="marcaPista(5)"></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     
-  </ion-content>
-  <ion-footer>
-    <ion-toolbar>
-      <ion-button (click)="proximo()" expand="block">
-        Proximo Movimento
-      </ion-button>
-    </ion-toolbar>
-  </ion-footer>
+  </div>
+
+  <ion-button (click)="proximo()" expand="block">
+    Proximo Movimento
+  </ion-button>
+</ion-content>

@@ -1,5 +1,5 @@
 p {
- white-space: pre-line;
+    white-space: pre-line;
 }
 #tabela{
     border: 3px;
@@ -12,8 +12,37 @@ p {
     
     padding-right: 0px;
 }
-#butTabela{
-
+#butTabela{ 
+    
     padding-left: 0px;
+    
+}
 
+.labels{
+    text-align: center;
+    font-size: 140%;
+    margin-top: 5%;
+    
+}
+.labels>ion-button{
+    --border-radius: 30px;
+    --padding-top: 0%;
+    --padding-start: 0%;
+    --padding-end: 0%;
+    --padding-bottom: 0%;
+    font-size: 80%;
+    height: 80%;
+    margin-top: -3%;
+    
+}
+.labels>ion-label{
+    margin-top: 5%;
+
+}
+.seta{
+    border-radius: 20%;
+    
+}
+#placar{
+    font-size: 180%
 }

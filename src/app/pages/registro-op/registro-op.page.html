@@ -1,96 +1,60 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-button shape="round" (click)="voltar()">
-        <ion-icon name="arrow-dropleft-circle"></ion-icon>
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>  
-  
-  <ion-content padding>
-    
-      <form [formGroup]="regiOpform">
-      <ion-list > 
-        <ion-list-header>
-        <ion-label>Altura Relativa do Lutador 1 em relação ao Lutador 2</ion-label>
-        </ion-list-header>
-      
-      <ion-item>
-        <ion-label> Maior</ion-label>
-        <input type="radio"
-        value="maior"
-        name="altura"
-        formControlName="altura">
-        
-      </ion-item>
-      
-      <ion-item>
-        <ion-label> Menor</ion-label>
-        <input type="radio"
-        value="menor"
-        name="altura"
-        formControlName="altura">
-        
-      </ion-item>
-      <ion-item>
-        <ion-label> Parecida</ion-label>
-        <input type="radio"
-        value="parecida"
-        name="altura"
-        formControlName="altura">
-         
-      </ion-item>
-  
-      </ion-list> 
-      <ion-list> 
-        <ion-list-header>
-          <ion-label>Punho do Lutador 1</ion-label>
-        </ion-list-header>
-        
-        <ion-item>
-          <ion-label> Destro</ion-label>
-          <input type="radio"
-          value="destro"
-          name="punho1"
-          formControlName="punho1">
-          
-        </ion-item>
-        
-        <ion-item>
-          <ion-label> Canhoto </ion-label>
-          <input type="radio"
-          value="canhoto"
-          name="punho1"
-          formControlName="punho1">
-          
-        </ion-item>
-      </ion-list>
-      <ion-list> 
-          <ion-list-header>
-            <ion-label>Punho do Lutador 2</ion-label>
-          </ion-list-header>
-          
-          <ion-item>
-            <ion-label> Destro</ion-label>
-            <input type="radio"
-            value="destro"
-            name="punho2"
-            formControlName="punho2">
-            
-          </ion-item>
-          
-          <ion-item>
-            <ion-label> Canhoto </ion-label>
-            <input type="radio"
-            value="canhoto"
-            name="punho2"
-            formControlName="punho2">
-            
-          </ion-item>
-        </ion-list>
-</form>
+  <ion-toolbar>
+    <ion-button shape="round" (click)="voltar()">
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>  
 
-<ion-button (click)="cadastro()" expand="block"
-[disabled]="!regiOpform.valid"> Confirma
+<ion-content padding>
+  <ion-label>Em relação à {{nomeLut1}}, {{nomeLut2}} é</ion-label>
+  <div class="Altura">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="alt1" (click)="marcaAlt(1)">Maior</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="alt2" (click)="marcaAlt(2)">Parecida</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="alt3" (click)="marcaAlt(3)">Menor</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-label>{{nomeLut1}} é</ion-label>
+  <div class="Punholut1">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut11" (click)="marcaPunhLut1(1)">Destro</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut12" (click)="marcaPunhLut1(2)">Canhoto</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  <ion-label>{{nomeLut2}} é</ion-label>
+  <div class="Punholut2">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut21" (click)="marcaPunhLut2(1)">Destro</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut22" (click)="marcaPunhLut2(2)">Canhoto</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  
+  <ion-button (click)="cadastro()" expand="block"
+  [disabled]="!valido"> Confirma
 </ion-button>
 
 

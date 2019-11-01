@@ -34,6 +34,7 @@ export class MinhasLutasPage implements OnInit {
  selecionaLuta(pag){
 
    this.lutaService.setLutaAtual(pag);
+   console.log(pag)
    this.router.navigate(['/relatorio'])
 
  }

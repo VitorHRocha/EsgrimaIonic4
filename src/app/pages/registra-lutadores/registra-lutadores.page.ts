@@ -6,6 +6,7 @@ import { LutaService } from 'src/app/services/user/luta.service';
 
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../../modal/modal.page';
+import { empty } from 'rxjs';
 
 
 @Component({
@@ -27,12 +28,15 @@ export class RegistraLutadoresPage implements OnInit {
   nome2: string ="";
   clube2: string ="";
 
+  public valido;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
     private lutaService: LutaService,
     public modalCtrl1: ModalController) {
+      
    }
   
   voltar(){
@@ -67,6 +71,12 @@ export class RegistraLutadoresPage implements OnInit {
   
   this.nome1 = data.atleta.nome ;
   this.clube1 = data.atleta.clube;
+  if(this.nome2 == '' || this.nome1 == '' ){
+    this.valido = false ;
+
+  }else{
+    this.valido = true ;
+  }
   
 }
 
@@ -83,11 +93,22 @@ async presentModal2() {
   this.nome2 = data.atleta.nome ;
   this.clube2 = data.atleta.clube;
   
+  if(this.nome2 == '' || this.nome1 == '' ){
+    this.valido = false ;
+
+  }else{
+    this.valido = true ;
+  }
 
   
 }
   
   ngOnInit() {
+     document.getElementById("fotoButton1").setAttribute("src",`./assets/img/esgr_mask.jpg`);
+     
+     document.getElementById("fotoButton2").setAttribute("src",`./assets/img/esgr_mask.jpg`);
+    
+    
   }
 
 }

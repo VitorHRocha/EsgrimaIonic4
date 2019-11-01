@@ -42,18 +42,16 @@ export class LutaService {
   updateLutas(
     Ataques: Array<number>,
     LocalCorpo: Array<number>,
-    Area: Array<number>,
-    Efetividade: Array<boolean>,):
+    Area: Array<number>):
     Promise<any> {
       return this.eventListRef.update({
         lutas: firebase.firestore.FieldValue.arrayUnion({
           Ataques,
           LocalCorpo,
-          Area,
-          Efetividade
+          Area
         })
       });
-  }
+    }
     
     
     
@@ -67,9 +65,11 @@ export class LutaService {
       idLocalCorpo: Array<number>,
       Arena: Array<number>,
       Efetividade: Array<boolean>): string {
+        
         var i=0;
         var lutaDetalhada: string="";
         for(i=0;i<Ataques.length;i++){
+          console.log(i);
           if(idLocalCorpo[i]>6){
             lutaDetalhada+=Lutadores[1];
           }else{
@@ -90,9 +90,9 @@ export class LutaService {
           if(idLocalCorpo[i]==1 || idLocalCorpo[i]==7){
             lutaDetalhada+=" mirou a cabeça";
           }else if(idLocalCorpo[i]==2 || idLocalCorpo[i]==8){
-            lutaDetalhada+=" mirou o tronco";  
+            lutaDetalhada+=" mirou o braço esquerdo";  
           }else if(idLocalCorpo[i]==3 || idLocalCorpo[i]==9){
-            lutaDetalhada+=" mirou o braço esquerdo";
+            lutaDetalhada+=" mirou o tronco";
           }else if(idLocalCorpo[i]==4 || idLocalCorpo[i]==10){
             lutaDetalhada+=" mirou o braço direito";
           }else if(idLocalCorpo[i]==5 || idLocalCorpo[i]==11){
@@ -103,23 +103,18 @@ export class LutaService {
           
           
           if(Arena[i]==1){
-            lutaDetalhada+=" na zona 1";
+            lutaDetalhada+=" na zona 1 \n";
           }else if(Arena[i]==2){
-            lutaDetalhada+=" na zona 2";
+            lutaDetalhada+=" na zona 2 \n";
           }else if(Arena[i]==3){
-            lutaDetalhada+="na zona 3";
+            lutaDetalhada+="na zona 3 \n";
           }else if(Arena[i]==4){
-            lutaDetalhada+=" na zona 4";
+            lutaDetalhada+=" na zona 4 \n";
           }else if(Arena[i]==5){
-            lutaDetalhada+=" na zona 4";
+            lutaDetalhada+=" na zona 5 \n";
           }
           
           
-          if(Efetividade[i]==true){
-            lutaDetalhada+=" gerando ponto. \n ";
-          }else if(Efetividade[i]==false){
-            lutaDetalhada+=" não gernado ponto. \n ";
-          }
           
           
           
@@ -137,58 +132,56 @@ export class LutaService {
         Arena: Array<number>,
         Efetividade: Array<boolean>): any{
           var i=0;
-          var pontos: any=[];
+          var pontos= [];
           
-          for(i=0;i<12;i++){
-            var p = new Pontos(i+1) ;
+          for(i=1;i<=12;i++){
+            var p = new Pontos(i) ;
             pontos[i]= p;
+            // console.log(pontos[i])
             
           }
-          
+          console.log(Ataques)
           for(i=0;i<Ataques.length;i++){
             
-            if(Efetividade[i]==true){
-              
-              pontos[idLocalCorpo[i]-1].quantidadeAcertos++;
-            }
+            pontos[idLocalCorpo[i]].quantidadeAcertos++;
+            console.log(pontos[idLocalCorpo[i]]);
             
             
             if(Ataques[i]==1){
-              
+             
+              if(!pontos[idLocalCorpo[i]].tipoAtaques.ataque1){
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque1=0
+              }
               pontos[idLocalCorpo[i]].tipoAtaques.ataque1++;
+              
             }else if(Ataques[i]==2){
-              
-              pontos[idLocalCorpo[i]].tipoAtaques.ataque2++;
+              if(!pontos[idLocalCorpo[i]].tipoAtaques.ataque2){
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque2=0
+              }pontos[idLocalCorpo[i]].tipoAtaques.ataque2++;
             }else if(Ataques[i]==3){
-              
-              pontos[idLocalCorpo[i]].tipoAtaques.ataque3++;
+              if(!pontos[idLocalCorpo[i]].tipoAtaques.ataque3){
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque3=0
+              }pontos[idLocalCorpo[i]].tipoAtaques.ataque3++;
             }else if(Ataques[i]==4){
-              
-              pontos[idLocalCorpo[i]].tipoAtaques.ataque4++;
+              if(!pontos[idLocalCorpo[i]].tipoAtaques.ataque4){
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque4=0
+              }pontos[idLocalCorpo[i]].tipoAtaques.ataque4++;
+            }else if(Ataques[i]==5){
+              if(!pontos[idLocalCorpo[i]].tipoAtaques.ataque5){
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque5=0
+              }pontos[idLocalCorpo[i]].tipoAtaques.ataque5++;
             }
             
           }
-          
-          for(i=0 ; i<12;i++){
-            console.log(pontos[i].tipoAtaques.ataque1);
-            
-          } for(i=0 ; i<12;i++){
-            console.log(pontos[i].tipoAtaques.ataque2);
-            
-          } for(i=0 ; i<12;i++){
-            console.log(pontos[i].tipoAtaques.ataque3);
-            
-          } for(i=0 ; i<12;i++){
-            console.log(pontos[i].tipoAtaques.ataque4);
-            
-          }
+          // daniel.conrado@ifmg.edu.br
+          // 095606         
+    
           
           //separa os pontos em dois vetores
           for(i=0 ; i<12;i++){
             if(i<6){
               
-              this.pontosLutador1[i]=pontos[i];
-              
+              this.pontosLutador1[i]=pontos[i+1];
             }else{
               
               this.pontosLutador2[i-6]=pontos[i];
@@ -196,12 +189,12 @@ export class LutaService {
           }
           
           for(i=0 ; i<6;i++){
-            console.log(this.pontosLutador1[i].idLocalCorpo,this.pontosLutador1[i].quantidadeAcertos);
+            console.log(this.pontosLutador1[i].idLocalCorpo,this.pontosLutador1[i].quantidadeAcertos,this.pontosLutador1[i].nomeLocalCorpo);
           }
           for(i=0 ; i<6;i++){
-            console.log(this.pontosLutador2[i].idLocalCorpo,this.pontosLutador2[i].quantidadeAcertos);
+            console.log(this.pontosLutador2[i].idLocalCorpo,this.pontosLutador2[i].quantidadeAcertos,this.pontosLutador1[i].nomeLocalCorpo);
           }
-           
+          
           this.pontosLutador1.sort(function(a, b){
             return b.quantidadeAcertos - a.quantidadeAcertos ;
           });
@@ -209,15 +202,9 @@ export class LutaService {
             return b.quantidadeAcertos - a.quantidadeAcertos ;
           });
           
-          for(i=0 ; i<6;i++){
-            
-            console.log(this.pontosLutador1[i].idLocalCorpo,this.pontosLutador1[i].quantidadeAcertos,);
-            
-          }
-          for(i=0 ; i<6;i++){
-            console.log(this.pontosLutador2[i].nomeLocalCorpo,this.pontosLutador2[i].quantidadeAcertos);
-          }
-        
+          
+          
+          
         }
         
         guardaLutadores(
@@ -236,28 +223,30 @@ export class LutaService {
           setLutaAtual(lutaAtual){
             this.lutaAtual=lutaAtual;
           }
-        
+          
           getLutaAtual(){
             return this.lutaAtual;
           }
-        
+          
           public getnome1(): string {
             return this.nome1;
           }
-        
+          
           public getclube1(): string {
             return this.clube1;
           }
-        
+          
           public getnome2(): string {
             return this.nome2;
           }
-        
+          
           public getclube2(): string {
             return this.clube2;
           }
           public getPontosLutador1(): any {
+            
             return this.pontosLutador1;
+            
           }
           public setPontosLutador1(value: any) {
             this.pontosLutador1 = value;
@@ -278,7 +267,8 @@ export class LutaService {
         class Pontos {
           public idLocalCorpo;
           public quantidadeAcertos;
-          public tipoAtaques;
+          
+          public tipoAtaques = new TipoAtaques;
           public nomeLocalCorpo;
           
           constructor(idLocalCorpo) {
@@ -292,30 +282,30 @@ export class LutaService {
             if(this.idLocalCorpo == 1 || this.idLocalCorpo == 7){
               
               this.nomeLocalCorpo = "Cabeça";
-
+              
             }else if(this.idLocalCorpo == 2 || this.idLocalCorpo == 8){
               
-              this.nomeLocalCorpo = "Tronco";
-
-            }else if(this.idLocalCorpo == 3 || this.idLocalCorpo == 9){
-              
               this.nomeLocalCorpo = "Braço Esquerdo";
-
+              
+            }else if(this.idLocalCorpo == 3 || this.idLocalCorpo == 9){
+              this.nomeLocalCorpo = "Tronco";
+              
+              
             }else if(this.idLocalCorpo == 4 || this.idLocalCorpo == 10){
               
               this.nomeLocalCorpo = "Braço Direito";
-
+              
             }else if(this.idLocalCorpo == 5 || this.idLocalCorpo == 11){
+              
               
               this.nomeLocalCorpo = "Perna Direita";
               
             }else if(this.idLocalCorpo == 6 || this.idLocalCorpo == 12){
               
               this.nomeLocalCorpo = "Perna Esquerda";
-
+              
             }
             this.quantidadeAcertos = 0;
-            this.tipoAtaques = [ ataque1,ataque2,ataque3,ataque4,ataque5];
             this.tipoAtaques.ataque1=0;
             this.tipoAtaques.ataque2=0;
             this.tipoAtaques.ataque3=0;
@@ -324,5 +314,12 @@ export class LutaService {
             
           }
         }
-        
+        class TipoAtaques{
+          public ataque1=0;
+          public ataque2=0;
+          public ataque3=0;
+          public ataque4=0;
+          public ataque5=0;
+
+        }
         

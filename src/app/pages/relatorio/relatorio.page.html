@@ -6,10 +6,12 @@
     
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content> 
-  <ion-label>{{lutadoresAtuais.nome1}} {{totalPontos1}} X {{totalPontos2}} {{lutadoresAtuais.nome2}}</ion-label>
-    
+  <div class="labels">
+  <ion-label id="placar">{{lutadoresAtuais.nome1}} X {{lutadoresAtuais.nome2}}<br></ion-label>
+  <ion-label>{{totalPontos1}} X {{totalPontos2}}</ion-label>
+  </div> 
   <ion-segment>
     <ion-segment-button (click)="lutaTabela()" checked >
       <ion-label>Tabela</ion-label>
@@ -24,10 +26,10 @@
   </div>
   
   <div id="tabela">
-    <div>
-      <ion-button (click)="trocaLutador()">  <ion-icon name="arrow-dropleft-circle"></ion-icon> </ion-button>
+    <div class="labels">
+      <ion-button class="seta" (click)="trocaLutador()">  <ion-icon name="arrow-dropleft-circle"></ion-icon> </ion-button>
       <ion-label>{{nomeLutador}}</ion-label>
-      <ion-button (click)="trocaLutador()"> <ion-icon name="arrow-dropright-circle"></ion-icon> </ion-button>
+      <ion-button class="seta" (click)="trocaLutador()"> <ion-icon name="arrow-dropright-circle"></ion-icon> </ion-button>
     </div>  
     <ion-list>
       <ion-list-header>
@@ -38,16 +40,16 @@
           <ion-segment-button (click)="PontosSofridos()">
             <ion-label>Pontos Sofridos</ion-label>
           </ion-segment-button>
-        </ion-segment>
+        </ion-segment> 
       </ion-list-header>
       <div id="Lut1Pt1">
-        <ion-item *ngFor="let pontos of pontosLutador1" >
+        <ion-item *ngFor="let pontos of pontosLutador1" (click)="detalhaPontos(pontos)">
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
         </ion-item>
       </div>
       <div id="Lut1Pt2">
-        <ion-item *ngFor="let pontos of pontosLutador2" >
+        <ion-item *ngFor="let pontos of pontosLutador2" (click)="detalhaPontos(pontos)" >
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
         </ion-item>

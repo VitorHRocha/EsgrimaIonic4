@@ -11,7 +11,7 @@
           <ion-list-header> Lutador 1</ion-list-header>
           <ion-item>
               <ion-avatar slot="start">
-                <ion-icon name="body"></ion-icon>
+                  <img id="fotoButton1" src="" alt="">
               </ion-avatar>
               <ion-label>
                   <ion-label >Nome: {{nome1}}</ion-label>
@@ -28,7 +28,7 @@
           <ion-list-header> Lutador 2</ion-list-header>
           <ion-item>
               <ion-avatar slot="start">
-                <ion-icon name="contact"></ion-icon>
+                  <img id="fotoButton2" src="" alt="">
               </ion-avatar>
               <ion-label>
                   <ion-label >Nome: {{nome2}}</ion-label>
@@ -39,7 +39,7 @@
         </ion-list>
     
 
-      <ion-button (click)="cadastro()" expand="block">
+      <ion-button (click)="cadastro()" expand="block" [disabled]="!valido">
          Confirma
       </ion-button>
   

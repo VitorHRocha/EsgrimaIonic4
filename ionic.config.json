@@ -1,5 +1,7 @@
 {
   "name": "Esgrima",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

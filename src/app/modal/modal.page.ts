@@ -3,6 +3,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 
 import { AtletasService } from 'src/app/services/global/atletas.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -59,12 +60,17 @@ export class ModalPage implements OnInit {
       
    }
    async cadastroAtletaas(regiOpform: FormGroup): Promise<void> {
-    var nome;
+    var nome: string;
     var clube;
     var atleta= { nome, clube};
     atleta.nome= this.regiOpform.value.nome;
     atleta.clube= this.regiOpform.value.clube;
- 
+    atleta.nome = atleta.nome.toLowerCase();
+    var primeiraletra = atleta.nome[0];
+    var resto = atleta.nome.substring(1,atleta.nome.length)
+    primeiraletra =primeiraletra.toUpperCase();
+    atleta.nome = primeiraletra.concat(resto);
+    atleta.clube = atleta.clube.toUpperCase();
   
      try{
        this.atletas.updateAtleta(

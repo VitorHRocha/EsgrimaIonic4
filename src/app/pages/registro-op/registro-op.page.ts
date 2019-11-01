@@ -23,28 +23,18 @@ export class RegistroOpPage implements OnInit {
   punho2: string="";
   lutadores: any;
   
+  public valido;
+
+  public nomeLut1;
+  public nomeLut2;
   
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
     private lutaService:LutaService) {
-      this.regiOpform = this.formBuilder.group({
-        
-        altura: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
-        punho1: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
-        punho2: [
-          '',
-          Validators.compose([ Validators.required]),
-        ],
-      });
-      
+       this.nomeLut1 =  this.lutaService.getnome1();
+       this.nomeLut2 =  this.lutaService.getnome2();      
     }
     
     ngOnInit() {
@@ -54,16 +44,65 @@ export class RegistroOpPage implements OnInit {
       this.router.navigate(['/luta'])
     }
     
+    marcaAlt(altAtual){
+      this.altura=altAtual;
+      var i;
+      var k="alt";
+      for(i=1;i<=3;i++){ 
+        if(i == altAtual){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+        }else{
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+        }
+      }        
+      this.liberaCadastro();
+    }
+    
+    marcaPunhLut1(punho){
+      this.punho1=punho;
+      var i;
+      var k="punhLut1";
+      for(i=1;i<=2;i++){ 
+        if(i == punho){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+        }else{
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+        }
+      }        
+      this.liberaCadastro();
+    }
+    
+    marcaPunhLut2(punho){
+      this.punho2=punho;
+      var i;
+      var k="punhLut2";
+      for(i=1;i<=2;i++){ 
+        if(i == punho){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+        }else{
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+        }
+      }        
+      this.liberaCadastro();
+    }
+    
+    liberaCadastro(){
+      if(this.altura == '' || this.punho1 == '' || this.punho2 == '' ){
+        this.valido = false;
+      }else{
+        this.valido = true;
+      }
+
+
+    }
+    
+    
     
     async cadastro(regiOpform: FormGroup): Promise<void> {
       
-      const punho1= this.regiOpform.value.punho1;
-      const punho2= this.regiOpform.value.punho2;  
-      const altura_relativa= this.regiOpform.value.altura;
-      console.log( this.lutaService.getnome1());
-      console.log( this.lutaService.getclube1());
-      console.log( this.lutaService.getnome2());
-      console.log( this.lutaService.getclube2());
+      const punho1= this.punho1;
+      const punho2= this.punho2;  
+      const altura_relativa= this.altura;
       
       
       try{
