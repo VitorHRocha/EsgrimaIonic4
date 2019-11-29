@@ -18,9 +18,9 @@ export class RegistroOpPage implements OnInit {
   public userProfile: any;
   
   
-  altura: string ="";
-  punho1: string="";
-  punho2: string="";
+  altura: string = "";
+  agressividade  = "";
+  punho2: string = "";
   lutadores: any;
   
   public valido;
@@ -58,19 +58,6 @@ export class RegistroOpPage implements OnInit {
       this.liberaCadastro();
     }
     
-    marcaPunhLut1(punho){
-      this.punho1=punho;
-      var i;
-      var k="punhLut1";
-      for(i=1;i<=2;i++){ 
-        if(i == punho){
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
-        }else{
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-        }
-      }        
-      this.liberaCadastro();
-    }
     
     marcaPunhLut2(punho){
       this.punho2=punho;
@@ -85,9 +72,23 @@ export class RegistroOpPage implements OnInit {
       }        
       this.liberaCadastro();
     }
-    
+
+    // marcaAgressividade(agressividade){
+    //   this.agressividade = ;
+    //   var i;
+    //   var k="punhLut2";
+    //   for(i=1;i<=2;i++){ 
+    //     if(i == punho){
+    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+    //     }else{
+    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+    //     }
+    //   }        
+    //   this.liberaCadastro();
+
+    // }
     liberaCadastro(){
-      if(this.altura == '' || this.punho1 == '' || this.punho2 == '' ){
+      if(this.altura == '' || this.agressividade == '' || this.punho2 == '' ){
         this.valido = false;
       }else{
         this.valido = true;
@@ -99,11 +100,33 @@ export class RegistroOpPage implements OnInit {
     
     
     async cadastro(regiOpform: FormGroup): Promise<void> {
-      
-      const punho1= this.punho1;
-      const punho2= this.punho2;  
-      const altura_relativa= this.altura;
-      
+      var punho1;
+      var altura_relativa;
+           
+           var punho2;  
+
+     
+
+      if(this.punho2 == '1'){
+        punho2= 'Destro';
+
+      }else{
+        punho2= 'Canhoto';
+      }
+
+      if(this.altura == '1'){
+        altura_relativa = 'Maior';
+
+      }
+      else{
+        if(this.altura == '2'){
+        altura_relativa = 'Parecida';
+      }else{
+        altura_relativa = 'Menor';
+      }
+    }
+ 
+     
       
       try{
         this.profileService.updateLutadores(

@@ -27,6 +27,17 @@
         >
       </ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Clube</ion-label>
+      <ion-input
+      formControlName="clube"
+      type="text"
+      [class.invalid]="registroForm.controls['clube'].valid &&
+      registroForm.controls['clube'].touched"
+      >
+    </ion-input>
+  </ion-item>
     
     <ion-item>
       <ion-label position="floating">Email</ion-label>

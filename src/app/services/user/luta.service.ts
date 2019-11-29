@@ -70,7 +70,7 @@ export class LutaService {
         var lutaDetalhada: string="";
         for(i=0;i<Ataques.length;i++){
           console.log(i);
-          if(idLocalCorpo[i]>6){
+          if(idLocalCorpo[i]>8){
             lutaDetalhada+=Lutadores[1];
           }else{
             lutaDetalhada+=Lutadores[0];
@@ -87,18 +87,22 @@ export class LutaService {
             lutaDetalhada+=" em um toque duplo";
           }
           
-          if(idLocalCorpo[i]==1 || idLocalCorpo[i]==7){
+          if(idLocalCorpo[i]==1 || idLocalCorpo[i]==9){
             lutaDetalhada+=" mirou a cabeça";
-          }else if(idLocalCorpo[i]==2 || idLocalCorpo[i]==8){
+          }else if(idLocalCorpo[i]==2 || idLocalCorpo[i]==10){
             lutaDetalhada+=" mirou o braço esquerdo";  
-          }else if(idLocalCorpo[i]==3 || idLocalCorpo[i]==9){
+          }else if(idLocalCorpo[i]==3 || idLocalCorpo[i]==11){
             lutaDetalhada+=" mirou o tronco";
-          }else if(idLocalCorpo[i]==4 || idLocalCorpo[i]==10){
+          }else if(idLocalCorpo[i]==4 || idLocalCorpo[i]==12){
             lutaDetalhada+=" mirou o braço direito";
-          }else if(idLocalCorpo[i]==5 || idLocalCorpo[i]==11){
+          }else if(idLocalCorpo[i]==5 || idLocalCorpo[i]==13){
             lutaDetalhada+=" mirou a perna esquerda";
-          }else if(idLocalCorpo[i]==6 || idLocalCorpo[i]==12){
+          }else if(idLocalCorpo[i]==6 || idLocalCorpo[i]==14){
             lutaDetalhada+=" mirou a perna direita";
+          }else if(idLocalCorpo[i]==7 || idLocalCorpo[i]==14){
+            lutaDetalhada+=" mirou o pe direito";
+          }else if(idLocalCorpo[i]==8 || idLocalCorpo[i]==14){
+            lutaDetalhada+=" mirou o pe direito";
           }
           
           
@@ -134,7 +138,7 @@ export class LutaService {
           var i=0;
           var pontos= [];
           
-          for(i=1;i<=12;i++){
+          for(i=1;i<=16;i++){
             var p = new Pontos(i) ;
             pontos[i]= p;
             // console.log(pontos[i])
@@ -178,20 +182,20 @@ export class LutaService {
     
           
           //separa os pontos em dois vetores
-          for(i=0 ; i<12;i++){
-            if(i<6){
+          for(i=0 ; i<16;i++){
+            if(i<8){
               
               this.pontosLutador1[i]=pontos[i+1];
             }else{
               
-              this.pontosLutador2[i-6]=pontos[i];
+              this.pontosLutador2[i-8]=pontos[i];
             }
           }
           
-          for(i=0 ; i<6;i++){
+          for(i=0 ; i<8;i++){
             console.log(this.pontosLutador1[i].idLocalCorpo,this.pontosLutador1[i].quantidadeAcertos,this.pontosLutador1[i].nomeLocalCorpo);
           }
-          for(i=0 ; i<6;i++){
+          for(i=0 ; i<8;i++){
             console.log(this.pontosLutador2[i].idLocalCorpo,this.pontosLutador2[i].quantidadeAcertos,this.pontosLutador1[i].nomeLocalCorpo);
           }
           
@@ -201,7 +205,6 @@ export class LutaService {
           this.pontosLutador2.sort(function(a, b){
             return b.quantidadeAcertos - a.quantidadeAcertos ;
           });
-          
           
           
           
@@ -279,32 +282,44 @@ export class LutaService {
             var ataque5=0;
             
             this.idLocalCorpo = idLocalCorpo;
-            if(this.idLocalCorpo == 1 || this.idLocalCorpo == 7){
+            if(this.idLocalCorpo == 1 || this.idLocalCorpo == 9){
               
               this.nomeLocalCorpo = "Cabeça";
               
-            }else if(this.idLocalCorpo == 2 || this.idLocalCorpo == 8){
+            }else if(this.idLocalCorpo == 2 || this.idLocalCorpo == 10){
               
               this.nomeLocalCorpo = "Braço Esquerdo";
               
-            }else if(this.idLocalCorpo == 3 || this.idLocalCorpo == 9){
+            }else if(this.idLocalCorpo == 3 || this.idLocalCorpo == 11){
               this.nomeLocalCorpo = "Tronco";
               
               
-            }else if(this.idLocalCorpo == 4 || this.idLocalCorpo == 10){
+            }else if(this.idLocalCorpo == 4 || this.idLocalCorpo == 12){
               
               this.nomeLocalCorpo = "Braço Direito";
               
-            }else if(this.idLocalCorpo == 5 || this.idLocalCorpo == 11){
+            }else if(this.idLocalCorpo == 5 || this.idLocalCorpo == 13){
               
               
               this.nomeLocalCorpo = "Perna Direita";
               
-            }else if(this.idLocalCorpo == 6 || this.idLocalCorpo == 12){
+            }else if(this.idLocalCorpo == 6 || this.idLocalCorpo == 14){
               
               this.nomeLocalCorpo = "Perna Esquerda";
               
+            }else if(this.idLocalCorpo == 7 || this.idLocalCorpo == 15){
+              
+              
+              this.nomeLocalCorpo = "Pe Direito";
+              
+            }else if(this.idLocalCorpo == 8 || this.idLocalCorpo == 16){
+              
+              this.nomeLocalCorpo = "Pe Esquerdo";
+              
             }
+
+
+
             this.quantidadeAcertos = 0;
             this.tipoAtaques.ataque1=0;
             this.tipoAtaques.ataque2=0;

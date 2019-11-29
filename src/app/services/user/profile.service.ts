@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { concat } from 'rxjs';
 @Injectable({ 
   providedIn: 'root'
 })
@@ -17,6 +18,7 @@ export class ProfileService {
       }
     });
   }
+
   getUserProfile(): firebase.firestore.DocumentReference {
     if(this.userProfile){
       return this.userProfile ;
@@ -27,9 +29,11 @@ export class ProfileService {
 
   
   }
+
   updateName(nome: string): Promise<any> {
     return this.userProfile.update({ nome });
   }
+
   updateLutadores(
     nome1: string,
     clube1: string,
@@ -39,14 +43,15 @@ export class ProfileService {
     punho1: string,
     punho2: string): Promise<any> {
 
-      console.log(nome1);
-      console.log(nome2);
-      console.log(clube1);
-      console.log(clube2);
-      console.log(altura_relativa);
-      console.log(punho1);
-      console.log(punho2);
-
+      const date  = new Date
+      var dia     = date.getDate()
+      var mes     = date.getMonth()+1
+      var ano     = date.getFullYear() 
+      var hora    = date.getHours()
+      var minuto  = date.getMinutes()
+      var horario = hora+':'+minuto
+      var data    = dia+'/'+mes+'/'+ano
+          
 
       return this.userProfile.update({
         lutadores: firebase.firestore.FieldValue.arrayUnion({
@@ -56,10 +61,13 @@ export class ProfileService {
             clube2,
             altura_relativa,
             punho1,
-            punho2
+            punho2,
+            data,
+            horario
         })
       });
-  }
+  
+    }
   updateFoto(fotoPerfilURL: string): Promise<any> {
     return this.userProfile.update({ fotoPerfilURL });
   }

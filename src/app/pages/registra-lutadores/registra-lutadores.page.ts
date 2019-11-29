@@ -23,8 +23,8 @@ export class RegistraLutadoresPage implements OnInit {
   public userProfile: any;
   public teste;
 
-  nome1: string ="";
-  clube1: string ="";
+  meuNome: string ="";
+  meuClube: string ="";
   nome2: string ="";
   clube2: string ="";
 
@@ -36,6 +36,13 @@ export class RegistraLutadoresPage implements OnInit {
     private profileService:ProfileService,
     private lutaService: LutaService,
     public modalCtrl1: ModalController) {
+      this.profileService
+    .getUserProfile()
+    .get()
+    .then( userProfileSnapshot => {
+      this.meuNome = userProfileSnapshot.data().nome;  
+      
+    });
       
    }
   
@@ -46,9 +53,9 @@ export class RegistraLutadoresPage implements OnInit {
   async cadastro(): Promise<void> {
   
      try{
-       this.lutaService.guardaLutadores(
-           this.nome1,
-           this.clube1,
+       this.lutaService.guardaLutadores( 
+           this.meuNome,
+           this.meuClube,
            this.nome2,
            this.clube2)
            
@@ -60,25 +67,6 @@ export class RegistraLutadoresPage implements OnInit {
    
  }
 
- async presentModal1() {
-  const modal = await this.modalCtrl1.create({
-    component: ModalPage
-  });
-
-  await modal.present();
-  
-  const { data } = await modal.onWillDismiss();
-  
-  this.nome1 = data.atleta.nome ;
-  this.clube1 = data.atleta.clube;
-  if(this.nome2 == '' || this.nome1 == '' ){
-    this.valido = false ;
-
-  }else{
-    this.valido = true ;
-  }
-  
-}
 
 async presentModal2() {
   const modal = await this.modalCtrl1.create({

@@ -34,6 +34,10 @@ export class RegistroPage implements OnInit {
           '',
           Validators.compose([Validators.minLength(6), Validators.required]),
         ],
+         clube: [
+          '',
+          Validators.compose([Validators.required]),
+        ],
          nome: [
           '',
           Validators.compose([Validators.required]),
@@ -49,8 +53,9 @@ export class RegistroPage implements OnInit {
      
           const email: string = registroForm.value.email;
           const senha: string = registroForm.value.senha;
-          const nome: string = registroForm.value.nome;
-          this.authService.signupUser(email, senha, nome).then(
+          const nome: string  = registroForm.value.nome;
+          const clube: string = registroForm.value.clube;
+          this.authService.signupUser(email, senha, nome,clube).then(
             () => {
               this.loading.dismiss().then(() => {
                 this.router.navigateByUrl('user');

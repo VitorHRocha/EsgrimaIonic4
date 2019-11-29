@@ -55,13 +55,13 @@
         </ion-item>
       </div>
       <div id="Lut2Pt1">
-        <ion-item *ngFor="let pontos of pontosLutador2" >
+        <ion-item *ngFor="let pontos of pontosLutador2"  (click)="detalhaPontos(pontos)" >
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
         </ion-item>
       </div>
       <div id="Lut2Pt2">
-        <ion-item *ngFor="let pontos of pontosLutador1" >
+        <ion-item *ngFor="let pontos of pontosLutador1"  (click)="detalhaPontos(pontos)" >
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
         </ion-item>

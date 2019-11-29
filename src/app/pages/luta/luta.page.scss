@@ -52,35 +52,64 @@
 }
 #localCorpo7{
     position: absolute;
-    top: -2%;
-    right: 10%; 
-
+    top: 80%;
+    left: 6%; 
 }
 #localCorpo8{
     position: absolute;
-    top: 9%;
-    right: -1%; 
+    top: 80%;
+    left: 22%; 
+     
 }
 #localCorpo9{
     position: absolute;
-    top: 30%;
+    top: -2%;
     right: 10%; 
 }
 #localCorpo10{
     position: absolute;
-    top: 30%;
-    right: 23%; 
+    top: 9%;
+    right: -1%; 
 }
 #localCorpo11{
+    
+    position: absolute;
+    top: 30%;
+    right: 10%; 
+
+}
+#localCorpo12{
+    
+    position: absolute;
+    top: 30%;
+    right: 23%; 
+
+}
+#localCorpo13{
+    
     position: absolute;
     top: 53%;
     right: 10%; 
 
 }
-#localCorpo12{
+#localCorpo14{
+    
     position: absolute;
     top: 53%;
-    right: 27%; 
+    right: 27%;
+ 
+}
+#localCorpo15{
+    position: absolute;
+    top: 80%;
+    right: 5%;
+
+}
+#localCorpo16{
+    position: absolute;
+    top: 80%;
+    right: 21%;
+
 
 }
 .cabeca{
@@ -118,7 +147,16 @@
     width: 1%;
     height: 30%;
 }
+.pe_direito{
 
+}
+.pe_esquerda{
+
+}
+.labels{
+    margin-top: -5%;
+
+}
 
 #lutadores>ion-row{
     height: 100%;

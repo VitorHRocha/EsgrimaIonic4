@@ -1,9 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-button shape="round" (click)="voltar()">
-      <ion-icon name="arrow-dropleft-circle"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+
 </ion-header>  
 
 <ion-content padding>
@@ -24,20 +20,6 @@
     </ion-grid>
   </div>
 
-  <ion-label>{{nomeLut1}} é</ion-label>
-  <div class="Punholut1">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button class="movimento" id="punhLut11" (click)="marcaPunhLut1(1)">Destro</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button class="movimento" id="punhLut12" (click)="marcaPunhLut1(2)">Canhoto</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  
   <ion-label>{{nomeLut2}} é</ion-label>
   <div class="Punholut2">
     <ion-grid>
@@ -47,6 +29,20 @@
         </ion-col>
         <ion-col>
           <ion-button class="movimento" id="punhLut22" (click)="marcaPunhLut2(2)">Canhoto</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-label>{{nomeLut2}} é</ion-label>
+  <div class="Agressividade">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="agressividade1" (click)="marcaAgressividade(1)">Agressivo</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="agressividade2" (click)="marcaAgressividade(2)">Cauteloso</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

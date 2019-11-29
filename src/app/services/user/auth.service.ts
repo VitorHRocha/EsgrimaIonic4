@@ -15,8 +15,7 @@ export class AuthService {
   Promise<firebase.auth.UserCredential> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
-  signupUser(email: string, password: string, nome:string): Promise<any> {
-    var numeroLutas=0;
+  signupUser(email: string, password: string, nome:string, clube:string): Promise<any> {
     return firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
@@ -26,7 +25,7 @@ export class AuthService {
       .doc(`/userProfile/${newUserCredential.user.uid}`)
       .set({ email,
              nome,
-             numeroLutas });
+             clube });
     })
     .catch(error => {
       console.error(error);

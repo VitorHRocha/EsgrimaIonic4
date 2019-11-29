@@ -31,6 +31,8 @@ export class LutaPage implements OnInit {
   public lutador1;
   public lutador2;
   
+  // faltas: Array<number>= [];
+  // faltaAtual
   
   constructor( public lutaService : LutaService,
     public router:Router,
@@ -48,16 +50,28 @@ export class LutaPage implements OnInit {
       this.lutador2=this.lutaService.getnome2();
     }
     
+    // marcaFalta(ladoFalta){
+    //   this.zeraCores();
+    //   this.pistaAtual = null;
+    //   this.localCorpoLut1 = null;
+    //   this.localCorpoLut2 = null;
+    //   this.ataqueAtual = null;
+    //   this.localCorpoAtual = null;
+    //   this.toqueduplo = 0;
+
+    // }
+
+
     marcalocalCorpo(local){
       
       var i;
       var k="localCorpo";
       
       if(this.toqueduplo == 0){
-        for(i=1;i<=12;i++){
+        for(i=1;i<=16;i++){
           
           if(i==local){
-            if(local<=6){
+            if(local<=8){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
             }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
@@ -67,8 +81,8 @@ export class LutaPage implements OnInit {
           }
         }
       }else{
-        if(local<=6){
-          for(i=1;i<=6;i++){
+        if(local<=8){
+          for(i=1;i<=8;i++){
             if(i==local){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
             }
@@ -82,7 +96,7 @@ export class LutaPage implements OnInit {
           }
           
         }else{
-          for(i=7;i<=12;i++){
+          for(i=9;i<=16;i++){
             if(i==local){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
             }
@@ -153,7 +167,7 @@ export class LutaPage implements OnInit {
         }else{
           document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
           if(i == 1 || i == 5){
-            document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0,7)');
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
           }
         }
         
@@ -333,7 +347,7 @@ export class LutaPage implements OnInit {
       //Volta a cor dos botões do corpo
       var i;
       var k="localCorpo";
-      for(i=1;i<=12;i++){ 
+      for(i=1;i<=16;i++){ 
         
         document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
         

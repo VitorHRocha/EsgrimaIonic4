@@ -13,11 +13,11 @@ export class UserPage implements OnInit {
   fotoPerfilURL: string;
   userProfile: any;
   
+  
  constructor(public router: Router,
             public profileService:ProfileService,
             private menu: MenuController) { 
-               
-    
+
   } 
 
 

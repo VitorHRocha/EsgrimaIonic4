@@ -11,15 +11,16 @@
 </ion-header>
 
 <ion-content class="body" padding>
-  <div class="labels">
-    <ion-label>
-      {{lutador1}}  X  {{lutador2}}<br>
-    </ion-label>
-    <ion-label>
-      {{pontoLutador1}}  X  {{pontoLutador2}}
-    </ion-label>
-  </div>
+  
   <ion-content class="imgLuta">
+    <div class="labels">
+      <ion-label>
+        {{lutador1}}  X  {{lutador2}}<br>
+      </ion-label>
+      <ion-label>
+        {{pontoLutador1}}  X  {{pontoLutador2}}
+      </ion-label>
+    </div>
     
     <ion-button class="cabeca" id="localCorpo1" (click)="marcalocalCorpo(1)"></ion-button>
     <ion-button class="braco_esquerdo" id="localCorpo2" (click)="marcalocalCorpo(2)"></ion-button>
@@ -27,13 +28,21 @@
     <ion-button class="braco_direito" id="localCorpo4" (click)="marcalocalCorpo(4)"></ion-button>
     <ion-button class="perna_esquerda" id="localCorpo5" (click)="marcalocalCorpo(5)"></ion-button>
     <ion-button class="perna_direita" id="localCorpo6" (click)="marcalocalCorpo(6)"></ion-button>
+    <ion-button class="pe_esquerdo" id="localCorpo7" (click)="marcalocalCorpo(7)"></ion-button>
+    <ion-button class="pe_direita" id="localCorpo8" (click)="marcalocalCorpo(8)"></ion-button>
+    <!-- <ion-avatar class="falta" id="falta1" (click)="marcaFalta(1)">F</ion-avatar> -->
     
-    <ion-button class="cabeca" id="localCorpo7" (click)="marcalocalCorpo(7)"></ion-button>
-    <ion-button class="braco_esquerdo" id="localCorpo8" (click)="marcalocalCorpo(8)"></ion-button>
-    <ion-button class="tronco" id="localCorpo9" (click)="marcalocalCorpo(9)"></ion-button>
-    <ion-button class="braco_direito" id="localCorpo10" (click)="marcalocalCorpo(10)"></ion-button>
-    <ion-button class="perna_esquerda" id="localCorpo11" (click)="marcalocalCorpo(11)"></ion-button>
-    <ion-button class="perna_direita" id="localCorpo12" (click)="marcalocalCorpo(12)"></ion-button>
+    
+    <ion-button class="cabeca" id="localCorpo9" (click)="marcalocalCorpo(9)"></ion-button>
+    <ion-button class="braco_esquerdo" id="localCorpo10" (click)="marcalocalCorpo(10)"></ion-button>
+    <ion-button class="tronco" id="localCorpo11" (click)="marcalocalCorpo(11)"></ion-button>
+    <ion-button class="braco_direito" id="localCorpo12" (click)="marcalocalCorpo(12)"></ion-button>
+    <ion-button class="perna_esquerda" id="localCorpo13" (click)="marcalocalCorpo(13)"></ion-button>
+    <ion-button class="perna_direita" id="localCorpo14" (click)="marcalocalCorpo(14)"></ion-button>
+    <ion-button class="pe_esquerdo" id="localCorpo15" (click)="marcalocalCorpo(15)"></ion-button>
+    <ion-button class="pe_direita" id="localCorpo16" (click)="marcalocalCorpo(16)"></ion-button>
+    <!-- <ion-avatar class="falta" id="falta2" (click)="marcaFalta(2)">F</ion-avatar> -->
+    
   </ion-content>
   <div class="Ataques">
     <ion-grid>
@@ -79,7 +88,7 @@
     </ion-grid>
     
   </div>
-
+  
   <ion-button (click)="proximo()" expand="block">
     Proximo Movimento
   </ion-button>
