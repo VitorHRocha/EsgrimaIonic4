@@ -97,15 +97,12 @@ export class RegistroOpPage implements OnInit {
 
     }
     
-    
-    
     async cadastro(regiOpform: FormGroup): Promise<void> {
       var punho1;
       var altura_relativa;
-           
-           var punho2;  
+      var punho2;  
 
-     
+      punho1 = 'Destro'
 
       if(this.punho2 == '1'){
         punho2= 'Destro';
