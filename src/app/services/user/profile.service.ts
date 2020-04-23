@@ -35,37 +35,37 @@ export class ProfileService {
   }
 
   updateLutadores(
+    idLuta: number,
+    tipoJogo: string,
     nome1: string,
     clube1: string,
     nome2: string,
     clube2: string,
+    data:   string,
+    hora:   string,
     altura_relativa: string,
     punho1: string,
-    punho2: string): Promise<any> {
-
-      const date  = new Date
-      var dia     = date.getDate()
-      var mes     = date.getMonth()+1
-      var ano     = date.getFullYear() 
-      var hora    = date.getHours()
-      var minuto  = date.getMinutes()
-      var horario = hora+':'+minuto
-      var data    = dia+'/'+mes+'/'+ano
-          
-
+    punho2: string
+    ): Promise<any> {
+       
+      this.updateLutas(idLuta);
       return this.userProfile.update({
         lutadores: firebase.firestore.FieldValue.arrayUnion({
+            idLuta,
+            tipoJogo,
             nome1,
             clube1,
             nome2,
             clube2,
+            data,
+            hora,
             altura_relativa,
             punho1,
             punho2,
-            data,
-            horario
+ 
         })
       });
+
   
     }
   updateFoto(fotoPerfilURL: string): Promise<any> {
@@ -74,9 +74,9 @@ export class ProfileService {
   getNumeroLutas():number{
     return this.numeroLutas
   }
-  setNumeroLutas(numLutas:number):void{
-    this.numeroLutas=numLutas;
-    this.userProfile.update({ numeroLutas:this.numeroLutas });
+  updateLutas(numLutas:number):void{
+    numLutas = numLutas + 1;
+    this.userProfile.update({ numeroLutas:numLutas });
 
   }
 

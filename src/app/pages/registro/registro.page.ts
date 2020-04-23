@@ -55,7 +55,8 @@ export class RegistroPage implements OnInit {
           const senha: string = registroForm.value.senha;
           const nome: string  = registroForm.value.nome;
           const clube: string = registroForm.value.clube;
-          this.authService.signupUser(email, senha, nome,clube).then(
+          var numeroLutas: number = 0;
+          this.authService.signupUser(email, senha, nome,clube,numeroLutas).then(
             () => {
               this.loading.dismiss().then(() => {
                 this.router.navigateByUrl('user');

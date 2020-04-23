@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { ProfileService } from 'src/app/services/user/profile.service';
 import { MenuController } from '@ionic/angular'
+import { concat } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -17,7 +18,6 @@ export class UserPage implements OnInit {
  constructor(public router: Router,
             public profileService:ProfileService,
             private menu: MenuController) { 
-
   } 
 
 
@@ -39,19 +39,19 @@ export class UserPage implements OnInit {
     .getUserProfile()
     .get()
     .then( userProfileSnapshot => {
-      this.fotoPerfilURL = userProfileSnapshot.data().fotoPerfilURL;  
+      // this.fotoPerfilURL = userProfileSnapshot.data().fotoPerfilURL;  
       this.setFoto();
     });
     
    }
 
    setFoto(){
-     if(this.fotoPerfilURL){
-      document.getElementById("fotoButton").setAttribute("src",`http://ucarecdn.com/${ this.fotoPerfilURL}/`);
-     }else{
+    //  if(this.fotoPerfilURL){
+    //   document.getElementById("fotoButton").setAttribute("src",`http://ucarecdn.com/${ this.fotoPerfilURL}/`);
+    //  }else{
       document.getElementById("fotoButton").setAttribute("src",`./assets/img/esgr_mask.jpg`);
       document.getElementById("fotoButton").style.border = "thick solid black";
-     }
+    //  }
    }
 
    openMenu(){

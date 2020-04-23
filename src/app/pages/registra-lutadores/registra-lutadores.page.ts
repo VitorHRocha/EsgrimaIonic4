@@ -22,11 +22,12 @@ export class RegistraLutadoresPage implements OnInit {
   public current; 
   public userProfile: any;
   public teste;
+  public tipoLuta;
 
   meuNome: string ="";
   meuClube: string ="";
-  nome2: string ="";
-  clube2: string ="";
+  nomeOponente: string ="";
+  clubeOponente: string ="";
 
   public valido;
 
@@ -41,6 +42,7 @@ export class RegistraLutadoresPage implements OnInit {
     .get()
     .then( userProfileSnapshot => {
       this.meuNome = userProfileSnapshot.data().nome;  
+      this.meuClube = userProfileSnapshot.data().clube;
       
     });
       
@@ -53,14 +55,14 @@ export class RegistraLutadoresPage implements OnInit {
   async cadastro(): Promise<void> {
   
      try{
-       this.lutaService.guardaLutadores( 
+       this.lutaService.guardaLutadores(
+           this.tipoLuta, 
            this.meuNome,
            this.meuClube,
-           this.nome2,
-           this.clube2)
+           this.nomeOponente,
+           this.clubeOponente)
            
          this.router.navigate(['/luta'])
-       
      }catch(error){
        console.dir(error)
      }
@@ -78,10 +80,10 @@ async presentModal2() {
   const { data } = await modal.onWillDismiss();
   console.log(data);
 
-  this.nome2 = data.atleta.nome ;
-  this.clube2 = data.atleta.clube;
+  this.nomeOponente = data.atleta.nome ;
+  this.clubeOponente = data.atleta.clube;
   
-  if(this.nome2 == '' || this.nome1 == '' ){
+  if(this.nomeOponente == '' || this.meuNome == '' ){
     this.valido = false ;
 
   }else{
@@ -92,11 +94,17 @@ async presentModal2() {
 }
   
   ngOnInit() {
-     document.getElementById("fotoButton1").setAttribute("src",`./assets/img/esgr_mask.jpg`);
+     //document.getElementById("fotoButton1").setAttribute("src",`./assets/img/esgr_mask.jpg`);
      
      document.getElementById("fotoButton2").setAttribute("src",`./assets/img/esgr_mask.jpg`);
     
     
+  }
+  Treinamento(){
+    this.tipoLuta = 'Treinamento';
+  }
+  Campeonato(){
+    this.tipoLuta = 'Campeonato';
   }
 
 }

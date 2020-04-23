@@ -22,7 +22,8 @@ export class RelatorioPage implements OnInit {
   public lutaEstatistica: any;
   public lutadores:any;
   public lutadoresAtuais:any;
-  
+  public meuNome:string;
+  public nomeOponente:string;  
   public pontosLutador1;
   public pontosLutador2;
   public totalPontos1=0;
@@ -68,7 +69,8 @@ export class RelatorioPage implements OnInit {
       this.luta=this.lutas[this.lutaService.getLutaAtual()];
       var lutadoresNomes = [this.lutadoresAtuais.nome1, this.lutadoresAtuais.nome2];
       this.nomeLutador = this.lutadoresAtuais.nome1;
-      console.log(this.nomeLutador);
+      this.meuNome = this.lutadoresAtuais.nome1;
+      this.nomeOponente  = this.lutadoresAtuais.nome2;
       var Ataques= this.luta.Ataques;
       var LocalCorpo= this.luta.LocalCorpo;
       var Arena= this.luta.Area;

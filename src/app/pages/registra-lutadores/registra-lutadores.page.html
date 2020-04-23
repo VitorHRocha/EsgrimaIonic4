@@ -7,15 +7,23 @@
 </ion-header>
  
 <ion-content>
-        <ion-list (click)="presentModal2()">
+          <ion-segment>
+            <ion-segment-button (click)="Treinamento()" checked >
+              <ion-label>Treinamento</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="Campeonato()">
+              <ion-label>Campeonato</ion-label>
+            </ion-segment-button>
+          </ion-segment> 
+          <ion-list (click)="presentModal2()">
           <ion-list-header> Oponente </ion-list-header>
           <ion-item>
               <ion-avatar slot="start">
                   <img id="fotoButton2" src="" alt="">
               </ion-avatar>
               <ion-label>
-                  <ion-label >Nome: {{nome2}}</ion-label>
-                  <ion-label >Clube: {{clube2}}</ion-label>
+                  <ion-label >Nome: {{nomeOponente}}</ion-label>
+                  <ion-label >Clube: {{clubeOponente}}</ion-label>
               </ion-label>
             </ion-item>
 

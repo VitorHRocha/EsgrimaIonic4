@@ -18,10 +18,12 @@ export class LutaService {
   public currentUser: firebase.User;
   public lutaAtual;
   
+  private tipoJogo: string;
   private nome1: string;
   private clube1: string;
   private nome2: string;
   private clube2: string;
+  
   
   private pontosLutador1: any = [];
   private pontosLutador2: any = [];
@@ -118,12 +120,6 @@ export class LutaService {
             lutaDetalhada+=" na zona 5 \n";
           }
           
-          
-          
-          
-          
-          
-          
         }
         return lutaDetalhada;
         
@@ -211,16 +207,16 @@ export class LutaService {
         }
         
         guardaLutadores(
+          tipoJogo: string,
           nome1: string,
           clube1: string,
           nome2: string,
           clube2: string){
+            this.tipoJogo = tipoJogo; 
             this.nome1=nome1;
             this.nome2=nome2;
             this.clube1=clube1;
             this.clube2=clube2;
-            
-            
           }
           
           setLutaAtual(lutaAtual){
@@ -229,6 +225,10 @@ export class LutaService {
           
           getLutaAtual(){
             return this.lutaAtual;
+          }
+          
+          getTipoJogo(){
+            return this.tipoJogo;
           }
           
           public getnome1(): string {
@@ -251,6 +251,64 @@ export class LutaService {
             return this.pontosLutador1;
             
           }
+          public getData(): string {            
+            
+            var date = new Date();
+            var data: string;
+            var mes: any;
+            var dia: any;
+            var ano: any;
+            
+            // Recebe valores
+            ano  = date.getFullYear();
+            mes  = date.getMonth() + 1;
+            dia  = date.getDate();
+
+            // transforma em String
+            dia = dia.toString();
+            mes = mes.toString();
+            ano = ano.toString();
+
+            //Manipula valores
+            if( dia.length < 2 ){
+              dia = '0'+dia;
+            }
+            if( mes.length < 2 ){
+              mes = '0'+mes;
+            }
+            mes = mes.concat('.',dia);
+            data = ano.concat('.',mes);
+            return data;
+
+          }
+          public getHora(): string { 
+          
+            var date = new Date();
+            var hora: any;
+            var min: any;
+            
+            // Recebe valores
+            hora = date.getHours();
+            min  = date.getMinutes();
+
+            // Transforma em String
+            hora = hora.toString();
+            min  = min.toString();
+
+
+            //Manipula valores
+            if( hora.length < 2 ){
+              hora = '0'+hora;
+            }
+            if( min.length < 2 ){
+              min = '0'+min;
+            }
+            
+            hora = hora.concat(':',min);
+            return hora;
+
+          }
+
           public setPontosLutador1(value: any) {
             this.pontosLutador1 = value;
           }

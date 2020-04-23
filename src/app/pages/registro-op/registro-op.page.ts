@@ -20,8 +20,9 @@ export class RegistroOpPage implements OnInit {
   
   altura: string = "";
   agressividade  = "";
-  punho2: string = "";
+  punho: string = "";
   lutadores: any;
+  numeroLutas: number;
   
   public valido;
 
@@ -38,6 +39,12 @@ export class RegistroOpPage implements OnInit {
     }
     
     ngOnInit() {
+      this.profileService
+    .getUserProfile()
+    .get()
+    .then( userProfileSnapshot => {
+      this.userProfile = userProfileSnapshot.data();
+    });
       
     }
     voltar(){
@@ -60,7 +67,7 @@ export class RegistroOpPage implements OnInit {
     
     
     marcaPunhLut2(punho){
-      this.punho2=punho;
+      this.punho=punho;
       var i;
       var k="punhLut2";
       for(i=1;i<=2;i++){ 
@@ -73,22 +80,22 @@ export class RegistroOpPage implements OnInit {
       this.liberaCadastro();
     }
 
-    // marcaAgressividade(agressividade){
-    //   this.agressividade = ;
-    //   var i;
-    //   var k="punhLut2";
-    //   for(i=1;i<=2;i++){ 
-    //     if(i == punho){
-    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
-    //     }else{
-    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-    //     }
-    //   }        
-    //   this.liberaCadastro();
+    marcaAgressividade(agressividade){
+      this.agressividade = agressividade;
+      var i;
+   var k="agressividade";
+      for(i=1;i<=2;i++){ 
+        if(i == agressividade){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+        }else{
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+        }
+      }        
+      this.liberaCadastro();
+    }
 
-    // }
-    liberaCadastro(){
-      if(this.altura == '' || this.agressividade == '' || this.punho2 == '' ){
+     liberaCadastro(){
+      if(this.altura == '' || this.agressividade == '' || this.punho == '' ){
         this.valido = false;
       }else{
         this.valido = true;
@@ -100,15 +107,15 @@ export class RegistroOpPage implements OnInit {
     async cadastro(regiOpform: FormGroup): Promise<void> {
       var punho1;
       var altura_relativa;
-      var punho2;  
+      var punho;
 
       punho1 = 'Destro'
 
-      if(this.punho2 == '1'){
-        punho2= 'Destro';
+      if(this.punho == '1'){
+        punho= 'Destro';
 
       }else{
-        punho2= 'Canhoto';
+        punho= 'Canhoto';
       }
 
       if(this.altura == '1'){
@@ -127,13 +134,17 @@ export class RegistroOpPage implements OnInit {
       
       try{
         this.profileService.updateLutadores(
+          this.userProfile.numeroLutas,
+          this.lutaService.getTipoJogo(),
           this.lutaService.getnome1(),
           this.lutaService.getclube1(),
           this.lutaService.getnome2(),
           this.lutaService.getclube2(),
+          this.lutaService.getData(),
+          this.lutaService.getHora(),
           altura_relativa,
           punho1,
-          punho2)
+          punho)
           
           this.router.navigate(['/user'])
           

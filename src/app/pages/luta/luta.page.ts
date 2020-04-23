@@ -330,10 +330,7 @@ export class LutaPage implements OnInit {
             }
           }, {
             text: 'Continuar jogo',
-            handler: () => {
-              
-             
-            }
+            handler: () => {  }
           }
         ]
       });await alert.present();

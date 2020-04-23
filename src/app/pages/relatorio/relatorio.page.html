@@ -9,7 +9,7 @@
  
 <ion-content> 
   <div class="labels">
-  <ion-label id="placar">{{lutadoresAtuais.nome1}} X {{lutadoresAtuais.nome2}}<br></ion-label>
+  <ion-label id="placar">{{meuNome}} X {{nomeOponente}}<br></ion-label>
   <ion-label>{{totalPontos1}} X {{totalPontos2}}</ion-label>
   </div> 
   <ion-segment>
@@ -35,10 +35,10 @@
       <ion-list-header>
         <ion-segment>
           <ion-segment-button (click)="PontosFeitos()" checked >
-            <ion-label>Pontos Feitos</ion-label>
+            <ion-label>Pontos Sofridos</ion-label>
           </ion-segment-button>
           <ion-segment-button (click)="PontosSofridos()">
-            <ion-label>Pontos Sofridos</ion-label>
+            <ion-label>Pontos Feitos</ion-label>
           </ion-segment-button>
         </ion-segment> 
       </ion-list-header>
