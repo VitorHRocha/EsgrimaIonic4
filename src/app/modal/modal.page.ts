@@ -24,9 +24,8 @@ export class ModalPage implements OnInit {
       this.atletas.getListAtleta().get().then( userProfileSnapshot =>{
         this.listaAtletas = userProfileSnapshot.data();
         console.log(this.listaAtletas);
-        
-  
-      });
+      }
+      );
       
       this.regiOpform = this.formBuilder.group({
         nome: [

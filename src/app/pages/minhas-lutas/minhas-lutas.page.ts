@@ -59,9 +59,6 @@ ordenaLutas(){
     a_data_num = parseInt(a_data_string);
     b_data_num = parseInt(b_data_string);
     valor = b_data_num - a_data_num;
-    console.log(b.data);
-    console.log(a.data);
-    console.log(valor);
     return valor;
   });
 

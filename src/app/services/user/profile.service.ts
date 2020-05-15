@@ -37,6 +37,10 @@ export class ProfileService {
   updateLutadores(
     idLuta: number,
     tipoJogo: string,
+    etapaCampenato: string,
+    etapaEliminatoria: string,
+    rankingOponente: string,
+    classOponente: string,
     nome1: string,
     clube1: string,
     nome2: string,
@@ -47,12 +51,31 @@ export class ProfileService {
     punho1: string,
     punho2: string
     ): Promise<any> {
+      console.log(idLuta);
+      console.log(tipoJogo);
+      console.log(etapaCampenato);
+      console.log(etapaEliminatoria);
+      console.log(rankingOponente);
+      console.log(classOponente);
+      console.log(nome1);
+      console.log(clube1);
+      console.log(nome2);
+      console.log(clube2);
+      console.log(data);
+      console.log(hora);
+      console.log(altura_relativa);
+      console.log(punho1);
+      console.log(punho2);
        
       this.updateLutas(idLuta);
       return this.userProfile.update({
         lutadores: firebase.firestore.FieldValue.arrayUnion({
             idLuta,
             tipoJogo,
+            etapaCampenato,
+            etapaEliminatoria,
+            rankingOponente,
+            classOponente,
             nome1,
             clube1,
             nome2,
@@ -62,7 +85,6 @@ export class ProfileService {
             altura_relativa,
             punho1,
             punho2,
- 
         })
       });
 

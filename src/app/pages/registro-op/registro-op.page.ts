@@ -65,8 +65,7 @@ export class RegistroOpPage implements OnInit {
       this.liberaCadastro();
     }
     
-    
-    marcaPunhLut2(punho){
+    marcaPunhoOponente(punho){
       this.punho=punho;
       var i;
       var k="punhLut2";
@@ -94,14 +93,12 @@ export class RegistroOpPage implements OnInit {
       this.liberaCadastro();
     }
 
-     liberaCadastro(){
+    liberaCadastro(){
       if(this.altura == '' || this.agressividade == '' || this.punho == '' ){
         this.valido = false;
       }else{
         this.valido = true;
       }
-
-
     }
     
     async cadastro(regiOpform: FormGroup): Promise<void> {
@@ -125,17 +122,19 @@ export class RegistroOpPage implements OnInit {
       else{
         if(this.altura == '2'){
         altura_relativa = 'Parecida';
-      }else{
+        }else{
         altura_relativa = 'Menor';
+        }
       }
-    }
- 
      
-      
-      try{
+    try{
         this.profileService.updateLutadores(
           this.userProfile.numeroLutas,
           this.lutaService.getTipoJogo(),
+          this.lutaService.getEtapaCampenato(),
+          this.lutaService.getEtapaEliminatoria(),
+          this.lutaService.getRankingOponente(),
+          this.lutaService.getClassOponente(),
           this.lutaService.getnome1(),
           this.lutaService.getclube1(),
           this.lutaService.getnome2(),
@@ -146,12 +145,11 @@ export class RegistroOpPage implements OnInit {
           punho1,
           punho)
           
-          this.router.navigate(['/user'])
+          this.lutaService.setLutaAtual(this.userProfile.numeroLutas);
+          this.router.navigate(['/relatorio'])
           
         }catch(error){
           console.dir(error)
         }
-        
       }
-      
-    }
+}

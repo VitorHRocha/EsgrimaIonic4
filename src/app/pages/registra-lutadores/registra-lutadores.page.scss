@@ -1,0 +1,19 @@
+ion-avatar{
+    width:   100% !important;  
+    height : 100% !important;  
+    max-width: 100px !important;  //any size
+    max-height: 100px !important; //any size 
+    margin: auto;
+    border: 20px;
+    border-color: blueviolet;
+}
+
+h3{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#etapa_eliminatoria{
+    display: flex;
+    flex-wrap: wrap;
+}

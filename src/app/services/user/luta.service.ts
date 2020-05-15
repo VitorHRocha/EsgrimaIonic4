@@ -14,11 +14,17 @@ export class LutaService {
   
   
   public eventListRef:firebase.firestore.DocumentReference;
-  public userProfile: any;
-  public currentUser: firebase.User;
+  public userProfile:        any;
+  public currentUser:        firebase.User;
   public lutaAtual;
   
-  private tipoJogo: string;
+  private tipoJogo:          string;
+  private etapaCampenato:    string;
+  private etapaEliminatoria: string;
+
+  private rankingOponente:   string;
+  private classOponente:     string;
+
   private nome1: string;
   private clube1: string;
   private nome2: string;
@@ -36,9 +42,7 @@ export class LutaService {
         .firestore()
         .doc(`/userProfile/${user.uid}/`);
       }
-    });
-    
-    
+    }); 
   }
   
   updateLutas(
@@ -173,9 +177,6 @@ export class LutaService {
             }
             
           }
-          // daniel.conrado@ifmg.edu.br
-          // 095606         
-    
           
           //separa os pontos em dois vetores
           for(i=0 ; i<16;i++){
@@ -208,27 +209,43 @@ export class LutaService {
         
         guardaLutadores(
           tipoJogo: string,
+          etapaCampenato: string,
+          etapaEliminatoria: string,
+          rankingOponente: string,
+          classOponente: string, 
           nome1: string,
           clube1: string,
           nome2: string,
           clube2: string){
-            this.tipoJogo = tipoJogo; 
-            this.nome1=nome1;
-            this.nome2=nome2;
-            this.clube1=clube1;
-            this.clube2=clube2;
+            this.tipoJogo          = tipoJogo; 
+            this.etapaCampenato    = etapaCampenato,
+            this.etapaEliminatoria = etapaEliminatoria,
+            this.rankingOponente   = rankingOponente,
+            this.classOponente     = classOponente, 
+            this.nome1             = nome1;
+            this.nome2             = nome2;
+            this.clube1            = clube1;
+            this.clube2            = clube2;
           }
           
-          setLutaAtual(lutaAtual){
+          public setLutaAtual(lutaAtual){
             this.lutaAtual=lutaAtual;
           }
           
-          getLutaAtual(){
+          public getLutaAtual(){
             return this.lutaAtual;
           }
           
-          getTipoJogo(){
+          public getTipoJogo(){
             return this.tipoJogo;
+          }
+          
+          public getEtapaCampenato(){
+            return this.etapaCampenato;
+          }
+
+          public getEtapaEliminatoria(){
+            return this.etapaEliminatoria;
           }
           
           public getnome1(): string {
@@ -246,11 +263,19 @@ export class LutaService {
           public getclube2(): string {
             return this.clube2;
           }
+          
           public getPontosLutador1(): any {
-            
             return this.pontosLutador1;
-            
           }
+
+          public getRankingOponente(): any {
+            return this.rankingOponente;
+          }
+
+          public getClassOponente(): any {
+            return this.classOponente;
+          }
+
           public getData(): string {            
             
             var date = new Date();
@@ -281,6 +306,7 @@ export class LutaService {
             return data;
 
           }
+          
           public getHora(): string { 
           
             var date = new Date();
