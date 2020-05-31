@@ -4,7 +4,7 @@
         <ion-icon name="arrow-dropleft-circle"></ion-icon>
       </ion-button>
       <ion-button shape="round" class="Filtro">
-        <ion-icon name="options-sharp"></ion-icon>
+        <ion-icon name="funnel"></ion-icon>
       </ion-button>
     </ion-toolbar>
   </ion-header>  
@@ -14,12 +14,18 @@
     
     <div class="luta" *ngFor="let lutadores of lutas">
       
+      <p class="trap"> 
+        {{lutadores.tipoJogo}}
+      </p>
+      <p class="trap" id="etapaCampeonato" *ngIf="lutadores.etapaCampeonato">  
+        {{lutadores.etapaCampeonato}}
+      </p>
+      <p class="trap" id="etapaEliminatoria" *ngIf="lutadores.etapaEliminatoria"> 
+        {{lutadores.etapaEliminatoria}}
+      </p>
       <ion-card (click)="selecionaLuta(lutadores.idLuta)">
         <ion-card-header  >
-          <ion-card-subtitle>
-            <ion-toolbar >
-              {{lutadores.tipoJogo}}
-            </ion-toolbar>
+          <ion-card-subtitle>            
             <ion-toolbar>
               <ion-label>
                 {{lutadores.data}}

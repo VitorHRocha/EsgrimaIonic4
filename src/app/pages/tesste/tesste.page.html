@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tesste</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-range color="danger" pin="true"></ion-range>
+    </ion-item>
+  
+    <ion-item>
+      <ion-range min="-200" max="200" color="secondary">
+        <ion-label slot="start">-200</ion-label>
+        <ion-label slot="end">200</ion-label>
+      </ion-range>
+    </ion-item>
+  
+    <ion-item>
+      <ion-range min="20" max="80" step="2">
+   
+      </ion-range>
+    </ion-item>
+  
+    <ion-item >
+      <ion-label>Altura</ion-label>
+      <ion-range  min="1" max="3" step="1"  snaps="true"color="secondary" (ionChange)="altura($event)">
+        <ion-label slot="start">maior</ion-label>
+        <ion-label slot="end">menor</ion-label>
+      </ion-range>
+    </ion-item>
+  
+    <ion-item>
+      <ion-range min="1000" max="2000" step="100" snaps="true" ticks="false" color="secondary"></ion-range>
+    </ion-item>
+  
+    <ion-item>
+      <ion-range dualKnobs="true" min="21" max="72" step="3" snaps="true"  ticks="true"></ion-range>
+    </ion-item>
+  </ion-list>
+</ion-content>

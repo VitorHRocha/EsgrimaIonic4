@@ -21,9 +21,45 @@
     font-size: 100%;
 }
 
+.trap {
+
+  display: inline-block;
+  
+
+  font-size: 75%;
+
+  height: 0;    
+  width: 50;
+
+  border-bottom: 15px solid #f9c;
+  border-left: 20px solid transparent;
+  border-right: 0px solid transparent;
+  border-radius: 30px 5px 0px 0px;
+
+  padding-right: 5px ;
+  
+  margin-left: 67%;
+}
+
+#etapaCampeonato{
+    position: absolute;
+    border-bottom: 15px solid rgb(73, 80, 182);
+    right: 33%;
+    // bottom: 10%;
+}
+
+#etapaEliminatoria{
+    position: absolute;
+    border-bottom: 15px solid rgb(51, 141, 16);
+    right: 52%;
+}
+
 .Filtro{
     position: absolute;
     // margin-right: auto; 
     // margin-left: auto;
     right: 0%;
+}
+ion-card{
+    margin-top: -3%;
 }

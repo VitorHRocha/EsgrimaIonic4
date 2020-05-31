@@ -115,7 +115,7 @@ export class RegistraLutadoresPage implements OnInit {
   }
   
   //ETAPA CAMPEONATO-------INICIO--------------------------
-  segmentTipoJogo(tipoLuto: any){
+  segmentTipoJogo(tipoLuto: any){ 
     this.tipoLuta = tipoLuto.detail.value;
     if(this.tipoLuta == "campeonato"){
       document.getElementById("etapa_campeonato").style.display = "";

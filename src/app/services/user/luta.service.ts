@@ -45,7 +45,7 @@ export class LutaService {
     }); 
   }
   
-  updateLutas(
+  updateLutas( 
     Ataques: Array<number>,
     LocalCorpo: Array<number>,
     Area: Array<number>):

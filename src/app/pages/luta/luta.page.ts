@@ -326,7 +326,7 @@ export class LutaPage implements OnInit {
             cssClass: 'secondary',
             handler: () => {
               this.lutaService.updateLutas(this.ataque, this.localCorpo, this.pista)
-              this.router.navigate(['/registro-op']);
+              this.router.navigate(['/caracteristicas-oponente']);
             }
           }, {
             text: 'Continuar jogo',

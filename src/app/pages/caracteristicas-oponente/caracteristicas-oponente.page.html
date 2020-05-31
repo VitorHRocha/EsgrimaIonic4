@@ -1,0 +1,139 @@
+<ion-header>
+
+</ion-header>  
+
+<ion-content padding>
+  <ion-label>Em relação à {{nomeLut1}}, {{nomeLut2}} é</ion-label>
+  <ion-segment (ionChange)="segmentAltura($event)" value="menor" >
+    <ion-segment-button value="menor">
+      <ion-label>Menor</ion-label>
+    </ion-segment-button> 
+    <ion-segment-button value="altura_parecida" >
+      <ion-label>Altura <br> parecida</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="maior" >
+      <ion-label >Maior</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+  <!-- <div class="Altura">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="alt1" (click)="marcaAlt(1)">Maior</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="alt2" (click)="marcaAlt(2)"> Altura <br> parecida</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="alt3" (click)="marcaAlt(3)">Menor</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> -->
+
+  <ion-label>{{nomeLut2}} é</ion-label>
+  <ion-segment (ionChange)="segmentPunho($event)" value="destro" >
+    <ion-segment-button value="destro" >
+      <ion-label>Destro</ion-label>
+    </ion-segment-button> 
+    <ion-segment-button value="canhoto">
+      <ion-label>Canhoto</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!-- <div class="Punholut2">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut21" (click)="marcaPunhoOponente(1)">Destro</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="punhLut22" (click)="marcaPunhoOponente(2)">Canhoto</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> -->
+
+  <ion-label>{{nomeLut2}} usa a empunhadura:</ion-label>
+  <ion-segment (ionChange)="segmentEmpunhadura($event)" value="anatomica" >
+    <ion-segment-button value="anatomica" >
+      <ion-label>Anatômica</ion-label>
+    </ion-segment-button> 
+    <ion-segment-button value="frances">
+      <ion-label>Francês</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment (ionChange)="segmentTaticaPredominante($event)" value="atacante" >
+    <ion-segment-button value="atacante" >
+      <ion-label class="foto">Atacante</ion-label>
+    </ion-segment-button> 
+    <ion-segment-button value="contra-atacante" class="foto">
+      <ion-label>Contra-atacante</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="defensivo">
+      <ion-label>Defensivo</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment (ionChange)="segmentNivelTecnico($event)" value="iniciante" mode="ios">
+    <ion-segment-button value="iniciante" >
+      <ion-label>Iniciante</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="intermediario">
+      <ion-label>Intermediario</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="defensivo">
+      <ion-label>Avançado</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <!-- <ion-label>{{nomeLut2}} é</ion-label>
+  <div class="Agressividade">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="movimento" id="agressividade1" (click)="marcaAgressividade(1)">Agressivo</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="movimento" id="agressividade2" (click)="marcaAgressividade(2)">Cauteloso</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+   -->
+
+ <!-- <ion-list>
+    <ion-item>
+      <ion-label>Altura</ion-label>
+      <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+       <ion-label slot="start">Maior</ion-label>
+       <ion-label slot="end">Menor</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label>Punho</ion-label>
+      <ion-range min="1" max="2" step="1" snaps="true" color="secondary" (ionChange)="punho($event)">
+       <ion-label slot="start">Destro</ion-label>
+       <ion-label slot="end">Canhoto</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label>Empunhadura</ion-label>
+      <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="empunhadura($event)">
+       <ion-label slot="start">Anatômico</ion-label>
+       <ion-label slot="end">francês</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list> -->
+   <ion-button (click)="cadastro()" expand="block">
+   [disabled]="!valido">
+   Confirma
+</ion-button>
+
+
+
+
+
+</ion-content>

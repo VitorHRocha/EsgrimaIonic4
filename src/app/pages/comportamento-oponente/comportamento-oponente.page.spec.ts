@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroOpPage } from './registro-op.page';
+import { ComportamentoOponentePage } from './comportamento-oponente.page';
 
-describe('RegistroOpPage', () => {
-  let component: RegistroOpPage;
-  let fixture: ComponentFixture<RegistroOpPage>;
+describe('ComportamentoOponentePage', () => {
+  let component: ComportamentoOponentePage;
+  let fixture: ComponentFixture<ComportamentoOponentePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistroOpPage ],
+      declarations: [ ComportamentoOponentePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegistroOpPage);
+    fixture = TestBed.createComponent(ComportamentoOponentePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
