@@ -52,23 +52,53 @@ export class ProfileService {
     punho2: string,
     empunhadura: string,
     tatica: string,
-    nivelTecnico: string
+    nivelTecnico: string,
+    conservadora: number,
+    inconstante: number,
+    inseguro: number,
+    pressionado: number,
+    provocativa: number,
+    passiva: number,
+    confiante: number,
+    estressado: number,
+    focado: number,
+    motivado: number,
+    controlado: number,
+    disciplinado: number
     ): Promise<any> {
+ 
       console.log(idLuta);
       console.log(tipoJogo);
       console.log(etapaCampeonato);
       console.log(etapaEliminatoria);
       console.log(rankingOponente);
-      console.log(classOponente);
       console.log(nome1);
       console.log(clube1);
       console.log(nome2);
       console.log(clube2);
       console.log(data);
       console.log(hora);
+
+
       console.log(altura_relativa);
       console.log(punho1);
       console.log(punho2);
+      console.log(empunhadura);
+      console.log(tatica);
+      console.log(nivelTecnico);
+      console.log(conservadora);
+      console.log(inconstante);
+      console.log(inseguro);
+      console.log(pressionado);
+      console.log(provocativa);
+      console.log(passiva);
+      console.log(confiante);
+      console.log(estressado);
+      console.log(focado);
+      console.log(motivado);
+      console.log(controlado);
+      console.log(disciplinado);
+
        
       this.updateLutas(idLuta);
       return this.userProfile.update({
@@ -90,7 +120,19 @@ export class ProfileService {
             punho2,
             empunhadura,
             tatica,
-            nivelTecnico
+            nivelTecnico,
+            conservadora,
+            inconstante,
+            inseguro,
+            pressionado,
+            provocativa,
+            passiva,
+            confiante ,
+            estressado ,
+            focado ,
+            motivado ,
+            controlado ,
+            disciplinado 
         })
       });
 

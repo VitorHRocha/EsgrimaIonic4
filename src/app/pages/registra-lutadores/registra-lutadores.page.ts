@@ -61,7 +61,10 @@ export class RegistraLutadoresPage implements OnInit {
     document.getElementById("etapa_eliminatoria").style.display = "none";
     document.getElementById("raking_oponente_poule").style.display = "none";
     document.getElementById("class_oponente_eliminatoria").style.display = "none";
-    
+
+    // document.getElementById("melhorclass").setAttribute("src",`./assets/icon/arrow-down-circle-outline.svg`);
+
+    this.tipoLuta = "treinamento" ;
     this.etapaCampeonato   = "";
     this.etapaEliminatoria = "";
     this.rankingOponente   = "";

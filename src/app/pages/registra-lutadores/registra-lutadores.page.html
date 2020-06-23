@@ -5,7 +5,7 @@
     </ion-button>
   </ion-toolbar> 
 </ion-header>
- 
+<script  src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"> </script>
 <ion-content>
 
           <ion-segment id="tipo_jogo" (ionChange)="segmentTipoJogo($event)" value="treinamento">
@@ -65,23 +65,27 @@
         </ion-list>
         
         <ion-segment id="raking_oponente_poule" (ionChange)="segmentRakingOponentePoule($event)" value="melhor">
-          <ion-segment-button value="melhor" >
-            <ion-label>Melhor Ranqueado</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="pior">
+          <ion-segment-button value="pior" layout="icon-bottom">
             <ion-label>Pior Ranqueado</ion-label>
+            <ion-icon name="arrow-round-down"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="melhor" layout="icon-bottom">
+            <ion-label>Melhor Ranqueado</ion-label>
+            <ion-icon name="arrow-round-up"></ion-icon>
           </ion-segment-button>
         </ion-segment>
 
         <ion-segment id="class_oponente_eliminatoria" (ionChange)="segmentClassOponenteEliminatoria($event)" value="melhor">
-          <ion-segment-button value="melhor" >
-            <ion-label>Melhor</ion-label>
+          <ion-segment-button value="pior" layout="icon-bottom">
+            <ion-label>Pior</ion-label>
+            <ion-icon name="arrow-round-down"></ion-icon>
           </ion-segment-button>
           <ion-segment-button value="equivalente" >
             <ion-label>Equivalente</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="pior">
-            <ion-label>Pior</ion-label>
+          <ion-segment-button   value="melhor" layout="icon-bottom">
+            <ion-label>Melhor</ion-label>
+            <ion-icon name="arrow-round-up"></ion-icon>
           </ion-segment-button>
         </ion-segment>
     

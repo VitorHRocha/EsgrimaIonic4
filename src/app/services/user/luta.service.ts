@@ -29,6 +29,20 @@ export class LutaService {
   private clube1: string;
   private nome2: string;
   private clube2: string;
+
+  private altura_relativa: string; 
+  private punho1         : string;
+  private punho          : string;
+  private empunhadura    : string;
+  private tatica         : string; 
+  private nivelTecnico   : string;
+
+  private conservadora : number; 
+  private inconstante  : number; 
+  private inseguro     : number; 
+  private pressionado  : number; 
+  private provocativa  : number;  
+  private passiva      : number; 
   
   
   private pontosLutador1: any = [];
@@ -228,8 +242,86 @@ export class LutaService {
             this.clube2            = clube2;
           }
           
+          guardaCaracteristicasOponente(
+            altura_relativa: string,
+            punho1: string,
+            punho: string,
+            empunhadura: string,
+            tatica: string, 
+            nivelTecnico: string){
+              this.altura_relativa   = altura_relativa; 
+              this.punho1            = punho1,
+              this.punho             = punho,
+              this.empunhadura       = empunhadura,
+              this.tatica            = tatica, 
+              this.nivelTecnico      = nivelTecnico;
+          }
+          
+          guardaComportamentoOponente(
+            conservadora: number,
+            inconstante: number,
+            inseguro: number,
+            pressionado : number,
+            provocativa: number, 
+            passiva: number){
+              this.conservadora = conservadora; 
+              this.inconstante  = inconstante ,
+              this.inseguro     = inseguro,
+              this.pressionado  = pressionado ,
+              this.provocativa  = provocativa, 
+              this.passiva      = passiva;
+          } 
+
           public setLutaAtual(lutaAtual){
             this.lutaAtual=lutaAtual;
+          }
+
+          public getConservadora(){
+            return this.conservadora;
+          }
+
+          public getInconstante(){
+            return this.inconstante;
+          }
+          
+          public getInseguro(){
+            return this.inseguro ;
+          }
+          
+          public getPressionado(){
+            return this.pressionado ;
+          }
+
+          public getProvocativa(){
+            return this.provocativa;
+          }
+          
+          public getPassiva(){
+            return this.passiva;
+          }
+
+          public getAlturaRelativa(){
+            return this.altura_relativa;
+          }
+
+          public getPunho1(){
+            return this.punho1;
+          }
+          
+          public getPunho(){
+            return this.punho ;
+          }
+          
+          public getEmpunhadura(){
+            return this.empunhadura ;
+          }
+
+          public getTatica(){
+            return this.tatica;
+          }
+          
+          public getNivelTecnico(): string {
+            return this.nivelTecnico;
           }
           
           public getLutaAtual(){

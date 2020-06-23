@@ -132,7 +132,7 @@ export class RegistroOpPage implements OnInit {
       var altura_relativa;
       var punho;
 
-      // punho1 = 'Destro'
+      punho1 = 'Destro';
 
       // if(this.punho == '1'){
       //   punho= 'Destro';
@@ -152,33 +152,23 @@ export class RegistroOpPage implements OnInit {
       //   altura_relativa = 'Menor';
       //   }
       // }
-     
-    try{
-        this.profileService.updateLutadores(
-          this.userProfile.numeroLutas,
-          this.lutaService.getTipoJogo(),
-          this.lutaService.getEtapaCampenato(),
-          this.lutaService.getEtapaEliminatoria(),
-          this.lutaService.getRankingOponente(),
-          this.lutaService.getClassOponente(),
-          this.lutaService.getnome1(),
-          this.lutaService.getclube1(),
-          this.lutaService.getnome2(),
-          this.lutaService.getclube2(),
-          this.lutaService.getData(),
-          this.lutaService.getHora(),
-          altura_relativa,
-          punho1,
-          punho,
-          this.empunhadura,
-          this.tatica,
-          this.nivelTecnico)
-          
-          this.lutaService.setLutaAtual(this.userProfile.numeroLutas);
-          this.router.navigate(['/relatorio'])
-          
-        }catch(error){
-          console.dir(error)
-        }
-      }
+
+      console.log(altura_relativa);
+      console.log(punho1);
+      console.log(punho);
+      console.log(this.empunhadura);
+      console.log(this.tatica);;
+      console.log(this.nivelTecnico);
+
+    this.lutaService.guardaCaracteristicasOponente(
+      this.altura,
+      punho1,
+      this.punho,
+      this.empunhadura,
+      this.tatica,
+      this.nivelTecnico
+    );
+      this.lutaService.setLutaAtual(this.userProfile.numeroLutas);
+      this.router.navigate(['/comportamento-oponente'])
+    }
 }

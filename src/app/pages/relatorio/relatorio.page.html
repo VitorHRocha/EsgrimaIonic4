@@ -7,54 +7,73 @@
   </ion-toolbar>
 </ion-header>
  
-<ion-content> 
+<ion-content>  
   <div class="labels">
   <ion-label id="placar">{{meuNome}} X {{nomeOponente}}<br></ion-label>
   <ion-label>{{totalPontos1}} X {{totalPontos2}}</ion-label>
   </div> 
-  <ion-segment>
+  <!-- <ion-segment>
     <ion-segment-button (click)="lutaTabela()" checked >
       <ion-label>Tabela</ion-label>
     </ion-segment-button>
     <ion-segment-button (click)="lutaDetalhada()">
       <ion-label>Detalhada</ion-label>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment> -->
   
-  <div id="descricao" > 
+  <!-- <div id="descricao" > 
     <p>{{lutaDetalhes}} </p>
-  </div>
+  </div> -->
   
   <div id="tabela">
-    <div class="labels">
+    <!-- <div class="labels">
       <ion-button class="seta" (click)="trocaLutador()">  <ion-icon name="arrow-dropleft-circle"></ion-icon> </ion-button>
       <ion-label>{{nomeLutador}}</ion-label>
       <ion-button class="seta" (click)="trocaLutador()"> <ion-icon name="arrow-dropright-circle"></ion-icon> </ion-button>
-    </div>  
-    <ion-list>
-      <ion-list-header>
-        <ion-segment>
+    </div>   -->
+    <!-- <ion-list>
+      <ion-list-header> -->
+        <!-- <ion-segment>
           <ion-segment-button (click)="PontosFeitos()" checked >
             <ion-label>Pontos Sofridos</ion-label>
           </ion-segment-button>
           <ion-segment-button (click)="PontosSofridos()">
             <ion-label>Pontos Feitos</ion-label>
           </ion-segment-button>
-        </ion-segment> 
-      </ion-list-header>
-      <div id="Lut1Pt1">
-        <ion-item *ngFor="let pontos of pontosLutador1" (click)="detalhaPontos(pontos)">
-          <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-          <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-        </ion-item>
-      </div>
-      <div id="Lut1Pt2">
-        <ion-item *ngFor="let pontos of pontosLutador2" (click)="detalhaPontos(pontos)" >
-          <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-          <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-        </ion-item>
-      </div>
-      <div id="Lut2Pt1">
+        </ion-segment>  -->
+      <!-- </ion-list-header>  -->
+
+    
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-list *ngFor="let pontos of pontosLutador2">
+              <ion-list-header>
+                Pontos feitos
+              </ion-list-header>
+              <ion-item (click)="detalhaPontos(pontos)" >
+                <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+                <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+              </ion-item>
+            </ion-list>       
+          </ion-col>
+     
+          <ion-col>
+            <ion-list *ngFor="let pontos of pontosLutador1">
+              <ion-list-header>
+                Pontos sofridos
+              </ion-list-header>
+              <ion-item  (click)="detalhaPontos(pontos)">
+                <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+                <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+              </ion-item>
+            </ion-list>
+          </ion-col>      
+        </ion-row>
+      </ion-grid>      
+ 
+      
+      <!-- <div id="Lut2Pt1">
         <ion-item *ngFor="let pontos of pontosLutador2"  (click)="detalhaPontos(pontos)" >
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
@@ -65,8 +84,7 @@
           <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
           <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
         </ion-item>
-      </div>
-    </ion-list>
+      </div> -->
   </div>
   
 </ion-content>

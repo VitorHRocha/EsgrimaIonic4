@@ -1,7 +1,8 @@
 {
   "name": "Esgrima",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

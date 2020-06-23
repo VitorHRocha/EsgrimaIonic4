@@ -1,56 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>auto_avaliacao</ion-title>
+    <ion-title>Auto avaliacao</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-  <ion-label  >Confiante</ion-label>
+  <ion-label class="titulo" >Confiante</ion-label>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeConfiante($event)">
       <ion-label slot="start">Pouco</ion-label>
       <ion-label slot="end">Muito</ion-label>
     </ion-range>
   </ion-item>
   
-  <ion-label  >Estressado</ion-label>
+  <ion-label class="titulo"  >Estressado</ion-label>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeEstressado($event)">
       <ion-label slot="start">Pouco</ion-label>
       <ion-label slot="end">Muito</ion-label>
     </ion-range>
   </ion-item>
   
-  <ion-label  >Focado/Alerta</ion-label>
+  <ion-label  class="titulo">Focado/Alerta</ion-label>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeFocado($event)">
       <ion-label slot="start">Pouco</ion-label>
       <ion-label slot="end">Muito</ion-label>
     </ion-range>
   </ion-item>
 
-  <ion-label>Motivado/Comprometido</ion-label>
+  <ion-label class="titulo">Motivado/Comprometido</ion-label>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeMotivado($event)">
       <ion-label slot="start">Pouco</ion-label>
       <ion-label slot="end">Muito</ion-label>
     </ion-range>
   </ion-item>
 
-  <ion-label>Controlado</ion-label>
+  <ion-label class="titulo">Controlado</ion-label>
   <ion-item>
-      <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+      <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeControlado($event)">
         <ion-label slot="start">Pouco</ion-label>
         <ion-label slot="end">Muito</ion-label>
       </ion-range>
   </ion-item>
 
-  <ion-label  >Disciplinado/Planejado</ion-label>
+  <ion-label   class="titulo">Disciplinado/Planejado</ion-label>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="altura($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="rangeDisciplinado($event)">
       <ion-label slot="start">Pouco</ion-label>
       <ion-label slot="end">Muito</ion-label>
     </ion-range>
   </ion-item>
+  <ion-button (click)="cadastro()" expand="block">
+    <!-- [disabled]="!valido"> -->
+    Confirma
+ </ion-button>
+ 
 </ion-content>

@@ -1,6 +1,8 @@
 <ion-header>
-
-</ion-header>  
+  <ion-toolbar>
+    <ion-title>Caracteristicas do Oponente</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content padding>
   <ion-label>Em relação à {{nomeLut1}}, {{nomeLut2}} é</ion-label>
@@ -64,7 +66,8 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-segment (ionChange)="segmentTaticaPredominante($event)" value="atacante" >
+  <ion-label>{{nomeLut2}} na maior parte da luta usava a tatica:</ion-label>
+  <ion-segment (ionChange)="segmentTaticaPredominante($event)" value="atacante" class="tatica">
     <ion-segment-button value="atacante" >
       <ion-label class="foto">Atacante</ion-label>
     </ion-segment-button> 
@@ -76,6 +79,7 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ion-label>{{nomeLut2}} possui o nivel tecnico:</ion-label>
   <ion-segment (ionChange)="segmentNivelTecnico($event)" value="iniciante" mode="ios">
     <ion-segment-button value="iniciante" >
       <ion-label>Iniciante</ion-label>
@@ -128,7 +132,7 @@
     </ion-item>
   </ion-list> -->
    <ion-button (click)="cadastro()" expand="block">
-   [disabled]="!valido">
+   <!-- [disabled]="!valido"> -->
    Confirma
 </ion-button>
 
