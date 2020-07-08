@@ -3,16 +3,16 @@
       <ion-button shape="round" (click)="voltar()">
         <ion-icon name="arrow-dropleft-circle"></ion-icon>
       </ion-button>
-      <ion-button shape="round" class="Filtro">
+      <ion-button shape="round" class="Filtro"(click)="presentAlert()">
         <ion-icon name="funnel"></ion-icon>
       </ion-button>
-    </ion-toolbar>
+    </ion-toolbar> 
   </ion-header>  
 
 <ion-content padding>  
   <div id="lutas">   
     
-    <div class="luta" *ngFor="let lutadores of lutas">
+    <div class="luta" *ngFor="let lutadores of lutaVisao">
       
       <p class="trap"> 
         {{lutadores.tipoJogo}}

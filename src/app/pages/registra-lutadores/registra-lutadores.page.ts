@@ -38,7 +38,7 @@ export class RegistraLutadoresPage implements OnInit {
   clubeOponente: string ="";
 
   public valido;
-
+ 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -66,7 +66,7 @@ export class RegistraLutadoresPage implements OnInit {
 
     this.tipoLuta = "treinamento" ;
     this.etapaCampeonato   = "";
-    this.etapaEliminatoria = "";
+    this.etapaEliminatoria = ""; 
     this.rankingOponente   = "";
     this.classOponente     = "";  
   }

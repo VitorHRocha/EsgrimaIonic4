@@ -186,4 +186,4 @@ export class RelatorioPage implements OnInit {
       
         await alert.present();
         }
-    }
+}
