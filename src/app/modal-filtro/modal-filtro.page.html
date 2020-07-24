@@ -6,8 +6,64 @@
     
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content>
- <p>teste</p>
+  <ion-radio-group id="tipo_jogo" (ionChange)="radioChangeTipoJogo($event)" allowEmptySelection="true">
+    <ion-list-header>
+      <ion-label>Tipo de jogo</ion-label>
+    </ion-list-header>
+    <ion-item  >
+      <ion-label>Treinamento</ion-label>
+      <ion-radio slot="start" color="success" value="treinamento"></ion-radio>
+    </ion-item>
+    <ion-item >
+      <ion-label>Campeonato</ion-label>
+      <ion-radio slot="start" color="success" value="campeonato"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  
+  <ion-radio-group id="etapa_campeonato" (ionChange)="radioChangeEtapaCampeonato($event)" allowEmptySelection="true"> 
+    <ion-list-header>
+      <ion-label>Etapa Campeonato</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Poule</ion-label>
+      <ion-radio slot="start" color="success" value="poule"></ion-radio>
+    </ion-item>
+    <ion-item >
+      <ion-label>Eliminatoria</ion-label>
+      <ion-radio slot="start" color="success" value="eliminatoria"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+
+  <ion-radio-group id="etapa_eliminatoria" (ionChange)="radioChangeEtapaEliminatoria($event)" allowEmptySelection="true">
+    <ion-list-header>
+      <ion-label>Etaoa eliminatoria</ion-label>
+    </ion-list-header>
+    <ion-item  >
+      <ion-label>64</ion-label>
+      <ion-radio slot="start" color="success" value="64"></ion-radio>
+    </ion-item>
+    <ion-item >
+      <ion-label>32</ion-label>
+      <ion-radio slot="start" color="success" value="32"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>16</ion-label>
+      <ion-radio slot="start" color="success"  value="16" ></ion-radio>
+    </ion-item>
+    <ion-item value="8">
+      <ion-label>8</ion-label>
+      <ion-radio slot="start" color="success"  value="8"></ion-radio>
+    </ion-item>
+    <ion-item >
+      <ion-label>Semi-final</ion-label>
+      <ion-radio slot="start" color="success" value="semifinal"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Final</ion-label>
+      <ion-radio slot="start" color="success"  value="final"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
 
 </ion-content>

@@ -37,10 +37,6 @@ export class ModalPage implements OnInit {
           Validators.compose([ Validators.required]),
         ],
       });
-
-     
-     
-
     
     }
     dismiss() {

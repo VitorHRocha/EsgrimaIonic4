@@ -47,11 +47,11 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-list *ngFor="let pontos of pontosLutador2">
+            <ion-list >
               <ion-list-header>
                 Pontos feitos
               </ion-list-header>
-              <ion-item (click)="detalhaPontos(pontos)" >
+              <ion-item (click)="detalhaPontos(pontos)"  *ngFor="let pontos of pontosLutador2">
                 <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
                 <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
               </ion-item>
@@ -59,11 +59,11 @@
           </ion-col>
      
           <ion-col>
-            <ion-list *ngFor="let pontos of pontosLutador1">
+            <ion-list >
               <ion-list-header>
                 Pontos sofridos
               </ion-list-header>
-              <ion-item  (click)="detalhaPontos(pontos)">
+              <ion-item  (click)="detalhaPontos(pontos)" *ngFor="let pontos of pontosLutador1">
                 <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
                 <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
               </ion-item>

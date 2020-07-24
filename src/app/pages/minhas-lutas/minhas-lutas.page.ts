@@ -7,6 +7,8 @@ import { ModalController } from '@ionic/angular';
 
 import { ModalFiltroPage } from '../../modal-filtro/modal-filtro.page';
 import { FiltroPage } from 'src/app/filtro/filtro.page';
+import { stringify } from 'querystring';
+import { equal } from 'assert';
 // import { clear } from 'console';
 // import { PopoverController } from '@ionic/angular';
 // import { PopoverComponent } from '../../component/popover/popover.component';
@@ -118,24 +120,41 @@ export class MinhasLutasPage implements OnInit {
     await alert.present();
   }
 
-  public filtraLutas(filtro){
+  public filtraLutas(filtro:any){
     console.log(this.lutaVisao);
-    this.lutaVisao = [];
-    console.log(this.lutas);
-    console.log(this.lutaVisao);
+    var aux: string;  
     // console.log(indice);
-    for (var luta in this.lutas){
+    
+    console.log(filtro);
+    console.log(filtro.filtro.tipoJogo);
+    if(filtro.filtro.tipoJogo === undefined){
 
-      console.log(this.lutas[luta]);
-      if(this.lutas[luta].tipoJogo == filtro){
-        console.log('aqui');
-        this.lutaVisao.push(this.lutas[luta]);
+      return;
+    }
+    this.lutaVisao = [];
+    for (var luta in this.lutas){
+      if(this.lutas[luta].tipoJogo == filtro.filtro.tipoJogo){
+        if(filtro.filtro.etapaCampeonato === undefined){
+          this.lutaVisao.push(this.lutas[luta]);
+        }else{
+          console.log(filtro.filtro.etapaCampeonato);
+          console.log(this.lutas[luta].etapaCampeonato);
+          if(this.lutas[luta].etapaCampeonato == filtro.filtro.etapaCampeonato){
+            if(filtro.filtro.etapaEliminatoria === undefined){
+              this.lutaVisao.push(this.lutas[luta]);
+            }else if(this.lutas[luta].etapaEliminatoria == filtro.filtro.etapaEliminatoria){
+              console.log(filtro.filtro.etapaEliminatoria); 
+              console.log(this.lutas[luta].etapaEliminatoria);
+              this.lutaVisao.push(this.lutas[luta]);
+            }
+          }
+        }
       }
     }
     console.log(this.lutaVisao);
  }
 
-async presentModal2() {
+async presentModal() {
   const modal = await this.modalCtrl1.create({
     component: ModalFiltroPage
   });
@@ -143,7 +162,7 @@ async presentModal2() {
   await modal.present();
   
   const { data } = await modal.onWillDismiss();
-  console.log(data);
+  this.filtraLutas(data);
 
 }
 

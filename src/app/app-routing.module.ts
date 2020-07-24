@@ -13,9 +13,12 @@ const routes: Routes =[
   { path: 'relatorio', loadChildren: './pages/relatorio/relatorio.module#RelatorioPageModule' },
   { path: 'registra-lutadores', loadChildren: './pages/registra-lutadores/registra-lutadores.module#RegistraLutadoresPageModule' },
   { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' },
+  { path: 'modal-filtro', loadChildren: './modal-filtro/modal-filtro.module#ModalFiltroPageModule' },
   { path: 'tesste', loadChildren: './pages/tesste/tesste.module#TesstePageModule' },
   { path: 'comportamento-oponente', loadChildren: './pages/comportamento-oponente/comportamento-oponente.module#ComportamentoOponentePageModule' },
-  { path: 'auto-avaliacao', loadChildren: './pages/auto-avaliacao/auto-avaliacao.module#AutoAvaliacaoPageModule' },  { path: 'filtro', loadChildren: './filtro/filtro.module#FiltroPageModule' },
+  { path: 'auto-avaliacao', loadChildren: './pages/auto-avaliacao/auto-avaliacao.module#AutoAvaliacaoPageModule' },
+  { path: 'filtro', loadChildren: './filtro/filtro.module#FiltroPageModule' },  { path: 'estatistica', loadChildren: './pages/estatistica/estatistica.module#EstatisticaPageModule' },
+
 
 
 

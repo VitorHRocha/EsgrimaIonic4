@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-
 import { IonicModule } from '@ionic/angular';
-import { ModalFiltroPage } from '../../modal-filtro/modal-filtro.page';
 
-import { MinhasLutasPage } from './minhas-lutas.page';
+import { EstatisticaPage } from './estatistica.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: MinhasLutasPage
+    component: EstatisticaPage
   }
-]; 
+];
 
 @NgModule({
   imports: [
@@ -23,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MinhasLutasPage, ModalFiltroPage],
-  entryComponents: [ModalFiltroPage],
+  declarations: [EstatisticaPage]
 })
-export class MinhasLutasPageModule {}
+export class EstatisticaPageModule {}

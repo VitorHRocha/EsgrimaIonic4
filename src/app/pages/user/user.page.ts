@@ -29,6 +29,9 @@ export class UserPage implements OnInit {
   }
   historico(){
     this.router.navigate(['/minhas-lutas'])
+  }
+  estatistica(){
+    this.router.navigate(['/estatistica'])
   } 
  
   ngOnInit() {
