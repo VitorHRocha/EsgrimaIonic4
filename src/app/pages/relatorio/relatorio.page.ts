@@ -34,10 +34,10 @@ export class RelatorioPage implements OnInit {
   
   public pontoDetalhado: any;
 
-
   voltar(){
-    this.router.navigate(['/user'])
+    this.router.navigate(['/minhas-lutas'])
   }
+
   constructor(
     private profileService: ProfileService,
     private lutaService: LutaService,

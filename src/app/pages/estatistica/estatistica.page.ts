@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { LutaService } from 'src/app/services/user/luta.service';
 import { ProfileService } from 'src/app/services/user/profile.service';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-estatistica',
@@ -28,69 +29,75 @@ export class EstatisticaPage implements OnInit {
   opContraAtaques: any;
   opContraRespostas: any;
 
-  constructor(private profileService: ProfileService,
-              public lutaService:LutaService) {    
+  constructor(private profileService: ProfileService,  
+    private router: Router,
+    public lutaService: LutaService) {
     this.profileService
-    .getUserProfile()
-    .get()
-    .then( userProfileSnapshot => {
-      this.userProfile   = userProfileSnapshot.data();
-      this.lutaCabecalho = this.userProfile.lutadores;
-      this.lutasPontos    = this.userProfile.lutas;
-      this.computaVitorias();
-      this.createPieChart();  
-      this.computaPontos();
-      this.createBarChart();
-    }); }
+      .getUserProfile()
+      .get()
+      .then(userProfileSnapshot => {
+        this.userProfile = userProfileSnapshot.data();
+        this.lutaCabecalho = this.userProfile.lutadores;
+        this.lutasPontos = this.userProfile.lutas;
+        this.computaVitorias();
+        this.createPieChart();
+        this.computaPontos();
+        this.createBarChart();
+      });
+  }
+
+  voltar() {
+    this.router.navigate(['/user'])
+  }
 
   ngOnInit() {
-       
+
   }
-  computaVitorias(){
-    var meusPontos:number;
-    var pontosOponentes:number;
-    var ponto: any ;
+  computaVitorias() {
+    var meusPontos: number;
+    var pontosOponentes: number;
+    var ponto: any;
     // var lutaPontos:any;
 
     this.vitorias = 0;
     this.derrotas = 0;
     console.log(this.lutasPontos);
-    for (var lutaPontos in this.lutasPontos){
+    for (var lutaPontos in this.lutasPontos) {
       meusPontos = 0;
       pontosOponentes = 0;
-      for (ponto in this.lutasPontos[lutaPontos].LocalCorpo ){
-        if( this.lutasPontos[lutaPontos].LocalCorpo[ponto] >= 6){
+      for (ponto in this.lutasPontos[lutaPontos].LocalCorpo) {
+        if (this.lutasPontos[lutaPontos].LocalCorpo[ponto] >= 6) {
           meusPontos += 1;
-        }else{
+        } else {
           pontosOponentes += 1;
         }
       }
-      console.log( meusPontos, pontosOponentes)
-      if(meusPontos > pontosOponentes){
+      console.log(meusPontos, pontosOponentes)
+      if (meusPontos > pontosOponentes) {
         this.vitorias += 1;
       }
-      else{
+      else {
         this.derrotas += 1;
       }
 
     }
     console.log(this.vitorias, this.derrotas);
   }
-  computaPontos(){
+  computaPontos() {
 
     this.myAtaques = 0;
     this.myContraAtaques = 0;
     this.myContraRespostas = 0;
     this.myRespostas = 0;
-    this.opAtaques = 0; 
-    this.opContraAtaques = 0; 
-    this.opContraRespostas = 0; 
-    this.opRespostas = 0; 
+    this.opAtaques = 0;
+    this.opContraAtaques = 0;
+    this.opContraRespostas = 0;
+    this.opRespostas = 0;
     this.derrotas = 0;
     console.log(this.lutasPontos);
-    for (var lutaPontos in this.lutasPontos){
-      for (var ponto in this.lutasPontos[lutaPontos].LocalCorpo ){
-        if( this.lutasPontos[lutaPontos].LocalCorpo[ponto] <= 6){
+    for (var lutaPontos in this.lutasPontos) {
+      for (var ponto in this.lutasPontos[lutaPontos].LocalCorpo) {
+        if (this.lutasPontos[lutaPontos].LocalCorpo[ponto] <= 6) {
           switch (this.lutasPontos[lutaPontos].Ataques[ponto]) {
             case 1:
               this.myAtaques += 1;
@@ -107,7 +114,7 @@ export class EstatisticaPage implements OnInit {
             default:
               break;
           }
-        }else{
+        } else {
           switch (this.lutasPontos[lutaPontos].Ataques[ponto]) {
             case 1:
               this.opAtaques += 1;
@@ -128,16 +135,16 @@ export class EstatisticaPage implements OnInit {
       }
     }
   }
-  
+
   createPieChart() {
-    let ctx =this.pieChart.nativeElement;
+    let ctx = this.pieChart.nativeElement;
     ctx.height = 200;
-    this.pie = new Chart(ctx , {
+    this.pie = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Vitorias','Derrotas'],
+        labels: ['Vitorias', 'Derrotas'],
         datasets: [{
-          label: ['Vitorias','Derrotas'],
+          label: ['Vitorias', 'Derrotas'],
           data: [this.vitorias, this.derrotas],
           backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
           borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
@@ -148,8 +155,7 @@ export class EstatisticaPage implements OnInit {
       options: {
         legend: {
           labels: {
-              // This more specific font property overrides the global property
-              fontColor: 'pink'
+
           }
         },
         scales: {
@@ -169,20 +175,20 @@ export class EstatisticaPage implements OnInit {
     this.bar = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Ataques','Respostas','Contra-ataques','Contra-respostas'],
+        labels: ['Ataques', 'Respostas', 'Contra-ataques', 'Contra-respostas'],
         datasets: [{
-          label: ['Ataques','Respostas','Contra-ataques','Contra-respostas'],
-          data: [this.myAtaques,this.myRespostas,this.myContraAtaques,this.myContraRespostas],
-          backgroundColor: ['rgb(240, 38, 24)','rgb(240, 38, 24)','rgb(240, 38, 24)','rgb(240, 38, 24)'],// array should have same number of elements as number of dataset
+          label: ['Ataques', 'Respostas', 'Contra-ataques', 'Contra-respostas'],
+          data: [this.myAtaques, this.myRespostas, this.myContraAtaques, this.myContraRespostas],
+          backgroundColor: ['rgb(240, 38, 24)', 'rgb(240, 38, 24)', 'rgb(240, 38, 24)', 'rgb(240, 38, 24)'],// array should have same number of elements as number of dataset
           borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
           borderWidth: 1,
           barPercentage: 0.7,
           weight: 100,
-        }, 
+        },
         {
-          label: ['Ataques','Respostas','Contra-ataques','Contra-respostas'],
-          data: [this.opAtaques,this.opRespostas,this.opContraAtaques,this.opContraRespostas],
-          backgroundColor: ['rgb(37, 199, 22)','rgb(37, 199, 22)','rgb(37, 199, 22)','rgb(37, 199, 22)'], // array should have same number of elements as number of dataset
+          label: ['Ataques', 'Respostas', 'Contra-ataques', 'Contra-respostas'],
+          data: [this.opAtaques, this.opRespostas, this.opContraAtaques, this.opContraRespostas],
+          backgroundColor: ['rgb(37, 199, 22)', 'rgb(37, 199, 22)', 'rgb(37, 199, 22)', 'rgb(37, 199, 22)'], // array should have same number of elements as number of dataset
           borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
           borderWidth: 1,
           barPercentage: 0.7,
@@ -193,7 +199,7 @@ export class EstatisticaPage implements OnInit {
       options: {
         scales: {
           xAxes: [{
-            stacked: true
+            // stacked: true
           }],
           yAxes: [{
             ticks: {
