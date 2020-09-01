@@ -46,7 +46,7 @@ export class RegistraLutadoresPage implements OnInit {
     private lutaService: LutaService,
     public modalCtrl1: ModalController) {
       this.profileService
-    .getUserProfile()
+    .getUserProfile() 
     .get()
     .then( userProfileSnapshot => {
       this.meuNome = userProfileSnapshot.data().nome;  

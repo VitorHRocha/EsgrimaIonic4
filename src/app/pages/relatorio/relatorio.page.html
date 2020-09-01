@@ -12,38 +12,8 @@
   <ion-label id="placar">{{meuNome}} X {{nomeOponente}}<br></ion-label>
   <ion-label>{{totalPontos1}} X {{totalPontos2}}</ion-label>
   </div> 
-  <!-- <ion-segment>
-    <ion-segment-button (click)="lutaTabela()" checked >
-      <ion-label>Tabela</ion-label>
-    </ion-segment-button>
-    <ion-segment-button (click)="lutaDetalhada()">
-      <ion-label>Detalhada</ion-label>
-    </ion-segment-button>
-  </ion-segment> -->
   
-  <!-- <div id="descricao" > 
-    <p>{{lutaDetalhes}} </p>
-  </div> -->
-  
-  <div id="tabela">
-    <!-- <div class="labels">
-      <ion-button class="seta" (click)="trocaLutador()">  <ion-icon name="arrow-dropleft-circle"></ion-icon> </ion-button>
-      <ion-label>{{nomeLutador}}</ion-label>
-      <ion-button class="seta" (click)="trocaLutador()"> <ion-icon name="arrow-dropright-circle"></ion-icon> </ion-button>
-    </div>   -->
-    <!-- <ion-list>
-      <ion-list-header> -->
-        <!-- <ion-segment>
-          <ion-segment-button (click)="PontosFeitos()" checked >
-            <ion-label>Pontos Sofridos</ion-label>
-          </ion-segment-button>
-          <ion-segment-button (click)="PontosSofridos()">
-            <ion-label>Pontos Feitos</ion-label>
-          </ion-segment-button>
-        </ion-segment>  -->
-      <!-- </ion-list-header>  -->
-
-    
+  <div id="tabela">  
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -71,20 +41,51 @@
           </ion-col>      
         </ion-row>
       </ion-grid>      
- 
-      
-      <!-- <div id="Lut2Pt1">
-        <ion-item *ngFor="let pontos of pontosLutador2"  (click)="detalhaPontos(pontos)" >
-          <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-          <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-        </ion-item>
-      </div>
-      <div id="Lut2Pt2">
-        <ion-item *ngFor="let pontos of pontosLutador1"  (click)="detalhaPontos(pontos)" >
-          <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-          <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-        </ion-item>
-      </div> -->
-  </div>
+   </div>
+
+   <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Pontuação geral</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChartPontuacaoGeral></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Caracteristicas adversario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #radarChartPerfilAdversario></canvas>
+    </ion-card-content>
+  </ion-card> -->
+  
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Avaliação do adversario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #radarChartAvaliarAdversario></canvas>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Minha auto avaliação</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #radarChartAutoAvaliar></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Efeitos da pratica</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #radarChartEfeitoPratica></canvas>
+    </ion-card-content>
+  </ion-card>
   
 </ion-content>

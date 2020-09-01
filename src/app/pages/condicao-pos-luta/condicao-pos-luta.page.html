@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>condicao-pos-luta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentsonolento_alerta($event)">
+      <ion-label slot="start">Sonolento</ion-label>
+      <ion-label slot="end">Alerta</ion-label>
+    </ion-range>
+     <ion-icon name="help" (click)="help('sonolento_alerta')"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentcansado_vigoroso($event)">
+      <ion-label slot="start">Cansado</ion-label>
+      <ion-label slot="end">Vigoroso</ion-label>
+    </ion-range>
+    <ion-icon name="help" (click)="help('cansado_vigoroso')"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentinseguro_confiante($event)">
+      <ion-label slot="start">Inseguro</ion-label>
+      <ion-label slot="end">Confiante</ion-label>
+    </ion-range>
+    <ion-icon name="help" (click)="help('inseguro_confiante')"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentPreocupado_tranquilo($event)">
+      <ion-label slot="start">Preocupado</ion-label>
+      <ion-label slot="end">Tranquilo</ion-label>
+    </ion-range>
+    <ion-icon name="help" (click)="help('preocupado_tranquilo')"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmenttriste_feliz($event)">
+      <ion-label slot="start">Triste</ion-label>
+      <ion-label slot="end">Feliz</ion-label>
+    </ion-range>
+    <ion-icon name="help" (click)="help('triste_feliz')"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentdesmotivado_motivado($event)">
+      <ion-label slot="start">Desmotivado</ion-label> 
+      <ion-label slot="end">Motivado</ion-label>
+    </ion-range>
+    <ion-icon name="help" (click)="help('desmotivado_motivado')"></ion-icon>
+  </ion-item>
+
+  <ion-button (click)="concluir()" expand="block">
+    <!-- [disabled]="!valido"> -->
+    Confirma
+  </ion-button>
+ 
+</ion-content>

@@ -17,12 +17,12 @@ export class AutoAvaliacaoPage implements OnInit {
   public currentUser: firebase.User;
   public current; 
 
-  public confiante: number;
-  public disciplinado: number;
-  public controlado: number;
-  public motivado: number;
-  public focado: number;
-  public estressado: number;
+  public myConfiante: number;
+  public myDisciplinado: number;
+  public myControlado: number;
+  public myMotivado: number;
+  public myFocado: number;
+  public myEstressado: number;
 
 
   constructor(private router: Router,
@@ -37,49 +37,49 @@ export class AutoAvaliacaoPage implements OnInit {
         this.userProfile = userProfileSnapshot.data();
       });
     
-    this.confiante = 1;
-    this.estressado = 1;
-    this.focado = 1;
-    this.motivado = 1;
-    this.controlado = 1;
-    this.disciplinado = 1;
+    this.myConfiante = 1;
+    this.myEstressado = 1;
+    this.myFocado = 1;
+    this.myMotivado = 1;
+    this.myControlado = 1;
+    this.myDisciplinado = 1;
   }
 
   rangeConfiante(event: any){
-    this.confiante = event.detail.value;
+    this.myConfiante = event.detail.value;
 
   }
 
   rangeEstressado(event: any){
-    this.estressado = event.detail.value;
+    this.myEstressado = event.detail.value;
     
   }
   rangeFocado(event: any){
-    this.focado = event.detail.value;
+    this.myFocado = event.detail.value;
     
   }
 
   rangeMotivado(event: any){
-    this.motivado = event.detail.value;
+    this.myMotivado = event.detail.value;
     
   }
   rangeControlado(event: any){
-    this.controlado = event.detail.value;
+    this.myControlado = event.detail.value;
     
   }
   rangeDisciplinado(event: any){
-    this.disciplinado = event.detail.value;
+    this.myDisciplinado = event.detail.value;
     
   }
 
   async cadastro(): Promise<void> {
 
-    console.log(this.confiante);
-    console.log(this.estressado);
-    console.log(this.focado);
-    console.log(this.motivado);
-    console.log(this.controlado);
-    console.log(this.disciplinado);    
+    console.log(this.myConfiante);
+    console.log(this.myEstressado);
+    console.log(this.myFocado);
+    console.log(this.myMotivado);
+    console.log(this.myControlado);
+    console.log(this.myDisciplinado);    
    
     try{
       this.profileService.updateLutadores(
@@ -101,18 +101,19 @@ export class AutoAvaliacaoPage implements OnInit {
         this.lutaService.getEmpunhadura(),
         this.lutaService.getTatica(),
         this.lutaService.getNivelTecnico(),
-        this.lutaService.getConservadora(),
-        this.lutaService.getInconstante(),
-        this.lutaService.getInseguro(),
-        this.lutaService.getPressionado(),
-        this.lutaService.getProvocativa(),
-        this.lutaService.getPassiva(),
-        this.confiante,
-        this.estressado,
-        this.focado,
-        this.motivado,
-        this.controlado,
-        this.disciplinado
+        this.lutaService.getConservadorOusado(),
+        this.lutaService.getInconstanteConstante(),
+        this.lutaService.getInseguroConfiante(),
+        this.lutaService.getPressionadoControlado(),
+        this.lutaService.getProvocativaRespeitosa(),
+        this.lutaService.getPassivaAtiva(),
+        this.myConfiante,
+        this.myEstressado,
+        this.myFocado,
+        this.myMotivado,
+        this.myControlado,
+        this.myDisciplinado,
+        this.lutaService.getEfeitoPratica(),
         )
         
         console.log(this.userProfile.numeroLutas);

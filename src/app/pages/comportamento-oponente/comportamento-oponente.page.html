@@ -6,46 +6,46 @@
 
 <ion-content>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentConservadora($event)">
-      <ion-label slot="start">Conservadora</ion-label>
-      <ion-label slot="end">Ousada</ion-label>
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentconservador_ousado($event)">
+      <ion-label slot="start">Conservador</ion-label>
+      <ion-label slot="end">Ousado</ion-label>
     </ion-range>
-     <ion-icon name="help" (click)="help(conservadora)"></ion-icon>
+     <ion-icon name="help" (click)="help('conservador_ousado')"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentInconstante($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentinconstante_constante($event)">
       <ion-label slot="start">Inconstante</ion-label>
       <ion-label slot="end">Constante</ion-label>
     </ion-range>
-    <ion-icon name="help" (click)="help(inconstante)"></ion-icon>
+    <ion-icon name="help" (click)="help('inconstante_constante')"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentInseguro($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentinseguro_confiante($event)">
       <ion-label slot="start">Inseguro</ion-label>
       <ion-label slot="end">Confiante</ion-label>
     </ion-range>
-    <ion-icon name="help" (click)="help(inseguro)"></ion-icon>
+    <ion-icon name="help" (click)="help('inseguro_confiante')"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentPressionado($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentpressionado_controlado($event)">
       <ion-label slot="start">Pressionado</ion-label>
       <ion-label slot="end">Controlado</ion-label>
     </ion-range>
-    <ion-icon name="help" (click)="help(pressionado)"></ion-icon>
+    <ion-icon name="help" (click)="help('pressionado_controlado')"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentProvocativa($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentprovocativa_respeitosa($event)">
       <ion-label slot="start">Provocativa</ion-label>
       <ion-label slot="end">Respeitosa</ion-label>
     </ion-range>
-    <ion-icon name="help" (click)="help(provocativa)"></ion-icon>
+    <ion-icon name="help" (click)="help('provocativa_respeitosa')"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentPassiva($event)">
+    <ion-range min="1" max="3" step="1" snaps="true" color="secondary" (ionChange)="segmentpassiva_ativa($event)">
       <ion-label slot="start">Passiva</ion-label> 
       <ion-label slot="end">Ativa</ion-label>
     </ion-range>
-    <ion-icon name="help" (click)="help(passiva)"></ion-icon>
+    <ion-icon name="help" (click)="help('passiva_ativa')"></ion-icon>
   </ion-item>
 
   <ion-button (click)="concluir()" expand="block">

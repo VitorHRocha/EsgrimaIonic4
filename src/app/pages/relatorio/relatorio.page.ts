@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProfileService } from 'src/app/services/user/profile.service';
 import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { LutaService } from 'src/app/services/user/luta.service';
+import { LutaService, efeitoPratica } from 'src/app/services/user/luta.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -11,30 +12,95 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./relatorio.page.scss'],
 })
 export class RelatorioPage implements OnInit {
-  
+  @ViewChild('radarChartPerfilAdversario') radarChartPerfilAdversario;
+  radarPerfilAdversario: any;
+  @ViewChild('radarChartAvaliarAdversario') radarChartAvaliarAdversario;
+  radarAvaliarAdversario: any;
+  @ViewChild('radarChartAutoAvaliar') radarChartAutoAvaliar;
+  radarAutoAvaliar: any;
+  @ViewChild('radarChartEfeitoPratica') radarChartEfeitoPratica;
+  radarEfeitoPratica: any;
+  @ViewChild('barChartPontuacaoGeral') barChartPontuacaoGeral;
+  barPontuacaoGeral: any;
+
   public userProfile: any;
   public lutaAtual;
-  public lutas: any; 
-  public luta:any;
-  public movimentos:any=["ataques" ,"local","arena","ef"];
+  public lutas: any;
+  public luta: any;
+  public movimentos: any = ["ataques", "local", "arena", "ef"];
   public lutaDetalhes: any;
   public lutastatistic: any;
   public lutaEstatistica: any;
-  public lutadores:any;
-  public lutadoresAtuais:any;
-  public meuNome:string;
-  public nomeOponente:string;  
+  public lutadores: any;
+  public lutadoresAtuais: any;
+  public meuNome: string;
+  public nomeOponente: string;
   public pontosLutador1;
   public pontosLutador2;
-  public totalPontos1=0;
-  public totalPontos2=0;
-  
+  public totalPontos1 = 0;
+  public totalPontos2 = 0;
+
   public nomeLutador;
-  public visaoPonto=1;
-  
+  public visaoPonto = 1;
+
+  // //Perfil adversario
+  // public altura: any;
+  // public preferencia: any;
+  // public empunhadura: any;
+  // public tatica: any;
+  // public rankingOponente: any;
+  // public nivelTecnico: any;
+
+  //Pontuação Geral
+  mediaAutoAvaliacao;
+  mediaEfeitoPratica;
+  mediaAvaliarAdversario;
+
+
+  // Avaliação do Adversário
+
+  conservador_ousado: any;
+  inconstante_constante: any;
+  inseguro_confiante: any;
+  pressionado_controlado: any;
+  provocativa_respeitosa: any;
+  passiva_ativa: any;
+
+  conservador_ousado_geral: any;
+  inconstante_constante_geral: any;
+  inseguro_confiante_geral: any;
+  pressionado_controlado_geral: any;
+  provocativa_respeitosa_geral: any;
+  passiva_ativa_geral: any;
+
+  //Auto Avaliação
+
+  myConfiante: any;
+  myEstressado: any;
+  myFocado: any;
+  myMotivado: any;
+  myControlado: any;
+  myDisciplinado: any;
+
+  myConfiante_geral: any;
+  myEstressado_geral: any;
+  myFocado_geral: any;
+  myMotivado_geral: any;
+  myControlado_geral: any;
+  myDisciplinado_geral: any;
+
+  //Efeito pratica
+  efeitoPratica = new efeitoPratica;
+  efeitoPratica_geral = new efeitoPratica;
+  _geral
+
+  //Vetor cores da visão geral
+  colorBarGeral = new Array(3);
+
+
   public pontoDetalhado: any;
 
-  voltar(){
+  voltar() {
     this.router.navigate(['/minhas-lutas'])
   }
 
@@ -45,145 +111,474 @@ export class RelatorioPage implements OnInit {
     public alertController: AlertController) {
 
   }
-    
+
   ngOnInit() {
-    // document.getElementById("descricao").style.display = "none";
-    // document.getElementById("tabela").style.display = "inline";
-    // document.getElementById("Lut2Pt2").style.display = "none";
-    // document.getElementById("Lut2Pt1").style.display = "none";
-    // document.getElementById("Lut1Pt2").style.display = "none";
-    // document.getElementById("Lut1Pt1").style.display = "inline";
-      
+
     this.profileService
       .getUserProfile()
       .get()
-      .then( userProfileSnapshot => {
-        if(userProfileSnapshot.data().lutas){
+      .then(userProfileSnapshot => {
+        if (userProfileSnapshot.data().lutas) {
           this.lutas = userProfileSnapshot.data().lutas;
           this.lutadores = userProfileSnapshot.data().lutadores;
           this.escolheLuta();
+          this.zeraPontos();
+          this.computaAvaliarAdversario();
+          this.createRadarChartAvaliarAdversario();
+          this.computaAutoAvaliacao();
+          this.createRadarChartAutoAvaliar();
+          this.computaEfeitoPratica();
+          this.createRadarChartEfeitoPratica();
+          this.computaPontuacaoGeral();
+          this.createbarChartPontuacaoGeral();
         }
-      }); 
-    }
-  
-  public escolheLuta(){
-    this.lutadoresAtuais=this.lutadores[this.lutaService.getLutaAtual()];
-    this.luta=this.lutas[this.lutaService.getLutaAtual()];
+      });
+  }
+
+  public zeraPontos() {
+    this.myConfiante_geral = 0;
+    this.myEstressado_geral = 0;
+    this.myFocado_geral = 0;
+    this.myMotivado_geral = 0;
+    this.myControlado_geral = 0;
+    this.myDisciplinado_geral = 0;
+
+    this.conservador_ousado_geral = 0;
+    this.inconstante_constante_geral = 0;
+    this.inseguro_confiante_geral = 0;
+    this.pressionado_controlado_geral = 0;
+    this.provocativa_respeitosa_geral = 0;
+    this.passiva_ativa_geral = 0;
+
+
+    this.efeitoPratica_geral.sonolento_alerta = 0;
+    this.efeitoPratica_geral.cansado_vigoroso = 0;
+    this.efeitoPratica_geral.inseguro_confiante = 0;
+    this.efeitoPratica_geral.preocupado_tranquilo = 0;
+    this.efeitoPratica_geral.triste_feliz = 0;
+    this.efeitoPratica_geral.desmotivado_motivado = 0;
+
+  }
+
+  public escolheLuta() {
+    this.lutadoresAtuais = this.lutadores[this.lutaService.getLutaAtual()];
+    this.luta = this.lutas[this.lutaService.getLutaAtual()];
     var lutadoresNomes = [this.lutadoresAtuais.nome1, this.lutadoresAtuais.nome2];
     this.nomeLutador = this.lutadoresAtuais.nome1;
     this.meuNome = this.lutadoresAtuais.nome1;
-    this.nomeOponente  = this.lutadoresAtuais.nome2;
-    var Ataques= this.luta.Ataques;
-    var LocalCorpo= this.luta.LocalCorpo;
-    var Arena= this.luta.Area;
-    var Efetividade= this.luta.Efetividade;
+    this.nomeOponente = this.lutadoresAtuais.nome2;
+    var Ataques = this.luta.Ataques;
+    var LocalCorpo = this.luta.LocalCorpo;
+    var Arena = this.luta.Area;
+    var Efetividade = this.luta.Efetividade;
     var i;
     console.log(Ataques);
     console.log(this.luta);
-    
-    this.lutaDetalhes=this.lutaService.formaLuta( lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
-    this.lutaEstatistica=this.lutaService.formaLutaEstatistic(lutadoresNomes,Ataques,LocalCorpo,Arena,Efetividade);
-          
+
+    this.lutaDetalhes = this.lutaService.formaLuta(lutadoresNomes, Ataques, LocalCorpo, Arena, Efetividade);
+    this.lutaEstatistica = this.lutaService.formaLutaEstatistic(lutadoresNomes, Ataques, LocalCorpo, Arena, Efetividade);
+
     this.pontosLutador1 = this.lutaService.getPontosLutador1();
     this.pontosLutador2 = this.lutaService.getPontosLutador2();
 
-    for (i=0;i<this.pontosLutador1.length ;i++ ){
+    for (i = 0; i < this.pontosLutador1.length; i++) {
       this.totalPontos2 += this.pontosLutador1[i].quantidadeAcertos;
       console.log(this.pontosLutador1[i])
       console.log(this.totalPontos1);
     }
 
-    for (i=0;i<this.pontosLutador2.length ;i++ ){
+    for (i = 0; i < this.pontosLutador2.length; i++) {
       this.totalPontos1 += this.pontosLutador2[i].quantidadeAcertos;
       console.log(this.totalPontos2);
     }
-      
+
     console.log(this.totalPontos1);
     console.log(this.totalPontos2);
-    console.log(this.pontosLutador2.length );
+    console.log(this.pontosLutador2.length);
+  }
+
+  detalhaPontos(pontosDetalhado) {
+    this.pontoDetalhado = pontosDetalhado
+    this.presentAlert();;
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: this.pontoDetalhado.nomeLocalCorpo,
+      subHeader: 'Acertos por tipo de ataque',
+      message:
+        'Ataque:' + this.pontoDetalhado.tipoAtaques.ataque1 +
+        '<br> Resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
+        '<br> Contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
+        '<br> Contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
+        '<br> Toque duplo:' + this.pontoDetalhado.tipoAtaques.ataque5,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // computaCaracteristicasAdversario() {
+  //   this.altura_relativa = this.lutadoresAtuais.conservador_ousado;
+  //   this.inconstante_constante = this.lutadoresAtuais.inconstante_constante;
+  //   this.inseguro_confiante = this.lutadoresAtuais.inseguro_confiante;
+  //   this.pressionado_controlado = this.lutadoresAtuais.pressionado_controlado;
+  //   this.provocativa_respeitosa = this.lutadoresAtuais.provocativa_respeitosa;
+  //   this.passiva_ativa = this.lutadoresAtuais.passiva_ativa;
+
+  // }
+
+  computaAvaliarAdversario() {
+    console.log(this.lutadoresAtuais);
+
+    this.conservador_ousado = this.lutadoresAtuais.conservador_ousado;
+    this.inconstante_constante = this.lutadoresAtuais.inconstante_constante;
+    this.inseguro_confiante = this.lutadoresAtuais.inseguro_confiante;
+    this.pressionado_controlado = this.lutadoresAtuais.pressionado_controlado;
+    this.provocativa_respeitosa = this.lutadoresAtuais.provocativa_respeitosa;
+    this.passiva_ativa = this.lutadoresAtuais.passiva_ativa;
+
+    for (var indiceLutador in this.lutadores) {
+      this.conservador_ousado_geral += this.lutadores[indiceLutador].conservador_ousado;
+      this.inconstante_constante_geral += this.lutadores[indiceLutador].inconstante_constante;
+      this.inseguro_confiante_geral += this.lutadores[indiceLutador].inseguro_confiante;
+      this.pressionado_controlado_geral += this.lutadores[indiceLutador].pressionado_controlado;
+      this.provocativa_respeitosa_geral += this.lutadores[indiceLutador].provocativa_respeitosa;
+      this.passiva_ativa_geral += this.lutadores[indiceLutador].passiva_ativa;
     }
-        
-    // public lutaDetalhada(){
-    //   document.getElementById("tabela").style.display = "none";
-    //   document.getElementById("descricao").style.display = "inline";
-    // }
-    
-    // public  lutaTabela(){
-    //   document.getElementById("descricao").style.display = "none";
-    //   document.getElementById("tabela").style.display = "inline";
-    // }
-        
-  // public  trocaLutador(){
-  //   if(this.nomeLutador == this.lutadoresAtuais.nome1){
-  //     this.nomeLutador = this.lutadoresAtuais.nome2
-  //     this.trocaVisaoPonto()
-  //   }
-  //   else{
-  //    this.nomeLutador = this.lutadoresAtuais.nome1
-  //     this.trocaVisaoPonto()
-  //   }
-  // }
-    
-  // public PontosFeitos(){
-  //   this.visaoPonto=1
-  //   this.trocaVisaoPonto()
-  // }
-    
-  // public PontosSofridos(){
-  //   this.visaoPonto=2
-  //   this.trocaVisaoPonto()
-  // }
-        
-    // public trocaVisaoPonto(){
-    //   if(this.visaoPonto == 1){
-    //     if(this.nomeLutador == this.lutadoresAtuais.nome1){
-    //       document.getElementById("Lut2Pt2").style.display = "none";
-    //       document.getElementById("Lut2Pt1").style.display = "none";
-    //       document.getElementById("Lut1Pt2").style.display = "none";
-    //       document.getElementById("Lut1Pt1").style.display = "inline";
-    //     }
-    //     else{
-    //       document.getElementById("Lut2Pt2").style.display = "none";
-    //       document.getElementById("Lut2Pt1").style.display = "inline";
-    //       document.getElementById("Lut1Pt2").style.display = "none";
-    //       document.getElementById("Lut1Pt1").style.display = "none";
-    //     }
-    //   }
-    //   else{
-    //     if(this.nomeLutador == this.lutadoresAtuais.nome1){
-    //       document.getElementById("Lut2Pt2").style.display = "none";
-    //       document.getElementById("Lut2Pt1").style.display = "none";
-    //       document.getElementById("Lut1Pt2").style.display = "inline";
-    //       document.getElementById("Lut1Pt1").style.display = "none";
-    //     }
-    //     else{
-    //       document.getElementById("Lut2Pt2").style.display = "inline";
-    //       document.getElementById("Lut2Pt1").style.display = "none";
-    //       document.getElementById("Lut1Pt2").style.display = "none";
-    //       document.getElementById("Lut1Pt1").style.display = "none";
-    //     }
-    //   }
-          
-    // }
-    
-    detalhaPontos(pontosDetalhado){
-      this.pontoDetalhado = pontosDetalhado
-      this.presentAlert();;
+    this.conservador_ousado_geral /= this.lutadores.length;
+    this.inconstante_constante_geral /= this.lutadores.length;
+    this.inseguro_confiante_geral /= this.lutadores.length;
+    this.pressionado_controlado_geral /= this.lutadores.length;
+    this.provocativa_respeitosa_geral /= this.lutadores.length;
+    this.passiva_ativa_geral /= this.lutadores.length;
+
+  }
+
+  computaEfeitoPratica() {
+    this.efeitoPratica.sonolento_alerta = this.lutadoresAtuais.ep_sonolento_alerta;
+    this.efeitoPratica.cansado_vigoroso = this.lutadoresAtuais.ep_cansado_vigoroso;
+    this.efeitoPratica.inseguro_confiante = this.lutadoresAtuais.ep_inseguro_confiante;
+    this.efeitoPratica.preocupado_tranquilo = this.lutadoresAtuais.ep_preocupado_tranquilo;
+    this.efeitoPratica.triste_feliz = this.lutadoresAtuais.ep_triste_feliz;
+    this.efeitoPratica.desmotivado_motivado = this.lutadoresAtuais.ep_desmotivado_motivado;
+
+    for (var indiceLutador in this.lutadores) {
+      this.efeitoPratica_geral.sonolento_alerta += this.lutadores[indiceLutador].ep_sonolento_alerta;
+      this.efeitoPratica_geral.cansado_vigoroso += this.lutadores[indiceLutador].ep_cansado_vigoroso;
+      this.efeitoPratica_geral.inseguro_confiante += this.lutadores[indiceLutador].ep_inseguro_confiante;
+      this.efeitoPratica_geral.preocupado_tranquilo += this.lutadores[indiceLutador].ep_preocupado_tranquilo;
+      this.efeitoPratica_geral.triste_feliz += this.lutadores[indiceLutador].ep_triste_feliz;
+      this.efeitoPratica_geral.desmotivado_motivado += this.lutadores[indiceLutador].ep_desmotivado_motivado;
     }
-        
-    async presentAlert() {
-      const alert = await this.alertController.create({
-        header: this.pontoDetalhado.nomeLocalCorpo,
-        subHeader: 'Acertos por tipo de ataque',
-        message:
-          'Ataque:'+this.pontoDetalhado.tipoAtaques.ataque1+
-          '<br> Resposta:'+this.pontoDetalhado.tipoAtaques.ataque2+
-          '<br> Contra-Resposta:'+this.pontoDetalhado.tipoAtaques.ataque3+
-          '<br> Contra-Ataque:'+this.pontoDetalhado.tipoAtaques.ataque4+
-          '<br> Toque duplo:'+this.pontoDetalhado.tipoAtaques.ataque5,
-        buttons: ['OK']
-        });
-      
-        await alert.present();
+
+    this.efeitoPratica_geral.sonolento_alerta /= this.lutadores.length;
+    this.efeitoPratica_geral.cansado_vigoroso /= this.lutadores.length;
+    this.efeitoPratica_geral.inseguro_confiante /= this.lutadores.length;
+    this.efeitoPratica_geral.preocupado_tranquilo /= this.lutadores.length;
+    this.efeitoPratica_geral.triste_feliz /= this.lutadores.length;
+    this.efeitoPratica_geral.desmotivado_motivado /= this.lutadores.length;
+
+  }
+
+  computaAutoAvaliacao() {
+
+    this.myConfiante = this.lutadoresAtuais.myConfiante;
+    this.myEstressado = this.lutadoresAtuais.myEstressado;
+    this.myFocado = this.lutadoresAtuais.myFocado;
+    this.myMotivado = this.lutadoresAtuais.myMotivado;
+    this.myControlado = this.lutadoresAtuais.myControlado;
+    this.myDisciplinado = this.lutadoresAtuais.myDisciplinado;
+
+    for (var indiceLutador in this.lutadores) {
+      this.myConfiante_geral += this.lutadores[indiceLutador].myConfiante;
+      this.myEstressado_geral += this.lutadores[indiceLutador].myEstressado;
+      this.myFocado_geral += this.lutadores[indiceLutador].myFocado;
+      this.myMotivado_geral += this.lutadores[indiceLutador].myMotivado;
+      this.myControlado_geral += this.lutadores[indiceLutador].myControlado;
+      this.myDisciplinado_geral += this.lutadores[indiceLutador].myDisciplinado;
+    }
+    console.log(this.myDisciplinado_geral);
+    console.log(this.lutadores.length);
+    this.myConfiante_geral /= this.lutadores.length;
+    this.myEstressado_geral /= this.lutadores.length;
+    this.myFocado_geral /= this.lutadores.length;
+    this.myMotivado_geral /= this.lutadores.length;
+    this.myControlado_geral /= this.lutadores.length;
+    this.myDisciplinado_geral /= this.lutadores.length;
+    console.log(this.myDisciplinado_geral);
+
+
+  }
+
+  computaPontuacaoGeral() {
+    this.mediaAutoAvaliacao = this.calculaMediaAutoAvaliacao();
+    this.mediaEfeitoPratica = this.calculaMediaEfeitoPratica();
+    this.mediaAvaliarAdversario = this.calculaMediaAvaliarAdversario();
+
+  }
+
+  calculaMediaAutoAvaliacao(): any {
+    var valormedio;
+    valormedio = (this.myConfiante +
+      this.myEstressado +
+      this.myFocado +
+      this.myMotivado +
+      this.myControlado +
+      this.myDisciplinado) / 6;
+
+    if (valormedio < 1.6) {
+
+      this.colorBarGeral[0] = '#ff0000';
+
+    } else if (valormedio < 2.2) {
+      this.colorBarGeral[0] = '#ffff00';
+
+    } else {
+      this.colorBarGeral[0] = '#00f716';
+
+    }
+
+    return valormedio;
+
+  }
+
+  calculaMediaEfeitoPratica(): any {
+    var valormedio;
+    valormedio = (this.efeitoPratica.sonolento_alerta +
+      this.efeitoPratica.cansado_vigoroso +
+      this.efeitoPratica.inseguro_confiante +
+      this.efeitoPratica.preocupado_tranquilo +
+      this.efeitoPratica.triste_feliz +
+      this.efeitoPratica.desmotivado_motivado) / 6;
+
+    if (valormedio < 1.6) {
+
+      this.colorBarGeral[2] = '#ff0000';
+    } else if (valormedio < 2.2) {
+
+      this.colorBarGeral[2] = '#ffff00';
+    } else {
+
+      this.colorBarGeral[2] = '#00f716';
+    }
+
+    return valormedio;
+  }
+
+  calculaMediaAvaliarAdversario(): any {
+    var valormedio;
+    valormedio = (this.conservador_ousado +
+      this.inconstante_constante +
+      this.inseguro_confiante +
+      this.pressionado_controlado +
+      this.provocativa_respeitosa +
+      this.passiva_ativa) / 6;
+    if (valormedio < 1.6) {
+
+      this.colorBarGeral[1] = '#ff0000';
+    } else if (valormedio < 2.2) {
+
+      this.colorBarGeral[1] = '#ffff00';
+    } else {
+
+      this.colorBarGeral[1] = '#00f716';
+    }
+
+    return valormedio;
+  }
+
+  // createRadarChartPerfilAdversario() {
+  //   let ctx = this.radarPerfilAdversario.nativeElement;
+  //   ctx.height = 200;
+  //   this.radarPerfilAdversario = new Chart(ctx, {
+  //     type: 'radar',
+  //     data: {
+  //       labels: ['Vitorias', 'Derrotas'],
+  //       datasets: [{
+  //         label: ['Vitorias', 'Derrotas'],
+  //         data: [this.vitorias, this.derrotas],
+  //         backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
+  //         borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+  //         borderWidth: 1,
+  //         weight: 100,
+  //       }]
+  //     },
+  //     options: {
+  //       legend: {
+  //         labels: {
+
+  //         }
+  //       },
+  //       scales: {
+  //         yAxes: [{
+  //           ticks: {
+  //             beginAtZero: true
+  //           }
+  //         }]
+  //       }
+  //     }
+  //   });
+  // }
+
+  createRadarChartAvaliarAdversario() {
+    let ctx = this.radarChartAvaliarAdversario.nativeElement;
+    ctx.height = 200;
+    console.log(this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa);
+    this.radarAvaliarAdversario = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+        datasets: [
+          {
+            label: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+            data: [this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa],
+            borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          },
+          {
+            label: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+            data: [this.conservador_ousado_geral, this.inconstante_constante_geral, this.inseguro_confiante_geral, this.pressionado_controlado_geral, this.provocativa_respeitosa_geral, this.passiva_ativa_geral],
+            borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          }
+        ]
+      },
+      options: {
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              max: 3,
+              min: 0,
+              stepSize: 0.5,
+              suggestedMin: 1,
+              suggestedMax: 3,
+              beginAtZero: true,
+            }
+          }]
         }
+      }
+    });
+  }
+
+  createRadarChartAutoAvaliar() {
+    let ctx = this.radarChartAutoAvaliar.nativeElement;
+    ctx.height = 200;
+    this.radarAutoAvaliar = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
+        datasets: [
+          {
+            label: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
+            data: [this.myConfiante, this.myEstressado, this.myFocado, this.myMotivado, this.myControlado, this.myDisciplinado],
+            // backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
+            borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          },
+          {
+            label: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
+            data: [this.myConfiante_geral, this.myEstressado_geral, this.myFocado_geral, this.myMotivado_geral, this.myControlado_geral, this.myDisciplinado_geral],
+            // backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
+            borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              max: 3,
+              min: 0,
+              stepSize: 0.5,
+              suggestedMin: 1,
+              suggestedMax: 3,
+              beginAtZero: true,
+            }
+          }]
+        }
+      }
+    });
+  }
+
+  createRadarChartEfeitoPratica() {
+
+    let ctx = this.radarChartEfeitoPratica.nativeElement;
+    ctx.height = 200;
+    this.radarEfeitoPratica = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
+        datasets: [
+          {
+            label: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
+            data: [this.efeitoPratica.sonolento_alerta, this.efeitoPratica.cansado_vigoroso, this.efeitoPratica.inseguro_confiante, this.efeitoPratica.preocupado_tranquilo, this.efeitoPratica.triste_feliz, this.efeitoPratica.desmotivado_motivado],
+            borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          },
+          {
+            label: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
+            data: [this.efeitoPratica_geral.sonolento_alerta, this.efeitoPratica_geral.cansado_vigoroso, this.efeitoPratica_geral.inseguro_confiante, this.efeitoPratica_geral.preocupado_tranquilo, this.efeitoPratica_geral.triste_feliz, this.efeitoPratica_geral.desmotivado_motivado],
+            borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
+            borderWidth: 1,
+            weight: 100,
+          }
+        ]
+      },
+      options: {
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              max: 3,
+              min: 0,
+              stepSize: 0.5,
+              suggestedMin: 1,
+              suggestedMax: 3,
+              beginAtZero: true,
+            }
+          }]
+        }
+
+      }
+    });
+  }
+
+  createbarChartPontuacaoGeral() {
+    console.log(this.colorBarGeral);
+    let ctx = this.barChartPontuacaoGeral.nativeElement;
+    ctx.height = 200;
+    this.barPontuacaoGeral = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Auto Avaliacao', 'Avaliar Adversario', 'Efeito Pratica'],
+        datasets: [{
+          label: ['Auto Avaliacao', 'Avaliar Adversario', 'Efeito Pratica'],
+          data: [this.mediaAutoAvaliacao, this.mediaAvaliarAdversario, this.mediaEfeitoPratica],
+          backgroundColor: this.colorBarGeral,
+          borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+          borderWidth: 1,
+          weight: 100,
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+
+            }
+          }]
+        }
+      }
+    });
+  }
+
+
 }

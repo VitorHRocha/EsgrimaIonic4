@@ -12,14 +12,21 @@ import { Routes, RouterModule, Router } from '@angular/router';
 export class EstatisticaPage implements OnInit {
   @ViewChild('pieChart') pieChart;
   pie: any;
-  @ViewChild('barChart') barChart;
-  bar: any;
+  @ViewChild('barChartTipoAtaque') barChartTipoAtaque;
+  barTipoAtaque: any;
+  @ViewChild('barChartLocalCorpo') barChartLocalCorpo;
+  barLocalCorpo: any;
+
+
   public lutaCabecalho: any;
   public lutasPontos: any;
   public userProfile: any;
 
+  // Vitoria
   public vitorias: number;
   public derrotas: number;
+
+  // ATAQUES
   myAtaques: any;
   myRespostas: any;
   myContraAtaques: any;
@@ -29,7 +36,21 @@ export class EstatisticaPage implements OnInit {
   opContraAtaques: any;
   opContraRespostas: any;
 
-  constructor(private profileService: ProfileService,  
+  // LocalCorpo
+  myCabeca: any;
+  myTronco: any;
+  myBracoEsq: any;
+  myBracoDir: any;
+  myPernaDir: any;
+  myPernaEsq: any;
+  opCabeca: any;
+  opTronco: any;
+  opBracoEsq: any;
+  opBracoDir: any;
+  opPernaDir: any;
+  opPernaEsq: any;
+
+  constructor(private profileService: ProfileService,
     private router: Router,
     public lutaService: LutaService) {
     this.profileService
@@ -42,7 +63,10 @@ export class EstatisticaPage implements OnInit {
         this.computaVitorias();
         this.createPieChart();
         this.computaPontos();
-        this.createBarChart();
+        this.createBarChartTipoAtaque();
+        this.computaLocalCorpo();
+        this.createBarChartLocalCorpo();
+
       });
   }
 
@@ -83,8 +107,8 @@ export class EstatisticaPage implements OnInit {
     }
     console.log(this.vitorias, this.derrotas);
   }
-  computaPontos() {
 
+  computaPontos() {
     this.myAtaques = 0;
     this.myContraAtaques = 0;
     this.myContraRespostas = 0;
@@ -136,6 +160,63 @@ export class EstatisticaPage implements OnInit {
     }
   }
 
+  computaLocalCorpo() {
+    this.myCabeca = 0;
+    this.myTronco = 0;
+    this.myBracoEsq = 0;
+    this.myBracoDir = 0;
+    this.myPernaDir = 0;
+    this.myPernaEsq = 0;
+    this.opCabeca = 0;
+    this.opTronco = 0;
+    this.opBracoEsq = 0;
+    this.opBracoDir = 0;
+    this.opPernaDir = 0;
+    this.opPernaEsq = 0;
+    for (var lutaPontos in this.lutasPontos) {
+      for (var ponto in this.lutasPontos[lutaPontos].LocalCorpo) {
+        switch (this.lutasPontos[lutaPontos].LocalCorpo[ponto]) {
+          case 1:
+            this.myCabeca += 1;
+            break;
+          case 2:
+            this.myTronco += 1;
+            break;
+          case 3:
+            this.myBracoEsq += 1;
+            break;
+          case 4:
+            this.myBracoDir += 1;
+            break;
+          case 5:
+            this.myPernaEsq += 1;
+            break;
+          case 6:
+            this.myPernaDir += 1;
+            break;
+          case 7:
+            this.opCabeca += 1;
+            break;
+          case 8:
+            this.opTronco += 1;
+            break;
+          case 9:
+            this.opBracoEsq += 1;
+            break;
+          case 10:
+            this.opBracoDir += 1;
+            break;
+          case 11:
+            this.opPernaEsq += 1;
+            break;
+          case 12:
+            this.opPernaDir += 1;
+            break;
+        }
+      }
+    }
+  }
+
   createPieChart() {
     let ctx = this.pieChart.nativeElement;
     ctx.height = 200;
@@ -169,10 +250,52 @@ export class EstatisticaPage implements OnInit {
     });
   }
 
-  createBarChart() {
-    let ctx = this.barChart.nativeElement;
+  createBarChartLocalCorpo() {
+    let ctx = this.barChartLocalCorpo.nativeElement;
     ctx.height = 300;
-    this.bar = new Chart(ctx, {
+    this.barLocalCorpo = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Cabeca','Tronco', 'Braço esquerdo', 'Braço direito', 'Perna esquerda', 'Perna direita'],
+        datasets: [{
+          label: ['Cabeca','Tronco', 'Braço esquerdo', 'Braço direito', 'Perna esquerda', 'Perna direita'],
+          data: [this.myCabeca, this.myTronco, this.myBracoEsq, this.myBracoDir, this.myPernaEsq, this.myPernaDir],
+          backgroundColor: 'rgb(240, 38, 24)', //rray should have same number of elements as number of dataset
+          borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+          borderWidth: 1,
+          barPercentage: 0.7,
+          weight: 100,
+        },
+        {
+          label: ['Cabeca','Tronco', 'Braço esquerdo', 'Braço direito', 'Perna esquerda', 'Perna direita'],
+          data: [this.opCabeca, this.opTronco, this.opBracoEsq, this.opBracoDir, this.opPernaEsq, this.opPernaDir],
+          backgroundColor:  'rgb(37, 199, 22)', // array should have same number of elements as number of dataset
+          borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+          borderWidth: 1,
+          barPercentage: 0.7,
+          weight: 100,
+        }
+        ]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            // stacked: true
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
+  createBarChartTipoAtaque() {
+    let ctx = this.barChartTipoAtaque.nativeElement;
+    ctx.height = 300;
+    this.barTipoAtaque = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Ataques', 'Respostas', 'Contra-ataques', 'Contra-respostas'],

@@ -1,5 +1,5 @@
 
-<ion-content padding>
+<ion-content padding color="secondary">
   <div  class="foto" >  
     <ion-avatar  (click)="openMenu()">
         <img id="fotoButton" src="" alt="">
@@ -7,16 +7,16 @@
   </div>
 
   
-  <ion-button expand="block"  id="lut" (click)="novaLuta()">
-    <img src="https://img.icons8.com/metro/26/000000/royal-marines.png">
+  <ion-button expand="block"  id="lut" (click)="novaLuta()" shape="round">
+    <!-- <img src="https://img.icons8.com/metro/26/000000/royal-marines.png"> -->
     Novo Jogo
   </ion-button>
-  <ion-button expand="block" (click)="historico()"  >
-    <img src="https://img.icons8.com/metro/26/000000/rules.png">
+  <ion-button expand="block" (click)="historico()" shape="round" >
+    <!-- <img src="https://img.icons8.com/metro/26/000000/rules.png"> -->
     Meus Jogos
   </ion-button> 
-  <ion-button expand="block" (click)="estatistica()"  >
-    <ion-icon name="stats"></ion-icon>
+  <ion-button expand="block" (click)="estatistica()"  shape="round">
+    <!-- <ion-icon name="stats"></ion-icon> -->
     Minhas estatisticas
   </ion-button> 
 </ion-content>

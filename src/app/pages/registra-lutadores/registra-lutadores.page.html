@@ -1,98 +1,100 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header color="secondary">
+  <ion-toolbar color="secundary">
     <ion-button shape="round" (click)="voltar()">
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </ion-button>
-  </ion-toolbar> 
+  </ion-toolbar>
 </ion-header>
-<script  src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"> </script>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"> </script>
 <ion-content>
 
-          <ion-segment id="tipo_jogo" (ionChange)="segmentTipoJogo($event)" value="treinamento">
-            <ion-segment-button value="treinamento" >
-              <ion-label>Treinamento</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="campeonato">
-              <ion-label>Campeonato</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-          
-          <ion-segment id="etapa_campeonato" (ionChange)="segmentEtapaCampeonato($event)" value="poule">
-            <ion-segment-button value="poule" >
-              <ion-label>Poule</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="eliminatoria">
-              <ion-label>Eliminatoria</ion-label>
-            </ion-segment-button>
-          </ion-segment>
+  <ion-segment id="tipo_jogo" (ionChange)="segmentTipoJogo($event)" value="treinamento">
+    <ion-segment-button value="treinamento" shape="round">
+      <ion-label>Treinamento</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="campeonato" shape="round">
+      <ion-label>Campeonato</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-          <ion-segment id="etapa_eliminatoria" (ionChange)="segmentEtapaEliminatoria($event)" value="64">
-            <ion-segment-button value="64" >
-              <ion-label>64</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="32">
-              <ion-label>32</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="16" >
-              <ion-label>16</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="8">
-              <ion-label>8</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="semifinal">
-              <ion-label>Semi-final</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="final">
-              <ion-label>Final</ion-label>
-            </ion-segment-button>
-          </ion-segment>
+  <ion-segment id="etapa_campeonato" (ionChange)="segmentEtapaCampeonato($event)" value="poule">
+    <ion-segment-button value="poule">
+      <ion-label>Poule</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="eliminatoria">
+      <ion-label>Eliminatoria</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-          <ion-list (click)="presentModal2()">
-          <ion-list-header> <h3>Oponente</h3>  </ion-list-header>
-          <ion-item>
-            <ion-label>
-              <ion-label>
-                <ion-avatar >
-                  <img id="fotoButton2" src="" alt="">
-                </ion-avatar>
-              </ion-label>
-              <ion-label>
-                    <ion-label >Nome: {{nomeOponente}}</ion-label>
-                    <ion-label >Clube: {{clubeOponente}}</ion-label>
-              </ion-label>
-            </ion-label>
-            </ion-item> <samp</samp>
-        </ion-list>
-        
-        <ion-segment id="raking_oponente_poule" (ionChange)="segmentRakingOponentePoule($event)" value="melhor">
-          <ion-segment-button value="pior" layout="icon-bottom">
-            <ion-label>Pior Ranqueado</ion-label>
-            <ion-icon name="arrow-round-down"></ion-icon>
-          </ion-segment-button>
-          <ion-segment-button value="melhor" layout="icon-bottom">
-            <ion-label>Melhor Ranqueado</ion-label>
-            <ion-icon name="arrow-round-up"></ion-icon>
-          </ion-segment-button>
-        </ion-segment>
+  <ion-segment id="etapa_eliminatoria" (ionChange)="segmentEtapaEliminatoria($event)" value="64">
+    <ion-segment-button value="64">
+      <ion-label>64</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="32">
+      <ion-label>32</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="16">
+      <ion-label>16</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="8">
+      <ion-label>8</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="semifinal">
+      <ion-label>Semi-final</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="final">
+      <ion-label>Final</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-        <ion-segment id="class_oponente_eliminatoria" (ionChange)="segmentClassOponenteEliminatoria($event)" value="melhor">
-          <ion-segment-button value="pior" layout="icon-bottom">
-            <ion-label>Pior</ion-label>
-            <ion-icon name="arrow-round-down"></ion-icon>
-          </ion-segment-button>
-          <ion-segment-button value="equivalente" >
-            <ion-label>Equivalente</ion-label>
-          </ion-segment-button>
-          <ion-segment-button   value="melhor" layout="icon-bottom">
-            <ion-label>Melhor</ion-label>
-            <ion-icon name="arrow-round-up"></ion-icon>
-          </ion-segment-button>
-        </ion-segment>
-    
+  <ion-list (click)="presentModal2()">
+    <ion-list-header>
+      <h3>Oponente</h3>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        <ion-label>
+          <ion-avatar>
+            <img id="fotoButton2" src="" alt="">
+          </ion-avatar>
+        </ion-label>
+        <ion-label>
+          <ion-label>Nome: {{nomeOponente}}</ion-label>
+          <ion-label>Clube: {{clubeOponente}}</ion-label>
+        </ion-label>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-      <ion-button (click)="cadastro()" expand="block" [disabled]="!valido">
-         Confirma
-      </ion-button>
-  
+  <ion-segment id="raking_oponente_poule" (ionChange)="segmentRakingOponentePoule($event)" value="melhor">
+    <ion-segment-button value="pior" layout="icon-bottom">
+      <ion-label>Pior Ranqueado</ion-label>
+      <ion-icon name="arrow-round-down"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="melhor" layout="icon-bottom">
+      <ion-label>Melhor Ranqueado</ion-label>
+      <ion-icon name="arrow-round-up"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment id="class_oponente_eliminatoria" (ionChange)="segmentClassOponenteEliminatoria($event)" value="melhor">
+    <ion-segment-button value="pior" layout="icon-bottom">
+      <ion-label>Pior</ion-label>
+      <ion-icon name="arrow-round-down"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="equivalente">
+      <ion-label>Equivalente</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="melhor" layout="icon-bottom">
+      <ion-label>Melhor</ion-label>
+      <ion-icon name="arrow-round-up"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-button (click)="cadastro()" expand="block" [disabled]="!valido">
+    Confirma
+  </ion-button>
+
 
 </ion-content>

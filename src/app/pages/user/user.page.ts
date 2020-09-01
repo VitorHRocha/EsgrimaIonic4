@@ -29,6 +29,7 @@ export class UserPage implements OnInit {
   }
   historico(){
     this.router.navigate(['/minhas-lutas'])
+    // this.router.navigate(['/condicao-pos-luta'])
   }
   estatistica(){
     this.router.navigate(['/estatistica'])
