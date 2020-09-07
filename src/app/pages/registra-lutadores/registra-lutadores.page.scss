@@ -7,20 +7,28 @@ ion-avatar{
     border: 20px;
     border-color: blueviolet;
 }
-ion-segment-button{
-    --border-radius : 30px 30px ;
-    --border-color: var(--ion-color-primary);
-    --background-checked: var(--ion-color-primary);
-    width: 30px;
-    --indicator-height: 0px;
-    --border-style: solid ;
-    --color-checked: white;
-    --border-width: 1px;
-    --padding-color: var(--ion-color-primary);
-    --margin-color: var(--ion-color-primary);
-    --indicator-color: var(--ion-color-primary);
+// ion-segment-button{
+//     --border-radius : 30px 30px ;
+//     --border-color: var(--ion-color-primary);
+//     --background-checked: var(--ion-color-primary);
+//     width: 30px;
+//     --indicator-height: 0px;
+//     --border-style: solid ;
+//     --color-checked: white;
+//     --border-width: 1px;
+//     --padding-color: var(--ion-color-primary);
+//     --margin-color: var(--ion-color-primary);
+//     --indicator-color: var(--ion-color-primary);
 
+// }
+
+div>ion-button{
+    --color: var(--ion-color-primary);
+    --background: var(--ion-color-tertiary);
+    --border-color: var(--ion-color-primary);
+    --border-style: solid ;
 }
+
 ion-header{
     background-color: var(--ion-color-primary);
 }
@@ -33,4 +41,24 @@ h3{
 #etapa_eliminatoria{
     display: flex;
     flex-wrap: wrap;
+}
+
+hr{
+    border-top: 1px solid black;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#tipo_jogo{
+    margin-left: 5%;
+}
+
+#etapa_campeonato_buttons{
+    margin-left: 15%;
+}
+#etapa_eliminatoria_buttons_top{
+    margin-left: 12%;
+}
+#etapa_eliminatoria_buttons_botton{
+    margin-left: 17%;
 }

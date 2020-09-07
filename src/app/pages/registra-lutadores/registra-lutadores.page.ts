@@ -118,8 +118,18 @@ export class RegistraLutadoresPage implements OnInit {
   }
   
   //ETAPA CAMPEONATO-------INICIO--------------------------
-  segmentTipoJogo(tipoLuto: any){ 
-    this.tipoLuta = tipoLuto.detail.value;
+  segmentTipoJogo(tipoLuta: any){ 
+    this.tipoLuta = tipoLuta;
+    console.log(tipoLuta);
+
+    var galleries = document.getElementsByClassName("tipo_jogo");
+    var len =  galleries.length;
+    for(var i=0 ; i<len; i++){
+      galleries[i].setAttribute(`color`,"tertiary");
+    }
+    
+    document.getElementById(tipoLuta).setAttribute(`color`,"primary");
+
     if(this.tipoLuta == "campeonato"){
       document.getElementById("etapa_campeonato").style.display = "";
       this.etapaCampeonato = "poule";
@@ -142,7 +152,14 @@ export class RegistraLutadoresPage implements OnInit {
   }
 
   segmentEtapaCampeonato(etapaCampeonato: any){
-    this.etapaCampeonato = etapaCampeonato.detail.value;
+    this.etapaCampeonato = etapaCampeonato;
+    var galleries = document.getElementsByClassName("etapa_campeonato");
+    var len =  galleries.length;
+    for(var i=0 ; i<len; i++){
+      galleries[i].setAttribute(`color`,"tertiary");
+    }
+    document.getElementById(etapaCampeonato).setAttribute(`color`,"primary");
+
     if(this.etapaCampeonato == "eliminatoria"){
       document.getElementById("etapa_eliminatoria").style.display = "";
       document.getElementById("etapa_eliminatoria").setAttribute("value","64");
@@ -166,8 +183,14 @@ export class RegistraLutadoresPage implements OnInit {
     }
   }
   
-  segmentEtapaEliminatoria(etapaEliminatoria: CustomEvent){
-    this.etapaEliminatoria = etapaEliminatoria.detail.value;
+  segmentEtapaEliminatoria(etapaEliminatoria: any){
+    var galleries = document.getElementsByClassName("etapa_eliminatoria");
+    var len =  galleries.length;
+    for(var i=0 ; i<len; i++){
+      galleries[i].setAttribute(`color`,"tertiary");
+    }
+    document.getElementById(etapaEliminatoria).setAttribute(`color`,"primary");
+    this.etapaEliminatoria = etapaEliminatoria;
   }
 
   //ETAPA CAMPEONATO-------FINAL--------------------------

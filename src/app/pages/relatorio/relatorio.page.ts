@@ -572,6 +572,8 @@ export class RelatorioPage implements OnInit {
         scales: {
           yAxes: [{
             ticks: {
+              
+              beginAtZero: true,
 
             }
           }]
