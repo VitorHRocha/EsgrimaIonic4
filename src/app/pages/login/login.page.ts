@@ -6,7 +6,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./login.page.scss'], 
 }) 
 export class LoginPage implements OnInit {
   
@@ -29,33 +29,35 @@ export class LoginPage implements OnInit {
         ],
       });
     }
-    async loginUser(loginForm: FormGroup): Promise<void> {
-     
-        
-        this.loading = await this.loadingCtrl.create();
-        await this.loading.present();
-        const email = loginForm.value.email;
-        const password = loginForm.value.password;
-        this.authService.loginUser(email+'@email.com.br', password).then(
-          () => {
-            this.loading.dismiss().then(() => {
-              this.router.navigateByUrl('user');
-            });
-          },
-          error => {
-            this.loading.dismiss().then(async () => {
-              const alert = await this.alertCtrl.create({
-                message: error.message,
-                buttons: [{ text: 'Ok', role: 'cancel' }],
-              });
-              await alert.present();
-            });
-          }
-          );
-        
-      }
-      ngOnInit() {
-      }
-      
-      
+
+    ngOnInit() {
+      document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
     }
+    
+    
+    async loginUser(loginForm: FormGroup): Promise<void> {
+      
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
+      const email = loginForm.value.email;
+      const password = loginForm.value.password;
+      this.authService.loginUser(email+'@email.com.br', password).then(
+        () => {
+          this.loading.dismiss().then(() => {
+            this.router.navigateByUrl('user');
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }],
+            });
+            await alert.present();
+          });
+        }
+        );
+        
+    }
+      
+}

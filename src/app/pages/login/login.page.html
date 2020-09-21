@@ -1,37 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content>
-    <form [formGroup]="loginForm">
-        <ion-item>
-          <ion-label position="stacked">Email</ion-label>
-          <ion-input
-            formControlName="email"
-            type="email"
-            [class.invalid]="!loginForm.controls['email'].valid &&
-            loginForm.controls['email'].touched">
-          </ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Senha</ion-label>
-          <ion-input
-            formControlName="password"
-            type="password"
-            [class.invalid]="!loginForm.controls['password'].valid&&
-            loginForm.controls['password'].touched" >
-          </ion-input>
-        </ion-item>
-      
-        <ion-button (click)="loginUser(loginForm)" expand="block"
-          [disabled]="!loginForm.valid">
-          Logar 
-        </ion-button>
-      </form>
-    <ion-button expand="block" fill="clear" routerLink="/registro">
-      Criar uma conta
-    </ion-button>
+<ion-content color="primary">
+  
+  <ion-avatar  (click)="openMenu()">
+    <img id="icon" src="" alt="">
+  </ion-avatar>
+  <ion-label >LOGIN</ion-label>
+  <form [formGroup]="loginForm">
+    <ion-item>
+      <ion-input
+      class="color"
+      text-center
+      color="white"
+      placeholder="Email"
+      formControlName="email"
+      type="email"
+      [class.invalid]="!loginForm.controls['email'].valid &&
+      loginForm.controls['email'].touched">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+    text-center
+    color="white"
+    placeholder="Senha"
+    formControlName="password"
+    type="password"
+    [class.invalid]="!loginForm.controls['password'].valid&&
+    loginForm.controls['password'].touched" >
+  </ion-input> 
+</ion-item>
+
+<ion-button id="logar" (click)="loginUser(loginForm)" shape="round" expand="block"  
+[disabled]="!loginForm.valid">
+Logar 
+</ion-button>
+</form>
+<ion-button ion-button id="criarConta" shape="round" expand="block" routerLink="/criar-conta" color="secondary">
+  Criar conta
+</ion-button>
 
 </ion-content>

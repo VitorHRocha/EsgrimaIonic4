@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  selector: 'app-criar-conta',
+  templateUrl: './criar-conta.page.html',
+  styleUrls: ['./criar-conta.page.scss'],
 })
 export class RegistroPage implements OnInit {
   public registroForm: FormGroup;

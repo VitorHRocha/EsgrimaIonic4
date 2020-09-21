@@ -1,0 +1,47 @@
+ion-item{
+    width: 70%;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 3%;
+}
+
+ion-button{
+    width: 40%;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+
+ion-input{
+    color: var(--ion-color-primary)!important;
+    font-size: 130%;
+}
+
+ion-label{
+    font-weight: bold;
+}
+ion-content{
+    text-align: center;
+}
+
+#logar{
+    --color: white;
+    // --background: #000000;
+    --border-color: white;
+    --border-style: solid ;
+}
+
+#criarConta{
+    margin-top: 30%;
+}
+
+ion-avatar{
+    width:   100% !important;  
+    height : 100% !important;  
+    max-width: 300px !important;  //any size
+    max-height: 300px !important; //any size 
+    margin: auto;
+    margin-top: 30%;
+    margin-bottom: 15%;
+}

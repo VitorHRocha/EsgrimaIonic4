@@ -1,0 +1,35 @@
+// ion-button{
+//     width: 50%;
+//     height: 50%;
+// //     clip-path: inset(100px 50px);
+// // clip-path: circle(50px at 0 100px);
+// // clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+// clip-path: path('M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z');
+
+// }
+svg{
+    color:black;
+    background: black;
+//     // // clip-path: inset(100px 50px);
+//     // clip-path: circle(40%);
+//     // clip-path: circle(20%);
+}
+// // clipPath{
+// //     background: black;
+// //     color:black;
+// // }
+
+#clipped {
+    width: 20%;
+    height: 20%;
+    // margin-bottom: 20px;
+    clip-path: url(#cross);
+    // clip-path: circle(100px at 110px 100px);
+    // clip-path: path('M 0 10 L 0,110 A 10,90 0,0,1 20,100 L 200 340 z');
+  }
+
+  #capacete {
+    width: 20%;
+    height: 20%;
+    clip-path: url(#cap);
+  }
