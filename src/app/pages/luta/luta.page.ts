@@ -62,32 +62,31 @@ export class LutaPage implements OnInit {
     // }
 
 
-    marcalocalCorpo(local){
-      
+    marcalocalCorpo(local){     
       var i;
       var k="localCorpo";
       
       if(this.toqueduplo == 0){
-        for(i=1;i<=16;i++){
+        for(i=1;i<=20;i++){
           
           if(i==local){
-            if(local<=8){
+            if(local<=10){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
             }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
             }
           }else{
-            document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
           }
         }
       }else{
-        if(local<=8){
-          for(i=1;i<=8;i++){
+        if(local<=10){
+          for(i=1;i<=10;i++){
             if(i==local){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
             }
             else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.5)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
             }
           }
           this.localCorpoLut1=local;
@@ -96,12 +95,12 @@ export class LutaPage implements OnInit {
           }
           
         }else{
-          for(i=9;i<=16;i++){
+          for(i=11;i<=20;i++){
             if(i==local){
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
             }
             else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
             }
           }
           this.localCorpoLut2=local;
@@ -122,9 +121,9 @@ export class LutaPage implements OnInit {
       if(ataqueAtual<5){
         if(this.toqueduplo==1){
           var k="localCorpo";
-          for(i=1;i<=12;i++){ 
+          for(i=1;i<=20;i++){ 
             
-            document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.9)');
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
             
           }        
         }
@@ -134,23 +133,27 @@ export class LutaPage implements OnInit {
         if(i==ataqueAtual){
           if(ataqueAtual==5){
             if(this.toqueduplo==0){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+              console.log('aqui');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'white');
               this.toqueduplo=1
             }else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
               this.toqueduplo=0  
             }
-          }else{
-            
-            if(ataqueAtual<6){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
+          }else{    
+            if(ataqueAtual<5){
+              console.log(k.concat(i));
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'white');
               this.toqueduplo=0  
             }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0,7)'); 
             }
           }
         }else{
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+          document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
         }
       }
       
@@ -162,15 +165,13 @@ export class LutaPage implements OnInit {
       var k="pista";
       for(i=1;i<=5;i++){
         if(this.pistaAtual==i){
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'green');
-          
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'green');        
         }else{
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
           if(i == 1 || i == 5){
             document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
           }
         }
-        
       }
     }
     
@@ -209,7 +210,7 @@ export class LutaPage implements OnInit {
           this.movimento++;
           
           console.log(this.localCorpoAtual)
-          if(this.localCorpoAtual<=6){
+          if(this.localCorpoAtual<=10){
             this.pontoLutador2 += 1;
           }else{
             this.pontoLutador1 += 1;
@@ -318,12 +319,12 @@ export class LutaPage implements OnInit {
     
     async AlertConcluir() {
       const alert = await this.alertCtrl.create({
-        header: 'Concluir jogo?',
+        cssClass: 'concluir-popup',
+        header: 'Deseja concluir o jogo?',
         buttons: [
-          {
+          { 
             text: 'Concluir',
             role: 'cancel',
-            cssClass: 'secondary',
             handler: () => {
               this.lutaService.updateLutas(this.ataque, this.localCorpo, this.pista)
               this.router.navigate(['/caracteristicas-oponente']);
@@ -335,38 +336,38 @@ export class LutaPage implements OnInit {
         ]
       });await alert.present();
     }
-    
+     
     
     
     
     
     zeraCores(){
       //Volta a cor dos botões do corpo
-      var i;
-      var k="localCorpo";
-      for(i=1;i<=16;i++){ 
+      // var i;
+      // var k="localCorpo";
+      // for(i=1;i<=16;i++){ 
         
-        document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
+      //   document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
         
-      }
+      // }
       
-      //Volta a cor dos botões de ataque
-      k="ataque";
-      for(i=1;i<=5;i++){
-        document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-      }
+      // //Volta a cor dos botões de ataque
+      // k="ataque";
+      // for(i=1;i<=5;i++){
+      //   document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+      // }
       
       
-      //Volta a cor dos botões da pista
-      k="pista";
-      for(i=1;i<=5;i++){
+      // //Volta a cor dos botões da pista
+      // k="pista";
+      // for(i=1;i<=5;i++){
         
-        document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-        if(i == 1 || i == 5){
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
-        }
+      //   document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
+      //   if(i == 1 || i == 5){
+      //     document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
+      //   }
         
-      }
+      // }
       
     }
     

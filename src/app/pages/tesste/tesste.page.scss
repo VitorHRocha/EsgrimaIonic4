@@ -33,3 +33,8 @@ svg{
     height: 20%;
     clip-path: url(#cap);
   }
+
+  ion-range{
+    --bar-background:black;
+    --bar-background-active: black;
+  }

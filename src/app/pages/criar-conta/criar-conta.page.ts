@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class RegistroPage implements OnInit {
   public registroForm: FormGroup;
   public loading: any;
-
+  
   constructor(
     private authService: AuthService,
     private loadingCtrl: LoadingController,
@@ -34,50 +34,51 @@ export class RegistroPage implements OnInit {
           '',
           Validators.compose([Validators.minLength(6), Validators.required]),
         ],
-         clube: [
+        clube: [
           '',
           Validators.compose([Validators.required]),
         ],
-         nome: [
+        nome: [
           '',
           Validators.compose([Validators.required]),
         ],
       });
     }
-     
-  voltar(){
-    this.router.navigate(['/login'])
-  }
-
+    ngOnInit() {
+      document.getElementById("icon").setAttribute("src",`./assets/img/Elemento-01.png`);
+    }
+    
+    voltar(){
+      this.router.navigate(['/login'])
+    }
+    
     async registrarUser(registroForm: FormGroup): Promise<void> {
-     
-          const email: string = registroForm.value.email;
-          const senha: string = registroForm.value.senha;
-          const nome: string  = registroForm.value.nome;
-          const clube: string = registroForm.value.clube;
-          var numeroLutas: number = 0;
-          this.authService.signupUser(email, senha, nome,clube,numeroLutas).then(
-            () => {
-              this.loading.dismiss().then(() => {
-                this.router.navigateByUrl('user');
-              });
-            },
-            error => {
-              this.loading.dismiss().then(async () => {
-                const alert = await this.alertCtrl.create({
-                  message: error.message,
-                  buttons: [{ text: 'Ok'}],
-                });
-                await alert.present();
-              });
-            }
-            );
-            this.loading = await this.loadingCtrl.create();
-            await this.loading.present();
-          
-        }
-        
-
-        ngOnInit() {}
-      }
       
+      const email: string = registroForm.value.email;
+      const senha: string = registroForm.value.senha;
+      const nome: string  = registroForm.value.nome;
+      const clube: string = registroForm.value.clube;
+      var numeroLutas: number = 0;
+      this.authService.signupUser(email, senha, nome,clube,numeroLutas).then(
+        () => {
+          this.loading.dismiss().then(() => {
+            this.router.navigateByUrl('user');
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok'}],
+            });
+            await alert.present();
+          });
+        }
+      );
+        this.loading = await this.loadingCtrl.create();
+        await this.loading.present();
+        
+    }
+      
+}
+    

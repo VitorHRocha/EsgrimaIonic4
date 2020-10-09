@@ -1,28 +1,56 @@
+ion-title{
+    text-align: center;
+    font-size: 110%; 
+    font-weight: bold;
+}
+ion-toolbar {
+    color: white;
+}
 
-.foto{
+ion-toolbar ion-button{
+    position: absolute;
+    margin-top: -1.5%;
+    margin-left: 87%;
+    --padding-start : 30%;
+    color: white;
+    font-size: 130%;   
+}
+ion-content{
+    margin-top: 100%;
+    text-align: center;
+}
+ion-avatar{
+    width:   150% !important;  
+    height : 150% !important;  
+    max-width: 450px !important;  //any size
+    max-height: 450px !important; //any size 
+    margin: auto;
+    }
+    
+#div-avatar{
+    margin-top: 10%;
     display: flex;
     height: 40%; 
+    margin-bottom: 30%;   
      
-}
+} 
 #lut{
  border: 20px;
  border-color: blueviolet;
   
 }
+ion-content ion-button{
+    width: 32%;
+    height : 6%;
+    margin-top: 4%;
+    font-family: "Noto Sans",  sans-serif; ;
+    font-size: 102%;
+    font-weight: bold;
 
-ion-avatar{
-width:   100% !important;  
-height : 100% !important;  
-max-width: 200px !important;  //any size
-max-height: 200px !important; //any size 
-margin: auto;
 }
+// Noto Sans
+// - Noto Serif
+// - Built Tiltiling
 
-.foto{
-    margin-bottom: 30%;  
-}
-ion-icon{
-    color: black;
-    font-size: 200%;
-    
-}
+
+

@@ -1,213 +1,339 @@
-.imgLuta{
-    height: 290px;
-    display:inline-block;
-    --background: url(../../../assets/img/concatesgrim.png) 0 0/100% 100% no-repeat;
-    
-    background-size: cover;
-    
+
+ion-toolbar{
+  color: white;
+  white-space: nowrap;
 }
-#lutadores{
-    height: 100%;
+#backButton{
+  position: absolute;
+  margin-top: -4%;
+  --padding-start : 20%;
+  color: white;   
+  font-size: 130%;  
 }
 .concluir{
     position: absolute;
+    margin-top: -4%;
     right: 0%;
 }
-
-#localCorpo1{
-    position: absolute;
-    top: -2%;
-    left: 10%;    
-
+.concluir-popup{
+  --background: var(--ion-color-secondary);
 }
-#localCorpo2{
-    position: absolute;
-    top: 9%;
-    left: -1%; 
-    
-}
-#localCorpo3{
-    position: absolute;
-    top: 30%;
-    left: 10%; 
-
-}
-#localCorpo4{
-    position: absolute;
-    top: 30%;
-    left: 23%; 
-
-}
-#localCorpo5{
-    position: absolute;
-    top: 53%;
-    left: 6%; 
-
-}
-#localCorpo6{
-    position: absolute;
-    top: 53%;
-    left: 20%; 
-
-}
-#localCorpo7{
-    position: absolute;
-    top: 80%;
-    left: 6%; 
-}
-#localCorpo8{
-    position: absolute;
-    top: 80%;
-    left: 22%; 
-     
-}
-#localCorpo9{
-    position: absolute;
-    top: -2%;
-    right: 10%; 
-}
-#localCorpo10{
-    position: absolute;
-    top: 9%;
-    right: -1%; 
-}
-#localCorpo11{
-    
-    position: absolute;
-    top: 30%;
-    right: 10%; 
-
-}
-#localCorpo12{
-    
-    position: absolute;
-    top: 30%;
-    right: 23%; 
-
-}
-#localCorpo13{
-    
-    position: absolute;
-    top: 53%;
-    right: 10%; 
-
-}
-#localCorpo14{
-    
-    position: absolute;
-    top: 53%;
-    right: 27%;
- 
-}
-#localCorpo15{
-    position: absolute;
-    top: 80%;
-    right: 5%;
-
-}
-#localCorpo16{
-    position: absolute;
-    top: 80%;
-    right: 21%;
 
 
-}
-.cabeca{
-  
-    --border-radius: 20px;
-    width: 15%;
-    height: 30%;
-
-}
-.braco_esquerdo{
-    --border-radius: 20px;
-    width: 0,25%;
-    height: 30%;
-
-}
-.tronco{
-    --border-radius: 20px;
-    width: 12%;
-    height: 22%;
-    
-}
-.braco_direito{
-    --border-radius: 20px;
-    width: 15%;
-    height: 15%;
-}
-.perna_esquerda{
-    --border-radius: 30px;
-    width: 5%;
-    height: 30%;
-
-}
-.perna_direita{
-    --border-radius: 20px;
-    width: 1%;
-    height: 30%;
-}
-.pe_direito{
-
-}
-.pe_esquerda{
-
-}
 .labels{
-    margin-top: -5%;
-
+    margin-top: 5%;
+    text-align: center;
+    font-size: 120%; 
 }
 
-#lutadores>ion-row{
-    height: 100%;
+ion-item{
+  --highlight-height: 0;
+  text-align: center;
+  width: 80%;
+  color:black;
+  --highlight-height: 0;
+  --highlight-color-valid: var(--ion-color-secondary);
+  
 }
+
+ion-item div.item-native{
+  border-bottom-width: 0px;
+}
+.pontosLutadores{
+  background: var(--ion-color-secondary);
+  border-radius: 30px;
+  font-size: 150%; 
+  padding: 3%;
+  color:white;
+  width: 20%;
+  height: 70%;
+  padding-top: 5%;
+}
+#meusPontos{
+  margin-left: 70%;
+  border-bottom-width: 0px;
+}
+#pontosOponente{
+  margin-left: -50%;
+}
+
 .Ataques>ion-grid>ion-row>ion-col{
- width: 25%;
- 
+
+ width: 40%;
+ text-align: center;
+//  margin-left: -3%;
+//  margin-right: 10%;
 }
+
 .movimento{
+  margin-top: -2%;
     font-size: 65%;
-    width: 112%;
+    width: 84%;
+    height: 50px;
+    --border-color: var(--ion-color-primary);
+    --border-style: solid ;
+    --background: var(--ion-color-tertiary);
+    color: var(--ion-color-primary);
+    font-weight: 900;
+    font-size: 90%;
+    letter-spacing: -1px;
 }
-.arena>ion-grid>{
-    height: 30%;
+
+#ataque1{
+  margin-right: -13%;
+}
+
+#ataque2{
+  margin-left: -13%;
+}
+
+#ataque3{
+  margin-right: -13%;
+}
+
+#ataque4{
+  margin-left: -13%;
+}
+
+.toqueduplocol{
+
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+  ion-button{
+    width: 50%;
+  }
+  
+}
+
+.arena>ion-grid{
+    height: 20%;
+    // text-align: center;
+}
+.arena>ion-grid>ion-row{
+  margin-left: -2%;
+  width: 80%;
+  margin: auto;
 }
 .arena>ion-grid>ion-row>ion-col{
-    
-    margin: 0%;
+    // margin: 0%;
     padding: 0%;
 }
-.toqueduplo>ion-button{
-    margin: auto;
+.arena ion-button{
+  width: 100%;
+  --border-color: var(--ion-color-primary);
+  --border-style: solid ;
+  --border-radius: 10px;
 }
-.colalerta{
-
-} 
-.colnormal{
-
+#alertacol{
+  padding-right: 11.5%;
 }
-.coluniao{
-    
-}
-#ef1{
-    margin-left: 40% ;
-}
-
-
 .alerta{
-    width: 100%;
-    --background : red;
+  --background : var(--ion-color-secondary);
 }
 .normal{
-    width: 100%;
+  --background : var(--ion-color-tertiary);
+
 }
-.uniao{
-    width: 100%;
-   
+#ef1{
+  margin-left: 40% ;
 }
-.labels{
-    text-align: center;
-    font-size: 120%;
-    margin-top: 5%;
-    
-}
+
+
+// Formata botões com Clip:path
+#localCorpo1 {
+    // margin-top: -15%;
+    // margin-left: 2%;
+    width: 45%;
+    height: 40%;
+    clip-path: url(#cab1);
+  }
+  
+  #localCorpo2{ 
+    position: absolute;
+    // margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgtronco1);
+  }
+  
+  #localCorpo3{
+    position: absolute;
+  	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgbracoesquerdo1);
+  }
+  
+  #localCorpo4{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgmaoesquerda1);
+  }
+  
+  #localCorpo5{  //bracodireito1 -->
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgbracodireito1);
+  }
+  
+  // #maodireita1{
+  #localCorpo6{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgmaodireita1);
+  }
+  
+  // #pernaesquerda1{
+  #localCorpo7{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpernaesquerda1);
+  }
+  
+  // #pernadireita1{
+  #localCorpo8{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpernadireita1);
+  }
+  
+  // #peesquerdo1{
+  #localCorpo9{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 50%;
+    height: 40%;
+    clip-path: url(#svgpeesquerdo1);
+  
+  }
+  
+  #localCorpo10{
+  // #pedireito1{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -42.1%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpedireito1);
+  
+  }
+  
+  // #clipped2 {
+  #localCorpo11{
+    // margin-top: -15%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#cab2);
+  }
+  
+  #localCorpo12{ 
+  // #tronco2{ 
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgtronco2);
+  }
+  
+  // #bracoesquerdo2{
+  #localCorpo13{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 50%;
+    height: 40%;
+    clip-path: url(#svgbracoesquerdo2);
+  }
+  
+  // #maoesquerda2{
+  #localCorpo14{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgmaoesquerda2);
+  }
+  
+  #localCorpo15{
+  // #bracodireito2{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgbracodireito2);
+  }
+  
+  #localCorpo16{
+  // #maodireita2{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgmaodireita2);
+  }
+  
+  #localCorpo17{
+  // #pernaesquerda2{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpernaesquerda2);
+  }
+  
+  // #pernadireita2{
+  #localCorpo18{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpernadireita2);
+  }
+  
+  // #peesquerdo2{
+  #localCorpo19{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpeesquerdo2);
+  
+  }
+  
+  // #pedireito2{
+  #localCorpo20{
+    position: absolute;
+	// margin-top: -13.8%;
+    margin-left: -43%;
+    width: 46%;
+    height: 40%;
+    clip-path: url(#svgpedireito2);
+  
+  }
+  

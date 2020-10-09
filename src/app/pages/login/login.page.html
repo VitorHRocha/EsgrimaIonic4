@@ -1,41 +1,46 @@
 <ion-content color="primary">
   
-  <ion-avatar  (click)="openMenu()">
+
+  <ion-avatar >
     <img id="icon" src="" alt="">
   </ion-avatar>
   <ion-label >LOGIN</ion-label>
   <form [formGroup]="loginForm">
     <ion-item>
       <ion-input
-      class="color"
       text-center
-      color="white"
       placeholder="Email"
       formControlName="email"
       type="email"
       [class.invalid]="!loginForm.controls['email'].valid &&
       loginForm.controls['email'].touched">
-    </ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input
-    text-center
-    color="white"
-    placeholder="Senha"
-    formControlName="password"
-    type="password"
-    [class.invalid]="!loginForm.controls['password'].valid&&
-    loginForm.controls['password'].touched" >
-  </ion-input> 
-</ion-item>
+      </ion-input>
+    </ion-item>
 
-<ion-button id="logar" (click)="loginUser(loginForm)" shape="round" expand="block"  
-[disabled]="!loginForm.valid">
-Logar 
-</ion-button>
-</form>
-<ion-button ion-button id="criarConta" shape="round" expand="block" routerLink="/criar-conta" color="secondary">
-  Criar conta
-</ion-button>
+    <ion-item>
+      <ion-input
+      text-center
+      placeholder="Senha"
+      formControlName="password"
+      type="password"
+      [class.invalid]="!loginForm.controls['password'].valid&&
+      loginForm.controls['password'].touched" >
+      </ion-input> 
+    </ion-item>
+
+    <ion-button id="logar" (click)="loginUser(loginForm)" shape="round" expand="block"  
+    [disabled]="!loginForm.valid">
+    Logar 
+    </ion-button>
+  </form>
+
+  <ion-button 
+    id="criarConta"
+    shape="round"
+    expand="block"
+    color="secondary"
+    routerLink="/criar-conta">
+    Criar conta
+  </ion-button>
 
 </ion-content>

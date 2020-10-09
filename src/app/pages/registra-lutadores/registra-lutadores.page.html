@@ -1,11 +1,13 @@
 <ion-header color="secondary">
   <ion-toolbar color="secundary">
-    <ion-button shape="round" (click)="voltar()">
-      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    <ion-button id="backButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
     </ion-button>
+    <ion-title>NOVO JOGO</ion-title>
   </ion-toolbar>
 </ion-header>
 <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"> </script>
+
 <ion-content color="tertiary">
   
   <!-- <ion-segment  (ionChange)="segmentTipoJogo($event)" value="treinamento" > -->
@@ -33,7 +35,7 @@
             <ion-label>Poule</ion-label>
           </ion-button>
           <ion-button shape="round" class="etapa_campeonato" id="eliminatoria" (click)="segmentEtapaCampeonato('eliminatoria')">
-            <ion-label>Eliminatoria</ion-label>
+            <ion-label>Eliminatória</ion-label>
           </ion-button>
         </div>
       </div>
@@ -67,54 +69,43 @@
         </div>
         <!-- </ion-segment> -->
         
-        <ion-list (click)="presentModal2()">
-          <ion-list-header>
-            <h3>Oponente</h3>
+        <ion-list (click)="presentModal2()" >
+          <ion-list-header color="tertiary">
+            <h6>OPONENTE</h6>
           </ion-list-header>
-          <ion-item>
-            <ion-label>
-              <ion-label>
-                <ion-avatar>
-                  <img id="fotoButton2" src="" alt="">
-                </ion-avatar>
-              </ion-label>
-              <ion-label>
-                <ion-label>Nome: {{nomeOponente}}</ion-label>
-                <ion-label>Clube: {{clubeOponente}}</ion-label>
-              </ion-label>
+          <ion-item color="tertiary" lines="none">
+            <ion-label >
+                <ion-label>Nome {{nomeOponente}}</ion-label>
+                <ion-label>Clube {{clubeOponente}}</ion-label>
             </ion-label>
           </ion-item>
         </ion-list>
         
-        <ion-segment id="raking_oponente_poule" (ionChange)="segmentRakingOponentePoule($event)" value="melhor">
-          <ion-button shape="round" value="pior" layout="icon-bottom">
-            <ion-label>Pior Ranqueado</ion-label>
-            <ion-icon name="arrow-round-down"></ion-icon>
+        <div id="raking_oponente_poule" >
+          <ion-button class="raking_oponente_poule" shape="round" id="pior_ranqueado" (click)="segmentRakingOponentePoule('pior')" >
+            <ion-label>Pior <br> Ranqueado</ion-label>
           </ion-button>
-          <ion-button shape="round" value="melhor" layout="icon-bottom">
-            <ion-label>Melhor Ranqueado</ion-label>
-            <ion-icon name="arrow-round-up"></ion-icon>
+          <ion-button class="raking_oponente_poule" shape="round" id="melhor_ranqueado" (click)="segmentRakingOponentePoule('melhor')" >
+            <ion-label>Melhor <br> Ranqueado</ion-label>
           </ion-button>
-        </ion-segment>
+        </div>
         
-        <ion-segment id="class_oponente_eliminatoria" (ionChange)="segmentClassOponenteEliminatoria($event)" value="melhor">
-          <ion-button shape="round" value="pior" layout="icon-bottom">
-            <ion-label>Pior</ion-label>
-            <ion-icon name="arrow-round-down"></ion-icon>
+        <div id="class_oponente_eliminatoria" >
+          <ion-button class="class_oponente_eliminatoria" shape="round" id="pior_classificado" (click)="segmentClassOponenteEliminatoria('pior')">
+            <ion-label>Pior <br> Classificado</ion-label>
           </ion-button>
-          <ion-button shape="round" value="equivalente">
-            <ion-label>Equivalente</ion-label>
+          <ion-button class="class_oponente_eliminatoria" shape="round" id="melhor_classificado" (click)="segmentClassOponenteEliminatoria('melhor')">
+            <ion-label>Melhor <br> Classificado</ion-label>
           </ion-button>
-          <ion-button shape="round" value="melhor" layout="icon-bottom">
-            <ion-label>Melhor</ion-label>
-            <ion-icon name="arrow-round-up"></ion-icon>
+          <ion-button class="class_oponente_eliminatoria" shape="round" id="equivalente_classificado" (click)="segmentClassOponenteEliminatoria('equivalente')"> 
+            <ion-label>Classificação <br> Equivalente</ion-label>
+          </ion-button>          
+        </div>
+        
+        <!-- <div footer> -->
+          <ion-button shape="round" id='botao_confirmar' (click)="cadastro()"  [disabled]="!valido" color="secondary">
+            Confirmar
           </ion-button>
-        </ion-segment>
-        
-        
-        <ion-button shape="round" (click)="cadastro()" expand="block" [disabled]="!valido">
-          Confirma
-        </ion-button>
-        
+        <!-- <div> -->
         
       </ion-content>

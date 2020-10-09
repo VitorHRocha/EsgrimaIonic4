@@ -12,7 +12,7 @@ export class LoginPage implements OnInit {
   
   loginForm: any;
   loading: HTMLIonLoadingElement;
-  
+   
   constructor(
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -28,6 +28,8 @@ export class LoginPage implements OnInit {
           Validators.compose([Validators.required, Validators.minLength(6)]),
         ],
       });
+
+      
     }
 
     ngOnInit() {

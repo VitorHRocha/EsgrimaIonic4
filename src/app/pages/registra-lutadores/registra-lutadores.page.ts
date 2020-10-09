@@ -56,7 +56,6 @@ export class RegistraLutadoresPage implements OnInit {
   }
   
   ngOnInit() {
-    document.getElementById("fotoButton2").setAttribute("src",`./assets/img/esgr_mask.jpg`);
     document.getElementById("etapa_campeonato").style.display = "none";
     document.getElementById("etapa_eliminatoria").style.display = "none";
     document.getElementById("raking_oponente_poule").style.display = "none";
@@ -126,17 +125,22 @@ export class RegistraLutadoresPage implements OnInit {
     var len =  galleries.length;
     for(var i=0 ; i<len; i++){
       galleries[i].setAttribute(`color`,"tertiary");
-    }
+    } 
     
     document.getElementById(tipoLuta).setAttribute(`color`,"primary");
 
     if(this.tipoLuta == "campeonato"){
       document.getElementById("etapa_campeonato").style.display = "";
-      this.etapaCampeonato = "poule";
-      document.getElementById("etapa_campeonato").setAttribute("value","poule");
-      this.rankingOponente = "melhor";
       document.getElementById("raking_oponente_poule").style.display = "";
-      document.getElementById("raking_oponente_poule").setAttribute("value","melhor");
+      this.etapaCampeonato = "poule";
+      this.rankingOponente = "melhor";
+      galleries = document.getElementsByClassName("raking_oponente_poule");
+      len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      }
+
+      document.getElementById("melhor_ranqueado").setAttribute(`color`,"primary");
     
     }else{
       document.getElementById("etapa_campeonato").style.display            = "none";
@@ -162,12 +166,14 @@ export class RegistraLutadoresPage implements OnInit {
 
     if(this.etapaCampeonato == "eliminatoria"){
       document.getElementById("etapa_eliminatoria").style.display = "";
-      document.getElementById("etapa_eliminatoria").setAttribute("value","64");
       this.etapaEliminatoria = "64";
+
+    
       
     }else{
       document.getElementById("etapa_eliminatoria").style.display = "none";
-      this.etapaEliminatoria = "";  
+      this.etapaEliminatoria = ""; 
+
     }
 
     if(this.etapaCampeonato == "eliminatoria"){
@@ -175,11 +181,26 @@ export class RegistraLutadoresPage implements OnInit {
       this.classOponente   = 'melhor';
       document.getElementById("raking_oponente_poule").style.display       = "none";
       document.getElementById("class_oponente_eliminatoria").style.display = "";
+
+      galleries = document.getElementsByClassName("class_oponente_eliminatoria");
+      len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      }
+      document.getElementById("melhor_classificado").setAttribute(`color`,"primary");
+
     }else{
       this.rankingOponente = 'melhor';
       this.classOponente   = '';
       document.getElementById("raking_oponente_poule").style.display       = "";
       document.getElementById("class_oponente_eliminatoria").style.display = "none";
+
+      galleries = document.getElementsByClassName("raking_oponente_poule");
+      len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      }
+      document.getElementById("melhor_ranqueado").setAttribute(`color`,"primary");
     }
   }
   
@@ -198,11 +219,30 @@ export class RegistraLutadoresPage implements OnInit {
   //CLASSIFICAÇÃO CAMPEONATO-------INICIO--------------------------
   
   segmentRakingOponentePoule(rankingOponente: any){
-    this.rankingOponente = rankingOponente.detail.value;
+    this.rankingOponente = rankingOponente;
+    console.log(rankingOponente);
+    var galleries = document.getElementsByClassName("raking_oponente_poule");
+    var len =  galleries.length;
+    for(var i=0 ; i<len; i++){
+      galleries[i].setAttribute(`color`,"tertiary");
+    }
+    rankingOponente = rankingOponente.concat("_ranqueado");
+    console.log(rankingOponente);
+    document.getElementById(rankingOponente).setAttribute(`color`,"primary");
+
   }
 
   segmentClassOponenteEliminatoria(classOponente: any){
-    this.classOponente = classOponente.detail.value;
+    this.classOponente = classOponente;
+    var galleries = document.getElementsByClassName("class_oponente_eliminatoria");
+    var len =  galleries.length;
+    for(var i=0 ; i<len; i++){
+      galleries[i].setAttribute(`color`,"tertiary");
+    }
+    classOponente = classOponente.concat("_classificado");
+    console.log(classOponente);
+    document.getElementById(classOponente).setAttribute(`color`,"primary");
+
   }
 
   //CLASSIFICAÇÃO CAMPEONATO-------FINAL--------------------------

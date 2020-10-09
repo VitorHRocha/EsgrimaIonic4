@@ -1,28 +1,61 @@
-ion-avatar{
-    width:   100% !important;  
-    height : 100% !important;  
-    max-width: 100px !important;  //any size
-    max-height: 100px !important; //any size 
-    margin: auto;
-    border: 20px;
-    border-color: blueviolet;
+ion-toolbar{
+    --padding-top: 15%;
+    padding-bottom: 5%;
+    color: white;
+    white-space: nowrap;
+
 }
-// ion-segment-button{
-//     --border-radius : 30px 30px ;
-//     --border-color: var(--ion-color-primary);
-//     --background-checked: var(--ion-color-primary);
-//     width: 30px;
-//     --indicator-height: 0px;
-//     --border-style: solid ;
-//     --color-checked: white;
-//     --border-width: 1px;
-//     --padding-color: var(--ion-color-primary);
-//     --margin-color: var(--ion-color-primary);
-//     --indicator-color: var(--ion-color-primary);
 
-// }
+ion-title{
+    // margin-top: 3%;
+    // margin-bottom: 3%; 
+    text-align: center;
+    font-size: 110%; 
+    font-weight: bold;
+}
 
+ion-toolbar ion-button{
+    position: absolute;
+    margin-top: -2%;
+    --padding-start : 20%;
+    color: white;   
+    font-size: 130%;  
+}
+ion-content{
+    text-align: center;
+}
+#tipo_jogo{
+    margin-top: 5%;
+}
+div{
+    margin-bottom: 3%;
+}
 div>ion-button{
+    --color: var(--ion-color-primary);
+    --background: var(--ion-color-tertiary);
+    --border-color: var(--ion-color-primary);
+    --border-style: solid ;
+    font-weight: 900;
+    --padding-top: 13%;
+    --padding-bottom: 13%;
+    width: 37%;
+    
+}
+#etapa_eliminatoria_buttons_top>ion-button{
+    width: 15%;
+    margin-right: 4%;
+    --padding-top: 30%;
+    --padding-bottom: 30%;
+    font-size: 100%; 
+}
+
+.raking_oponente_poule{
+    --color: var(--ion-color-primary);
+    --background: var(--ion-color-tertiary);
+    --border-color: var(--ion-color-primary);
+    --border-style: solid ;
+}
+.class_oponente_eliminatoria{
     --color: var(--ion-color-primary);
     --background: var(--ion-color-tertiary);
     --border-color: var(--ion-color-primary);
@@ -33,32 +66,63 @@ ion-header{
     background-color: var(--ion-color-primary);
 }
 
-h3{
+ion-list{
+    padding-bottom: 0;
+    padding-top:0;
+}
+
+h6{ 
+    margin-top: 8%;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 800;
+    margin-bottom: 0%;
+    font-size: 130%; 
 }
 
-#etapa_eliminatoria{
-    display: flex;
-    flex-wrap: wrap;
-}
 
 hr{
-    border-top: 1px solid black;
+    border-top: 2px solid black;
+    margin-top: 4%;
     margin-left: 10%;
     margin-right: 10%;
 }
-
-#tipo_jogo{
-    margin-left: 5%;
+ion-list{
+ margin-bottom: 2%;
 }
 
-#etapa_campeonato_buttons{
-    margin-left: 15%;
+ion-item ion-label{
+    margin-top: 0;
 }
-#etapa_eliminatoria_buttons_top{
-    margin-left: 12%;
+
+ion-label ion-label {
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 30px;
+    background: white;
+    width: 80%;
+    font-size: 140%;
+    font-family:"Noto Serif"; 
+    font-weight: 900;
 }
-#etapa_eliminatoria_buttons_botton{
-    margin-left: 17%;
+
+#raking_oponente_poule>ion-button{
+    margin-top: 2%;
+    margin-right: 3%; 
+}
+
+#class_oponente_eliminatoria>ion-button{
+    margin-top: 4%;
+    margin-right: 3%; 
+}
+
+#botao_confirmar{
+    position: absolute;
+    // padding: blue;
+    bottom: 2%;
+    margin-left: -17%;
+
 }

@@ -69,19 +69,17 @@ export class ProfileService {
     efeitoPratica: efeitoPratica
   ): Promise<any> {
 
-    console.log(idLuta);
-    console.log(tipoJogo);
-    console.log(etapaCampeonato);
-    console.log(etapaEliminatoria);
-    console.log(rankingOponente);
-    console.log(nome1);
-    console.log(clube1);
-    console.log(nome2);
-    console.log(clube2);
-    console.log(data);
-    console.log(hora);
-
-
+    // console.log(idLuta);
+    // console.log(tipoJogo);
+    // console.log(etapaCampeonato);
+    // console.log(etapaEliminatoria);
+    // console.log(rankingOponente);
+    // console.log(nome1);
+    // console.log(clube1);
+    // console.log(nome2);
+    // console.log(clube2);
+    // console.log(data);
+    // console.log(hora);
     // console.log(altura_relativa);
     // console.log(punho1);
     // console.log(punho2);
@@ -102,45 +100,89 @@ export class ProfileService {
     // console.log(disciplinado);
 
 
+    // tipoJogo: string,
+    // etapaCampeonato: string,
+    // etapaEliminatoria: string,
+    // rankingOponente: string,
+    // classOponente: string,
+   // data: string,
+    // hora: string,
+
+    // nome1: string,
+    // clube1: string, 
+    // punho1: string,
+
+    // nome2: string,
+    // clube2: string,
+    // altura_relativa: string,
+    // punho2: string,
+    // empunhadura: string,
+    // tatica: string,
+    // nivelTecnico: string,
+
+    // conservador_ousado: number,
+    // inconstante_constante: number,
+    // inseguro_confiante: number,
+    // pressionado_controlado: number,
+    // provocativa_respeitosa: number,
+    // passiva_ativa: number,
+
+    // myConfiante: number,
+    // myEstressado: number,
+    // myFocado: number,
+    // myMotivado: number,
+    // myControlado: number,
+    // myDisciplinado: number,
+
+    // efeitoPratica: efeitoPratica
+
     this.updateLutas(idLuta);
     return this.userProfile.update({
       lutadores: firebase.firestore.FieldValue.arrayUnion({
         idLuta,
-        tipoJogo,
-        etapaCampeonato,
-        etapaEliminatoria,
-        rankingOponente,
-        classOponente,
-        nome1,
-        clube1,
-        nome2,
-        clube2,
-        data,
-        hora,
-        altura_relativa,
-        punho1,
-        punho2,
-        empunhadura,
-        tatica,
-        nivelTecnico,
-        conservador_ousado,
-        inconstante_constante,
-        inseguro_confiante,
-        pressionado_controlado,
-        provocativa_respeitosa,
-        passiva_ativa,
-        myConfiante,
-        myEstressado,
-        myFocado,
-        myMotivado,
-        myControlado,
-        myDisciplinado,
-        ep_sonolento_alerta: efeitoPratica.sonolento_alerta,
-        ep_cansado_vigoroso: efeitoPratica.cansado_vigoroso,
-        ep_inseguro_confiante: efeitoPratica.inseguro_confiante,
-        ep_preocupado_tranquilo: efeitoPratica.preocupado_tranquilo,
-        ep_triste_feliz: efeitoPratica.triste_feliz,
-        ep_desmotivado_motivado: efeitoPratica.desmotivado_motivado,
+        Jogo:{
+          tipoJogo,
+          etapaCampeonato,
+          etapaEliminatoria,
+          rankingOponente,
+          classOponente,
+          data,
+          hora,
+        },
+        Perfil_Adversario:{
+          nome2,
+          clube2,
+          altura_relativa,
+          preferencia_manual: punho2,
+          empunhadura,
+          tatica,
+          nivelTecnico,
+        },
+        Avaliacao_Adversario:{
+          conservador_ousado,
+          inconstante_constante,
+          inseguro_confiante,
+          pressionado_controlado,
+          provocativa_respeitosa,
+          passiva_ativa,
+
+        },
+        Auto_Avaliacao:{
+          confiante:  myConfiante,
+          estressado: myEstressado,
+          focado: myFocado,
+          motivado: myMotivado,
+          controlado: myControlado,
+          disciplinado: myDisciplinado,
+        },
+        Efeito_Pratica: {
+           sonolento_alerta: efeitoPratica.sonolento_alerta,
+           cansado_vigoroso: efeitoPratica.cansado_vigoroso,
+           inseguro_confiante: efeitoPratica.inseguro_confiante,
+           preocupado_tranquilo: efeitoPratica.preocupado_tranquilo,
+           triste_feliz: efeitoPratica.triste_feliz,
+           desmotivado_motivado: efeitoPratica.desmotivado_motivado,
+        }
       })
     });
 

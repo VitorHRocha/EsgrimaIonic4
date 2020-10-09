@@ -1,23 +1,30 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button id="logoutButton" fill="clear" (click)="voltar()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button>  
+    <ion-title>Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content padding color="secondary">
-  <div  class="foto" >  
+<ion-content color="secondary">
+  <div  id="div-avatar" >  
     <ion-avatar  (click)="openMenu()">
-        <img id="fotoButton" src="" alt="">
-      </ion-avatar>
+      <img id="fotoButton" src="..\assets\img\Logo-07.png" alt="">
+    </ion-avatar>
   </div>
-
   
-  <ion-button expand="block"  id="lut" (click)="novaLuta()" shape="round">
-    <!-- <img src="https://img.icons8.com/metro/26/000000/royal-marines.png"> -->
+  
+  <ion-button  id="lut" (click)="novaLuta()" shape="round" >
     Novo Jogo
   </ion-button>
-  <ion-button expand="block" (click)="historico()" shape="round" >
-    <!-- <img src="https://img.icons8.com/metro/26/000000/rules.png"> -->
+  <br>
+  <ion-button  (click)="historico()" shape="round" color="tertiary" >
     Meus Jogos
   </ion-button> 
-  <ion-button expand="block" (click)="estatistica()"  shape="round">
-    <!-- <ion-icon name="stats"></ion-icon> -->
-    Minhas estatisticas
+  <br>
+  <ion-button (click)="estatistica()"  shape="round" color="tertiary">
+    Minhas <br> estatisticas
   </ion-button> 
 </ion-content>
 

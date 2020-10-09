@@ -1,83 +1,89 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button shape="round" (click)="voltar()">
-            <ion-icon name="arrow-dropleft-circle"></ion-icon>
-          </ion-button>
-        </ion-col> 
-        <ion-col>
-          <ion-title>Registro</ion-title>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button id="backButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>NOVA CONTA</ion-title>      
   </ion-toolbar>
 </ion-header>
+ 
+<ion-content padding color="tertiary">
   
-<ion-content padding>
+  
+  <ion-avatar >
+    <ion-label id="foto">INSERIR<br>FOTO</ion-label>
+    <img id="icon" src="" alt="">
+  </ion-avatar>
+  
   <form [formGroup]="registroForm"> 
-      <ion-item>
-        <ion-label position="floating">Nome</ion-label>
-        <ion-input
-        formControlName="nome"
-        type="text"
-        [class.invalid]="registroForm.controls['nome'].valid &&
-        registroForm.controls['nome'].touched"
-        >
-      </ion-input>
-    </ion-item>
-
     <ion-item>
-      <ion-label position="floating">Clube</ion-label>
       <ion-input
-      formControlName="clube"
+      text-center
+      placeholder="Nome"
+      formControlName="nome"
       type="text"
-      [class.invalid]="registroForm.controls['clube'].valid &&
-      registroForm.controls['clube'].touched"
+      [class.invalid]="registroForm.controls['nome'].valid &&
+      registroForm.controls['nome'].touched"
       >
     </ion-input>
   </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input
-        formControlName="email"
-        type="email"
-        [class.invalid]="registroForm.controls['email'].valid &&
-        registroForm.controls['email'].touched"
-        >
-      </ion-input>
-    </ion-item>
- 
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input
-        formControlName="senha"
-        type="password"
-        [class.invalid]="!registroForm.controls['senha'].valid &&
-        registroForm.controls['senha'].touched">
-      </ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Confirmar Senha</ion-label>
-      <ion-input
-        formControlName="confSenha"
-        type="password"
-        [class.invalid]="!registroForm.controls['senha'].valid &&
-        registroForm.controls['senha'].touched">
-      </ion-input>
-    </ion-item>
- 
-
-    <ion-button
-    expand="block"
-    (click)="registrarUser(registroForm)"
-    [disabled]="!registroForm.valid"
+  
+  <ion-item>
+    <ion-input
+    text-center
+    placeholder="Clube"
+    formControlName="clube"
+    type="text"
+    [class.invalid]="registroForm.controls['clube'].valid &&
+    registroForm.controls['clube'].touched"
     >
-    Criar conta
-  </ion-button>
+  </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input
+  text-center
+  placeholder="Email"
+  formControlName="email"
+  type="email"
+  [class.invalid]="registroForm.controls['email'].valid &&
+  registroForm.controls['email'].touched"
+  >
+</ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input
+  text-center
+  placeholder="Senha"
+  formControlName="senha"
+  type="password"
+  [class.invalid]="!registroForm.controls['senha'].valid &&
+  registroForm.controls['senha'].touched">
+</ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input
+  text-center
+  placeholder="Confirmar Senha"
+  formControlName="confSenha"
+  type="password"
+  [class.invalid]="!registroForm.controls['senha'].valid &&
+  registroForm.controls['senha'].touched">
+</ion-input>
+</ion-item>
+
+
+<ion-button
+shape="round"
+expand="block"
+color="secondary"
+(click)="registrarUser(registroForm)"
+[disabled]="!registroForm.valid"
+>
+Criar conta
+</ion-button>
 </form>
 
 </ion-content>

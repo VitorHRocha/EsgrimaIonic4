@@ -44,7 +44,7 @@ export class UserPage implements OnInit {
     .get()
     .then( userProfileSnapshot => {
       // this.fotoPerfilURL = userProfileSnapshot.data().fotoPerfilURL;  
-      this.setFoto();
+      // this.setFoto();
     });
     
    }
