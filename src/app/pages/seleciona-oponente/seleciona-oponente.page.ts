@@ -41,7 +41,7 @@ export class SelecionaOponentePage implements OnInit {
   }
 
   async presentModal2() {
-    const modal = await this.modalCtrl1.create({
+    const modal = await this.modalCtrl1.create({ 
       component: ModalPage
     });
 
@@ -74,6 +74,9 @@ export class SelecionaOponentePage implements OnInit {
     }catch(error){
       console.dir(error)
     }
+  }
+  voltar(){
+    this.router.navigate(['/user'])
+  }
   
-}
 }

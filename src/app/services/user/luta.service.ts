@@ -165,12 +165,10 @@ export class LutaService {
             
             
             if (Ataques[i] == 1) {
-              
               if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque1) {
                 pontos[idLocalCorpo[i]].tipoAtaques.ataque1 = 0
               }
-              pontos[idLocalCorpo[i]].tipoAtaques.ataque1++;
-              
+              pontos[idLocalCorpo[i]].tipoAtaques.ataque1++; 
             } else if (Ataques[i] == 2) {
               if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque2) {
                 pontos[idLocalCorpo[i]].tipoAtaques.ataque2 = 0
@@ -188,6 +186,37 @@ export class LutaService {
                 pontos[idLocalCorpo[i]].tipoAtaques.ataque5 = 0
               } pontos[idLocalCorpo[i]].tipoAtaques.ataque5++;
             }
+            
+            else if (Ataques[i] == 11) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque11) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque11 = 0
+              }
+              pontos[idLocalCorpo[i]].tipoAtaques.ataque11++; 
+            } else if (Ataques[i] == 12) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque12) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque12 = 0
+              } pontos[idLocalCorpo[i]].tipoAtaques.ataque12++;
+            } else if (Ataques[i] == 13) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque13) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque13 = 0
+              } pontos[idLocalCorpo[i]].tipoAtaques.ataque13++;
+            } else if (Ataques[i] == 14) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque14) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque14 = 0
+              } pontos[idLocalCorpo[i]].tipoAtaques.ataque14++;
+            } else if (Ataques[i] == 15) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque15) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque15 = 0
+              } pontos[idLocalCorpo[i]].tipoAtaques.ataque15++;
+            }
+            
+            else if (Ataques[i] == 7) {
+              if (!pontos[idLocalCorpo[i]].tipoAtaques.ataque7) {
+                pontos[idLocalCorpo[i]].tipoAtaques.ataque7 = 0
+              }
+              pontos[idLocalCorpo[i]].tipoAtaques.ataque7++; 
+            }
+            
             
           }
           
@@ -524,6 +553,14 @@ export class LutaService {
                   this.tipoAtaques.ataque4 = 0;
                   this.tipoAtaques.ataque5 = 0;
                   
+                  this.tipoAtaques.ataque11 = 0;
+                  this.tipoAtaques.ataque12 = 0;
+                  this.tipoAtaques.ataque13 = 0;
+                  this.tipoAtaques.ataque14 = 0;
+                  this.tipoAtaques.ataque15 = 0;
+                  
+                  this.tipoAtaques.ataque7 = 0;
+                  
                 }
               }
               class TipoAtaques {
@@ -532,6 +569,14 @@ export class LutaService {
                 public ataque3 = 0;
                 public ataque4 = 0;
                 public ataque5 = 0;
+                
+                public ataque11 = 0;
+                public ataque12 = 0;
+                public ataque13 = 0;
+                public ataque14 = 0;
+                public ataque15 = 0;
+                
+                public ataque7 = 0;
                 
               }
               

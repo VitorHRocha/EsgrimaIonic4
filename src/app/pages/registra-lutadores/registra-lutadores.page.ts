@@ -68,7 +68,7 @@ export class RegistraLutadoresPage implements OnInit {
   }
   
   voltar(){
-    this.router.navigate(['/user'])
+    this.router.navigate(['/seleciona-oponente'])
   }
   
   async cadastro(): Promise<void> {

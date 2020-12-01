@@ -434,8 +434,9 @@ export class LutaPage implements OnInit {
       
       //Volta a cor dos botões de ataque
       k="ataque";
-      for(i=1;i<=5;i++){
+      for(i=1;i<=7;i++){
         document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+        document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
         document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
       }
       

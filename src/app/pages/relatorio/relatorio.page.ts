@@ -231,6 +231,10 @@ export class RelatorioPage implements OnInit {
         '<br> Resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
         '<br> Contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
         '<br> Contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
+        '<br> Remessa de ataque:' + this.pontoDetalhado.tipoAtaques.ataque5 +
+        '<br> Remessa de resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
+        '<br> Remessa de contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
+        '<br> Remessa de contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
         '<br> Toque duplo:' + this.pontoDetalhado.tipoAtaques.ataque5,
       buttons: ['OK']
     });
