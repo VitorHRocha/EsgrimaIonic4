@@ -119,6 +119,7 @@ export class RelatorioPage implements OnInit {
       .get()
       .then(userProfileSnapshot => {
         if (userProfileSnapshot.data().lutas) {
+          this.meuNome = userProfileSnapshot.data().nome;
           this.lutas = userProfileSnapshot.data().lutas;
           this.lutadores = userProfileSnapshot.data().lutadores;
           this.escolheLuta();
@@ -133,6 +134,25 @@ export class RelatorioPage implements OnInit {
           this.createbarChartPontuacaoGeral();
         }
       });
+      document.getElementById("estatisticas").style.display = "none";
+
+  }
+
+  public alteraFormatoRelatorio(formatoRelatorio: string){
+    if (formatoRelatorio == "estatisticas"){
+      document.getElementById("estatisticas").style.display = "";
+      document.getElementById("tabela").style.display = "none";
+      
+      document.getElementById("botao_estatisticas").setAttribute( `color`,"primary") ;
+      document.getElementById("botao_pontos").setAttribute( `color`,"tertiary") ;
+      
+    }else{
+      document.getElementById("estatisticas").style.display = "none";
+      document.getElementById("tabela").style.display = "";
+      document.getElementById("botao_estatisticas").setAttribute( `color`,"tertiary") ;
+      document.getElementById("botao_pontos").setAttribute( `color`,"primary") ;
+    
+    }
   }
 
   public zeraPontos() {
@@ -165,8 +185,8 @@ export class RelatorioPage implements OnInit {
     this.luta = this.lutas[this.lutaService.getLutaAtual()];
     var lutadoresNomes = [this.lutadoresAtuais.nome1, this.lutadoresAtuais.nome2];
     this.nomeLutador = this.lutadoresAtuais.nome1;
-    this.meuNome = this.lutadoresAtuais.nome1;
-    this.nomeOponente = this.lutadoresAtuais.nome2;
+    
+    this.nomeOponente = this.lutadoresAtuais.Perfil_Adversario.nome2;
     var Ataques = this.luta.Ataques;
     var LocalCorpo = this.luta.LocalCorpo;
     var Arena = this.luta.Area;
@@ -185,7 +205,7 @@ export class RelatorioPage implements OnInit {
       this.totalPontos2 += this.pontosLutador1[i].quantidadeAcertos;
       console.log(this.pontosLutador1[i])
       console.log(this.totalPontos1);
-    }
+    } 
 
     for (i = 0; i < this.pontosLutador2.length; i++) {
       this.totalPontos1 += this.pontosLutador2[i].quantidadeAcertos;
@@ -231,20 +251,20 @@ export class RelatorioPage implements OnInit {
   computaAvaliarAdversario() {
     console.log(this.lutadoresAtuais);
 
-    this.conservador_ousado = this.lutadoresAtuais.conservador_ousado;
-    this.inconstante_constante = this.lutadoresAtuais.inconstante_constante;
-    this.inseguro_confiante = this.lutadoresAtuais.inseguro_confiante;
-    this.pressionado_controlado = this.lutadoresAtuais.pressionado_controlado;
-    this.provocativa_respeitosa = this.lutadoresAtuais.provocativa_respeitosa;
-    this.passiva_ativa = this.lutadoresAtuais.passiva_ativa;
+    this.conservador_ousado = this.lutadoresAtuais.Avaliacao_Adversario.conservador_ousado;
+    this.inconstante_constante = this.lutadoresAtuais.Avaliacao_Adversario.inconstante_constante;
+    this.inseguro_confiante = this.lutadoresAtuais.Avaliacao_Adversario.inseguro_confiante;
+    this.pressionado_controlado = this.lutadoresAtuais.Avaliacao_Adversario.pressionado_controlado;
+    this.provocativa_respeitosa = this.lutadoresAtuais.Avaliacao_Adversario.provocativa_respeitosa;
+    this.passiva_ativa = this.lutadoresAtuais.Avaliacao_Adversario.passiva_ativa;
 
     for (var indiceLutador in this.lutadores) {
-      this.conservador_ousado_geral += this.lutadores[indiceLutador].conservador_ousado;
-      this.inconstante_constante_geral += this.lutadores[indiceLutador].inconstante_constante;
-      this.inseguro_confiante_geral += this.lutadores[indiceLutador].inseguro_confiante;
-      this.pressionado_controlado_geral += this.lutadores[indiceLutador].pressionado_controlado;
-      this.provocativa_respeitosa_geral += this.lutadores[indiceLutador].provocativa_respeitosa;
-      this.passiva_ativa_geral += this.lutadores[indiceLutador].passiva_ativa;
+      this.conservador_ousado_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.conservador_ousado;
+      this.inconstante_constante_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.inconstante_constante;
+      this.inseguro_confiante_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.inseguro_confiante;
+      this.pressionado_controlado_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.pressionado_controlado;
+      this.provocativa_respeitosa_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.provocativa_respeitosa;
+      this.passiva_ativa_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.passiva_ativa;
     }
     this.conservador_ousado_geral /= this.lutadores.length;
     this.inconstante_constante_geral /= this.lutadores.length;
@@ -256,20 +276,20 @@ export class RelatorioPage implements OnInit {
   }
 
   computaEfeitoPratica() {
-    this.efeitoPratica.sonolento_alerta = this.lutadoresAtuais.ep_sonolento_alerta;
-    this.efeitoPratica.cansado_vigoroso = this.lutadoresAtuais.ep_cansado_vigoroso;
-    this.efeitoPratica.inseguro_confiante = this.lutadoresAtuais.ep_inseguro_confiante;
-    this.efeitoPratica.preocupado_tranquilo = this.lutadoresAtuais.ep_preocupado_tranquilo;
-    this.efeitoPratica.triste_feliz = this.lutadoresAtuais.ep_triste_feliz;
-    this.efeitoPratica.desmotivado_motivado = this.lutadoresAtuais.ep_desmotivado_motivado;
+    this.efeitoPratica.sonolento_alerta = this.lutadoresAtuais.Efeito_Pratica.sonolento_alerta;
+    this.efeitoPratica.cansado_vigoroso = this.lutadoresAtuais.Efeito_Pratica.cansado_vigoroso;
+    this.efeitoPratica.inseguro_confiante = this.lutadoresAtuais.Efeito_Pratica.inseguro_confiante;
+    this.efeitoPratica.preocupado_tranquilo = this.lutadoresAtuais.Efeito_Pratica.preocupado_tranquilo;
+    this.efeitoPratica.triste_feliz = this.lutadoresAtuais.Efeito_Pratica.triste_feliz;
+    this.efeitoPratica.desmotivado_motivado = this.lutadoresAtuais.Efeito_Pratica.desmotivado_motivado;
 
     for (var indiceLutador in this.lutadores) {
-      this.efeitoPratica_geral.sonolento_alerta += this.lutadores[indiceLutador].ep_sonolento_alerta;
-      this.efeitoPratica_geral.cansado_vigoroso += this.lutadores[indiceLutador].ep_cansado_vigoroso;
-      this.efeitoPratica_geral.inseguro_confiante += this.lutadores[indiceLutador].ep_inseguro_confiante;
-      this.efeitoPratica_geral.preocupado_tranquilo += this.lutadores[indiceLutador].ep_preocupado_tranquilo;
-      this.efeitoPratica_geral.triste_feliz += this.lutadores[indiceLutador].ep_triste_feliz;
-      this.efeitoPratica_geral.desmotivado_motivado += this.lutadores[indiceLutador].ep_desmotivado_motivado;
+      this.efeitoPratica_geral.sonolento_alerta += this.lutadores[indiceLutador].Efeito_Pratica.sonolento_alerta;
+      this.efeitoPratica_geral.cansado_vigoroso += this.lutadores[indiceLutador].Efeito_Pratica.cansado_vigoroso;
+      this.efeitoPratica_geral.inseguro_confiante += this.lutadores[indiceLutador].Efeito_Pratica.inseguro_confiante;
+      this.efeitoPratica_geral.preocupado_tranquilo += this.lutadores[indiceLutador].Efeito_Pratica.preocupado_tranquilo;
+      this.efeitoPratica_geral.triste_feliz += this.lutadores[indiceLutador].Efeito_Pratica.triste_feliz;
+      this.efeitoPratica_geral.desmotivado_motivado += this.lutadores[indiceLutador].Efeito_Pratica.desmotivado_motivado;
     }
 
     this.efeitoPratica_geral.sonolento_alerta /= this.lutadores.length;
@@ -283,20 +303,20 @@ export class RelatorioPage implements OnInit {
 
   computaAutoAvaliacao() {
 
-    this.myConfiante = this.lutadoresAtuais.myConfiante;
-    this.myEstressado = this.lutadoresAtuais.myEstressado;
-    this.myFocado = this.lutadoresAtuais.myFocado;
-    this.myMotivado = this.lutadoresAtuais.myMotivado;
-    this.myControlado = this.lutadoresAtuais.myControlado;
-    this.myDisciplinado = this.lutadoresAtuais.myDisciplinado;
+    this.myConfiante = this.lutadoresAtuais.Auto_Avaliacao.confiante;
+    this.myEstressado = this.lutadoresAtuais.Auto_Avaliacao.estressado;
+    this.myFocado = this.lutadoresAtuais.Auto_Avaliacao.focado;
+    this.myMotivado = this.lutadoresAtuais.Auto_Avaliacao.motivado;
+    this.myControlado = this.lutadoresAtuais.Auto_Avaliacao.controlado;
+    this.myDisciplinado = this.lutadoresAtuais.Auto_Avaliacao.disciplinado;
 
     for (var indiceLutador in this.lutadores) {
-      this.myConfiante_geral += this.lutadores[indiceLutador].myConfiante;
-      this.myEstressado_geral += this.lutadores[indiceLutador].myEstressado;
-      this.myFocado_geral += this.lutadores[indiceLutador].myFocado;
-      this.myMotivado_geral += this.lutadores[indiceLutador].myMotivado;
-      this.myControlado_geral += this.lutadores[indiceLutador].myControlado;
-      this.myDisciplinado_geral += this.lutadores[indiceLutador].myDisciplinado;
+      this.myConfiante_geral += this.lutadores[indiceLutador].Auto_Avaliacao.confiante;
+      this.myEstressado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.estressado;
+      this.myFocado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.focado;
+      this.myMotivado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.motivado;
+      this.myControlado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.controlado;
+      this.myDisciplinado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.disciplinado;
     }
     console.log(this.myDisciplinado_geral);
     console.log(this.lutadores.length);
@@ -431,14 +451,14 @@ export class RelatorioPage implements OnInit {
         labels: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
         datasets: [
           {
-            label: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+            label: ['Avaliação do adversario atual'],
             data: [this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa],
             borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
             borderWidth: 1,
             weight: 100,
           },
           {
-            label: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+            label: ['Avaliação media do adversario'],
             data: [this.conservador_ousado_geral, this.inconstante_constante_geral, this.inseguro_confiante_geral, this.pressionado_controlado_geral, this.provocativa_respeitosa_geral, this.passiva_ativa_geral],
             borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
             borderWidth: 1,
@@ -473,7 +493,7 @@ export class RelatorioPage implements OnInit {
         labels: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
         datasets: [
           {
-            label: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
+            label: ['Auto avaliação do jogo'],
             data: [this.myConfiante, this.myEstressado, this.myFocado, this.myMotivado, this.myControlado, this.myDisciplinado],
             // backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
             borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
@@ -481,7 +501,7 @@ export class RelatorioPage implements OnInit {
             weight: 100,
           },
           {
-            label: ['Confiante', 'Estressado', 'Focado', 'Motivado', 'Controlado', 'Disciplinado'],
+            label: ['Auto avaliação media'],
             data: [this.myConfiante_geral, this.myEstressado_geral, this.myFocado_geral, this.myMotivado_geral, this.myControlado_geral, this.myDisciplinado_geral],
             // backgroundColor: ['rgb(37, 199, 22)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
             borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
@@ -517,14 +537,14 @@ export class RelatorioPage implements OnInit {
         labels: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
         datasets: [
           {
-            label: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
+            label: ['Efeitos da pratica do jogo atual'],
             data: [this.efeitoPratica.sonolento_alerta, this.efeitoPratica.cansado_vigoroso, this.efeitoPratica.inseguro_confiante, this.efeitoPratica.preocupado_tranquilo, this.efeitoPratica.triste_feliz, this.efeitoPratica.desmotivado_motivado],
             borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
             borderWidth: 1,
             weight: 100,
           },
           {
-            label: ['alerta', 'vigoroso', 'confiante', 'tranquilo', 'feliz', 'motivado'],
+            label: ['Media dos efeitos da pratica'],
             data: [this.efeitoPratica_geral.sonolento_alerta, this.efeitoPratica_geral.cansado_vigoroso, this.efeitoPratica_geral.inseguro_confiante, this.efeitoPratica_geral.preocupado_tranquilo, this.efeitoPratica_geral.triste_feliz, this.efeitoPratica_geral.desmotivado_motivado],
             borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
             borderWidth: 1,
@@ -560,7 +580,7 @@ export class RelatorioPage implements OnInit {
       data: {
         labels: ['Auto Avaliacao', 'Avaliar Adversario', 'Efeito Pratica'],
         datasets: [{
-          label: ['Auto Avaliacao', 'Avaliar Adversario', 'Efeito Pratica'],
+          label: ['Pontuação geral'],
           data: [this.mediaAutoAvaliacao, this.mediaAvaliarAdversario, this.mediaEfeitoPratica],
           backgroundColor: this.colorBarGeral,
           borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset

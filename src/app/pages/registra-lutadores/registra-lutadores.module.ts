@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+ 
 import { IonicModule } from '@ionic/angular';
 
 import { RegistraLutadoresPage } from './registra-lutadores.page';
@@ -18,12 +18,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    FormsModule, 
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RegistraLutadoresPage,ModalPage],
-  entryComponents: [ModalPage],
+  declarations: [RegistraLutadoresPage]
 })
 export class RegistraLutadoresPageModule {}

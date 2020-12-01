@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http'
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpModule],
+    
   providers: [
     StatusBar,
     SplashScreen,

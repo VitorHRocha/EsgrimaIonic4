@@ -1,13 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-button shape="round" (click)="voltar()">
-      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button id="backButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
     </ion-button>
-    <ion-title>estatistica</ion-title>
-  </ion-toolbar>
+    <ion-title>ESTATISTICAS GERAIS</ion-title>
+    <ion-button fill="clear" id="Filtro"(click)="presentModal()">
+      <ion-icon name="funnel"></ion-icon>
+    </ion-button>
+  </ion-toolbar> 
 </ion-header>
 
-<ion-content>
+<ion-content padding color="tertiary">
   <ion-card class="welcome-card">
     <ion-card-header>
       <ion-card-title>Vitorias e derrotas</ion-card-title>

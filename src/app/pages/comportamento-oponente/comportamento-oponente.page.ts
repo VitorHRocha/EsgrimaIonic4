@@ -121,5 +121,8 @@ export class ComportamentoOponentePage implements OnInit {
       await alert.present();
   }
     
+  voltar(){
+    this.router.navigate(['/caracteristicas-oponente'])
+  }
 
 }

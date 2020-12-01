@@ -28,12 +28,13 @@ export class LoginPage implements OnInit {
           Validators.compose([Validators.required, Validators.minLength(6)]),
         ],
       });
-
+      // document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
       
     }
 
     ngOnInit() {
-      document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
+      // console.log("aqui");
+      // document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
     }
     
     

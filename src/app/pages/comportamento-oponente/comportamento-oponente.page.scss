@@ -8,11 +8,13 @@ ion-toolbar{
     color: white;
     white-space: nowrap;
 }
-
+ 
 ion-title{
     text-align: center;
     font-size: 110%; 
     font-weight: bold;
+    width: 80%;
+    margin: auto;
 }
 
 ion-toolbar ion-button{
@@ -67,7 +69,6 @@ ion-range{
 
 .item_range{
     margin-top: -3%;
-
 }
 #botao_confirmar{
     margin-top: 30%;

@@ -28,7 +28,7 @@ export class RegistroOpPage implements OnInit {
   numeroLutas: number;
   
   public valido;
-
+  
   public nomeLut1;
   public nomeLut2;
   
@@ -37,17 +37,17 @@ export class RegistroOpPage implements OnInit {
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
     private lutaService:LutaService) {
-       this.nomeLut1 =  this.lutaService.getnome1();
-       this.nomeLut2 =  this.lutaService.getnome2();      
+      this.nomeLut1 =  this.lutaService.getnome1();
+      this.nomeLut2 =  this.lutaService.getnome2();      
     }
     
     ngOnInit() {
       this.profileService
-    .getUserProfile()
-    .get()
-    .then( userProfileSnapshot => {
-      this.userProfile = userProfileSnapshot.data();
-    });
+      .getUserProfile()
+      .get()
+      .then( userProfileSnapshot => {
+        this.userProfile = userProfileSnapshot.data();
+      });
       this.altura ='menor';
       // this.agressividade  = "";
       this.punho =  "destro";
@@ -59,64 +59,64 @@ export class RegistroOpPage implements OnInit {
       this.router.navigate(['/luta'])
     }
     
-    // marcaAlt(altAtual){
-    //   this.altura=altAtual;
-    //   var i;
-    //   var k="alt";
-    //   for(i=1;i<=3;i++){ 
-    //     if(i == altAtual){
-    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
-    //     }else{
-    //       document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-    //     }
-    //   }        
-    //   this.liberaCadastro();
-    // }
-    
-  //   marcaPunhoOponente(punho){
-  //     this.punho=punho;
-  //     var i;
-  //     var k="punhLut2";
-  //     for(i=1;i<=2;i++){ 
-  //       if(i == punho){
-  //         document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
-  //       }else{
-  //         document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-  //       }
-  //     }        
-  //     this.liberaCadastro();
-  //   }
-
-  //   marcaAgressividade(agressividade){
-  //     this.agressividade = agressividade;
-  //     var i;
-  //  var k="agressividade";
-  //     for(i=1;i<=2;i++){ 
-  //       if(i == agressividade){
-  //         document.getElementById(k.concat(i)).style.setProperty('--background', 'black');
-  //       }else{
-  //         document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-  //       }
-  //     }        
-  //     this.liberaCadastro();
-  //   }
-
     
     
     segmentAltura(altura: any){
-      this.altura = altura.detail.value;
+      
+      this.altura = altura ;
+      
+      var galleries = document.getElementsByClassName("altura");
+      var len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      } 
+      
+      document.getElementById(altura).setAttribute(`color`,"primary");
+
     }
+
     segmentPunho(punho: any){
-      this.punho = punho.detail.value;
+      this.punho = punho ;
+      var galleries = document.getElementsByClassName("punho_dominante");
+      var len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      } 
+      
+      document.getElementById(punho).setAttribute(`color`,"primary");
     }
+    
     segmentEmpunhadura(empunhadura: any){
-      this.empunhadura = empunhadura.detail.value;
+      this.empunhadura = empunhadura ;
+      var galleries = document.getElementsByClassName("empunhadura");
+      var len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      } 
+      
+      document.getElementById(empunhadura).setAttribute(`color`,"primary");
     }
+    
     segmentTaticaPredominante(tatica: any){
-      this.tatica = tatica.detail.value;
+      this.tatica = tatica ;
+      var galleries = document.getElementsByClassName("tatica_predominante");
+      var len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      } 
+      
+      document.getElementById("tatica_predominante_".concat(tatica)).setAttribute(`color`,"primary");
     }
+    
     segmentNivelTecnico(nivelTecnico: any){
-      this.nivelTecnico = nivelTecnico.detail.value;
+      this.nivelTecnico = nivelTecnico ;
+      var galleries = document.getElementsByClassName("nivel_tecnico");
+      var len =  galleries.length;
+      for(var i=0 ; i<len; i++){
+        galleries[i].setAttribute(`color`,"tertiary");
+      } 
+      
+      document.getElementById("nivel_tecnico_".concat(nivelTecnico)).setAttribute(`color`,"primary");
     }
     
     liberaCadastro(){
@@ -131,44 +131,25 @@ export class RegistroOpPage implements OnInit {
       var punho1;
       var altura_relativa;
       var punho;
-
+      
       punho1 = 'Destro';
-
-      // if(this.punho == '1'){
-      //   punho= 'Destro';
-
-      // }else{
-      //   punho= 'Canhoto';
-      // }
-
-      // if(this.altura == '1'){
-      //   altura_relativa = 'Maior';
-
-      // }
-      // else{
-      //   if(this.altura == '2'){
-      //   altura_relativa = 'Parecida';
-      //   }else{
-      //   altura_relativa = 'Menor';
-      //   }
-      // }
-
+      
       console.log(altura_relativa);
       console.log(punho1);
       console.log(punho);
       console.log(this.empunhadura);
       console.log(this.tatica);;
       console.log(this.nivelTecnico);
-
-    this.lutaService.guardaCaracteristicasOponente(
-      this.altura,
-      punho1,
-      this.punho,
-      this.empunhadura,
-      this.tatica,
-      this.nivelTecnico
-    );
-      this.lutaService.setLutaAtual(this.userProfile.numeroLutas);
-      this.router.navigate(['/comportamento-oponente'])
+      
+      this.lutaService.guardaCaracteristicasOponente(
+        this.altura,
+        punho1,
+        this.punho,
+        this.empunhadura,
+        this.tatica,
+        this.nivelTecnico
+        );
+        this.lutaService.setLutaAtual(this.userProfile.numeroLutas);
+        this.router.navigate(['/comportamento-oponente'])
+      }
     }
-}

@@ -1,4 +1,5 @@
-<ion-header color="secondary">
+<!-- <ion-header color="secondary"> -->
+<ion-header>
   <ion-toolbar color="secundary">
     <ion-button id="backButton" fill="clear" (click)="voltar()">
       <ion-icon name="ios-arrow-back"></ion-icon>
@@ -67,20 +68,7 @@
             </ion-button>
           </div>   
         </div>
-        <!-- </ion-segment> -->
-        
-        <ion-list (click)="presentModal2()" >
-          <ion-list-header color="tertiary">
-            <h6>OPONENTE</h6>
-          </ion-list-header>
-          <ion-item color="tertiary" lines="none">
-            <ion-label >
-                <ion-label>Nome {{nomeOponente}}</ion-label>
-                <ion-label>Clube {{clubeOponente}}</ion-label>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-        
+                
         <div id="raking_oponente_poule" >
           <ion-button class="raking_oponente_poule" shape="round" id="pior_ranqueado" (click)="segmentRakingOponentePoule('pior')" >
             <ion-label>Pior <br> Ranqueado</ion-label>
@@ -103,7 +91,7 @@
         </div>
         
         <!-- <div footer> -->
-          <ion-button shape="round" id='botao_confirmar' (click)="cadastro()"  [disabled]="!valido" color="secondary">
+          <ion-button shape="round" id='botao_confirmar' (click)="cadastro()" color="secondary">
             Confirmar
           </ion-button>
         <!-- <div> -->

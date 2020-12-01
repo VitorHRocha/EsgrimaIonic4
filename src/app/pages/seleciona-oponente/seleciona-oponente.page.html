@@ -1,0 +1,28 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-button id="backButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>SELECIONA OPONENTE</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content color="tertiary">
+  <ion-list (click)="presentModal2()" >
+    <ion-list-header color="tertiary">
+      <h6>OPONENTE</h6>
+    </ion-list-header>
+    <ion-item color="tertiary" lines="none">
+      <ion-label >
+          <ion-label>{{nomeOponente}}</ion-label>
+          <ion-label>{{clubeOponente}}</ion-label>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button shape="round" id='botao_confirmar' (click)="cadastro()"  [disabled]="!valido" color="secondary">
+    Confirmar
+  </ion-button>
+  
+</ion-content>
+
+ 

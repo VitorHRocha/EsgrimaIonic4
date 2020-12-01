@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { NavParams, ModalController, NavController,} from '@ionic/angular';
+import { NavParams, ModalController, NavController, Platform } from '@ionic/angular';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { NavParams, ModalController, NavController,} from '@ionic/angular';
 })
 
 @Injectable()
-export class ModalFiltroPage implements OnInit {
+export class ModalFiltro2Page implements OnInit {
   public myFiltro = new filtro;
   filtroEscolhido = true;
   

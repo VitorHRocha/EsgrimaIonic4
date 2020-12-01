@@ -25,7 +25,7 @@ export class UserPage implements OnInit {
     this.router.navigate(['/login'])
   }
   novaLuta(){
-    this.router.navigate(['/registra-lutadores'])
+    this.router.navigate(['/seleciona-oponente'])
   }
   historico(){
     this.router.navigate(['/minhas-lutas'])

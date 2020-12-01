@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalFiltroPage } from './modal-filtro.page';
+import { SelecionaOponentePage } from './seleciona-oponente.page';
+import { ModalPage } from 'src/app/modal/modal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ModalFiltroPage
+    component: SelecionaOponentePage
   }
-]; 
+];
 
 @NgModule({
   imports: [
@@ -23,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  // declarations: [ModalFiltroPage],
+  declarations: [SelecionaOponentePage,ModalPage],
+  entryComponents: [ModalPage],
 })
-export class ModalFiltroPageModule {}
+export class SelecionaOponentePageModule {}

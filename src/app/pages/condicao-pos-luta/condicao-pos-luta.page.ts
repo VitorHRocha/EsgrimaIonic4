@@ -62,28 +62,28 @@ export class CondicaoPosLutaPage implements OnInit {
     console.log(ajuda);
     switch(ajuda){
       case 'sonolento_alerta':
-        texto1 = 'Conservador: Agiu sob condições de segurança; não se arriscou.'
-        texto2 = "Ousado:Tomou iniciativa; se expos ao risco buscando o sucesso"
+        texto1 = 'Sonolento: Sentimento de baixa energia, dificuldade de pensar.'
+        texto2 = "Alerta:Muito atento, elétrico, pensamento rápido"
         break;
       case 'cansado_vigoroso':
-        texto1 = "Inconstante: Cometeu muitos erros"
-        texto2 = "Constante: Cometeu poucos erros"
+        texto1 = "Cansado: Sensação de fadiga e falta de energia"
+        texto2 = "Vigoroso:Sensação bem-estar, energizado"
         break;
       case 'inseguro_confiante':
-        texto1 = "Inseguro: Expressão intranquila; agitado; vacila; precipitado"
-        texto2 = "Confiante: Expressão segura; calmo; decidido"
+        texto1 = "Inseguro: Medo, incerteza do futuro"
+        texto2 = "Confiante: Perspectiva futura positiva "
         break;
       case 'preocupado_tranquilo':
-        texto1 = "Pressionado: Ficou intimidado; perdeu o controle"
-        texto2 = "Controlado: Se manteve sob controle "
+        texto1 = "Preocupado: Sensação de sufocamento, pressão"
+        texto2 = "Tranquilo: Sensação de “dever cumprido"
         break;
       case 'triste_feliz':
-        texto1 = "Provocativa: Atuou de forma não cortez às vezes desreipeitando até as regras"
-        texto2 = "Respeitosa: Fair-play"
+        texto1 = "Triste: Sentimento de desamparo"
+        texto2 = "Feliz: Sensação de euforia"
         break;
       case 'desmotivado_motivado':
-        texto1 = "Passivo: Não tomou iniciativa e jogou basicamente no contra-ataque"
-        texto2 = "Ativo: Teve iniciativa no combate"
+        texto1 = "Desmotivado: A ponto de desistir; frustrado."
+        texto2 = "Motivado: Sensação de querer mais; sucesso"
         break;
       default:
         break;
@@ -98,6 +98,9 @@ export class CondicaoPosLutaPage implements OnInit {
       });
     
       await alert.present();
+  }
+  voltar(){
+    this.router.navigate(['/comportamento-oponente'])
   }
 
 }

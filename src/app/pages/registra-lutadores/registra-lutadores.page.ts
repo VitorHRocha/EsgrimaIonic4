@@ -4,9 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from 'src/app/services/user/profile.service';
 import { LutaService } from 'src/app/services/user/luta.service';
 
-import { ModalController } from '@ionic/angular';
-import { ModalPage } from '../../modal/modal.page';
-import { empty } from 'rxjs';
+ 
 
 
 @Component({
@@ -43,8 +41,7 @@ export class RegistraLutadoresPage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private profileService:ProfileService,
-    private lutaService: LutaService,
-    public modalCtrl1: ModalController) {
+    private lutaService: LutaService) { 
       this.profileService
     .getUserProfile() 
     .get()
@@ -77,16 +74,12 @@ export class RegistraLutadoresPage implements OnInit {
   async cadastro(): Promise<void> {
   
      try{
-       this.lutaService.guardaLutadores(
+       this.lutaService.guardaCaracteristicasJogo(
            this.tipoLuta,
            this.etapaCampeonato,
            this.etapaEliminatoria,
            this.rankingOponente,
-           this.classOponente, 
-           this.meuNome,
-           this.meuClube,
-           this.nomeOponente,
-           this.clubeOponente)
+           this.classOponente)
            
          this.router.navigate(['/luta'])
      }catch(error){
@@ -95,27 +88,7 @@ export class RegistraLutadoresPage implements OnInit {
    
  }
 
-  async presentModal2() {
-    const modal = await this.modalCtrl1.create({
-      component: ModalPage
-    });
-
-    await modal.present();
-    
-    const { data } = await modal.onWillDismiss();
-    console.log(data);
-
-    this.nomeOponente = data.atleta.nome ;
-    this.clubeOponente = data.atleta.clube;
-    
-    if(this.nomeOponente == '' || this.meuNome == '' ){
-      this.valido = false ;
-
-    }else{
-      this.valido = true ;
-    }  
-  }
-  
+   
   //ETAPA CAMPEONATO-------INICIO--------------------------
   segmentTipoJogo(tipoLuta: any){ 
     this.tipoLuta = tipoLuta;

@@ -1,91 +1,123 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-button shape="round" (click)="voltar()">
-      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+<ion-header color="secondary">
+  <ion-toolbar color="secundary">
+    <ion-button id="backButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
     </ion-button>
-    
+    <ion-title>RELATORIO</ion-title>
   </ion-toolbar>
 </ion-header>
- 
-<ion-content>  
+
+
+<ion-content color="tertiary" >  
   <div class="labels">
-  <ion-label id="placar">{{meuNome}} X {{nomeOponente}}<br></ion-label>
-  <ion-label>{{totalPontos1}} X {{totalPontos2}}</ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col id="meu_nome">
+          <ion-label >{{meuNome}}</ion-label> 
+        </ion-col>
+        <ion-col id="nome_oponente">
+          <ion-label>{{nomeOponente}}</ion-label>
+        </ion-col>  
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label class="pontosLutadores" id="meusPontos">{{totalPontos1}} </ion-label>
+        </ion-col >
+        <ion-col class="ion-align-self-center">
+          <ion-label> X  </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label class="pontosLutadores" id="pontosOponente">{{totalPontos2}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div> 
   
+  <div id="tipoRelatorio" >
+    <ion-button id="botao_pontos" shape="round" (click)="alteraFormatoRelatorio('pontos')" color="primary">
+      <ion-label>Descrição <BR>dos pontos</ion-label>
+    </ion-button>
+    <ion-button id="botao_estatisticas" shape="round" (click)="alteraFormatoRelatorio('estatisticas')">
+      <ion-label>Estatisticas</ion-label>
+    </ion-button>
+  </div>
+
   <div id="tabela">  
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-list >
-              <ion-list-header>
-                Pontos feitos
-              </ion-list-header>
-              <ion-item (click)="detalhaPontos(pontos)"  *ngFor="let pontos of pontosLutador2">
-                <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-                <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-              </ion-item>
-            </ion-list>       
-          </ion-col>
-     
-          <ion-col>
-            <ion-list >
-              <ion-list-header>
-                Pontos sofridos
-              </ion-list-header>
-              <ion-item  (click)="detalhaPontos(pontos)" *ngFor="let pontos of pontosLutador1">
-                <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
-                <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
-              </ion-item>
-            </ion-list>
-          </ion-col>      
-        </ion-row>
-      </ion-grid>      
-   </div>
-
-   <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-title>Pontuação geral</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #barChartPontuacaoGeral></canvas>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-title>Caracteristicas adversario</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #radarChartPerfilAdversario></canvas>
-    </ion-card-content>
-  </ion-card> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list >
+            <ion-list-header class="pontos_feitos">
+              <ion-label> PONTOS <br> FEITOS</ion-label>
+            </ion-list-header>
+            <ion-item (click)="detalhaPontos(pontos)" color="primary" lines="none" *ngFor="let pontos of pontosLutador2">
+              <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+              <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+            </ion-item>
+          </ion-list>       
+        </ion-col>
+        
+        
+        <ion-col>
+          <ion-list >
+            <ion-list-header>
+              PONTOS <br> SOFRIDOS
+            </ion-list-header>
+            <ion-item  (click)="detalhaPontos(pontos)" color="tertiary" lines="none" *ngFor="let pontos of pontosLutador1">
+              <ion-label>{{pontos.nomeLocalCorpo}}</ion-label>
+              <ion-note slot="end">{{pontos.quantidadeAcertos}}</ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-col>      
+      </ion-row>
+    </ion-grid>      
+  </div>
   
-  <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-title>Avaliação do adversario</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #radarChartAvaliarAdversario></canvas>
-    </ion-card-content>
-  </ion-card>
-  
-  <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-title>Minha auto avaliação</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #radarChartAutoAvaliar></canvas>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-title>Efeitos da pratica</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #radarChartEfeitoPratica></canvas>
-    </ion-card-content>
-  </ion-card>
+  <div id="estatisticas">
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>Pontuação geral</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barChartPontuacaoGeral></canvas>
+      </ion-card-content>
+    </ion-card>
+    
+    <!-- <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>Caracteristicas adversario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #radarChartPerfilAdversario></canvas>
+      </ion-card-content>
+    </ion-card> -->
+    
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>Avaliação do adversario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #radarChartAvaliarAdversario></canvas>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>Minha auto avaliação</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #radarChartAutoAvaliar></canvas>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>Efeitos da pratica</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #radarChartEfeitoPratica></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
   
 </ion-content>

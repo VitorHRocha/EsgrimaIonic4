@@ -1,5 +1,66 @@
+ion-toolbar{
+    --padding-top: 15%;
+    padding-bottom: 5%;
+    color: white;
+    white-space: nowrap;
+    background:  var(--ion-color-primary);
+}
+
+ion-title{
+    text-align: center;
+    font-size: 110%; 
+    font-weight: bold;
+    width: 80%;
+    margin: auto;
+}
+
+ion-toolbar ion-button{
+    position: absolute;
+    margin-top: -2%;
+    --padding-start : 20%;
+    color: white;   
+    font-size: 130%;  
+}
+
+ion-content{
+    text-align: center;
+}
+
+ion-list{
+    background: var(--ion-color-tertiary);
+    text-align: center;
+}
+
+ion-list-header{
+    display:block;
+    text-align: center;
+    padding-left: 0;
+
+}
+
+#tipoRelatorio ion-button{
+    --color: var(--ion-color-primary);
+    --background: var(--ion-color-tertiary);
+    --border-color: var(--ion-color-primary);
+    --border-style: solid ;
+    font-weight: 900;
+    --padding-top: 13%;
+    --padding-bottom: 13%;
+    width: 37%;
+    text-align: center;
+}
 p {
     white-space: pre-line;
+}
+#meu_nome{
+    display:block;
+    text-align: center;
+    font-size: 150%;
+}
+#nome_oponente{
+    display:block;
+    text-align: center;
+    font-size: 150%;
 }
 #tabela{
     border: 3px;
@@ -23,9 +84,13 @@ ion-col{
 
 .labels{
     text-align: center;
-    font-size: 140%;
+    font-size: 110%;
     margin-top: 5%;
     
+}
+.labels ion-grid{
+    padding-left: 7%;
+    padding-right: 7%;
 }
 .labels>ion-button{
     --border-radius: 30px;
@@ -47,5 +112,37 @@ ion-col{
     
 }
 #placar{
-    font-size: 180%
+    font-size: 150%
 }
+ion-item{
+    margin-top: 2%;
+    border-radius: 30px;
+    border: solid var(--ion-color-primary);
+
+}
+ion-note{
+    margin-left: 0;
+}
+.pontos_feitos ion-note{
+ color: white;
+}
+.pontosLutadores {
+    background: var(--ion-color-secondary);
+    border-radius: 30px;
+    font-size: 150%; 
+    padding: 3%;
+    color:white;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  #meusPontos{
+    margin-left: 70%;
+    border-bottom-width: 0px;
+  }
+  #pontosOponente{
+    margin-left: -100%;
+  } 
+  ion-card{
+      
+    background: white;
+  }

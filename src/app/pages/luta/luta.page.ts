@@ -3,10 +3,11 @@ import { LutaService } from 'src/app/services/user/luta.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { and } from '@angular/router/src/utils/collection';
+import { IfStmt } from '@angular/compiler';
 
 
 @Component({
-  selector: 'app-luta',
+  selector: 'app-luta', 
   templateUrl: './luta.page.html',
   styleUrls: ['./luta.page.scss'],
 })
@@ -21,7 +22,6 @@ export class LutaPage implements OnInit {
   localCorpoAtual: number;
   pistaAtual:number;
   ataqueAtual:number;
-  toqueduplo: number=0;
   localCorpoLut1:number;
   localCorpoLut2:number;
   
@@ -30,6 +30,12 @@ export class LutaPage implements OnInit {
   ataque: Array<number>= [];
   public lutador1;
   public lutador2;
+  
+  //Variaveis que alterão a logica de funcionamento da pagina
+  public lados_invertidos: boolean;
+  public toqueduplo: number=0;
+  public remessa: boolean = false;
+  
   
   // faltas: Array<number>= [];
   // faltaAtual
@@ -41,9 +47,6 @@ export class LutaPage implements OnInit {
     }
     
     ngOnInit() {
-      
-      // document.getElementById("lutadores").setAttribute("src",`./assets/img/concatesgrim.png`);
-      
       this.zeraCores();
       this.toqueduplo=0;
       this.lutador1=this.lutaService.getnome1();
@@ -58,10 +61,10 @@ export class LutaPage implements OnInit {
     //   this.ataqueAtual = null;
     //   this.localCorpoAtual = null;
     //   this.toqueduplo = 0;
-
+    
     // }
-
-
+    
+    
     marcalocalCorpo(local){     
       var i;
       var k="localCorpo";
@@ -71,22 +74,35 @@ export class LutaPage implements OnInit {
           
           if(i==local){
             if(local<=10){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
+              if (this.lados_invertidos) {
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
+              }else{
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
+              }
             }else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
+              if (this.lados_invertidos) {
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
+              }else{
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
+              }
             }
           }else{
             document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
           }
         }
       }else{
+        
         if(local<=10){
           for(i=1;i<=10;i++){
             if(i==local){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');
+              if (this.lados_invertidos) {
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)');               
+              }else{
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
+              }
             }
             else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)'); 
             }
           }
           this.localCorpoLut1=local;
@@ -95,12 +111,17 @@ export class LutaPage implements OnInit {
           }
           
         }else{
+          console.log(this.lados_invertidos);
           for(i=11;i<=20;i++){
             if(i==local){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)');
+              if (this.lados_invertidos) {          
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0.5)'); 
+              }else{     
+                document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(34, 199, 64, 0.5)'); 
+              }
             }
             else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)'); 
             }
           }
           this.localCorpoLut2=local;
@@ -114,26 +135,37 @@ export class LutaPage implements OnInit {
       
     }
     
-    marcaAtaque(ataqueAtual){
+    marcaAtaque(ataqueAtual:number){
       this.ataqueAtual=ataqueAtual;
       var i;
       var k="ataque";
-      if(ataqueAtual<5){
+      
+      console.log(this.ataqueAtual);
+      if(ataqueAtual==7){
         if(this.toqueduplo==1){
           var k="localCorpo";
           for(i=1;i<=20;i++){ 
-            
-            document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
-            
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');     
           }        
         }
       }
+      if(this.ataqueAtual==6){
+        
+        if(!this.remessa){
+          this.remessa = true;  
+          console.log(this.remessa);
+        }else{
+          this.remessa = false;
+          this.ataqueAtual = null;
+          console.log(this.remessa);
+          
+        }
+      }
       var k="ataque";
-      for(i=1;i<=5;i++){
+      for(i=1;i<=7;i++){
         if(i==ataqueAtual){
-          if(ataqueAtual==5){
+          if(ataqueAtual==7){
             if(this.toqueduplo==0){
-              console.log('aqui');
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
               document.getElementById(k.concat(i)).style.setProperty('color', 'white');
               this.toqueduplo=1
@@ -141,26 +173,63 @@ export class LutaPage implements OnInit {
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
               this.toqueduplo=0  
             }
-          }else{    
-            if(ataqueAtual<5){
-              console.log(k.concat(i));
+          }else if(ataqueAtual==6){
+            console.log(k.concat(i));
+            if(this.remessa == true ){ 
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'white');
+            }else{
+              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+              
+            }
+          }else{
+            if(this.remessa == true ){
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'white'); 
+              this.ataqueAtual=10+ataqueAtual;
+              console.log(this.ataqueAtual);
+
+            }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
               document.getElementById(k.concat(i)).style.setProperty('color', 'white');
-              this.toqueduplo=0  
-            }else{
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'rgba(227, 20, 55, 0,7)'); 
+
             }
           }
+          
         }else{
-          document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
-          document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+          if(this.remessa == true ){ 
+            if(i<6){ 
+              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+
+              
+            }else if(i==7){
+              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+            }
+            
+          }else{
+            document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+            document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
+            document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+          }
         }
       }
       
     }
     
     marcaPista(pistaAtual){
-      this.pistaAtual=pistaAtual;
+      
+      if (this.lados_invertidos) {
+        this.pistaAtual = 6 - pistaAtual;
+      }else{
+        this.pistaAtual = pistaAtual;
+      }
+      
       var i;
       var k="pista";
       for(i=1;i<=5;i++){
@@ -192,6 +261,7 @@ export class LutaPage implements OnInit {
           }if(this.ataqueAtual == null){
             this.faltaCompletar += 'Qual tipo de ataque;<br>'
           }
+          
           
           const alert = await this.alertCtrl.create({
             message: this.faltaCompletar,
@@ -280,10 +350,7 @@ export class LutaPage implements OnInit {
         }
       }
       
-    } 
-    
-    
-    
+    }  
     
     Concluir(){ 
       
@@ -336,38 +403,51 @@ export class LutaPage implements OnInit {
         ]
       });await alert.present();
     }
-     
     
     
+    inverte_lado_luta(){
+      var nome_auxiliar;
+      
+      nome_auxiliar = this.lutador1;
+      this.lutador1 = this.lutador2;
+      this.lutador2 = nome_auxiliar;
+      
+      this.zeraCores();
+      if (this.lados_invertidos) {
+        this.lados_invertidos = false;
+      }else{
+        this.lados_invertidos = true;
+      }
+      
+    }
     
     
     zeraCores(){
-      //Volta a cor dos botões do corpo
-      // var i;
-      // var k="localCorpo";
-      // for(i=1;i<=16;i++){ 
+      // Volta a cor dos botões do corpo
+      var i;
+      var k="localCorpo";
+      for(i=1;i<=20;i++){ 
         
-      //   document.getElementById(k.concat(i)).style.setProperty('--background', ' rgba(255, 255, 255, 0.1)');
+        document.getElementById(k.concat(i)).style.setProperty('--background', ' var(--ion-color-primary)');
         
-      // }
+      }
       
-      // //Volta a cor dos botões de ataque
-      // k="ataque";
-      // for(i=1;i<=5;i++){
-      //   document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-      // }
+      //Volta a cor dos botões de ataque
+      k="ataque";
+      for(i=1;i<=5;i++){
+        document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+        document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+      }
       
-      
-      // //Volta a cor dos botões da pista
-      // k="pista";
-      // for(i=1;i<=5;i++){
+      //Volta a cor dos botões da pista
+      k="pista";
+      for(i=1;i<=5;i++){
+        document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+        if(i == 1 || i == 5){
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
+        }
         
-      //   document.getElementById(k.concat(i)).style.setProperty('--background', 'rgb(84, 155, 227)');
-      //   if(i == 1 || i == 5){
-      //     document.getElementById(k.concat(i)).style.setProperty('--background', 'red');
-      //   }
-        
-      // }
+      }
       
     }
     

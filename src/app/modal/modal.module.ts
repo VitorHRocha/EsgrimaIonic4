@@ -23,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ModalPage],
+  // declarations: [ModalPage],
 })
 export class ModalPageModule {}

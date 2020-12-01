@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FiltroPage } from './filtro.page';
+import { ModalFiltro2Page } from './modal-filtro.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FiltroPage
+    component: ModalFiltro2Page
   }
-];
+]; 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FiltroPage]
+  // declarations: [ModalFiltro2Page],
 })
-export class FiltroPageModule {}
+export class ModalFiltro2PageModule {}

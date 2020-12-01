@@ -43,9 +43,11 @@ export class RegistroPage implements OnInit {
           Validators.compose([Validators.required]),
         ],
       });
+     
     }
     ngOnInit() {
-      document.getElementById("icon").setAttribute("src",`./assets/img/Elemento-01.png`);
+      // document.getElementById("icon").setAttribute("src",`./assets/img/Elemento-01.png`);
+    
     }
     
     voltar(){

@@ -5,9 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { IonicModule } from '@ionic/angular';
-import { ModalFiltroPage } from '../../modal-filtro/modal-filtro.page';
+
 
 import { MinhasLutasPage } from './minhas-lutas.page';
+import { ModalFiltroPage } from 'src/app/modal-filtro/modal-filtro.page';
 
 const routes: Routes = [
   {
@@ -22,8 +23,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
-  ],
-  declarations: [MinhasLutasPage, ModalFiltroPage],
+  ],  
+  declarations: [MinhasLutasPage,ModalFiltroPage],
   entryComponents: [ModalFiltroPage],
 })
 export class MinhasLutasPageModule {}

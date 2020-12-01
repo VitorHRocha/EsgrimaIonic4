@@ -1,3 +1,102 @@
+ion-toolbar{
+    --padding-top: 15%;
+    padding-bottom: 5%;
+    color: white;
+    white-space: nowrap;
+}
+
+ion-title{
+    text-align: center;
+    font-size: 110%; 
+    font-weight: bold;
+    width: 80%;
+    margin: auto;
+}
+
+ion-toolbar ion-button{
+    position: absolute;
+    margin-top: -2%;
+    --padding-start : 20%;
+    color: white;   
+    font-size: 130%;  
+}
+#Filtro{
+    color: white;
+    margin-top: -6%;
+    right: 0; 
+}
+.trap {
+    color: white;
+    background: var(--ion-color-secondary);
+    border-radius: 25px 25px 0px 0px   ;
+    border: 3px solid var(--ion-color-tertiary);
+    padding-top: 2%;
+    padding-bottom: 1.5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    text-transform: uppercase;
+    font-size: 63%;
+    font-weight: 800;
+    margin-bottom: -50%;
+}
+#tipo_jogo{
+    margin-right: 7.5%;
+}
+
+#etapaCampeonato{
+    margin-right: -4%;
+}
+
+#etapaEliminatoria{
+    margin-right: -4%;
+}
+
+ion-card{
+    border-radius: 30px;
+    border: solid 3px var(--ion-color-primary);
+    text-align: center;
+    margin-top: 1%;
+}
+ion-card-header{
+    padding: 0;
+    border-bottom: solid 3px var(--ion-color-primary);
+}
+.grid_nome_jogadores{
+    padding: 0;
+    ion-col{
+        // width: 35%;
+        padding: 0;
+        padding-top: 2%;
+        color:var(--ion-color-primary);
+        font-weight: 700;
+    }
+}
+ion-content{
+    text-align: end;
+}
+
+#col_x{
+    width: 2%;
+}
+#col_meu_clube{
+    color:var(--ion-color-primary);
+    text-align: start;
+    font-weight: 900;
+}
+#col_clube_oponente{
+    color:var(--ion-color-primary);
+    text-align: end;
+    font-weight: 900;
+}
+#col_meu_nome{
+    text-align: start;
+    
+    padding-left: 3%;
+}
+#col_nome_oponente{
+    text-align: end;
+    padding-right: 3%;
+}
 #lutas{
     display: flex;
     flex-wrap: wrap;
@@ -5,61 +104,36 @@
 
 .luta{
     width: 85%;
+    margin-top: 7%;
     margin-right: auto; 
     margin-left: auto;
 
 }
-.hora{
-    position: absolute;
-    right: 0%;
+
+#data{
+    text-align: start;
+
+}
+#hora{
+    text-align: end;
 }
 
 .tipoJogo{
     position: absolute;
-    // margin-right: auto; 
-    // margin-left: auto;
     font-size: 100%;
 }
-
-.trap {
-
-  display: inline-block;
-  
-
-  font-size: 75%;
-
-  height: 0;    
-  width: 50;
-
-  border-bottom: 15px solid #f9c;
-  border-left: 20px solid transparent;
-  border-right: 0px solid transparent;
-  border-radius: 30px 5px 0px 0px;
-
-  padding-right: 5px ;
-  
-  margin-left: 67%;
+ion-list{
+    padding: 0;
+}
+ion-item{
+    --background: var(--ion-color-tertiary);
 }
 
-#etapaCampeonato{
-    position: absolute;
-    border-bottom: 15px solid rgb(73, 80, 182);
-    right: 33%;
-    // bottom: 10%;
+#info ion-label{
+    font-weight: 700;
+    color: var(--ion-color-primary);
 }
-
-#etapaEliminatoria{
-    position: absolute;
-    border-bottom: 15px solid rgb(51, 141, 16);
-    right: 52%;
-}
-
-.Filtro{
-    position: absolute;
-    // margin-right: auto; 
-    // margin-left: auto;
-    right: 0%;
-}
-ion-card{
-    margin-top: -3%;
+#col_punho_oponente{
+    text-transform: capitalize;
+    text-align: center;
 }

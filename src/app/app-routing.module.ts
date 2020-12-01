@@ -17,11 +17,9 @@ const routes: Routes =[
   { path: 'tesste', loadChildren: './pages/tesste/tesste.module#TesstePageModule' },
   { path: 'comportamento-oponente', loadChildren: './pages/comportamento-oponente/comportamento-oponente.module#ComportamentoOponentePageModule' },
   { path: 'auto-avaliacao', loadChildren: './pages/auto-avaliacao/auto-avaliacao.module#AutoAvaliacaoPageModule' },
-  { path: 'filtro', loadChildren: './filtro/filtro.module#FiltroPageModule' },
   { path: 'estatistica', loadChildren: './pages/estatistica/estatistica.module#EstatisticaPageModule' },
   { path: 'condicao-pos-luta', loadChildren: './pages/condicao-pos-luta/condicao-pos-luta.module#CondicaoPosLutaPageModule' },
-
-
+  { path: 'seleciona-oponente', loadChildren: './pages/seleciona-oponente/seleciona-oponente.module#SelecionaOponentePageModule' },
 
 
 

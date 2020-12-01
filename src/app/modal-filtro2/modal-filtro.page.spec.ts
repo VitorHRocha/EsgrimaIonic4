@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FiltroPage } from './filtro.page';
+import { ModalFiltro2Page } from './modal-filtro.page';
 
-describe('FiltroPage', () => {
-  let component: FiltroPage;
-  let fixture: ComponentFixture<FiltroPage>;
+describe('ModalFiltroPage', () => {
+  let component: ModalFiltro2Page;
+  let fixture: ComponentFixture<ModalFiltro2Page>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FiltroPage ],
+      declarations: [ ModalFiltro2Page ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FiltroPage);
+    fixture = TestBed.createComponent(ModalFiltro2Page);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

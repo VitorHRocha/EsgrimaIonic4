@@ -1,6 +1,40 @@
-// ion-card{
-//     // width: 50%;
-// }
-ion-card-title{
-    font-size: 100%;
-}
+// ion-header{
+    //     text-align: center; 
+    // }
+    ion-toolbar{
+        --padding-top: 15%;
+        padding-bottom: 5%;
+        color: white;
+        white-space: nowrap;
+    }
+    
+    ion-title{
+        text-align: center;
+        font-size: 110%; 
+        font-weight: bold;
+        width: 80%;
+        margin: auto;
+    }
+     
+    ion-toolbar ion-button{
+        position: absolute;
+        margin-top: -2%;
+        --padding-start : 20%;
+        color: white;   
+        font-size: 130%;  
+    }
+    #Filtro{
+        color: white;
+        margin-top: -6%;
+        right: 0; 
+    }
+    
+    ion-content{
+        text-align: center; 
+    }
+    ion-card{
+        background: white;
+    }
+    ion-card-title{
+        font-size: 100%;
+    }

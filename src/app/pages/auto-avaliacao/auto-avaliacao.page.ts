@@ -124,4 +124,7 @@ export class AutoAvaliacaoPage implements OnInit {
         console.dir(error)
       }
     }
+    voltar(){
+      this.router.navigate(['/condicao-pos-luta'])
+    }
 }
