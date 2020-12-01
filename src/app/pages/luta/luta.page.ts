@@ -176,24 +176,26 @@ export class LutaPage implements OnInit {
           }else if(ataqueAtual==6){
             console.log(k.concat(i));
             if(this.remessa == true ){ 
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-secondary)');
-              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-secondary)');
-              document.getElementById(k.concat(i)).style.setProperty('color', 'white');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-quartiary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-quartiary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'black');
             }else{
-              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
-              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-quartiary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-quartiary)');
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
               
             }
           }else{
             if(this.remessa == true ){
-              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-quartiary)');
               document.getElementById(k.concat(i)).style.setProperty('color', 'white'); 
               this.ataqueAtual=10+ataqueAtual;
               console.log(this.ataqueAtual);
 
             }else{
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
               document.getElementById(k.concat(i)).style.setProperty('color', 'white');
 
             }
@@ -202,8 +204,8 @@ export class LutaPage implements OnInit {
         }else{
           if(this.remessa == true ){ 
             if(i<6){ 
-              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-secondary)');
-              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-secondary)');
+              document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
+              document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-quartiary)');
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
 
               
