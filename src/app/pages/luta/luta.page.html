@@ -2,7 +2,10 @@
   <ion-toolbar color="primary">
     <ion-button id="backButton" shape="round" fill="clear" (click)="voltar()">
       <ion-icon name="ios-arrow-back"></ion-icon>
-    </ion-button>   
+    </ion-button>
+    <ion-item id="placar_movimento">
+      <ion-label>Movimento {{movimento_mostrado}}</ion-label>
+    </ion-item>   
     <ion-button shape="round" class="concluir" (click)="Concluir()">
       Concluir 
     </ion-button>
@@ -471,8 +474,20 @@ height="0">
   </ion-grid>
   
 </div>
+<ion-grid>
+  <ion-row id="movimentos">
+    <ion-col>
+      <ion-button (click)="corrigeUltimoMovimento()" color="secondary">
+        Corrigir ultimo 
+        <BR >movimento
+      </ion-button>    
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="proximo()" >
+        Proximo <BR> Movimento
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
-<ion-button (click)="proximo()" expand="block">
-  Proximo Movimento
-</ion-button>
 </ion-content>

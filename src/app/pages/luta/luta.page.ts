@@ -35,6 +35,8 @@ export class LutaPage implements OnInit {
   public lados_invertidos: boolean;
   public toqueduplo: number=0;
   public remessa: boolean = false;
+
+  public movimento_mostrado: number = 1; 
   
   
   // faltas: Array<number>= [];
@@ -294,6 +296,7 @@ export class LutaPage implements OnInit {
           this.ataqueAtual = null;
           
           this.zeraCores();
+          this.movimento_mostrado += 1;
         }
       }else{
         if(this.localCorpoLut1 == null ||this.localCorpoLut2 == null || this.pistaAtual == null || this.ataqueAtual == null ){
@@ -327,14 +330,11 @@ export class LutaPage implements OnInit {
           this.localCorpo[this.movimento]=this.localCorpoLut1;
           this.ataque[this.movimento]=5;;
           this.movimento++;
-          console.log(this.pistaAtual)
-          console.log(this.localCorpoLut1)
           
           this.pista[this.movimento]=this.pistaAtual;
           this.localCorpo[this.movimento]=this.localCorpoLut2;
           this.ataque[this.movimento]=5;
           this.movimento++;
-          console.log(this.localCorpoLut2)
           
           this.pontoLutador1 += 1;
           this.pontoLutador2 += 1;
@@ -349,6 +349,7 @@ export class LutaPage implements OnInit {
           this.toqueduplo = 0;
           
           this.zeraCores();
+          this.movimento_mostrado += 1;
         }
       }
       
@@ -452,8 +453,34 @@ export class LutaPage implements OnInit {
         
       }
       
+      this.remessa = false;
     }
     
+    corrigeUltimoMovimento(){
+      this.movimento -= 1;
+      if (this.ataque[this.movimento] == 7) {
+        this.pista[this.movimento]=  null;
+        this.ataque[this.movimento]= null;
+        if(this.localCorpo[this.movimento]<=10){
+          this.pontoLutador2 += 1;
+        }else{
+          this.pontoLutador1 += 1;
+        }
+        this.localCorpo[this.movimento]= null;
+        this.movimento -= 1;
+        
+      }
+      this.pista[this.movimento]=  null;
+      this.ataque[this.movimento]= null;
+      if(this.localCorpo[this.movimento]<=10){
+        this.pontoLutador2 += 1;
+      }else{
+        this.pontoLutador1 += 1;
+      }
+      this.localCorpo[this.movimento]= null;    
+
+      this.movimento_mostrado -= 1;
+    }
     
     
   }

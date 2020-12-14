@@ -192,29 +192,30 @@ export class RelatorioPage implements OnInit {
     var Arena = this.luta.Area;
     var Efetividade = this.luta.Efetividade;
     var i;
-    console.log(Ataques);
-    console.log(this.luta);
+    // console.log(Ataques);
+    // console.log(this.luta);
 
     this.lutaDetalhes = this.lutaService.formaLuta(lutadoresNomes, Ataques, LocalCorpo, Arena, Efetividade);
     this.lutaEstatistica = this.lutaService.formaLutaEstatistic(lutadoresNomes, Ataques, LocalCorpo, Arena, Efetividade);
 
     this.pontosLutador1 = this.lutaService.getPontosLutador1();
     this.pontosLutador2 = this.lutaService.getPontosLutador2();
+    console.log(this.pontosLutador2);
 
     for (i = 0; i < this.pontosLutador1.length; i++) {
       this.totalPontos2 += this.pontosLutador1[i].quantidadeAcertos;
-      console.log(this.pontosLutador1[i])
-      console.log(this.totalPontos1);
+      // console.log(this.pontosLutador1[i])
+      // console.log(this.totalPontos1);
     } 
 
     for (i = 0; i < this.pontosLutador2.length; i++) {
       this.totalPontos1 += this.pontosLutador2[i].quantidadeAcertos;
-      console.log(this.totalPontos2);
+      // console.log(this.totalPontos2);
     }
 
-    console.log(this.totalPontos1);
-    console.log(this.totalPontos2);
-    console.log(this.pontosLutador2.length);
+    // console.log(this.totalPontos1);
+    // console.log(this.totalPontos2);
+    // console.log(this.pontosLutador2.length);
   }
 
   detalhaPontos(pontosDetalhado) {
@@ -231,10 +232,10 @@ export class RelatorioPage implements OnInit {
         '<br> Resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
         '<br> Contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
         '<br> Contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
-        '<br> Remessa de ataque:' + this.pontoDetalhado.tipoAtaques.ataque5 +
-        '<br> Remessa de resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
-        '<br> Remessa de contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
-        '<br> Remessa de contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
+        '<br> Remessa de ataque:' + this.pontoDetalhado.tipoAtaques.ataque11 +
+        '<br> Remessa de resposta:' + this.pontoDetalhado.tipoAtaques.ataque12 +
+        '<br> Remessa de contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque13 +
+        '<br> Remessa de contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque14 +
         '<br> Toque duplo:' + this.pontoDetalhado.tipoAtaques.ataque5,
       buttons: ['OK']
     });
@@ -253,7 +254,7 @@ export class RelatorioPage implements OnInit {
   // }
 
   computaAvaliarAdversario() {
-    console.log(this.lutadoresAtuais);
+    // console.log(this.lutadoresAtuais);
 
     this.conservador_ousado = this.lutadoresAtuais.Avaliacao_Adversario.conservador_ousado;
     this.inconstante_constante = this.lutadoresAtuais.Avaliacao_Adversario.inconstante_constante;
@@ -322,15 +323,15 @@ export class RelatorioPage implements OnInit {
       this.myControlado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.controlado;
       this.myDisciplinado_geral += this.lutadores[indiceLutador].Auto_Avaliacao.disciplinado;
     }
-    console.log(this.myDisciplinado_geral);
-    console.log(this.lutadores.length);
+    // console.log(this.myDisciplinado_geral);
+    // console.log(this.lutadores.length);
     this.myConfiante_geral /= this.lutadores.length;
     this.myEstressado_geral /= this.lutadores.length;
     this.myFocado_geral /= this.lutadores.length;
     this.myMotivado_geral /= this.lutadores.length;
     this.myControlado_geral /= this.lutadores.length;
     this.myDisciplinado_geral /= this.lutadores.length;
-    console.log(this.myDisciplinado_geral);
+    // console.log(this.myDisciplinado_geral);
 
 
   }
@@ -448,7 +449,7 @@ export class RelatorioPage implements OnInit {
   createRadarChartAvaliarAdversario() {
     let ctx = this.radarChartAvaliarAdversario.nativeElement;
     ctx.height = 200;
-    console.log(this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa);
+    // console.log(this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa);
     this.radarAvaliarAdversario = new Chart(ctx, {
       type: 'radar',
       data: {
@@ -576,7 +577,7 @@ export class RelatorioPage implements OnInit {
   }
 
   createbarChartPontuacaoGeral() {
-    console.log(this.colorBarGeral);
+    // console.log(this.colorBarGeral);
     let ctx = this.barChartPontuacaoGeral.nativeElement;
     ctx.height = 200;
     this.barPontuacaoGeral = new Chart(ctx, {

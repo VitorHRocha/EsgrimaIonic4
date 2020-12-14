@@ -2,19 +2,32 @@
 ion-toolbar{
   color: white;
   white-space: nowrap;
+  // text-align: center;
 }
 #backButton{
   position: absolute;
-  margin-top: -4%;
+  margin-top: 1%;
   --padding-start : 20%;
   color: white;   
   font-size: 130%;  
 }
+#placar_movimento{
+  margin: auto;
+  height: 60%;
+  width: 30%;
+  border-radius: 30px;
+  font-size: 95%;
+  font-weight: 700;
+  color : var(--ion-color-primary);
+}
 .concluir{
     position: absolute;
-    margin-top: -4%;
+    margin-top: -9.5%;
     right: 0%;
     --background: var(--ion-color-secondary);
+    font-size: 70%;
+    height: 60%;
+    width: 20%;
 }
 .concluir-popup{
   --background: var(--ion-color-secondary);
@@ -158,7 +171,20 @@ ion-item div.item-native{
 #ef1{
   margin-left: 40% ;
 }
-
+#botao_trocar_lados{
+  color:  var(--ion-color-primary);
+}
+#movimentos {
+  margin-left: 10%;
+}
+#movimentos ion-col{
+  // text-align: center;
+}
+#movimentos ion-button{
+ --border-radius: 30px;
+ height: 130%;
+ padding: 0%;
+}
 
 // Formata botões com Clip:path
 #localCorpo1 {
@@ -356,7 +382,5 @@ ion-item div.item-native{
     clip-path: url(#svgpedireito2);
   
   }
-  #botao_trocar_lados{
-    color:  var(--ion-color-primary);
-  }
+
   
