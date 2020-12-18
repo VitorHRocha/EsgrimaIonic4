@@ -14,7 +14,7 @@ ion-toolbar{
 #placar_movimento{
   margin: auto;
   height: 60%;
-  width: 30%;
+  width: 45%;
   border-radius: 30px;
   font-size: 95%;
   font-weight: 700;
@@ -178,7 +178,8 @@ ion-item div.item-native{
   margin-left: 10%;
 }
 #movimentos ion-col{
-  // text-align: center;
+  margin-left: -10%;
+  text-align: center;
 }
 #movimentos ion-button{
  --border-radius: 30px;
@@ -188,7 +189,7 @@ ion-item div.item-native{
 
 // Formata botões com Clip:path
 #localCorpo1 {
-    // margin-top: -15%;
+    margin-top: -4%;
     // margin-left: 2%;
     width: 45%;
     height: 40%;
@@ -197,6 +198,7 @@ ion-item div.item-native{
   
   #localCorpo2{ 
     position: absolute;
+    margin-top: -4%;
     // margin-top: -13.8%;
     margin-left: -42.1%;
     width: 46%;
@@ -206,6 +208,7 @@ ion-item div.item-native{
   
   #localCorpo3{
     position: absolute;
+    margin-top: -4%;
   	// margin-top: -13.8%;
     margin-left: -42.1%;
     width: 46%;
@@ -216,6 +219,7 @@ ion-item div.item-native{
   #localCorpo4{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -42.1%;
     width: 46%;
     height: 40%;
@@ -224,6 +228,7 @@ ion-item div.item-native{
   
   #localCorpo5{  //bracodireito1 -->
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -42.1%;
     width: 46%;
@@ -234,6 +239,7 @@ ion-item div.item-native{
   // #maodireita1{
   #localCorpo6{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -42.1%;
     width: 46%;
@@ -244,7 +250,7 @@ ion-item div.item-native{
   // #pernaesquerda1{
   #localCorpo7{
     position: absolute;
-	// margin-top: -13.8%;
+	margin-top: -4%;
     margin-left: -42.1%;
     width: 46%;
     height: 40%;
@@ -254,6 +260,7 @@ ion-item div.item-native{
   // #pernadireita1{
   #localCorpo8{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -42.1%;
     width: 46%;
@@ -264,6 +271,7 @@ ion-item div.item-native{
   // #peesquerdo1{
   #localCorpo9{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -42.1%;
     width: 50%;
@@ -276,6 +284,7 @@ ion-item div.item-native{
   // #pedireito1{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -42.1%;
     width: 46%;
     height: 40%;
@@ -286,6 +295,7 @@ ion-item div.item-native{
   // #clipped2 {
   #localCorpo11{
     // margin-top: -15%;
+    margin-top: -4%;
     width: 46%;
     height: 40%;
     clip-path: url(#cab2);
@@ -294,6 +304,7 @@ ion-item div.item-native{
   #localCorpo12{ 
   // #tronco2{ 
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -43%;
     width: 46%;
@@ -305,6 +316,7 @@ ion-item div.item-native{
   #localCorpo13{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -43%;
     width: 50%;
     height: 40%;
@@ -315,6 +327,7 @@ ion-item div.item-native{
   #localCorpo14{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -43%;
     width: 46%;
     height: 40%;
@@ -325,6 +338,7 @@ ion-item div.item-native{
   // #bracodireito2{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -43%;
     width: 46%;
     height: 40%;
@@ -334,6 +348,7 @@ ion-item div.item-native{
   #localCorpo16{
   // #maodireita2{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -43%;
     width: 46%;
@@ -344,6 +359,7 @@ ion-item div.item-native{
   #localCorpo17{
   // #pernaesquerda2{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -43%;
     width: 46%;
@@ -354,6 +370,7 @@ ion-item div.item-native{
   // #pernadireita2{
   #localCorpo18{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -43%;
     width: 46%;
@@ -365,6 +382,7 @@ ion-item div.item-native{
   #localCorpo19{
     position: absolute;
 	// margin-top: -13.8%;
+    margin-top: -4%;
     margin-left: -43%;
     width: 46%;
     height: 40%;
@@ -375,6 +393,7 @@ ion-item div.item-native{
   // #pedireito2{
   #localCorpo20{
     position: absolute;
+    margin-top: -4%;
 	// margin-top: -13.8%;
     margin-left: -43%;
     width: 46%;

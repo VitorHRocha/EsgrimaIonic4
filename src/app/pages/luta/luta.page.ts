@@ -462,9 +462,9 @@ export class LutaPage implements OnInit {
         this.pista[this.movimento]=  null;
         this.ataque[this.movimento]= null;
         if(this.localCorpo[this.movimento]<=10){
-          this.pontoLutador2 += 1;
+          this.pontoLutador2 -= 1;
         }else{
-          this.pontoLutador1 += 1;
+          this.pontoLutador1 -= 1;
         }
         this.localCorpo[this.movimento]= null;
         this.movimento -= 1;
@@ -473,9 +473,9 @@ export class LutaPage implements OnInit {
       this.pista[this.movimento]=  null;
       this.ataque[this.movimento]= null;
       if(this.localCorpo[this.movimento]<=10){
-        this.pontoLutador2 += 1;
+        this.pontoLutador2 -= 1;
       }else{
-        this.pontoLutador1 += 1;
+        this.pontoLutador1 -= 1;
       }
       this.localCorpo[this.movimento]= null;    
 
