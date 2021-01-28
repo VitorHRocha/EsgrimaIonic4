@@ -1,10 +1,9 @@
 <ion-content color="primary">
   
 
-  <ion-avatar >
+  <div>
     <img id="icon" src="./assets/img/Logo-02.png" alt="">
-  </ion-avatar>
-  <ion-label >LOGIN</ion-label>
+  </div>
   <form [formGroup]="loginForm">
     <ion-item>
       <ion-input
@@ -34,13 +33,15 @@
     </ion-button>
   </form>
 
-  <ion-button 
-    id="criarConta"
-    shape="round"
-    expand="block"
-    color="secondary"
-    routerLink="/criar-conta">
-    Criar conta
-  </ion-button>
-
+  <div id="criarContaDiv">
+    <ion-button 
+      id="criarConta"
+      shape="round"
+      expand="block"
+      color="secondary"
+      routerLink="/criar-conta">
+      Criar conta
+    </ion-button>
+  </div>
+  
 </ion-content>
