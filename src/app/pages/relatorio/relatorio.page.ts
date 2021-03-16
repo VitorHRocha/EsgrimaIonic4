@@ -374,11 +374,11 @@ export class RelatorioPage implements OnInit {
       this.myControlado +
       this.myDisciplinado) / 6;
 
-    if (valormedio < 1.6) {
+    if (valormedio < 2.3) {
 
       this.colorBarGeral[0] = '#ff0000';
 
-    } else if (valormedio < 2.2) {
+    } else if (valormedio < 3.6) {
       this.colorBarGeral[0] = '#ffff00';
 
     } else {
@@ -479,7 +479,7 @@ export class RelatorioPage implements OnInit {
     this.radarAvaliarAdversario = new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'ativa'],
+        labels: ['ousado', 'constante', 'confiante', 'controlado', 'respeitosa', 'proativa', 'calmo','alerta',"Tat.Indisc."],
         datasets: [
           {
             label: ['Avaliação do adversario atual'],
