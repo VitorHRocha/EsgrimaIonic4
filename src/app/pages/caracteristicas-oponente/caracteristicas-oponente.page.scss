@@ -69,10 +69,7 @@ hr{
 // flex-wrap: wrap;
 }
 #botao_confirmar{
-    position: absolute;
-    // padding: blue;
-    bottom: 2%;
-    margin-left: -17%;
-    --border-style: none;
-
+    position: static;
+    // margin-top: 30%;
+    font-weight: 700;
 }

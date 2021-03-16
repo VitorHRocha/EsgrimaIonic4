@@ -37,6 +37,11 @@ ion-item{
     text-align: center;
     --background: var(--ion-color-tertiary);
     color:  var(--ion-color-primary);
+    height: 8%;
+    ion-label{
+        font-size: 3.5vw; 
+        margin-top: 0%;
+    }
 }
 .titulo{
     margin-top: 2%;
@@ -57,6 +62,7 @@ ion-range{
 }
 
 #botao_confirmar{
-    margin-top: 25%;
+    position: static;
+    // margin-top: 30%;
     font-weight: 700;
 }

@@ -101,12 +101,17 @@ export class AutoAvaliacaoPage implements OnInit {
         this.lutaService.getEmpunhadura(),
         this.lutaService.getTatica(),
         this.lutaService.getNivelTecnico(),
+
         this.lutaService.getConservadorOusado(),
         this.lutaService.getInconstanteConstante(),
         this.lutaService.getInseguroConfiante(),
         this.lutaService.getPressionadoControlado(),
         this.lutaService.getProvocativaRespeitosa(),
-        this.lutaService.getPassivaAtiva(),
+        this.lutaService.getPassivaProativa(),
+        this.lutaService.getEstrassado_calmo(),
+        this.lutaService.getDisperso_alerta(),
+        this.lutaService.getTaticamenteDisciplinado_taticamenteIndisciplinado(),
+
         this.myConfiante,
         this.myEstressado,
         this.myFocado,

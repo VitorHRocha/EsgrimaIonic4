@@ -3,8 +3,8 @@
   <ion-toolbar color="primary">
     <ion-button id="backButton" fill="clear" (click)="voltar()"> 
       <ion-icon name="ios-arrow-back"></ion-icon>
-    </ion-button>
-    <ion-title>Comportamento do oponente</ion-title>      
+    </ion-button> 
+    <ion-title>Comportamento<br>do oponente</ion-title>      
   </ion-toolbar> 
 </ion-header>
 
@@ -12,7 +12,7 @@
   
   <ion-item lines="none">
     <ion-label slot="start">Conservador</ion-label>
-    <ion-label slot="end">Ousado</ion-label>
+    <ion-label class="label_end"slot="end" >Ousado</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range"> 
     <ion-range min="1" max="5" step="1" snaps="true" (ionChange)="segmentconservador_ousado($event)" mode="ios"> 
@@ -22,7 +22,7 @@
   
   <ion-item lines="none">
     <ion-label slot="start">Inconstante</ion-label>
-    <ion-label  class="label_end" slot="end">Constante</ion-label>
+    <ion-label  class="label_end_medio" slot="end">Constante</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"   (ionChange)="segmentinconstante_constante($event)" mode="ios">
@@ -42,18 +42,18 @@
   </ion-item>
   
   <ion-item lines="none">
-    <ion-label slot="start">Pressionado</ion-label>
+    <ion-label slot="start">Intimidado</ion-label>
     <ion-label class="label_end_maior" slot="end">Controlado</ion-label>
   </ion-item>
   <ion-item  lines="none" class="item_range">
-    <ion-range min="1" max="5" step="1" snaps="true"   (ionChange)="segmentpressionado_controlado($event)" mode="ios">
+    <ion-range min="1" max="5" step="1" snaps="true"   (ionChange)="segmentintimidado_controlado($event)" mode="ios">
     </ion-range>
-    <ion-icon name="help" (click)="help('pressionado_controlado')"></ion-icon>
+    <ion-icon name="help" (click)="help('intimidado_controlado')"></ion-icon>
   </ion-item>
   
   <ion-item lines="none">
     <ion-label slot="start">Provocativa</ion-label>
-    <ion-label class="label_end" slot="end">Respeitosa</ion-label>
+    <ion-label class="label_end_maior" slot="end">Respeitosa</ion-label>
   </ion-item>
   <ion-item  lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"   (ionChange)="segmentprovocativa_respeitosa($event)" mode="ios"> 
@@ -63,15 +63,44 @@
   
   <ion-item lines="none" >
     <ion-label slot="start">Passiva</ion-label> 
-    <ion-label  slot="end">Ativa</ion-label>
+    <ion-label  slot="end">Proativa</ion-label>
   </ion-item>
   <ion-item  lines="none" class="item_range">
-    <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentpassiva_ativa($event)" mode="ios">
+    <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentpassiva_proativa($event)" mode="ios">
     </ion-range>
-    <ion-icon name="help" (click)="help('passiva_ativa')"></ion-icon>     
+    <ion-icon name="help" (click)="help('passiva_proativa')"></ion-icon>     
   </ion-item>
   
-  
+  <ion-item lines="none" >
+    <ion-label slot="start">Estrassado</ion-label> 
+    <ion-label  slot="end">Calmo</ion-label>
+  </ion-item>
+  <ion-item  lines="none" class="item_range">
+    <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentestrassado_calmo($event)" mode="ios">
+    </ion-range>
+    <ion-icon name="help" (click)="help('estrassado_calmo')"></ion-icon>     
+  </ion-item>
+
+  <ion-item lines="none" >
+    <ion-label slot="start">Distraido</ion-label> 
+    <ion-label  slot="end">Alerta</ion-label>
+  </ion-item>
+  <ion-item  lines="none" class="item_range">
+    <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentdisperso_alerta($event)" mode="ios">
+    </ion-range>
+    <ion-icon name="help" (click)="help('disperso_alerta')"></ion-icon>     
+  </ion-item>
+
+  <ion-item lines="none" >
+    <ion-label slot="start">Taticamente disciplinado</ion-label> 
+    <ion-label  slot="end">Taticamente indisciplinado</ion-label>
+  </ion-item>
+  <ion-item  lines="none" class="item_range">
+    <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmenttaticamenteDisciplinado_taticamenteIndisciplinado($event)" mode="ios">
+    </ion-range>
+    <ion-icon name="help" (click)="help('taticamenteDisciplinado_taticamenteIndisciplinado')"></ion-icon>     
+  </ion-item>
+
   <ion-button id="botao_confirmar" (click)="concluir()" shape="round" color="secondary">
     <!-- [disabled]="!valido"> -->
     Confirmar

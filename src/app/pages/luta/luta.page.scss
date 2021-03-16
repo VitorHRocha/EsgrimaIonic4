@@ -12,11 +12,12 @@ ion-toolbar{
   font-size: 130%;  
 }
 #placar_movimento{
+  position: static;
   margin: auto;
   height: 60%;
-  width: 45%;
+  width: 35%;
   border-radius: 30px;
-  font-size: 95%;
+  font-size: 3vw;
   font-weight: 700;
   color : var(--ion-color-primary);
 }
@@ -33,12 +34,30 @@ ion-toolbar{
   --background: var(--ion-color-secondary);
 }
 
-.labels{
-    margin-top: -3%;
+#labels{
+// position: static;
+    margin-top: 65%;
     text-align: center;
-    font-size: 120%; 
+    font-size: 4vw;
 }
-
+@media(max-height: 568px){
+  #labels{
+    // position: static;
+        margin-top: 45%;
+    }
+}
+@media(max-height: 640px){
+  #labels{
+    // position: static;
+        margin-top: 50%;
+    }
+}
+@media(max-height: 731px){
+  #labels{
+    // position: static;
+        margin-top: 52%;
+    }
+}
 #grid_pontos_lutadores{
   margin-top: -3%;
 }
@@ -75,13 +94,25 @@ ion-item div.item-native{
   margin-left: -50%;
 }
 
-.Ataques>ion-grid>ion-row>ion-col{
+.Ataques{
+position: static;
+margin-top: 2%;
 
- width: 40%;
+ion-row{
+  height: 50px;
+}
+ion-button{
+  height: 100%;
+  width: 90%;
+  font-size: 3vw;
+
+}
+}
+.Ataques>ion-grid>ion-row>ion-col{
+ width: 45%;
+ height: 50px;
  text-align: center;
  padding: 0.5%;
-//  margin-left: -3%;
-//  margin-right: 10%;
 }
 
 .movimento{
@@ -99,23 +130,23 @@ ion-item div.item-native{
 }
 
 #ataque1{
-  margin-right: -13%;
+  margin-right: -10%;
 }
 
 #ataque2{
-  margin-left: -13%;
+  margin-left: -10%;
 }
 
 #ataque3{
-  margin-right: -13%;
+  margin-right: -10%;
 }
 
 #ataque4{
-  margin-left: -13%;
+  margin-left: -10%;
 }
 
 #ataque5{
-  margin-right: -13%;
+  margin-right: -10%;
 }
 
 #ataque6{
@@ -129,7 +160,6 @@ ion-item div.item-native{
 
 
 .toqueduplocol{
-
   text-align: center;
   margin-left: 0;
   margin-right: 0;
@@ -144,12 +174,10 @@ ion-item div.item-native{
     margin-left: 7%;
 }
 .arena>ion-grid>ion-row{
-  // margin-left: 5%;
   width: 80%;
   margin: auto;
 }
 .arena>ion-grid>ion-row>ion-col{
-    // margin: 0%;
     padding: 0%;
 }
 .arena ion-button{
@@ -175,10 +203,10 @@ ion-item div.item-native{
   color:  var(--ion-color-primary);
 }
 #movimentos {
-  margin-left: 10%;
+  width: 100%;
+  height: 20%;
 }
 #movimentos ion-col{
-  margin-left: -10%;
   text-align: center;
 }
 #movimentos ion-button{
@@ -188,53 +216,53 @@ ion-item div.item-native{
 }
 
 // Formata botões com Clip:path
+clipPath{
+  -webkit-transform:scale(0.004195862879,0.005554321262);
+  transform:scale(0.004195862879,0.005554321262);
+}
 #localCorpo1 {
-    margin-top: -4%;
-    // margin-left: 2%;
-    width: 45%;
+    
+    position: absolute;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
-    // width: inherit;
-    // height: inherit;
 
     clip-path: url(#cab1);
   }
   
   #localCorpo2{ 
     position: absolute;
-    margin-top: -4%;
-    // margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgtronco1);
   }
   
   #localCorpo3{
     position: absolute;
-    margin-top: -4%;
-  	// margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgbracoesquerdo1);
   }
   
   #localCorpo4{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgmaoesquerda1);
   }
   
   #localCorpo5{  //bracodireito1 -->
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgbracodireito1);
   }
@@ -242,20 +270,19 @@ ion-item div.item-native{
   // #maodireita1{
   #localCorpo6{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgmaodireita1);
   }
   
   // #pernaesquerda1{
   #localCorpo7{
-    position: absolute;
-	margin-top: -4%;
-    margin-left: -42.1%;
-    width: 46%;
+    position: absolute; 
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpernaesquerda1);
   }
@@ -263,10 +290,9 @@ ion-item div.item-native{
   // #pernadireita1{
   #localCorpo8{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpernadireita1);
   }
@@ -274,10 +300,9 @@ ion-item div.item-native{
   // #peesquerdo1{
   #localCorpo9{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -42.1%;
-    width: 50%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpeesquerdo1);
   
@@ -286,10 +311,9 @@ ion-item div.item-native{
   #localCorpo10{
   // #pedireito1{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -42.1%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 9%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpedireito1);
   
@@ -297,9 +321,10 @@ ion-item div.item-native{
   
   // #clipped2 {
   #localCorpo11{
-    // margin-top: -15%;
-    margin-top: -4%;
-    width: 46%;
+  position: absolute;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#cab2);
   }
@@ -307,10 +332,9 @@ ion-item div.item-native{
   #localCorpo12{ 
   // #tronco2{ 
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -43%;
-    width: 46%;
+    margin-left: 25%;
+    margin-top: -2%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgtronco2);
   }
@@ -318,10 +342,9 @@ ion-item div.item-native{
   // #bracoesquerdo2{
   #localCorpo13{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -43%;
-    width: 50%;
+    margin-left: 25%;
+    margin-top: -2%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgbracoesquerdo2);
   }
@@ -329,10 +352,9 @@ ion-item div.item-native{
   // #maoesquerda2{
   #localCorpo14{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgmaoesquerda2);
   }
@@ -340,10 +362,9 @@ ion-item div.item-native{
   #localCorpo15{
   // #bracodireito2{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -43%;
-    width: 46%;
+    margin-left: 25%;
+    margin-top: -2%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgbracodireito2);
   }
@@ -351,10 +372,9 @@ ion-item div.item-native{
   #localCorpo16{
   // #maodireita2{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgmaodireita2);
   }
@@ -362,10 +382,9 @@ ion-item div.item-native{
   #localCorpo17{
   // #pernaesquerda2{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpernaesquerda2);
   }
@@ -373,10 +392,9 @@ ion-item div.item-native{
   // #pernadireita2{
   #localCorpo18{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpernadireita2);
   }
@@ -384,10 +402,9 @@ ion-item div.item-native{
   // #peesquerdo2{
   #localCorpo19{
     position: absolute;
-	// margin-top: -13.8%;
-    margin-top: -4%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpeesquerdo2);
   
@@ -396,10 +413,9 @@ ion-item div.item-native{
   // #pedireito2{
   #localCorpo20{
     position: absolute;
-    margin-top: -4%;
-	// margin-top: -13.8%;
-    margin-left: -43%;
-    width: 46%;
+    margin-top: -2%;
+    margin-left: 25%;
+    width: 70%;
     height: 40%;
     clip-path: url(#svgpedireito2);
   

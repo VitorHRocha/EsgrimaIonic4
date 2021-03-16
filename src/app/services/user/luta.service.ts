@@ -41,7 +41,10 @@ export class LutaService {
   private inseguro_confiante: number;
   private pressionado_controlado: number;
   private provocativa_respeitosa: number;
-  private passiva_ativa: number;
+  private passiva_proativa: number;
+  private estrassado_calmo: number;
+  private disperso_alerta: number;
+  private taticamenteDisciplinado_taticamenteIndisciplinado: number;
   
   private efeitoPratica = new efeitoPratica;
   
@@ -295,14 +298,21 @@ export class LutaService {
                 inseguro_confiante: number,
                 pressionado_controlado: number,
                 provocativa_respeitosa: number,
-                passiva_ativa: number,
+                passiva_proativa: number,                
+                estrassado_calmo: number,   
+                disperso_alerta: number,   
+                taticamenteDisciplinado_taticamenteIndisciplinado: number,   
                 ) {
                   this.conservador_ousado = conservador_ousado;
-                  this.inconstante_constante = inconstante_constante,
-                  this.inseguro_confiante = inseguro_confiante,
-                  this.pressionado_controlado = pressionado_controlado,
-                  this.provocativa_respeitosa = provocativa_respeitosa,
-                  this.passiva_ativa = passiva_ativa;
+                  this.inconstante_constante = inconstante_constante;
+                  this.inseguro_confiante = inseguro_confiante;
+                  this.pressionado_controlado = pressionado_controlado;
+                  this.provocativa_respeitosa = provocativa_respeitosa;
+                  this.passiva_proativa = passiva_proativa;
+                  this.estrassado_calmo = estrassado_calmo;
+                  this.disperso_alerta = disperso_alerta;
+                  this.taticamenteDisciplinado_taticamenteIndisciplinado = taticamenteDisciplinado_taticamenteIndisciplinado;
+      
                 }
                 
                 public setLutaAtual(lutaAtual) {
@@ -329,8 +339,20 @@ export class LutaService {
                   return this.provocativa_respeitosa;
                 }
                 
-                public getPassivaAtiva() {
-                  return this.passiva_ativa;
+                public getPassivaProativa() {
+                  return this.passiva_proativa;
+                }
+
+                public getEstrassado_calmo() {
+                  return this.estrassado_calmo;
+                }
+
+                public getDisperso_alerta() {
+                 return this.disperso_alerta;
+                }
+
+                public getTaticamenteDisciplinado_taticamenteIndisciplinado() {
+                  return this.taticamenteDisciplinado_taticamenteIndisciplinado;
                 }
                 
                 public getAlturaRelativa() {

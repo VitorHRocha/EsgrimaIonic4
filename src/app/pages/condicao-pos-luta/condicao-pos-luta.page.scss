@@ -30,6 +30,7 @@ ion-content{
 }
 ion-item{
     --background: var(--ion-color-tertiary);
+    height: 8%;
   
 }
 ion-label{
@@ -42,9 +43,16 @@ ion-label{
     margin-left: -20%;
     // --color: white;
 
+}.label_end_medio{
+    margin-left: -25%;
+    // --color: white;
+
 }
 ion-item ion-label{
     color:  var(--ion-color-primary);
+    font-size: 4vw;
+    margin-bottom: 0%;
+    margin-top: 0%;
 }
 .label_end_maior{
     margin-left: -30%;
@@ -72,6 +80,7 @@ ion-range{
 
 }
 #botao_confirmar{
-    margin-top: 30%;
+    position: static;
+    // margin-top: 30%;
     font-weight: 700;
 }

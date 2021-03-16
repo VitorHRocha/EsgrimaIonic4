@@ -54,12 +54,17 @@ export class ProfileService {
     empunhadura: string,
     tatica: string,
     nivelTecnico: string,
+
     conservador_ousado: number,
     inconstante_constante: number,
     inseguro_confiante: number,
     pressionado_controlado: number,
     provocativa_respeitosa: number,
-    passiva_ativa: number,
+    passiva_proativa: number,
+    estrassado_calmo: number,
+    disperso_alerta: number,
+    taticamenteDisciplinado_taticamenteIndisciplinado: number,
+
     myConfiante: number,
     myEstressado: number,
     myFocado: number,
@@ -125,7 +130,7 @@ export class ProfileService {
     // inseguro_confiante: number,
     // pressionado_controlado: number,
     // provocativa_respeitosa: number,
-    // passiva_ativa: number,
+    // passiva_proativa: number,
 
     // myConfiante: number,
     // myEstressado: number,
@@ -164,8 +169,10 @@ export class ProfileService {
           inseguro_confiante,
           pressionado_controlado,
           provocativa_respeitosa,
-          passiva_ativa,
-
+          passiva_proativa,
+          estrassado_calmo,
+          disperso_alerta,
+          taticamenteDisciplinado_taticamenteIndisciplinado
         },
         Auto_Avaliacao:{
           confiante:  myConfiante,

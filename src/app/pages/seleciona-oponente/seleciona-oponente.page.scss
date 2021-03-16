@@ -7,7 +7,7 @@ ion-toolbar{
 }
 
 ion-title{
-    text-align: center;
+    text-align: center; 
     font-size: 110%; 
     font-weight: bold;
     width: 80%;
@@ -15,8 +15,8 @@ ion-title{
 }
 
 ion-toolbar ion-button{
-    position: absolute;
-    margin-top: -2%; 
+    position: static;
+    margin-bottom: -6%; 
     --padding-start : 20%;
     color: white;   
     font-size: 130%;  
@@ -24,13 +24,17 @@ ion-toolbar ion-button{
 
 ion-content{
     text-align: center;  
+    ion-button{
+        
+    position: static;
+    }
 }
-ion-list{
+ion-list{ 
+    position: static;
     padding-bottom: 0;
     padding-top:0%;
-    margin-top: 35%;
-    
-    margin-bottom: 65%;
+    margin-top: 25%;
+    margin-bottom: 0%;
 }
 
 h6{ 
@@ -65,4 +69,12 @@ ion-label ion-label {
     font-size: 140%;
     font-family:"Noto Serif"; 
     font-weight: 900;
+}
+#botao_confirmar{
+
+    position: static;
+    // padding: blue;
+    margin-top: 20%; 
+    
+
 }

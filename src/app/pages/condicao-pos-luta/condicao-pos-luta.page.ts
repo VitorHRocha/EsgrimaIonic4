@@ -63,11 +63,11 @@ export class CondicaoPosLutaPage implements OnInit {
     switch(ajuda){
       case 'sonolento_alerta':
         texto1 = 'Sonolento: Sentimento de baixa energia, dificuldade de pensar.'
-        texto2 = "Alerta:Muito atento, elétrico, pensamento rápido"
+        texto2 = "Alerta: Muito atento, elétrico, pensamento rápido"
         break;
       case 'cansado_vigoroso':
         texto1 = "Cansado: Sensação de fadiga e falta de energia"
-        texto2 = "Vigoroso:Sensação bem-estar, energizado"
+        texto2 = "Vigoroso: Sensação bem-estar, energizado"
         break;
       case 'inseguro_confiante':
         texto1 = "Inseguro: Medo, incerteza do futuro"
@@ -77,8 +77,8 @@ export class CondicaoPosLutaPage implements OnInit {
         texto1 = "Preocupado: Sensação de sufocamento, pressão"
         texto2 = "Tranquilo: Sensação de “dever cumprido"
         break;
-      case 'triste_feliz':
-        texto1 = "Triste: Sentimento de desamparo"
+      case 'frustrado_feliz':
+        texto1 = "Frustrado: Sentimento de desamparo"
         texto2 = "Feliz: Sensação de euforia"
         break;
       case 'desmotivado_motivado':

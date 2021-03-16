@@ -1,6 +1,6 @@
 ion-toolbar {
     color: white;
-    --padding-top: 15%;
+    // --padding-top: 5%;
     padding-bottom: 5%;
 }
 ion-title{
@@ -12,14 +12,18 @@ ion-title{
 }
 
 
-ion-toolbar ion-button{
-    position: absolute;
-    margin-top: -1.5%;
-    margin-left: 87%;
+ion-toolbar {
+    ion-button{ 
+    position: static;
+    margin-left: 80%;
+    font-size: 250%;
     --padding-start : 30%;
     color: white;
-    font-size: 130%;   
+    margin-bottom: -7%;
+    }
+    
 }
+
 ion-content{
     margin-top: 100%;
     text-align: center;
@@ -39,14 +43,23 @@ ion-avatar{
     margin-bottom: 30%;   
      
 } 
+#fotoButton{
+
+    max-width: 100%; 
+    max-height: 45vh; 
+    margin: auto;
+    margin-top: 15px;
+    --border-radius: 0;
+}
+
 #lut{
-    margin-top: 9%;
+ margin-top: 9%;
  border: 20px;
  border-color: blueviolet;
-  
+   
 }
 ion-content ion-button{
-    width: 35%;
+    width: 45%;
     height : 6%;
     margin-top: 5%;
     font-family: "Noto Sans",  sans-serif; ;

@@ -14,9 +14,12 @@ export class ComportamentoOponentePage implements OnInit {
   conservador_ousado : number;
   inconstante_constante : number;
   inseguro_confiante : number;
-  pressionado_controlado : number;
+  intimidado_controlado : number;
   provocativa_respeitosa : number;
-  passiva_ativa  : number;
+  passiva_proativo  : number;
+  estrassado_calmo  : number;
+  disperso_alerta  : number;
+  taticamenteDisciplinado_taticamenteIndisciplinado  : number;
 
   constructor(private router     : Router,
               private lutaService: LutaService,
@@ -26,9 +29,12 @@ export class ComportamentoOponentePage implements OnInit {
     this.conservador_ousado = 1;
     this.inconstante_constante = 1;
     this.inseguro_confiante = 1;
-    this.pressionado_controlado = 1;
+    this.intimidado_controlado = 1;
     this.provocativa_respeitosa = 1;
-    this.passiva_ativa  = 1;
+    this.passiva_proativo  = 1;
+    this.estrassado_calmo  = 1;
+    this.disperso_alerta  = 1;
+    this.taticamenteDisciplinado_taticamenteIndisciplinado  = 1;
   }
   
   segmentconservador_ousado(event:any){
@@ -43,16 +49,28 @@ export class ComportamentoOponentePage implements OnInit {
     this.inseguro_confiante = event.detail.value; 
 
   }
-  segmentpressionado_controlado(event:any){
-    this.pressionado_controlado = event.detail.value; 
+  segmentintimidado_controlado(event:any){
+    this.intimidado_controlado = event.detail.value; 
 
   }
   segmentprovocativa_respeitosa(event:any){
     this.provocativa_respeitosa = event.detail.value; 
 
   }
-  segmentpassiva_ativa(event:any){
-    this.passiva_ativa = event.detail.value; 
+  segmentpassiva_proativa(event:any){
+    this.estrassado_calmo = event.detail.value; 
+
+  }
+  segmentestrassado_calmo(event:any){
+    this.estrassado_calmo = event.detail.value; 
+
+  }
+  segmentdisperso_alerta(event:any){
+    this.disperso_alerta = event.detail.value; 
+
+  }
+  segmenttaticamenteDisciplinado_taticamenteIndisciplinado(event:any){
+    this.taticamenteDisciplinado_taticamenteIndisciplinado = event.detail.value; 
 
   }
 
@@ -61,18 +79,25 @@ export class ComportamentoOponentePage implements OnInit {
       console.log(this.conservador_ousado);
       console.log(this.inconstante_constante);
       console.log(this.inseguro_confiante);
-      console.log(this.pressionado_controlado);
+      console.log(this.intimidado_controlado);
       console.log(this.provocativa_respeitosa);
-      console.log(this.passiva_ativa);
+      console.log(this.passiva_proativo);
+      console.log(this.estrassado_calmo);
+      console.log(this.disperso_alerta);
+      console.log(this.taticamenteDisciplinado_taticamenteIndisciplinado);
       
 
     this.lutaService.guardaComportamentoOponente(
       this.conservador_ousado,
       this.inconstante_constante,
       this.inseguro_confiante,
-      this.pressionado_controlado,
-      this.provocativa_respeitosa, 
-      this.passiva_ativa);
+      this.intimidado_controlado,
+      this.provocativa_respeitosa,
+      this.passiva_proativo,
+      this.estrassado_calmo,
+      this.disperso_alerta,
+      this.taticamenteDisciplinado_taticamenteIndisciplinado,
+      );
     this.router.navigate(['/condicao-pos-luta']);
     // this.router.navigate(['/auto-avaliacao']);
   }
@@ -90,21 +115,33 @@ export class ComportamentoOponentePage implements OnInit {
         texto1 = "Inconstante: Cometeu muitos erros"
         texto2 = "Constante: Cometeu poucos erros"
         break;
-      case 'confiante':
+      case 'inseguro_confiante':
         texto1 = "Inseguro: Expressão intranquila; agitado; vacila; precipitado"
         texto2 = "Confiante: Expressão segura; calmo; decidido"
         break;
-      case 'pressionado_controlado':
-        texto1 = "Pressionado: Ficou intimidado; perdeu o controle"
+      case 'intimidado_controlado':
+        texto1 = "Intimidado: Em estado de apreensão ou de temor. Constrangido, inibido."
         texto2 = "Controlado: Se manteve sob controle "
         break;
       case 'provocativa_respeitosa':
         texto1 = "Provocativa: Atuou de forma não cortez às vezes desreipeitando até as regras"
         texto2 = "Respeitosa: Fair-play"
         break;
-      case 'passiva_ativa':
-        texto1 = "Passivo: Não tomou iniciativa e jogou basicamente no contra-ataque"
-        texto2 = "Ativo: Teve iniciativa no combate"
+      case 'passiva_proativo':
+        texto1 = "Passivo: Não tomou iniciativa e jogou de maneira apática."
+        texto2 = "Proativo: Teve iniciativa no combate."
+        break;
+      case 'estrassado_calmo':
+        texto1 = "Estressado: Apresentou comportamento inquieto, nervoso, e perturbado."
+        texto2 = "Calmo: Manteve-se sob controle."
+        break;
+      case 'disperso_alerta':
+        texto1 = "Disperso: Olhar disperso e distante. Lento para responder às ações."
+        texto2 = "Alerta: Manteve-se atento às ações, respondendo normalmente rápido."
+        break;
+      case 'taticamenteDisciplinado_taticamenteIndisciplinado':
+        texto1 = "Taticamente indisciplinado: Ação descoordenadas e aleatórias, sem um padrão."
+        texto2 = "Taticamente disciplinado: Ação planejada e sistematizada"
         break;
       default:
         break;

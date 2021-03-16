@@ -196,10 +196,11 @@ export class LutaPage implements OnInit {
               console.log(this.ataqueAtual);
 
             }else{
+            
               document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-primary)');
               document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
               document.getElementById(k.concat(i)).style.setProperty('color', 'white');
-
+              
             }
           }
           
@@ -217,10 +218,13 @@ export class LutaPage implements OnInit {
             }
             
           }else{
+            if(i!=6){
             document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
             document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
             document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
-          }
+          
+            }
+            }
         }
       }
       
@@ -430,18 +434,24 @@ export class LutaPage implements OnInit {
       var i;
       var k="localCorpo";
       for(i=1;i<=20;i++){ 
-        
-        document.getElementById(k.concat(i)).style.setProperty('--background', ' var(--ion-color-primary)');
+      document.getElementById(k.concat(i)).style.setProperty('--background', ' var(--ion-color-primary)');
         
       }
       
       //Volta a cor dos botões de ataque
       k="ataque";
       for(i=1;i<=7;i++){
+        if(i == 6){
+          document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary))');
+          document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-quartiary)');
+          document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
+
+        }
+        else{
         document.getElementById(k.concat(i)).style.setProperty('color', 'var(--ion-color-primary)');
         document.getElementById(k.concat(i)).style.setProperty('--border-color', 'var(--ion-color-primary)');
         document.getElementById(k.concat(i)).style.setProperty('--background', 'var(--ion-color-tertiary)');
-      }
+      }}
       
       //Volta a cor dos botões da pista
       k="pista";

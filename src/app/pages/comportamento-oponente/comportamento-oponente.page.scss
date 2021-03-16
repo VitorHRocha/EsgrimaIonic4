@@ -3,7 +3,7 @@ ion-header{
  
 }
 ion-toolbar{
-    --padding-top: 15%;
+    --padding-top: 3%;
     padding-bottom: 5%;
     color: white;
     white-space: nowrap;
@@ -18,8 +18,8 @@ ion-title{
 }
 
 ion-toolbar ion-button{
-    position: absolute;
-    margin-top: -2%;
+    position: static;
+    margin-bottom: -10%;
     --padding-start : 20%;
     color: white;   
     font-size: 130%;  
@@ -30,6 +30,7 @@ ion-content{
 }
 ion-item{
     --background: var(--ion-color-tertiary);
+    height: 8%;
   
 }
 ion-label{
@@ -43,11 +44,17 @@ ion-label{
     // --color: white;
 
 }
+.label_end_medio{
+    margin-left: -25%;
+    // --color: white;
+
+}
 ion-item ion-label{
     color:  var(--ion-color-primary);
+    font-size: 4vw; 
 }
 .label_end_maior{
-    margin-left: -30%;
+    margin-left: -40%;
 }
 ion-content ion-icon{
     font-size: 70%;
@@ -71,6 +78,7 @@ ion-range{
     margin-top: -3%;
 }
 #botao_confirmar{
-    margin-top: 30%;
+    position: static;
+    // margin-top: 30%;
     font-weight: 700;
 }

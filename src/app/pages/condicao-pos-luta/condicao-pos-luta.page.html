@@ -5,12 +5,12 @@
     </ion-button>
     <ion-title>Efeitos da pratica</ion-title>      
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content color="tertiary">
   <ion-item lines="none">
     <ion-label slot="start">Sonolento</ion-label>
-    <ion-label slot="end">Alerta</ion-label>
+    <ion-label class="label_end" slot="end">Alerta</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentsonolento_alerta($event)" mode="ios">
@@ -30,7 +30,7 @@
 
   <ion-item lines="none" >
     <ion-label slot="start">Inseguro</ion-label>
-    <ion-label class="label_end" slot="end">Confiante</ion-label>
+    <ion-label class="label_end_maior" slot="end">Confiante</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentinseguro_confiante($event)" mode="ios">
@@ -40,7 +40,7 @@
 
   <ion-item lines="none" >
     <ion-label slot="start">Preocupado</ion-label>
-    <ion-label class="label_end" slot="end">Tranquilo</ion-label>
+    <ion-label class="label_end_maior" slot="end">Tranquilo</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmentPreocupado_tranquilo($event)" mode="ios">
@@ -49,13 +49,13 @@
   </ion-item>
 
   <ion-item lines="none">
-    <ion-label slot="start">Triste</ion-label>
+    <ion-label slot="start">Frustrado</ion-label>
     <ion-label slot="end">Feliz</ion-label>
   </ion-item>
   <ion-item lines="none" class="item_range">
     <ion-range min="1" max="5" step="1" snaps="true"  (ionChange)="segmenttriste_feliz($event)" mode="ios">
     </ion-range>
-    <ion-icon name="help" (click)="help('triste_feliz')"></ion-icon>
+    <ion-icon name="help" (click)="help('frustrado_feliz')"></ion-icon>
   </ion-item>
 
   <ion-item lines="none">

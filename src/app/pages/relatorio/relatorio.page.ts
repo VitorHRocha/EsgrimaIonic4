@@ -8,7 +8,7 @@ import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-relatorio',
-  templateUrl: './relatorio.page.html',
+  templateUrl: './relatorio.page.html', 
   styleUrls: ['./relatorio.page.scss'],
 })
 export class RelatorioPage implements OnInit {
@@ -64,14 +64,20 @@ export class RelatorioPage implements OnInit {
   inseguro_confiante: any;
   pressionado_controlado: any;
   provocativa_respeitosa: any;
-  passiva_ativa: any;
+  passiva_proativa: any;
+  estrassado_calmo: number;
+  disperso_alerta: number;
+  taticamenteDisciplinado_taticamenteIndisciplinado: number;
 
   conservador_ousado_geral: any;
   inconstante_constante_geral: any;
   inseguro_confiante_geral: any;
   pressionado_controlado_geral: any;
   provocativa_respeitosa_geral: any;
-  passiva_ativa_geral: any;
+  passiva_proativa_geral: any;
+  estrassado_calmo_geral: number;
+  disperso_alerta_geral: number;
+  taticamenteDisciplinado_taticamenteIndisciplinado_geral: number;
 
   //Auto Avaliação
 
@@ -135,6 +141,7 @@ export class RelatorioPage implements OnInit {
         }
       });
       document.getElementById("estatisticas").style.display = "none";
+      // Chart.Tooltip.bodyFontSize = 20;
 
   }
 
@@ -168,7 +175,10 @@ export class RelatorioPage implements OnInit {
     this.inseguro_confiante_geral = 0;
     this.pressionado_controlado_geral = 0;
     this.provocativa_respeitosa_geral = 0;
-    this.passiva_ativa_geral = 0;
+    this.passiva_proativa_geral = 0;
+    this.estrassado_calmo_geral = 0; 
+    this.disperso_alerta_geral = 0;
+    this.taticamenteDisciplinado_taticamenteIndisciplinado_geral = 0;
 
 
     this.efeitoPratica_geral.sonolento_alerta = 0;
@@ -201,6 +211,7 @@ export class RelatorioPage implements OnInit {
     this.pontosLutador1 = this.lutaService.getPontosLutador1();
     this.pontosLutador2 = this.lutaService.getPontosLutador2();
     console.log(this.pontosLutador2);
+    console.log(this.pontosLutador2);
 
     for (i = 0; i < this.pontosLutador1.length; i++) {
       this.totalPontos2 += this.pontosLutador1[i].quantidadeAcertos;
@@ -232,11 +243,13 @@ export class RelatorioPage implements OnInit {
         '<br> Resposta:' + this.pontoDetalhado.tipoAtaques.ataque2 +
         '<br> Contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque3 +
         '<br> Contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque4 +
-        '<br> Remessa de ataque:' + this.pontoDetalhado.tipoAtaques.ataque11 +
-        '<br> Remessa de resposta:' + this.pontoDetalhado.tipoAtaques.ataque12 +
-        '<br> Remessa de contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque13 +
-        '<br> Remessa de contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque14 +
-        '<br> Toque duplo:' + this.pontoDetalhado.tipoAtaques.ataque5,
+        '<br> Contra-Tempo:' + this.pontoDetalhado.tipoAtaques.ataque5 +
+        '<br> Remessa de Ataque:' + this.pontoDetalhado.tipoAtaques.ataque11 +
+        '<br> Remessa de Resposta:' + this.pontoDetalhado.tipoAtaques.ataque12 +
+        '<br> Remessa de Contra-Resposta:' + this.pontoDetalhado.tipoAtaques.ataque13 +
+        '<br> Remessa de Contra-Ataque:' + this.pontoDetalhado.tipoAtaques.ataque14 +
+        '<br> Remessa de Contra-Tempo:' + this.pontoDetalhado.tipoAtaques.ataque15 +
+        '<br> Toque duplo:' + this.pontoDetalhado.tipoAtaques.ataque7,
       buttons: ['OK']
     });
 
@@ -249,7 +262,7 @@ export class RelatorioPage implements OnInit {
   //   this.inseguro_confiante = this.lutadoresAtuais.inseguro_confiante;
   //   this.pressionado_controlado = this.lutadoresAtuais.pressionado_controlado;
   //   this.provocativa_respeitosa = this.lutadoresAtuais.provocativa_respeitosa;
-  //   this.passiva_ativa = this.lutadoresAtuais.passiva_ativa;
+  //   this.passiva_proativa = this.lutadoresAtuais.passiva_proativa;
 
   // }
 
@@ -261,22 +274,31 @@ export class RelatorioPage implements OnInit {
     this.inseguro_confiante = this.lutadoresAtuais.Avaliacao_Adversario.inseguro_confiante;
     this.pressionado_controlado = this.lutadoresAtuais.Avaliacao_Adversario.pressionado_controlado;
     this.provocativa_respeitosa = this.lutadoresAtuais.Avaliacao_Adversario.provocativa_respeitosa;
-    this.passiva_ativa = this.lutadoresAtuais.Avaliacao_Adversario.passiva_ativa;
-
+    this.passiva_proativa = this.lutadoresAtuais.Avaliacao_Adversario.passiva_proativa;
+    this.estrassado_calmo = this.lutadoresAtuais.Avaliacao_Adversario.estrassado_calmo;
+    this.disperso_alerta = this.lutadoresAtuais.Avaliacao_Adversario.disperso_alerta;
+    this.taticamenteDisciplinado_taticamenteIndisciplinado = this.lutadoresAtuais.Avaliacao_Adversario.taticamenteDisciplinado_taticamenteIndisciplinado;
+    
     for (var indiceLutador in this.lutadores) {
       this.conservador_ousado_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.conservador_ousado;
       this.inconstante_constante_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.inconstante_constante;
       this.inseguro_confiante_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.inseguro_confiante;
       this.pressionado_controlado_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.pressionado_controlado;
       this.provocativa_respeitosa_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.provocativa_respeitosa;
-      this.passiva_ativa_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.passiva_ativa;
+      this.passiva_proativa_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.passiva_proativa;
+      this.estrassado_calmo_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.estrassado_calmo;
+      this.disperso_alerta_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.disperso_alerta;
+      this.taticamenteDisciplinado_taticamenteIndisciplinado_geral += this.lutadores[indiceLutador].Avaliacao_Adversario.taticamenteDisciplinado_taticamenteIndisciplinado;
     }
     this.conservador_ousado_geral /= this.lutadores.length;
     this.inconstante_constante_geral /= this.lutadores.length;
     this.inseguro_confiante_geral /= this.lutadores.length;
     this.pressionado_controlado_geral /= this.lutadores.length;
     this.provocativa_respeitosa_geral /= this.lutadores.length;
-    this.passiva_ativa_geral /= this.lutadores.length;
+    this.passiva_proativa_geral /= this.lutadores.length;
+    this.estrassado_calmo_geral /= this.lutadores.length;
+    this.disperso_alerta_geral /= this.lutadores.length;
+    this.taticamenteDisciplinado_taticamenteIndisciplinado_geral /= this.lutadores.length;
 
   }
 
@@ -377,10 +399,10 @@ export class RelatorioPage implements OnInit {
       this.efeitoPratica.triste_feliz +
       this.efeitoPratica.desmotivado_motivado) / 6;
 
-    if (valormedio < 1.6) {
+    if (valormedio < 2.3) {
 
       this.colorBarGeral[2] = '#ff0000';
-    } else if (valormedio < 2.2) {
+    } else if (valormedio < 3.6) {
 
       this.colorBarGeral[2] = '#ffff00';
     } else {
@@ -398,11 +420,15 @@ export class RelatorioPage implements OnInit {
       this.inseguro_confiante +
       this.pressionado_controlado +
       this.provocativa_respeitosa +
-      this.passiva_ativa) / 6;
-    if (valormedio < 1.6) {
+      this.passiva_proativa +
+      this.estrassado_calmo +
+      this.disperso_alerta +
+      this.taticamenteDisciplinado_taticamenteIndisciplinado 
+      ) / 6;
+    if (valormedio < 2.3) {
 
       this.colorBarGeral[1] = '#ff0000';
-    } else if (valormedio < 2.2) {
+    } else if (valormedio < 3.6) {
 
       this.colorBarGeral[1] = '#ffff00';
     } else {
@@ -449,7 +475,7 @@ export class RelatorioPage implements OnInit {
   createRadarChartAvaliarAdversario() {
     let ctx = this.radarChartAvaliarAdversario.nativeElement;
     ctx.height = 200;
-    // console.log(this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa);
+    // console.log(this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_proativa);
     this.radarAvaliarAdversario = new Chart(ctx, {
       type: 'radar',
       data: {
@@ -457,14 +483,14 @@ export class RelatorioPage implements OnInit {
         datasets: [
           {
             label: ['Avaliação do adversario atual'],
-            data: [this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_ativa],
+            data: [this.conservador_ousado, this.inconstante_constante, this.inseguro_confiante, this.pressionado_controlado, this.provocativa_respeitosa, this.passiva_proativa, this.estrassado_calmo, this.disperso_alerta, this.taticamenteDisciplinado_taticamenteIndisciplinado],
             borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
             borderWidth: 1,
             weight: 100,
           },
           {
             label: ['Avaliação media do adversario'],
-            data: [this.conservador_ousado_geral, this.inconstante_constante_geral, this.inseguro_confiante_geral, this.pressionado_controlado_geral, this.provocativa_respeitosa_geral, this.passiva_ativa_geral],
+            data: [this.conservador_ousado_geral, this.inconstante_constante_geral, this.inseguro_confiante_geral, this.pressionado_controlado_geral, this.provocativa_respeitosa_geral, this.passiva_proativa_geral, this.estrassado_calmo_geral, this.disperso_alerta_geral, this.taticamenteDisciplinado_taticamenteIndisciplinado_geral],
             borderColor: 'rgb(240, 252, 0)',// array should have same number of elements as number of dataset
             borderWidth: 1,
             weight: 100,
@@ -472,7 +498,11 @@ export class RelatorioPage implements OnInit {
         ]
       },
       options: {
-
+        scale: {
+          pointLabels: {
+            fontSize: 18
+          }
+        },
         scales: {
           yAxes: [{
             ticks: {
@@ -516,6 +546,11 @@ export class RelatorioPage implements OnInit {
         ]
       },
       options: {
+        scale: {
+          pointLabels: {
+            fontSize: 18
+          }
+        },
         scales: {
           yAxes: [{
             ticks: {
@@ -558,7 +593,11 @@ export class RelatorioPage implements OnInit {
         ]
       },
       options: {
-
+        scale: {
+          pointLabels: {
+            fontSize: 18
+          }
+        }, 
         scales: {
           yAxes: [{
             ticks: {

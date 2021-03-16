@@ -20,6 +20,9 @@ export class EstatisticaPage implements OnInit {
   barTipoAtaque: any;
   @ViewChild('barChartLocalCorpo') barChartLocalCorpo;
   barLocalCorpo: any;
+  @ViewChild('barChartZona') barChartZona;
+  barZona: any;
+  
   
   
   public lutaCabecalho: any;
@@ -62,6 +65,19 @@ export class EstatisticaPage implements OnInit {
   opPeDir: any;
   opPeEsq: any;
   
+  //zonas
+  myZona1:number;
+  myZona2:number;
+  myZona3:number;
+  myZona4:number;
+  myZona5:number;
+  
+  opZona1:number;
+  opZona2:number;
+  opZona3:number;
+  opZona4:number;
+  opZona5:number;
+  
   public lutaPontosVisao: any;
   
   constructor(
@@ -83,7 +99,8 @@ export class EstatisticaPage implements OnInit {
         this.createBarChartTipoAtaque();
         this.computaLocalCorpo();
         this.createBarChartLocalCorpo();
-        
+        this.computaZona();
+        this.createBarChartZona();
       });
     }
     
@@ -128,6 +145,8 @@ export class EstatisticaPage implements OnInit {
       this.updateBarChartTipoAtaque();
       this.computaLocalCorpo();
       this.updateBarChartLocalCorpo();
+      this.computaZona();
+      this.updateBarChartZona();
     } 
     
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +193,7 @@ export class EstatisticaPage implements OnInit {
       this.derrotas = 0;
       for (var lutaPontos in this.lutaPontosVisao) {
         for (var ponto in this.lutaPontosVisao[lutaPontos].LocalCorpo) {
-          if (this.lutaPontosVisao[lutaPontos].LocalCorpo[ponto] <= 6) {
+          if (this.lutaPontosVisao[lutaPontos].LocalCorpo[ponto] <= 10) {
             switch (this.lutaPontosVisao[lutaPontos].Ataques[ponto]) {
               case 1:
               this.myAtaques += 1;
@@ -304,6 +323,70 @@ export class EstatisticaPage implements OnInit {
         }
       }
     }
+    
+    computaZona(){
+      this.myZona1 = 0;
+      this.myZona2 = 0;
+      this.myZona3 = 0;
+      this.myZona4 = 0;
+      this.myZona5 = 0;
+      
+      
+      this.opZona1 = 0;
+      this.opZona2 = 0;
+      this.opZona3 = 0;
+      this.opZona4 = 0;
+      this.opZona5 = 0;
+      for (var lutaPontos in this.lutaPontosVisao) {
+        for (var ponto in this.lutaPontosVisao[lutaPontos].LocalCorpo) {
+          
+          if (this.lutaPontosVisao[lutaPontos].LocalCorpo[ponto] <= 10) {
+            
+            switch (this.lutaPontosVisao[lutaPontos].Area[ponto]) {
+              case 1:
+              this.myZona1 += 1;
+              break;
+              case 2:
+              this.myZona2 += 1;
+              break;
+              case 3:
+              this.myZona3 += 1;
+              break;
+              case 4:
+              this.myZona4 += 1;
+              break;
+              case 5:
+              this.myZona5 += 1;
+              break;
+              default:
+              break;
+            }
+          }else{
+            switch (this.lutaPontosVisao[lutaPontos].Area[ponto]) {
+              case 1:
+              this.opZona1 += 1;
+              break;
+              case 2:
+              this.opZona2 += 1;
+              break;
+              case 3:
+              this.opZona3 += 1;
+              break;
+              case 4:
+              this.opZona4 += 1;
+              break;
+              case 5:
+              this.opZona5 += 1;
+              break;
+              default:
+              break;
+              
+            }
+          }
+        }
+      }
+    }
+    
     createPieChart() {
       let ctx = this.pieChart.nativeElement;
       ctx.height = 200;
@@ -420,6 +503,48 @@ export class EstatisticaPage implements OnInit {
     }
   });
 }
+createBarChartZona(){
+  let ctx = this.barChartZona.nativeElement;
+  ctx.height = 300;
+  this.barTipoAtaque = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Zona 1', 'Zona 2', 'Zona 3', 'Zona 4', 'Zona 5'],
+      datasets: [{
+        label: ['Pontos feitos'],
+        data: [this.myZona1, this.myZona2, this.myZona3, this.myZona5],
+        backgroundColor:  ['rgb(37, 199, 22)', 'rgb(37, 199, 22)', 'rgb(37, 199, 22)', 'rgb(37, 199, 22)'],// array should have same number of elements as number of dataset
+        borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+        borderWidth: 1,
+        barPercentage: 0.7,
+        weight: 100,
+      },
+      {
+        label: ['Pontos sofridos'],
+        data: [this.opZona1, this.opZona2, this.opZona3, this.opZona5],
+        backgroundColor:['rgb(240, 38, 24)', 'rgb(240, 38, 24)', 'rgb(240, 38, 24)', 'rgb(240, 38, 24)'], // array should have same number of elements as number of dataset
+        borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+        borderWidth: 1,
+        barPercentage: 0.7,
+        weight: 100,
+      }
+    ]
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        // stacked: true
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+}
+
 
 updateBarChartLocalCorpo(){
   
@@ -428,37 +553,37 @@ updateBarChartLocalCorpo(){
       datasets.data.pop();
     }
   });
-
-
+  
+  
   var idDataset: any;
   for (idDataset in this.barLocalCorpo.data.datasets){
-        
-    if(idDataset == 0){
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myCabeca);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myTronco);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myBracoEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myMaoEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myBracoDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myMaoDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPernaDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPernaEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPeDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPeEsq);
-  }else{
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opCabeca);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opTronco);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opMaoEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opBracoEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opBracoDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opMaoDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPernaDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPernaEsq);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPeDir);
-    this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPeEsq);
     
-    // console.log(datasets);
+    if(idDataset == 0){
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myCabeca);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myTronco);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myBracoEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myMaoEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myBracoDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myMaoDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPernaDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPernaEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPeDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.myPeEsq);
+    }else{
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opCabeca);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opTronco);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opMaoEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opBracoEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opBracoDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opMaoDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPernaDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPernaEsq);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPeDir);
+      this.barLocalCorpo.data.datasets[idDataset].data.push(this.opPeEsq);
+      
+      // console.log(datasets);
+    }
   }
-}
   
   this.barLocalCorpo.update();
 }
@@ -513,6 +638,26 @@ updatePieChart(){
   // });
   this.pie.update();
   
+}
+
+updateBarChartZona(){
+  for(var i=0; i<2; i++){
+    this.barZona.data.datasets.forEach((datasets) => {
+      datasets.data.pop();     
+    });
+  }
+  
+  this.barZona.data.datasets.forEach((datasets) => {
+    datasets.data.push(this.vitorias);
+    datasets.data.push(this.derrotas);
+  });
+  this.barZona.update();
+  
+  // this.pie.data.datasets.forEach((datasets) => {
+  
+  // });
+  this.barZona.update();
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////

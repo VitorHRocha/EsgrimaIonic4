@@ -10,11 +10,13 @@ ion-title{
     text-align: center;
     font-size: 110%;  
     font-weight: bold;
+    width: 80%;
+    margin: auto;
 }
 
 ion-toolbar ion-button{
-    position: absolute;
-    margin-top: -2%;
+    position: static;
+    margin-bottom: -6%;
     --padding-start : 20%;
     color: white;   
     font-size: 130%;  
