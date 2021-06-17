@@ -31,6 +31,16 @@ export class ProfileService {
 
   }
 
+  updateAtleta(nome: string, clube: string): Promise<any> {
+
+    return this.userProfile.update({
+      lista_atleta: firebase.firestore.FieldValue.arrayUnion({
+            nome,
+            clube
+        })
+      });
+
+    }
   updateName(nome: string): Promise<any> {
     return this.userProfile.update({ nome });
   }
@@ -104,42 +114,6 @@ export class ProfileService {
     // console.log(controlado);
     // console.log(disciplinado);
 
-
-    // tipoJogo: string,
-    // etapaCampeonato: string,
-    // etapaEliminatoria: string,
-    // rankingOponente: string,
-    // classOponente: string,
-   // data: string,
-    // hora: string,
-
-    // nome1: string,
-    // clube1: string, 
-    // punho1: string,
-
-    // nome2: string,
-    // clube2: string,
-    // altura_relativa: string,
-    // punho2: string,
-    // empunhadura: string,
-    // tatica: string,
-    // nivelTecnico: string,
-
-    // conservador_ousado: number,
-    // inconstante_constante: number,
-    // inseguro_confiante: number,
-    // pressionado_controlado: number,
-    // provocativa_respeitosa: number,
-    // passiva_proativa: number,
-
-    // myConfiante: number,
-    // myEstressado: number,
-    // myFocado: number,
-    // myMotivado: number,
-    // myControlado: number,
-    // myDisciplinado: number,
-
-    // efeitoPratica: efeitoPratica
 
     this.updateLutas(idLuta);
     return this.userProfile.update({

@@ -44,7 +44,8 @@ export class LoginPage implements OnInit {
       await this.loading.present();
       const email = loginForm.value.email;
       const password = loginForm.value.password;
-      this.authService.loginUser(email+'@email.com', password).then(
+      // this.authService.loginUser(email+'@email.com', password).then(
+      this.authService.loginUser(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
             this.router.navigateByUrl('user');

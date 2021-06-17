@@ -24,7 +24,7 @@ export class MinhasLutasPage implements OnInit {
     private profileService: ProfileService,
     public router: Router,
     public lutaService:LutaService,
-    public modalCtrl1: ModalController,
+    public modalCtrl1: ModalController, 
     public alertController: AlertController
     ) {   
       

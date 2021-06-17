@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -20,28 +21,32 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menu: MenuController,
-    private router: Router
-  ) {
-    this.initializeApp();
+    private router: Router,
+    ) {
+      this.initializeApp();
+    }
+    
+    initializeApp() {
+      this.platform.ready().then(() => {
+        // let status bar overlay webview
+        this.statusBar.overlaysWebView(true);
+        
+        // set status bar to white
+        this.statusBar.backgroundColorByHexString('1f2b5d');
+        this.splashScreen.hide();
+        firebase.initializeApp(firebaseConfig);
+      });
+    }
+    editaPerfil(){
+      this.router.navigate(['/profileedit'])
+      
+    }
+    openMenu(){
+      //  this.menu.open('menu');
+    }
+    
+    
+    
+    
+    
   }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-      firebase.initializeApp(firebaseConfig);
-    });
-  }
-  editaPerfil(){
-    this.router.navigate(['/profileedit'])
-
-  }
- openMenu(){
-   this.menu.open('menu');
- }
-
-
-
-
-
-}

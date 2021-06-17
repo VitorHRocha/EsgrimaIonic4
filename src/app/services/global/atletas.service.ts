@@ -9,16 +9,16 @@ import 'firebase/firestore';
 })
 export class AtletasService {
   public listaAtletasDoc: firebase.firestore.DocumentReference;
-  private userProfile: firebase.firestore.DocumentReference;
+  private userProfile: any;
 
   constructor(
     public profileService:ProfileService) {
-      this.profileService.getUserProfile()
+      this.profileService.getUserProfile() 
       .get()
       .then( userProfileSnapshot => {
 
         this.userProfile = this.profileService.getUserProfile();
-        this.listaAtletasDoc = firebase.firestore().doc(`/listaAtletas/lista`);
+        this.listaAtletasDoc = this.userProfile.lista_atleta;
         // this.listaAtletasDoc = firebase.firestore().doc(`${this.userProfile}/listaAtletas/lista`);
       });
    }
@@ -27,15 +27,6 @@ export class AtletasService {
      return this.listaAtletasDoc; 
    }
 
-   updateAtleta(nome: string, clube: string): Promise<any> {
-     
-    return this.listaAtletasDoc.update({ 
-      atleta: firebase.firestore.FieldValue.arrayUnion({
-            nome,
-            clube
-        })
-      });
-
-    }
+   
 
 }
