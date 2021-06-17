@@ -59,6 +59,12 @@ ion-item ion-label{
 .label_end_maior_maior{
     margin-left: -60%;
 }
+@media (max-height: 640px) {
+#item_taticamente{
+    padding-bottom: 64px;
+
+}
+}
 ion-content ion-icon{
     font-size: 70%;
     border-radius: 30px ;

@@ -17,7 +17,7 @@ export class ComportamentoOponentePage implements OnInit {
   intimidado_controlado : number;
   provocativa_respeitosa : number;
   passiva_proativo  : number;
-  estrassado_calmo  : number;
+  estressado_calmo  : number;
   disperso_alerta  : number;
   taticamenteDisciplinado_taticamenteIndisciplinado  : number;
 
@@ -32,7 +32,7 @@ export class ComportamentoOponentePage implements OnInit {
     this.intimidado_controlado = 1;
     this.provocativa_respeitosa = 1;
     this.passiva_proativo  = 1;
-    this.estrassado_calmo  = 1;
+    this.estressado_calmo  = 1;
     this.disperso_alerta  = 1;
     this.taticamenteDisciplinado_taticamenteIndisciplinado  = 1;
   }
@@ -58,11 +58,11 @@ export class ComportamentoOponentePage implements OnInit {
 
   }
   segmentpassiva_proativa(event:any){
-    this.estrassado_calmo = event.detail.value; 
+    this.estressado_calmo = event.detail.value; 
 
   }
-  segmentestrassado_calmo(event:any){
-    this.estrassado_calmo = event.detail.value; 
+  segmentestressado_calmo(event:any){
+    this.estressado_calmo = event.detail.value; 
 
   }
   segmentdisperso_alerta(event:any){
@@ -82,7 +82,7 @@ export class ComportamentoOponentePage implements OnInit {
       console.log(this.intimidado_controlado);
       console.log(this.provocativa_respeitosa);
       console.log(this.passiva_proativo);
-      console.log(this.estrassado_calmo);
+      console.log(this.estressado_calmo);
       console.log(this.disperso_alerta);
       console.log(this.taticamenteDisciplinado_taticamenteIndisciplinado);
       
@@ -94,7 +94,7 @@ export class ComportamentoOponentePage implements OnInit {
       this.intimidado_controlado,
       this.provocativa_respeitosa,
       this.passiva_proativo,
-      this.estrassado_calmo,
+      this.estressado_calmo,
       this.disperso_alerta,
       this.taticamenteDisciplinado_taticamenteIndisciplinado,
       );
@@ -131,7 +131,7 @@ export class ComportamentoOponentePage implements OnInit {
         texto1 = "Passivo: Não tomou iniciativa e jogou de maneira apática."
         texto2 = "Proativo: Teve iniciativa no combate."
         break;
-      case 'estrassado_calmo':
+      case 'estressado_calmo':
         texto1 = "Estressado: Apresentou comportamento inquieto, nervoso, e perturbado."
         texto2 = "Calmo: Manteve-se sob controle."
         break;
