@@ -32,7 +32,7 @@ export class AppComponent {
     initializeApp() {
 
       this.platform.ready().then(() => {
-        firebase.initializeApp(firebaseConfig);
+        // firebase.initializeApp(firebaseConfig);
         console.log('aqui1');
         // let status bar overlay webview
         this.statusBar.overlaysWebView(true);

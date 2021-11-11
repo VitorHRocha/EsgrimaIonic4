@@ -25,16 +25,16 @@ export class ProfileService {
   constructor(
     public authService: AuthService) {
       console.log('aqui3');
-        try {
+        // try {
           firebase.auth().onAuthStateChanged(user => {
             if (user) {
               this.currentUser = user;
               this.userProfile = firebase.firestore().doc(`/userProfile/${user.uid}`);
             }
           });
-        } catch (error) {
+        // } catch (error) {
           
-        }   
+        // }   
     }
     
     getUserProfile():  firebase.firestore.DocumentReference {

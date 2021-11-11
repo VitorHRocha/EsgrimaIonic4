@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera/ngx';
+import * as firebase from 'firebase';
+import { firebaseConfig } from './credencial';
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [AppComponent], 

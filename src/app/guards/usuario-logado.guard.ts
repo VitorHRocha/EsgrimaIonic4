@@ -16,7 +16,33 @@ import { ProfileService } from '../services/user/profile.service';
 @Injectable({
   providedIn: 'root',
 })
+// export class UsuarioLogadoGuard implements CanActivate {
+//   constructor( private authService: AuthService,
+//                private router: Router,
+//                public profileService:ProfileService, 
+//                ) {}
+//   canActivate(
+//     route: ActivatedRouteSnapshot,
+//     state: RouterStateSnapshot
+//   ):
+//     | Observable<boolean | UrlTree>
+//     | Promise<boolean | UrlTree>
+//     | boolean
+//     | UrlTree {
+//     console.log('aqui2');
+//     return new Promise((resolve) => {
+//       this.authService.getAuth().onAuthStateChanged((user) => {
+//         if (user) {
+//           this.router.navigate(['user']);
+//         }
+//         resolve(user ? false : true);
+//       });
+//     });
+//   }
+// }
+
 export class UsuarioLogadoGuard implements CanActivate {
+  private user: any;
   constructor( private authService: AuthService,
                private router: Router,
                public profileService:ProfileService, 
@@ -31,12 +57,18 @@ export class UsuarioLogadoGuard implements CanActivate {
     | UrlTree {
     console.log('aqui2');
     return new Promise((resolve) => {
-      this.authService.getAuth().onAuthStateChanged((user) => {
-        if (user) {
-          this.router.navigate(['user']);
-        }
-        resolve(user ? false : true);
-      });
-    });
+      try {
+        this.authService.getAuth().onAuthStateChanged((user) => {
+          this.user = user;
+          if (this.user ) {
+            this.router.navigate(['user']);
+          }
+          resolve(this.user  ? false : true);
+        });
+      } catch (error) {
+        resolve(this.user  ? false : true);
+      }
+    }
+    );
   }
 }

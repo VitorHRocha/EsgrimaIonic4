@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { and } from '@angular/router/src/utils/collection';
 import { IfStmt } from '@angular/compiler';
+import { ProfileService } from 'src/app/services/user/profile.service';
 
 
 @Component({
