@@ -1,18 +1,53 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-button shape="round" (click)="voltar()">
-        <ion-icon name="arrow-dropleft-circle"></ion-icon>
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button id="logoutButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-button>  
+    <ion-title>Editar perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content  padding>
-    <div class="camera">
-      <img *ngIf="fotoPerfilURL" src="http://ucarecdn.com/{{ fotoPerfilURL }}/" >
-    </div>
-  <input type="file" (change)="fileChanged($event)">
-  <div *ngIf="fotoPerfilURL">
-    <ion-button expand="block" (click)="alteraFoto()">Alterar Foto</ion-button>
-  </div>
+<ion-content  >
+  <!-- <div >
+    <img [src]="currentImage" *ngIf="currentImage">
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div> -->
+  <form [formGroup]="registroForm"> 
+    <ion-item>
+      <ion-input
+      text-center
+      placeholder="Nome"
+      formControlName="nome"
+      type="text"
+      [class.invalid]="registroForm.controls['nome'].valid &&
+      registroForm.controls['nome'].touched"
+      >
+    </ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-input
+    text-center
+    placeholder="Clube"
+    formControlName="clube"
+    type="text"
+    [class.invalid]="registroForm.controls['clube'].valid &&
+    registroForm.controls['clube'].touched"
+    >
+  </ion-input>
+</ion-item>
+
+<ion-button
+shape="round"
+expand="block"
+color="secondary"
+(click)="salvar(registroForm)"
+[disabled]="!registroForm.valid"
+>Salvar</ion-button>
+</form>
 
 </ion-content>

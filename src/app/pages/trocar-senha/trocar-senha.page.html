@@ -1,0 +1,63 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button id="logoutButton" fill="clear" (click)="voltar()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-button>  
+    <ion-title>Trocar senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+  <!-- <div class="camera">
+    <img *ngIf="fotoPerfilURL" src="http://ucarecdn.com/{{ fotoPerfilURL }}/" >
+  </div>
+  <input type="file" (change)="fileChanged($event)">
+  <div *ngIf="fotoPerfilURL">
+    <ion-button expand="block" (click)="alteraFoto()">Alterar Foto</ion-button>
+  </div> -->
+  <form [formGroup]="registroForm"> 
+ 
+  <ion-item>
+    <ion-input
+    text-center
+    placeholder="Senha antiga"
+    formControlName="senha_antiga"
+    type="password"
+    [class.invalid]="registroForm.controls['senha_antiga'].valid &&
+    registroForm.controls['senha_antiga'].touched"
+    >
+  </ion-input>
+</ion-item>
+<ion-item>
+  <ion-input
+  text-center
+  placeholder="Nova senha"
+  formControlName="senha_nova"
+  type="password"
+  [class.invalid]="!registroForm.controls['senha_nova'].valid &&
+  registroForm.controls['senha_nova'].touched">
+</ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input
+  text-center
+  placeholder="Confirmar nova senha"
+  formControlName="conf_senha"
+  type="password"
+  [class.invalid]="!registroForm.controls['conf_senha'].valid &&
+  registroForm.controls['conf_senha'].touched">
+</ion-input>
+</ion-item>
+
+
+<ion-button
+shape="round"
+expand="block"
+color="secondary"
+(click)="salvar(registroForm)"
+[disabled]="!registroForm.valid"
+>Salvar</ion-button>
+</form>
+
+</ion-content>

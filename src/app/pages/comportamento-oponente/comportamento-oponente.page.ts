@@ -26,15 +26,15 @@ export class ComportamentoOponentePage implements OnInit {
               public alertController: AlertController) { }
 
   ngOnInit() {
-    this.conservador_ousado = 1;
-    this.inconstante_constante = 1;
-    this.inseguro_confiante = 1;
-    this.intimidado_controlado = 1;
-    this.provocativa_respeitosa = 1;
-    this.passiva_proativo  = 1;
-    this.estressado_calmo  = 1;
-    this.disperso_alerta  = 1;
-    this.taticamenteDisciplinado_taticamenteIndisciplinado  = 1;
+    this.conservador_ousado = 3;
+    this.inconstante_constante = 3;
+    this.inseguro_confiante = 3;
+    this.intimidado_controlado = 3;
+    this.provocativa_respeitosa = 3;
+    this.passiva_proativo  = 3;
+    this.estressado_calmo  = 3;
+    this.disperso_alerta  = 3;
+    this.taticamenteDisciplinado_taticamenteIndisciplinado  = 3;
   }
   
   segmentconservador_ousado(event:any){

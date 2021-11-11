@@ -17,7 +17,10 @@ import { ModalFiltroPage } from '../../modal-filtro/modal-filtro.page';
 export class MinhasLutasPage implements OnInit {
   public lutas: any;
   public lutaVisao: any;
+  public lutasPontos: any;
   public userProfile: any;
+  public total_pontos_meu: any ;
+  public total_pontos_adversario: any ;
   
   
   constructor(
@@ -39,10 +42,12 @@ export class MinhasLutasPage implements OnInit {
       .then( userProfileSnapshot => {
         this.userProfile = userProfileSnapshot.data();
         this.lutas = this.userProfile.lutadores;
+        this.lutasPontos = this.userProfile.lutas;
         this.lutaVisao = this.lutas.slice();
-        this.ordenaLutas(this.lutaVisao);
         this.formataExibicaoData(this.lutaVisao);
-        console.log(this.userProfile);
+        this.ordenaLutas(this.lutaVisao);
+        this.computa_pontos(this.lutasPontos);
+
       });
     }
 
@@ -63,12 +68,14 @@ export class MinhasLutasPage implements OnInit {
       // console.log(this.userProfile);
       listLutas.sort(function(a, b){
         valor =  b.data - a.data ;
+        // console.log(b.data);
+        // console.log(a.data);
         a_data_string = a.Jogo.data + a.Jogo.hora;
         b_data_string = b.Jogo.data + b.Jogo.hora;
         a_data_string = a_data_string.replace(/\./g,'');        
-        console.log(a_data_string);
+        // console.log(a_data_string);
         a_data_string = a_data_string.replace(/\:/g,'');        
-        console.log(a_data_string);
+        // console.log(a_data_string);
         b_data_string = b_data_string.replace(/\./g,'');
         b_data_string = b_data_string.replace(/\:/g,'');
         a_data_num = parseInt(a_data_string);
@@ -84,15 +91,16 @@ export class MinhasLutasPage implements OnInit {
       var data_string_aux: string;
       for (var luta in listLutas){
         data_string_aux = "";
-        data_string = listLutas[luta].data;
+        data_string = listLutas[luta].Jogo.data;
+        // console.log(data_string);
         data_string = data_string.replace(/\./g,''); 
         data_string_aux = data_string_aux.concat(data_string.substring(6, 8));
         data_string_aux = data_string_aux.concat('/');
         data_string_aux = data_string_aux.concat(data_string.substring(4, 6));
         data_string_aux = data_string_aux.concat('/');
         data_string_aux = data_string_aux.concat(data_string.substring(0, 4));
-        listLutas[luta].data = data_string_aux;
-        console.log(data_string_aux);
+        listLutas[luta].Jogo.data = data_string_aux;
+        // console.log(data_string_aux);
       }
       
     }
@@ -172,6 +180,34 @@ export class MinhasLutasPage implements OnInit {
         }
       }
       console.log(this.lutaVisao);
+    }
+
+    computa_pontos(lutas){
+      var luta: any;
+      var local_corpo: any;
+      // var total_pontos_adversario = 0
+      // var total_pontos_meu = 0
+      this.total_pontos_meu = new Array;
+      this.total_pontos_adversario = new Array;
+      console.log(this.lutas);
+      for (luta in lutas){
+        console.log(lutas[luta]);
+        console.log(luta);
+        this.total_pontos_meu[luta] = 0;
+        this.total_pontos_adversario[luta] = 0;
+        
+        for(local_corpo in lutas[luta].LocalCorpo){
+          console.log(lutas[luta].LocalCorpo[local_corpo]);
+          if(lutas[luta].LocalCorpo[local_corpo] > 10){
+            this.total_pontos_meu[luta] += 1;
+          }
+          else{
+            this.total_pontos_adversario[luta] += 1;
+          }
+        }
+      }
+      console.log(this.total_pontos_adversario);
+      console.log(this.total_pontos_meu);
     }
     
     async presentModal() {

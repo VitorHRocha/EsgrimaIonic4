@@ -7,7 +7,7 @@ import { ProfileService } from 'src/app/services/user/profile.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-seleciona-oponente',
+  selector: 'app-seleciona-oponente', 
   templateUrl: './seleciona-oponente.page.html',
   styleUrls: ['./seleciona-oponente.page.scss'],
 })

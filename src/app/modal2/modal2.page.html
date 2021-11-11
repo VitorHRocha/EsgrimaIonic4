@@ -1,0 +1,56 @@
+<ion-header color="secondary">
+  <ion-toolbar color="secundary">
+    <ion-button id="backButton" fill="clear" (click)="dismiss()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>OPONENTES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="tertiary">
+  <div id="listAtleta" >
+    <div *ngIf="lista_atleta">
+    <ion-list *ngFor="let atleta of lista_atleta" color="tertiary">
+      <ion-item (click)='selecionaAtleta(atleta)' color="tertiary" lines="none">
+        <ion-label>{{atleta.nome}}</ion-label>
+        <ion-note slot="end">{{atleta.clube}}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNovoAtleta()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</div>
+
+  <div id="registraAtleta">
+
+    <form [formGroup]="regiOpform">
+      <ion-list>
+        <ion-label>
+          DADOS DO NOVO OPONENTE
+        </ion-label>
+        <ion-item id="item_nome" lines="none">
+          <ion-input placeholder="Nome" text-center formControlName="nome" type="text" [class.invalid]="regiOpform.controls['nome'].valid &&
+          regiOpform.controls['nome'].touched">
+          </ion-input>
+
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input text-center placeholder="Clube" formControlName="clube" type="text" [class.invalid]="regiOpform.controls['clube'].valid &&
+        regiOpform.controls['clube'].touched">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+    </form>
+    <ion-button shape="round" color="secondary" (click)="cadastroAtletaas(regiOpform)">
+      <!-- [disabled]="!registroForm.valid" -->
+      Confirmar
+    </ion-button>
+
+  </div>
+
+</ion-content>

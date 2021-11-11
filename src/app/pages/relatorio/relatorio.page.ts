@@ -115,19 +115,14 @@ export class RelatorioPage implements OnInit {
     private lutaService: LutaService,
     public router: Router,
     public alertController: AlertController) {
-
-  }
-
-  ngOnInit() {
-
-    this.profileService
+      this.profileService
       .getUserProfile()
       .get()
       .then(userProfileSnapshot => {
-        if (userProfileSnapshot.data().lutas) {
-          this.meuNome = userProfileSnapshot.data().nome;
-          this.lutas = userProfileSnapshot.data().lutas;
-          this.lutadores = userProfileSnapshot.data().lutadores;
+          this.userProfile = userProfileSnapshot.data();
+          this.meuNome = this.userProfile.nome;
+          this.lutas = this.userProfile.lutas;
+          this.lutadores = this.userProfile  .lutadores; 
           this.escolheLuta();
           this.zeraPontos();
           this.computaAvaliarAdversario();
@@ -138,9 +133,17 @@ export class RelatorioPage implements OnInit {
           this.createRadarChartEfeitoPratica();
           this.computaPontuacaoGeral();
           this.createbarChartPontuacaoGeral();
-        }
       });
-      document.getElementById("estatisticas").style.display = "none";
+  }
+
+  ngOnInit() {
+
+   
+      document.getElementById("estatisticas").style.display = "";
+      document.getElementById("tabela").style.display = "none";
+      
+      document.getElementById("botao_estatisticas").setAttribute( `color`,"primary") ;
+      document.getElementById("botao_pontos").setAttribute( `color`,"tertiary") ;
       // Chart.Tooltip.bodyFontSize = 20;
 
   }
@@ -415,7 +418,8 @@ export class RelatorioPage implements OnInit {
 
   calculaMediaAvaliarAdversario(): any {
     var valormedio;
-    valormedio = (this.conservador_ousado +
+    valormedio = (
+      this.conservador_ousado +
       this.inconstante_constante +
       this.inseguro_confiante +
       this.pressionado_controlado +
@@ -424,7 +428,7 @@ export class RelatorioPage implements OnInit {
       this.estrassado_calmo +
       this.disperso_alerta +
       this.taticamenteDisciplinado_taticamenteIndisciplinado 
-      ) / 6;
+      ) / 9;
     if (valormedio < 2.3) {
 
       this.colorBarGeral[1] = '#ff0000';

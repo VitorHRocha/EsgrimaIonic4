@@ -24,5 +24,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   // declarations: [ModalPage],
+  exports: [ModalPage],
 })
 export class ModalPageModule {}

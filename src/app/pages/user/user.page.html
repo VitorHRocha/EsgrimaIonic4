@@ -1,9 +1,12 @@
 <ion-header >
   <ion-toolbar color="primary">
-    <ion-button id="logoutButton" fill="clear" (click)="voltar()">
-      <ion-icon name="log-out"></ion-icon>
+    <ion-button id="logoutButton" fill="clear" (click)="openMenu()">
+      <!-- <ion-avatar>
+        <img *ngIf="fotoPerfilURL" src="http://ucarecdn.com/{{ fotoPerfilURL }}/" >
+      </ion-avatar> -->
+        <ion-icon name="menu"></ion-icon>
     </ion-button>  
-    <ion-title>Usuário</ion-title>
+    <ion-title>Esgrima Traning</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,5 +29,9 @@
   <ion-button id="bt_minhas_estatisticas" (click)="estatistica()"  shape="round" color="tertiary">
     Estatísticas
   </ion-button> 
+  <ion-button (click)="presentModal2()"  shape="round" color="tertiary">
+    Oponentes
+  </ion-button> 
 </ion-content>
 
+ 

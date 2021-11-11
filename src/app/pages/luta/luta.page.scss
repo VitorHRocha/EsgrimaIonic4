@@ -1,8 +1,10 @@
 
 ion-toolbar{
+  --padding-top: 10%;
+  padding-bottom: 5%;
+  --background: var(--ion-color-secondary); 
   color: white;
   white-space: nowrap;
-  // text-align: center;
 }
 #backButton{
   position: absolute;
@@ -23,11 +25,11 @@ ion-toolbar{
 }
 .concluir{
   position: absolute;
-  margin-top: -9.5%;
+  margin-top: -11%;
   right: 0%;
   --background: var(--ion-color-secondary);
   font-size: 70%;
-  height: 60%;
+  height: 45%;
   width: 20%;
 }
 .concluir-popup{

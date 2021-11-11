@@ -14,7 +14,7 @@
 <ion-content color="tertiary">  
   <div id="lutas">   
     
-    <div class="luta" *ngFor="let lutadores of lutaVisao">
+    <div class="luta" *ngFor="let lutadores of lutaVisao; let i = index">
       
       <ion-label class="trap" id="etapaEliminatoria" *ngIf="lutadores.Jogo.etapaEliminatoria"> 
         {{lutadores.Jogo.etapaEliminatoria}}
@@ -30,7 +30,7 @@
         <ion-card-header >
           <ion-card-subtitle >              
             <ion-toolbar color="primary">
-              <ion-grid>
+              <ion-grid> 
                 <ion-row>
                   <ion-col id="data">{{lutadores.Jogo.data}}</ion-col>
                   <ion-col id="hora">{{lutadores.Jogo.hora}}</ion-col>
@@ -50,6 +50,13 @@
                 <ion-col size="5.5" id="col_meu_nome" >{{userProfile.nome}}</ion-col>
                 <ion-col size="1" id="col_x">X</ion-col>
                 <ion-col size="5.5" id="col_nome_oponente" >{{lutadores.Perfil_Adversario.nome2}}  </ion-col>
+              </ion-row>
+            </ion-grid>
+            <ion-grid class="grid_pontos">
+              <ion-row>
+                <ion-col size="5.5" id="col_meus_pontos">{{total_pontos_meu[i]}}</ion-col>
+                <ion-col size="1" id="col_x">X</ion-col>
+                <ion-col size="5.5" id="col_pontos_woponente" >{{total_pontos_adversario[i]}}  </ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-title>

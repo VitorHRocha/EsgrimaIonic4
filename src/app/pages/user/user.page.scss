@@ -1,7 +1,9 @@
 ion-toolbar {
-    color: white;
-    // --padding-top: 5%;
+    --padding-top: 10%;
     padding-bottom: 5%;
+    --background: var(--ion-color-secondary); 
+    color: white;
+    white-space: nowrap;
 }
 ion-title{
     text-align: center;
@@ -36,7 +38,7 @@ ion-avatar{
     margin: auto;
     }
     
-#div-avatar{
+#div-avatar{ 
     margin-top: 0%;
     display: flex;
     height: 40%; 
@@ -61,7 +63,7 @@ ion-avatar{
 ion-content ion-button{
     width: 45%;
     height : 6%;
-    margin-top: 5%;
+    margin-top: 2%;
     font-family: "Noto Sans",  sans-serif; ;
     font-size: 102%;
     font-weight: bold;
@@ -71,6 +73,8 @@ ion-content ion-button{
 
 #bt_minhas_estatisticas{
     white-space: pre-line;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 // Noto Sans
 // - Noto Serif

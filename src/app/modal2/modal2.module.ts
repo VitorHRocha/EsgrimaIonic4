@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPage } from './user.page';
-import { Modal2Page } from 'src/app/modal2/modal2.page';
+import { Modal2Page } from './modal2.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserPage
+    component: Modal2Page
   }
-];
+]; 
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserPage,Modal2Page],
-  entryComponents: [Modal2Page],
+  // declarations: [ModalPage],
+  exports: [Modal2Page],
 })
-export class UserPageModule {}
+export class Modal2PageModule {}

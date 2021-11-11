@@ -8,7 +8,25 @@
 // #nopadding{
 //     padding-top: 0;
 // }
-// ion-list{
-    
-//     padding-top: 0;
-// }
+#lista{
+    padding: 0;  
+}
+ion-toolbar{
+    --padding-top: 15%;
+    padding-bottom: 5%;
+    color: white;
+    white-space: nowrap;
+
+} 
+
+ion-title{
+    text-align: center;
+    font-size: 110%; 
+    font-weight: bold;
+    width: 80%;
+    margin: auto;
+} 
+ion-menu ion-item{
+    border: solid 2px black;
+}
+

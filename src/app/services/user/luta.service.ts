@@ -92,7 +92,7 @@ export class LutaService {
         var i = 0;
         var lutaDetalhada: string = "";
         for (i = 0; i < Ataques.length; i++) {
-          if (idLocalCorpo[i] > 8) {
+          if (idLocalCorpo[i] > 10) {
             lutaDetalhada += Lutadores[1];
           } else {
             lutaDetalhada += Lutadores[0];
@@ -109,21 +109,25 @@ export class LutaService {
             lutaDetalhada += " em um toque duplo";
           }
           
-          if (idLocalCorpo[i] == 1 || idLocalCorpo[i] == 9) {
+          if (idLocalCorpo[i] == 1 || idLocalCorpo[i] == 11) {
             lutaDetalhada += " mirou a cabeça";
-          } else if (idLocalCorpo[i] == 2 || idLocalCorpo[i] == 10) {
+          } else if (idLocalCorpo[i] == 2 || idLocalCorpo[i] == 12) {
             lutaDetalhada += " mirou o braço esquerdo";
-          } else if (idLocalCorpo[i] == 3 || idLocalCorpo[i] == 11) {
+          } else if (idLocalCorpo[i] == 3 || idLocalCorpo[i] == 13) {
             lutaDetalhada += " mirou o tronco";
-          } else if (idLocalCorpo[i] == 4 || idLocalCorpo[i] == 12) {
+          } else if (idLocalCorpo[i] == 4 || idLocalCorpo[i] == 14) {
             lutaDetalhada += " mirou o braço direito";
-          } else if (idLocalCorpo[i] == 5 || idLocalCorpo[i] == 13) {
+          } else if (idLocalCorpo[i] == 5 || idLocalCorpo[i] == 15) {
             lutaDetalhada += " mirou a perna esquerda";
-          } else if (idLocalCorpo[i] == 6 || idLocalCorpo[i] == 14) {
+          } else if (idLocalCorpo[i] == 6 || idLocalCorpo[i] == 16) {
             lutaDetalhada += " mirou a perna direita";
-          } else if (idLocalCorpo[i] == 7 || idLocalCorpo[i] == 14) {
+          } else if (idLocalCorpo[i] == 7 || idLocalCorpo[i] == 17) {
             lutaDetalhada += " mirou o pe direito";
-          } else if (idLocalCorpo[i] == 8 || idLocalCorpo[i] == 14) {
+          } else if (idLocalCorpo[i] == 8 || idLocalCorpo[i] == 18) {
+            lutaDetalhada += " mirou o pe direito";
+          } else if (idLocalCorpo[i] == 9 || idLocalCorpo[i] == 19) {
+            lutaDetalhada += " mirou o pe direito";
+          } else if (idLocalCorpo[i] == 10 || idLocalCorpo[i] == 20) {
             lutaDetalhada += " mirou o pe direito";
           }
           

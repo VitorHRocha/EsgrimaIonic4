@@ -37,12 +37,12 @@ export class AutoAvaliacaoPage implements OnInit {
         this.userProfile = userProfileSnapshot.data();
       });
     
-    this.myConfiante = 1;
-    this.myEstressado = 1;
-    this.myFocado = 1;
-    this.myMotivado = 1;
-    this.myControlado = 1;
-    this.myDisciplinado = 1;
+    this.myConfiante = 3;
+    this.myEstressado = 3;
+    this.myFocado = 3;
+    this.myMotivado = 3;
+    this.myControlado = 3;
+    this.myDisciplinado = 3;
   }
 
   rangeConfiante(event: any){

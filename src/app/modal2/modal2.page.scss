@@ -1,0 +1,91 @@
+ion-toolbar{
+    --padding-top: 15%;
+    padding-bottom: 5%;
+    color: white;
+    white-space: nowrap;
+    background:  var(--ion-color-primary);
+}
+
+ion-title{
+    text-align: center;
+    font-size: 110%;  
+    font-weight: bold;
+    width: 80%;
+    margin: auto;
+}
+
+ion-toolbar ion-button{
+    position: static;
+    margin-bottom: -6%;
+    --padding-start : 20%;
+    color: white;   
+    font-size: 130%;  
+}
+
+ion-content{ 
+    text-align: center;
+}
+
+#listAtleta ion-item{
+    margin-top: 2%;
+    margin-right: auto ;
+    margin-left: auto ;
+    
+    border-radius: 30px;
+    border: solid var(--ion-color-primary);
+    
+    width: 80%;
+    font-weight: 900;
+    
+    
+} 
+#listAtleta ion-list{
+    background: var(--ion-color-tertiary);
+    padding: 0;   
+} 
+
+ion-note{
+    color:  var(--ion-color-primary);
+}
+ion-input{
+    color: var(--ion-color-primary)!important;
+    font-size: 130%;
+}
+#registraAtleta{
+
+    
+
+    ion-label{
+        
+        text-align: center;
+        font-size: 110%;  
+        font-weight: bold;
+        margin-bottom: 50%;
+    }
+    
+    ion-list{
+        margin-top: 20%;
+        background: var(--ion-color-tertiary);
+    }
+    
+    ion-item{
+        margin-top: 5%;
+        margin-right: auto ;
+        margin-left: auto ;
+        
+        border-radius: 30px;
+        
+        width: 80%;        
+    } 
+
+    #item_nome{
+        margin-top: 20%;
+    }
+
+    ion-button{    
+        position: absolute;;
+        bottom: 2%;
+        margin-left: -17%;
+    
+    }
+}

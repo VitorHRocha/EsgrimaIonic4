@@ -13,8 +13,14 @@ export class AuthService {
   constructor() { }
   loginUser(email: string, password: string):
   Promise<firebase.auth.UserCredential> {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
+     return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(() => {
+        return firebase.auth().signInWithEmailAndPassword(email, password);
+      })
+      
   }
+
+
   signupUser(email: string, password: string, nome:string, clube:string, numeroLutas:number): Promise<any> {
     return firebase
     .auth()
@@ -37,5 +43,7 @@ export class AuthService {
     return firebase.auth().signOut();
     }
   
-  
+    getAuth(){
+      return firebase.auth();
+    }
 }

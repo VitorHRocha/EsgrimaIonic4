@@ -20,12 +20,12 @@ export class CondicaoPosLutaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.efeitoPratica.sonolento_alerta = 1;
-    this.efeitoPratica.cansado_vigoroso = 1;
-    this.efeitoPratica.inseguro_confiante = 1;
-    this.efeitoPratica.preocupado_tranquilo = 1;
-    this.efeitoPratica.triste_feliz = 1;
-    this.efeitoPratica.desmotivado_motivado = 1;
+    this.efeitoPratica.sonolento_alerta =3;
+    this.efeitoPratica.cansado_vigoroso = 3;
+    this.efeitoPratica.inseguro_confiante = 3;
+    this.efeitoPratica.preocupado_tranquilo = 3;
+    this.efeitoPratica.triste_feliz = 3;
+    this.efeitoPratica.desmotivado_motivado = 3;
   }
   segmentsonolento_alerta(event: any) {
     this.efeitoPratica.sonolento_alerta = event.detail.value;

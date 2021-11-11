@@ -1,5 +1,5 @@
 ion-toolbar{
-    --padding-top: 15%;
+    --padding-top: 10%;
     padding-bottom: 5%;
     --background: var(--ion-color-secondary); 
     color: white;
@@ -12,7 +12,7 @@ ion-title{
     font-weight: bold;
     width: 80%;
     margin: auto;
-}
+} 
 
 ion-toolbar ion-button{
     position: static;
@@ -47,15 +47,19 @@ h6{
 }
 
 
-hr{
-    border-top: 2px solid black;
-    margin-top: 4%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
+// hr{
+//     border-top: 2px solid black;
+//     margin-top: 4%;
+//     margin-left: 10%;
+//     margin-right: 10%;
+// }
 
 ion-item ion-label{
     margin-top: 0;
+}
+ion-item{
+    
+    border: 0px;
 }
 ion-label ion-label {
     text-align: center;

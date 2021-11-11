@@ -66,10 +66,12 @@
             <ion-button shape="round" class="etapa_eliminatoria" id="final" (click)="segmentEtapaEliminatoria('final')">
               <ion-label>Final</ion-label>
             </ion-button>
-          </div>   
+          </div>    
         </div>
-                
+                 
         <div id="raking_oponente_poule" >
+          <hr width="80%" >
+          <ion-label>Ranking Oponente <br></ion-label>
           <ion-button class="raking_oponente_poule" shape="round" id="pior_ranqueado" (click)="segmentRakingOponentePoule('pior')" >
             <ion-label>Pior <br> Ranqueado</ion-label>
           </ion-button>
@@ -79,6 +81,8 @@
         </div>
         
         <div id="class_oponente_eliminatoria" >
+          <hr width="80%" >
+          <ion-label>Classificação Oponente <br></ion-label>
           <ion-button class="class_oponente_eliminatoria" shape="round" id="pior_classificado" (click)="segmentClassOponenteEliminatoria('pior')">
             <ion-label>Pior <br> Classificado</ion-label>
           </ion-button>

@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, AlertController } from '@ionic/angular';
+import {  Component, OnInit } from '@angular/core';
+import { LoadingController, AlertController, MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import * as firebase from 'firebase';
+import { ProfileService } from 'src/app/services/user/profile.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'], 
 }) 
+
 export class LoginPage implements OnInit {
   
   loginForm: any;
   loading: HTMLIonLoadingElement;
-   
+  userProfile: any;
+  currentUser: any;
+
+  
   constructor(
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     private authService: AuthService,
+    public profileService:ProfileService, 
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder, 
+    private menu: MenuController
     ) {
+      this.menu.enable(false);
+
       this.loginForm = this.formBuilder.group({
         email: ['',
         Validators.compose([Validators.required])],
@@ -28,13 +38,13 @@ export class LoginPage implements OnInit {
           Validators.compose([Validators.required, Validators.minLength(6)]),
         ],
       });
-      // document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
+      
       
     }
-
-    ngOnInit() {
-      // console.log("aqui");
-      // document.getElementById("icon").setAttribute("src",`./assets/img/Logo-02.png`);
+    
+    ngOnInit(): void {
+     
+      
     }
     
     
@@ -62,6 +72,6 @@ export class LoginPage implements OnInit {
         }
         );
         
-    }
+      }
       
-}
+    }

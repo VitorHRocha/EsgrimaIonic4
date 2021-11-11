@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPage } from './user.page';
-import { Modal2Page } from 'src/app/modal2/modal2.page';
+import { TrocarSenhaPage } from './trocar-senha.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserPage
+    component: TrocarSenhaPage
   }
 ];
 
@@ -23,7 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserPage,Modal2Page],
-  entryComponents: [Modal2Page],
+  declarations: [TrocarSenhaPage]
 })
-export class UserPageModule {}
+export class TrocarSenhaPageModule {}

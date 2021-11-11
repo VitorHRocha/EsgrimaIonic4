@@ -5,19 +5,21 @@
     <img id="icon" src="./assets/img/Logo-02.png" alt="">
   </div>
   <form [formGroup]="loginForm">
-    <ion-item>
-      <ion-input
+    <ion-item id="email">
+      <ion-input 
+      name = "email"
       text-center
       placeholder="Email"
       formControlName="email"
       type="email"
       [class.invalid]="!loginForm.controls['email'].valid &&
       loginForm.controls['email'].touched">
+      
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input
+      <ion-input 
       text-center
       placeholder="Senha"
       formControlName="password"

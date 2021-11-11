@@ -25,7 +25,9 @@
     }
     
     ion-content{
-        text-align: center; 
+        
+        text-align: left;
+        word-wrap: initial;
     }
     
     #foto{  
@@ -67,5 +69,10 @@
         margin-right: auto;
         margin-top: 25%;
     }
-    
+    ion-label{
+        margin-top: 5%;
+        font-size: 100%;
+        font-weight: 700;
+        word-break: normal;
+    }
     

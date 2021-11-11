@@ -56,7 +56,7 @@ export class RegistroPage implements OnInit {
     
     async registrarUser(registroForm: FormGroup): Promise<void> {
       
-      const email: string = registroForm.value.email;
+      const email: string = registroForm.value.email; 
       const senha: string = registroForm.value.senha;
       const nome: string  = registroForm.value.nome;
       const clube: string = registroForm.value.clube;

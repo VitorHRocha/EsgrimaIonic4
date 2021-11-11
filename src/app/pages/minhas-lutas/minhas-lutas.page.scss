@@ -137,3 +137,10 @@ ion-item{
     text-transform: capitalize;
     text-align: center;
 }
+
+.grid_pontos{
+    ion-col{
+        font-weight: 700;
+        color: var(--ion-color-secondary); 
+    }
+}
